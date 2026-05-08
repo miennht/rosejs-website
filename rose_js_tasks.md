@@ -31,23 +31,23 @@ The goal is to create an implementation-ready, AI-First task list that supports:
 
 ## 2. Task Status Legend
 
-| Status | Meaning |
-|---|---|
-| Not Started | Task has not begun |
-| In Progress | Task is actively being worked on |
-| Blocked | Task is blocked by a decision or dependency |
-| Review | Task is ready for code/content review |
-| Done | Task is completed and validated |
+| Status      | Meaning                                     |
+| ----------- | ------------------------------------------- |
+| Not Started | Task has not begun                          |
+| In Progress | Task is actively being worked on            |
+| Blocked     | Task is blocked by a decision or dependency |
+| Review      | Task is ready for code/content review       |
+| Done        | Task is completed and validated             |
 
 ---
 
 ## 3. Priority Legend
 
-| Priority | Meaning |
-|---|---|
-| P0 | Required for MVP launch |
-| P1 | Important for MVP quality; can be deferred only if necessary |
-| P2 | Optional enhancement or post-MVP improvement |
+| Priority | Meaning                                                      |
+| -------- | ------------------------------------------------------------ |
+| P0       | Required for MVP launch                                      |
+| P1       | Important for MVP quality; can be deferred only if necessary |
+| P2       | Optional enhancement or post-MVP improvement                 |
 
 ---
 
@@ -84,22 +84,22 @@ Each pull request should include:
 
 These decisions must guide all tasks:
 
-| Area | Decision |
-|---|---|
-| Frontend | React + Vite |
-| Language | TypeScript |
-| Styling | Tailwind CSS |
-| CMS | CMS-managed content |
-| Backend | No custom backend for MVP |
-| Database | No custom database for MVP |
-| Source Control | GitHub |
-| CI/CD | Required |
-| Scheduling | Calendly |
-| Analytics | Plausible Analytics |
-| Form Handling | Third-party provider or serverless function |
-| Hosting | Railway, Vercel, Netlify, or self-hosted |
-| Brand Palette | Black and white |
-| Industry Focus | Healthcare / Healthcare Insurance |
+| Area           | Decision                                    |
+| -------------- | ------------------------------------------- |
+| Frontend       | React + Vite                                |
+| Language       | TypeScript                                  |
+| Styling        | Tailwind CSS                                |
+| CMS            | CMS-managed content                         |
+| Backend        | No custom backend for MVP                   |
+| Database       | No custom database for MVP                  |
+| Source Control | GitHub                                      |
+| CI/CD          | Required                                    |
+| Scheduling     | Calendly                                    |
+| Analytics      | Plausible Analytics                         |
+| Form Handling  | Third-party provider or serverless function |
+| Hosting        | Railway, Vercel, Netlify, or self-hosted    |
+| Brand Palette  | Black and white                             |
+| Industry Focus | Healthcare / Healthcare Insurance           |
 
 ---
 
@@ -107,14 +107,14 @@ These decisions must guide all tasks:
 
 These implementation decisions are finalized and should be used for all MVP tasks.
 
-| Decision ID | Decision | Recommendation | Required Before |
-|---|---|---|---|
-| DEC-001 | CMS provider | Sanity | CMS implementation |
-| DEC-002 | Form provider | Formspree | Contact form implementation |
-| DEC-003 | Hosting provider | Railway | Deployment setup |
-| DEC-004 | Calendly mode | External link | Scheduling implementation |
-| DEC-005 | Branching strategy | GitHub Flow | GitHub setup |
-| DEC-006 | Sitemap approach | Static/manual first; automate later | SEO implementation |
+| Decision ID | Decision           | Recommendation                      | Required Before             |
+| ----------- | ------------------ | ----------------------------------- | --------------------------- |
+| DEC-001     | CMS provider       | Sanity                              | CMS implementation          |
+| DEC-002     | Form provider      | Formspree                           | Contact form implementation |
+| DEC-003     | Hosting provider   | Railway                             | Deployment setup            |
+| DEC-004     | Calendly mode      | External link                       | Scheduling implementation   |
+| DEC-005     | Branching strategy | GitHub Flow                         | GitHub setup                |
+| DEC-006     | Sitemap approach   | Static/manual first; automate later | SEO implementation          |
 
 ---
 
@@ -122,15 +122,15 @@ These implementation decisions are finalized and should be used for all MVP task
 
 Use this sprint plan to execute the implementation in a controlled AI-First sequence. Each sprint should produce reviewable work through GitHub pull requests, with CI checks passing before merge.
 
-| Sprint | Focus | Key Task Areas |
-|---|---|---|
+| Sprint   | Focus                                                              | Key Task Areas                                                                                                                                             |
+| -------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Sprint 1 | Repository, documentation, React/Vite setup, Tailwind, routing, CI | GitHub repository, branching strategy, documentation structure, React + Vite scaffold, TypeScript, Tailwind, React Router, linting, formatting, initial CI |
-| Sprint 2 | Layout, design system, shared components | UI primitives, global layout, navigation, footer, marketing sections, cards, responsive black-and-white design system |
-| Sprint 3 | CMS setup, content models, fallback content | CMS provider decision, CMS client abstraction, content models, fallback content, CMS data-fetching functions |
-| Sprint 4 | Core pages: Home, Services, About, Contact | Home page, Services page, About page, Contact page, contact form component, initial content review |
-| Sprint 5 | Blog, case studies, lead magnet | Blog listing, blog detail template, case study listing, case study detail template, free downloadable lead magnet |
-| Sprint 6 | SEO, analytics, accessibility, tests | SEO component, page metadata, sitemap, robots.txt, Plausible Analytics, accessibility baseline, Vitest, React Testing Library, Playwright tests |
-| Sprint 7 | Deployment, production validation, Search Console | Hosting provider setup, deployment workflow, environment variables, domain/SSL, production verification, Google Search Console, launch checklist |
+| Sprint 2 | Layout, design system, shared components                           | UI primitives, global layout, navigation, footer, marketing sections, cards, responsive black-and-white design system                                      |
+| Sprint 3 | CMS setup, content models, fallback content                        | CMS provider decision, CMS client abstraction, content models, fallback content, CMS data-fetching functions                                               |
+| Sprint 4 | Core pages: Home, Services, About, Contact                         | Home page, Services page, About page, Contact page, contact form component, initial content review                                                         |
+| Sprint 5 | Blog, case studies, lead magnet                                    | Blog listing, blog detail template, case study listing, case study detail template, free downloadable lead magnet                                          |
+| Sprint 6 | SEO, analytics, accessibility, tests                               | SEO component, page metadata, sitemap, robots.txt, Plausible Analytics, accessibility baseline, Vitest, React Testing Library, Playwright tests            |
+| Sprint 7 | Deployment, production validation, Search Console                  | Hosting provider setup, deployment workflow, environment variables, domain/SSL, production verification, Google Search Console, launch checklist           |
 
 ## Sprint Execution Rules
 
@@ -152,6 +152,7 @@ Use this sprint plan to execute the implementation in a controlled AI-First sequ
 **Implementation Area:** DevOps, Repository Setup
 
 ### Description
+
 Create the GitHub repository for the RoseJS website.
 
 ### Acceptance Criteria
@@ -179,9 +180,11 @@ Create the GitHub repository for the RoseJS website.
 **Implementation Area:** DevOps, Documentation
 
 ### Description
+
 Define the branching strategy for the project.
 
 ### Recommended Decision
+
 Use GitHub Flow:
 
 ```text
@@ -215,6 +218,7 @@ docs/*
 **Implementation Area:** Foundation, Documentation
 
 ### Description
+
 Create the base folder structure for source code, documentation, GitHub workflows, public assets, and tests.
 
 ### Expected Structure
@@ -252,6 +256,7 @@ rosejs-website/
 **Implementation Area:** Documentation
 
 ### Description
+
 Add the core documentation files that make the project reusable as an AI-First project template.
 
 ### Files to Add
@@ -290,11 +295,12 @@ docs/Component_Map.md
 ## TASK-005: Scaffold React + Vite TypeScript Project
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** ADR-001, MVP-001 to MVP-021  
 **Implementation Area:** Frontend, Foundation
 
 ### Description
+
 Scaffold the frontend application using React + Vite + TypeScript.
 
 ### Acceptance Criteria
@@ -313,16 +319,21 @@ npm run dev
 npm run build
 ```
 
+- React + Vite + TypeScript scaffold generated and merged into repository root.
+- `npm run dev` starts successfully (Vite served at localhost:5173 during verification).
+- `npm run build` completes successfully and outputs production assets to `dist/`.
+
 ---
 
 ## TASK-006: Configure TypeScript Strictness
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-MAINT-004, CR-002  
 **Implementation Area:** Frontend, Quality
 
 ### Description
+
 Configure TypeScript for maintainable production-grade code.
 
 ### Acceptance Criteria
@@ -338,16 +349,22 @@ Configure TypeScript for maintainable production-grade code.
 npm run typecheck
 ```
 
+- Enabled TypeScript strict mode in app and node TypeScript configs.
+- Added additional compiler safety checks (`noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`).
+- Path aliases are not currently used; alias setup deferred until first alias use.
+- Added `npm run typecheck` script so CI can enforce type validation.
+
 ---
 
 ## TASK-007: Configure ESLint and Formatting
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-MAINT-004, NFR-SCM-005  
 **Implementation Area:** Quality, DevOps
 
 ### Description
+
 Set up linting and formatting rules for consistent code quality.
 
 ### Acceptance Criteria
@@ -363,6 +380,12 @@ Set up linting and formatting rules for consistent code quality.
 npm run lint
 ```
 
+- Integrated **eslint-config-prettier** so ESLint does not conflict with Prettier.
+- Added **Prettier** (`prettier.config.js`, `.prettierignore`) with `npm run format` and `npm run format:check`.
+- **`npm run lint`** runs `eslint .` then `prettier --check .`.
+- Documented lint/format workflow in `README.md`.
+- Added **`.github/workflows/ci.yml`** so lint (and typecheck/build) runs on PRs and pushes to `main`.
+
 ---
 
 ## TASK-008: Configure Tailwind CSS
@@ -373,6 +396,7 @@ npm run lint
 **Implementation Area:** UX/UI, Frontend
 
 ### Description
+
 Install and configure Tailwind CSS for the black-and-white RoseJS design system.
 
 ### Acceptance Criteria
@@ -397,6 +421,7 @@ Install and configure Tailwind CSS for the black-and-white RoseJS design system.
 **Implementation Area:** Routing, Frontend
 
 ### Description
+
 Configure React Router and centralize route definitions.
 
 ### Routes
@@ -438,6 +463,7 @@ Configure React Router and centralize route definitions.
 **Implementation Area:** UX/UI, Frontend
 
 ### Description
+
 Create reusable UI primitives for consistent layout and styling.
 
 ### Components
@@ -472,6 +498,7 @@ LinkButton
 **Implementation Area:** Layout, Frontend
 
 ### Description
+
 Create the global layout components used across all pages.
 
 ### Components
@@ -508,6 +535,7 @@ PageLayout
 **Implementation Area:** UI, Frontend
 
 ### Description
+
 Create reusable page sections for marketing content.
 
 ### Components
@@ -544,6 +572,7 @@ LeadMagnetSection
 **Implementation Area:** UI, Frontend, CMS
 
 ### Description
+
 Create reusable card components for services, blog posts, and case studies.
 
 ### Components
@@ -578,6 +607,7 @@ CaseStudyCard
 **Implementation Area:** CMS, Architecture
 
 ### Description
+
 Choose the CMS provider for RoseJS.
 
 ### Options
@@ -588,6 +618,7 @@ Choose the CMS provider for RoseJS.
 - Other CMS
 
 ### Recommendation
+
 Use **Sanity** if speed, flexibility, and editor experience are highest priority. Use **Strapi** if self-hosting control is highest priority.
 
 ### Acceptance Criteria
@@ -610,6 +641,7 @@ Use **Sanity** if speed, flexibility, and editor experience are highest priority
 **Implementation Area:** CMS, Frontend
 
 ### Description
+
 Create a CMS integration layer that isolates provider-specific logic.
 
 ### Files
@@ -643,6 +675,7 @@ src/cms/mappers.ts
 **Implementation Area:** CMS
 
 ### Description
+
 Define CMS content models for services, blog posts, case studies, lead magnets, and SEO metadata.
 
 ### Content Models
@@ -681,6 +714,7 @@ Tag
 **Implementation Area:** CMS, Content
 
 ### Description
+
 Add fallback content for local development and early UI scaffolding.
 
 ### Files
@@ -712,6 +746,7 @@ src/content/fallback/leadMagnets.ts
 **Implementation Area:** CMS, Frontend
 
 ### Description
+
 Implement functions to fetch CMS content.
 
 ### Functions
@@ -748,6 +783,7 @@ getLeadMagnets()
 **Implementation Area:** Pages, UI, Content
 
 ### Description
+
 Implement the RoseJS Home page.
 
 ### Required Sections
@@ -788,6 +824,7 @@ Implement the RoseJS Home page.
 **Implementation Area:** Pages, CMS, SEO
 
 ### Description
+
 Implement the Services page using CMS-managed service content.
 
 ### Core Services
@@ -825,6 +862,7 @@ Implement the Services page using CMS-managed service content.
 **Implementation Area:** Pages, Content, SEO
 
 ### Description
+
 Implement the About page to establish credibility and explain RoseJS philosophy.
 
 ### Acceptance Criteria
@@ -852,6 +890,7 @@ Implement the About page to establish credibility and explain RoseJS philosophy.
 **Implementation Area:** Pages, CMS, SEO
 
 ### Description
+
 Implement the Insights listing page using CMS-managed blog posts.
 
 ### Acceptance Criteria
@@ -878,6 +917,7 @@ Implement the Insights listing page using CMS-managed blog posts.
 **Implementation Area:** Pages, CMS, SEO
 
 ### Description
+
 Implement the individual blog article template.
 
 ### Acceptance Criteria
@@ -904,6 +944,7 @@ Implement the individual blog article template.
 **Implementation Area:** Pages, CMS, Content
 
 ### Description
+
 Implement the case studies listing page.
 
 ### Acceptance Criteria
@@ -929,6 +970,7 @@ Implement the case studies listing page.
 **Implementation Area:** Pages, CMS, SEO
 
 ### Description
+
 Implement the individual case study detail template.
 
 ### Acceptance Criteria
@@ -956,6 +998,7 @@ Implement the individual case study detail template.
 **Implementation Area:** Pages, Forms, Scheduling
 
 ### Description
+
 Implement the Contact page with contact form, direct email placeholder, LinkedIn placeholder, and Calendly CTA.
 
 ### Acceptance Criteria
@@ -984,6 +1027,7 @@ Implement the Contact page with contact form, direct email placeholder, LinkedIn
 **Implementation Area:** Scheduling, Pages
 
 ### Description
+
 Implement a `/schedule` page for Calendly scheduling.
 
 ### Acceptance Criteria
@@ -1008,6 +1052,7 @@ Implement a `/schedule` page for Calendly scheduling.
 **Implementation Area:** Routing, UX/UI
 
 ### Description
+
 Create a branded 404 page for invalid routes.
 
 ### Acceptance Criteria
@@ -1032,6 +1077,7 @@ Create a branded 404 page for invalid routes.
 **Implementation Area:** Forms, Architecture
 
 ### Description
+
 Choose the contact form handling approach.
 
 ### Options
@@ -1042,6 +1088,7 @@ Choose the contact form handling approach.
 - Serverless function
 
 ### Recommendation
+
 Use the simplest provider that fits the hosting choice. If hosting on Netlify, Netlify Forms is simplest. If more control is needed, use Resend with a serverless function.
 
 ### Acceptance Criteria
@@ -1064,6 +1111,7 @@ Use the simplest provider that fits the hosting choice. If hosting on Netlify, N
 **Implementation Area:** Forms, Frontend
 
 ### Description
+
 Build the reusable ContactForm component.
 
 ### Fields
@@ -1101,6 +1149,7 @@ message
 **Implementation Area:** Forms, Security, DevOps
 
 ### Description
+
 Connect the contact form to the selected third-party provider or serverless function.
 
 ### Acceptance Criteria
@@ -1126,6 +1175,7 @@ Connect the contact form to the selected third-party provider or serverless func
 **Implementation Area:** Forms, Security
 
 ### Description
+
 Add lightweight spam protection for the contact form.
 
 ### Acceptance Criteria
@@ -1148,6 +1198,7 @@ Add lightweight spam protection for the contact form.
 **Implementation Area:** Scheduling, Frontend, Analytics
 
 ### Description
+
 Add Calendly scheduling CTA and optional embed.
 
 ### Acceptance Criteria
@@ -1175,6 +1226,7 @@ Add Calendly scheduling CTA and optional embed.
 **Implementation Area:** Content, Public Assets
 
 ### Description
+
 Create or add the free downloadable lead magnet PDF.
 
 ### Recommended Asset
@@ -1203,6 +1255,7 @@ Legacy Application Modernization Checklist
 **Implementation Area:** UI, Content, CMS
 
 ### Description
+
 Implement the lead magnet CTA section.
 
 ### Acceptance Criteria
@@ -1230,6 +1283,7 @@ Implement the lead magnet CTA section.
 **Implementation Area:** SEO, Frontend
 
 ### Description
+
 Create reusable SEO components/utilities for page metadata.
 
 ### Files
@@ -1262,6 +1316,7 @@ src/lib/seo.ts
 **Implementation Area:** SEO, Pages
 
 ### Description
+
 Add SEO metadata to all core pages.
 
 ### Pages
@@ -1299,6 +1354,7 @@ Schedule
 **Implementation Area:** SEO, Public Assets
 
 ### Description
+
 Add robots.txt to the public folder.
 
 ### Acceptance Criteria
@@ -1321,6 +1377,7 @@ Add robots.txt to the public folder.
 **Implementation Area:** SEO, DevOps
 
 ### Description
+
 Add initial sitemap.xml.
 
 ### Acceptance Criteria
@@ -1344,6 +1401,7 @@ Add initial sitemap.xml.
 **Implementation Area:** SEO, Frontend
 
 ### Description
+
 Add structured data support where useful.
 
 ### Recommended Schema
@@ -1376,6 +1434,7 @@ Add structured data support where useful.
 **Implementation Area:** Analytics, Frontend
 
 ### Description
+
 Add Plausible Analytics to the website.
 
 ### Acceptance Criteria
@@ -1400,6 +1459,7 @@ Add Plausible Analytics to the website.
 **Implementation Area:** Analytics, Frontend
 
 ### Description
+
 Create an analytics wrapper so Plausible can be replaced later without changing all components.
 
 ### File
@@ -1432,6 +1492,7 @@ src/lib/analytics.ts
 **Implementation Area:** Accessibility, UX/UI
 
 ### Description
+
 Review and enforce baseline accessibility expectations.
 
 ### Acceptance Criteria
@@ -1457,6 +1518,7 @@ Review and enforce baseline accessibility expectations.
 **Implementation Area:** Navigation, Accessibility
 
 ### Description
+
 Ensure mobile navigation is accessible and keyboard-friendly.
 
 ### Acceptance Criteria
@@ -1485,6 +1547,7 @@ Ensure mobile navigation is accessible and keyboard-friendly.
 **Implementation Area:** Testing
 
 ### Description
+
 Set up Vitest for unit and component testing.
 
 ### Acceptance Criteria
@@ -1510,6 +1573,7 @@ npm run test
 **Implementation Area:** Testing
 
 ### Description
+
 Configure React Testing Library for component tests.
 
 ### Acceptance Criteria
@@ -1532,6 +1596,7 @@ Configure React Testing Library for component tests.
 **Implementation Area:** Testing, E2E
 
 ### Description
+
 Set up Playwright for end-to-end testing.
 
 ### Acceptance Criteria
@@ -1557,6 +1622,7 @@ npm run test:e2e
 **Implementation Area:** Testing, Frontend
 
 ### Description
+
 Add component tests for core reusable components.
 
 ### Components to Test
@@ -1592,6 +1658,7 @@ npm run test
 **Implementation Area:** Testing, E2E
 
 ### Description
+
 Add E2E tests for primary navigation flows.
 
 ### Test Flows
@@ -1625,6 +1692,7 @@ npm run test:e2e
 **Implementation Area:** Testing, Forms
 
 ### Description
+
 Add E2E tests for contact form behavior.
 
 ### Test Flows
@@ -1655,6 +1723,7 @@ npm run test:e2e
 **Implementation Area:** Testing, Scheduling, Content
 
 ### Description
+
 Add E2E tests for Calendly and lead magnet CTAs.
 
 ### Acceptance Criteria
@@ -1682,6 +1751,7 @@ npm run test:e2e
 **Implementation Area:** DevOps, Documentation
 
 ### Description
+
 Create a GitHub pull request template.
 
 ### File
@@ -1719,6 +1789,7 @@ Create a GitHub pull request template.
 **Implementation Area:** DevOps, Documentation
 
 ### Description
+
 Create issue templates for bugs, features, and tasks.
 
 ### Files
@@ -1748,6 +1819,7 @@ Create issue templates for bugs, features, and tasks.
 **Implementation Area:** CI/CD, DevOps, Testing
 
 ### Description
+
 Create CI workflow for pull requests.
 
 ### File
@@ -1794,6 +1866,7 @@ npm run test:e2e
 **Implementation Area:** GitHub, DevOps
 
 ### Description
+
 Configure branch protection for the production branch.
 
 ### Acceptance Criteria
@@ -1817,6 +1890,7 @@ Configure branch protection for the production branch.
 **Implementation Area:** Deployment, DevOps
 
 ### Description
+
 Configure deployment through Railway, Vercel, Netlify, or GitHub Actions.
 
 ### Acceptance Criteria
@@ -1844,6 +1918,7 @@ Configure deployment through Railway, Vercel, Netlify, or GitHub Actions.
 **Implementation Area:** Deployment, Architecture
 
 ### Description
+
 Choose hosting provider for MVP.
 
 ### Options
@@ -1854,6 +1929,7 @@ Choose hosting provider for MVP.
 - Self-hosted static hosting
 
 ### Recommendation
+
 Use Railway for MVP hosting. Use Netlify if Netlify Forms is selected and you prefer tighter native form-hosting coupling.
 
 ### Acceptance Criteria
@@ -1875,6 +1951,7 @@ Use Railway for MVP hosting. Use Netlify if Netlify Forms is selected and you pr
 **Implementation Area:** Security, DevOps
 
 ### Description
+
 Create `.env.example` and configure environment variables.
 
 ### Example Variables
@@ -1909,6 +1986,7 @@ VITE_FORM_ENDPOINT=
 **Implementation Area:** Deployment, Security
 
 ### Description
+
 Connect the final domain and enable HTTPS/SSL.
 
 ### Acceptance Criteria
@@ -1933,6 +2011,7 @@ Connect the final domain and enable HTTPS/SSL.
 **Implementation Area:** SEO, Deployment
 
 ### Description
+
 Configure Google Search Console for production domain.
 
 ### Acceptance Criteria
@@ -1956,6 +2035,7 @@ Configure Google Search Console for production domain.
 **Implementation Area:** Documentation, Deployment
 
 ### Description
+
 Create `Deployment_Guide.md`.
 
 ### Required Content
@@ -1990,6 +2070,7 @@ Create `Deployment_Guide.md`.
 **Implementation Area:** Content, CMS
 
 ### Description
+
 Create CMS-ready content for all core services.
 
 ### Acceptance Criteria
@@ -2013,6 +2094,7 @@ Create CMS-ready content for all core services.
 **Implementation Area:** Content, CMS, SEO
 
 ### Description
+
 Create at least three initial blog posts for launch.
 
 ### Recommended Topics
@@ -2043,6 +2125,7 @@ Create at least three initial blog posts for launch.
 **Implementation Area:** Content, CMS
 
 ### Description
+
 Create one anonymized healthcare-focused case study.
 
 ### Acceptance Criteria
@@ -2067,6 +2150,7 @@ Create one anonymized healthcare-focused case study.
 **Implementation Area:** Documentation, SEO
 
 ### Description
+
 Create `SEO_Strategy.md`.
 
 ### Required Content
@@ -2098,6 +2182,7 @@ Create `SEO_Strategy.md`.
 **Implementation Area:** Documentation, Content
 
 ### Description
+
 Create `Content_Plan.md` for launch and post-launch content.
 
 ### Required Content
@@ -2131,6 +2216,7 @@ Create `Content_Plan.md` for launch and post-launch content.
 **Implementation Area:** Documentation, AI Workflow
 
 ### Description
+
 Create `AI_Workflow_Guide.md` to document how AI should be used in this project and future projects.
 
 ### Required Content
@@ -2164,6 +2250,7 @@ Create `AI_Workflow_Guide.md` to document how AI should be used in this project 
 **Implementation Area:** Documentation, Code Review
 
 ### Description
+
 Create `Code_Review_Checklist.md`.
 
 ### Required Review Areas
@@ -2199,6 +2286,7 @@ Create `Code_Review_Checklist.md`.
 **Implementation Area:** Documentation, Testing
 
 ### Description
+
 Create `Testing_Strategy.md`.
 
 ### Required Content
@@ -2231,6 +2319,7 @@ Create `Testing_Strategy.md`.
 **Implementation Area:** Documentation, Frontend
 
 ### Description
+
 Create `Component_Map.md`.
 
 ### Required Content
@@ -2262,6 +2351,7 @@ Create `Component_Map.md`.
 **Implementation Area:** QA, Testing
 
 ### Description
+
 Run full local validation before production deployment.
 
 ### Commands
@@ -2295,6 +2385,7 @@ npm run test:e2e
 **Implementation Area:** Deployment, QA
 
 ### Description
+
 Validate the production deployment.
 
 ### Checklist
@@ -2329,6 +2420,7 @@ Validate the production deployment.
 **Implementation Area:** Accessibility, QA
 
 ### Description
+
 Review accessibility across core pages.
 
 ### Acceptance Criteria
@@ -2354,6 +2446,7 @@ Review accessibility across core pages.
 **Implementation Area:** SEO, QA
 
 ### Description
+
 Review SEO readiness before launch.
 
 ### Acceptance Criteria
@@ -2381,6 +2474,7 @@ Review SEO readiness before launch.
 **Implementation Area:** Performance, QA
 
 ### Description
+
 Review performance before launch.
 
 ### Acceptance Criteria
@@ -2407,6 +2501,7 @@ Review performance before launch.
 **Implementation Area:** Architecture, Documentation
 
 ### Description
+
 Document how future backend/database functionality could be added without rewriting the MVP.
 
 ### Future Features to Address
@@ -2439,6 +2534,7 @@ Document how future backend/database functionality could be added without rewrit
 **Implementation Area:** Documentation, Architecture
 
 ### Description
+
 Ensure the no custom backend/database decision is documented in project docs.
 
 ### Acceptance Criteria
@@ -2494,11 +2590,11 @@ TASK-071 to TASK-075 Validate Launch
 
 ## 24.2 Decision-Dependent Tasks
 
-| Task ID | Decision Status |
-|---|---|
-| TASK-014 | Resolved: CMS provider selected (Sanity) |
-| TASK-029 | Resolved: Form provider selected (Formspree) |
-| TASK-057 | Resolved: Hosting provider selected (Railway) |
+| Task ID  | Decision Status                                         |
+| -------- | ------------------------------------------------------- |
+| TASK-014 | Resolved: CMS provider selected (Sanity)                |
+| TASK-029 | Resolved: Form provider selected (Formspree)            |
+| TASK-057 | Resolved: Hosting provider selected (Railway)           |
 | TASK-059 | Pending final production domain value during deployment |
 
 ---
@@ -2564,4 +2660,3 @@ Future AI implementation agents should follow these rules:
 8. Keep documentation updated when architecture decisions change.
 9. Maintain healthcare and healthcare insurance positioning in copy.
 10. Do not store PHI/PII through the website MVP.
-

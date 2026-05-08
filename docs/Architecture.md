@@ -5,9 +5,11 @@
 ## 1. Architecture Overview
 
 ### 1.1 Project Name
+
 RoseJS Website — AI-First Healthcare Software Architecture Consulting Website
 
 ### 1.2 Architecture Purpose
+
 This document defines the technical architecture for the RoseJS website. It translates the PRD into an implementation-ready architecture that supports the MVP while remaining reusable as a template for future AI-First projects.
 
 The architecture is designed to support:
@@ -26,22 +28,22 @@ The architecture is designed to support:
 
 ### 1.3 Architecture Decision Summary
 
-| Area | Decision |
-|---|---|
-| Frontend Framework | React + Vite |
-| Language | TypeScript |
-| Styling | Tailwind CSS |
-| Content Management | CMS |
-| Source Control | GitHub |
-| CI/CD | GitHub Actions or hosting-provider CI/CD integrated with GitHub |
-| Backend for MVP | No custom backend required |
-| Database for MVP | No custom database required |
-| Contact Form | Third-party form provider or serverless function |
-| Scheduling | Calendly |
-| Analytics | Plausible Analytics |
-| Hosting | Railway, Vercel, Netlify, or self-hosted static hosting |
-| SEO | Sitemap, robots.txt, metadata, structured content, CMS SEO fields |
-| Future Expansion | Backend-ready and database-ready architecture |
+| Area               | Decision                                                          |
+| ------------------ | ----------------------------------------------------------------- |
+| Frontend Framework | React + Vite                                                      |
+| Language           | TypeScript                                                        |
+| Styling            | Tailwind CSS                                                      |
+| Content Management | CMS                                                               |
+| Source Control     | GitHub                                                            |
+| CI/CD              | GitHub Actions or hosting-provider CI/CD integrated with GitHub   |
+| Backend for MVP    | No custom backend required                                        |
+| Database for MVP   | No custom database required                                       |
+| Contact Form       | Third-party form provider or serverless function                  |
+| Scheduling         | Calendly                                                          |
+| Analytics          | Plausible Analytics                                               |
+| Hosting            | Railway, Vercel, Netlify, or self-hosted static hosting           |
+| SEO                | Sitemap, robots.txt, metadata, structured content, CMS SEO fields |
+| Future Expansion   | Backend-ready and database-ready architecture                     |
 
 ---
 
@@ -133,46 +135,46 @@ Future backend-ready areas include:
 
 ### 4.1 Frontend
 
-| Component | Technology |
-|---|---|
-| Build Tool | Vite |
-| UI Framework | React |
-| Language | TypeScript |
-| Styling | Tailwind CSS |
-| Routing | React Router |
-| Forms | React Hook Form or native controlled forms |
-| Validation | Zod or lightweight validation utilities |
-| Testing | Vitest, React Testing Library, Playwright |
+| Component    | Technology                                 |
+| ------------ | ------------------------------------------ |
+| Build Tool   | Vite                                       |
+| UI Framework | React                                      |
+| Language     | TypeScript                                 |
+| Styling      | Tailwind CSS                               |
+| Routing      | React Router                               |
+| Forms        | React Hook Form or native controlled forms |
+| Validation   | Zod or lightweight validation utilities    |
+| Testing      | Vitest, React Testing Library, Playwright  |
 
 ### 4.2 Content Layer
 
-| Component | Technology |
-|---|---|
-| CMS | Sanity, Strapi, Contentful, or selected CMS |
-| Content Delivery | CMS API |
-| Content Types | Services, blog posts, case studies, lead magnets, SEO metadata |
-| Local Fallback | Static placeholder content for development only |
+| Component        | Technology                                                     |
+| ---------------- | -------------------------------------------------------------- |
+| CMS              | Sanity, Strapi, Contentful, or selected CMS                    |
+| Content Delivery | CMS API                                                        |
+| Content Types    | Services, blog posts, case studies, lead magnets, SEO metadata |
+| Local Fallback   | Static placeholder content for development only                |
 
 ### 4.3 Third-Party Services
 
-| Need | Recommended Service |
-|---|---|
-| Scheduling | Calendly |
-| Analytics | Plausible Analytics |
-| Contact Form | Formspree, Netlify Forms, Resend, or serverless function |
-| Search Visibility | Google Search Console |
-| Hosting | Railway, Vercel, Netlify, or static self-hosting |
+| Need              | Recommended Service                                      |
+| ----------------- | -------------------------------------------------------- |
+| Scheduling        | Calendly                                                 |
+| Analytics         | Plausible Analytics                                      |
+| Contact Form      | Formspree, Netlify Forms, Resend, or serverless function |
+| Search Visibility | Google Search Console                                    |
+| Hosting           | Railway, Vercel, Netlify, or static self-hosting         |
 
 ### 4.4 DevOps
 
-| Need | Tool |
-|---|---|
-| Source Control | GitHub |
-| CI/CD | GitHub Actions or hosting-provider CI/CD |
-| Pull Request Review | GitHub Pull Requests |
-| Issue Tracking | GitHub Issues |
-| Secrets | GitHub Actions Secrets and/or hosting provider environment variables |
-| Preview Deployments | Railway, Vercel, or Netlify preview environments where supported |
+| Need                | Tool                                                                 |
+| ------------------- | -------------------------------------------------------------------- |
+| Source Control      | GitHub                                                               |
+| CI/CD               | GitHub Actions or hosting-provider CI/CD                             |
+| Pull Request Review | GitHub Pull Requests                                                 |
+| Issue Tracking      | GitHub Issues                                                        |
+| Secrets             | GitHub Actions Secrets and/or hosting provider environment variables |
+| Preview Deployments | Railway, Vercel, or Netlify preview environments where supported     |
 
 ---
 
@@ -340,18 +342,18 @@ The React + Vite frontend is responsible for:
 
 ### 6.2 Page Architecture
 
-| Page | Responsibility |
-|---|---|
-| Home | Value proposition, services overview, AI-First methodology, trust section, CTA |
-| Services | List consulting services and explain business value |
-| About | Founder/company background, philosophy, credibility |
-| Insights | Blog listing page |
-| BlogArticle | Individual CMS-managed blog article |
-| CaseStudies | Case study listing page |
-| CaseStudyDetail | Individual CMS-managed case study |
-| Contact | Contact form, direct contact options, Calendly CTA |
-| Schedule | Calendly embed or scheduling redirect page |
-| NotFound | 404 fallback page |
+| Page            | Responsibility                                                                 |
+| --------------- | ------------------------------------------------------------------------------ |
+| Home            | Value proposition, services overview, AI-First methodology, trust section, CTA |
+| Services        | List consulting services and explain business value                            |
+| About           | Founder/company background, philosophy, credibility                            |
+| Insights        | Blog listing page                                                              |
+| BlogArticle     | Individual CMS-managed blog article                                            |
+| CaseStudies     | Case study listing page                                                        |
+| CaseStudyDetail | Individual CMS-managed case study                                              |
+| Contact         | Contact form, direct contact options, Calendly CTA                             |
+| Schedule        | Calendly embed or scheduling redirect page                                     |
+| NotFound        | 404 fallback page                                                              |
 
 ### 6.3 Component Architecture
 
@@ -414,11 +416,11 @@ The CMS should manage:
 
 ### 7.2 CMS Provider Options
 
-| CMS | Strength | Tradeoff |
-|---|---|---|
-| Sanity | Flexible schema, strong developer workflow, polished editor | Hosted service unless self-hosted alternatives are preferred |
-| Strapi | Self-hosted, API-first, full control | Requires more infrastructure maintenance |
-| Contentful | Enterprise-friendly, managed CMS | Can become more expensive and less flexible |
+| CMS        | Strength                                                    | Tradeoff                                                     |
+| ---------- | ----------------------------------------------------------- | ------------------------------------------------------------ |
+| Sanity     | Flexible schema, strong developer workflow, polished editor | Hosted service unless self-hosted alternatives are preferred |
+| Strapi     | Self-hosted, API-first, full control                        | Requires more infrastructure maintenance                     |
+| Contentful | Enterprise-friendly, managed CMS                            | Can become more expensive and less flexible                  |
 
 ### 7.3 Recommended CMS Decision
 
@@ -639,10 +641,10 @@ Calendly will be used for scheduling consultations.
 
 ### 10.2 Integration Options
 
-| Option | Description | Recommendation |
-|---|---|---|
-| External Link | CTA opens Calendly in new tab | Simple and reliable |
-| Embed | Calendly embedded on `/schedule` page | Better on-site experience |
+| Option        | Description                           | Recommendation            |
+| ------------- | ------------------------------------- | ------------------------- |
+| External Link | CTA opens Calendly in new tab         | Simple and reliable       |
+| Embed         | Calendly embedded on `/schedule` page | Better on-site experience |
 
 ### 10.3 Recommended MVP Approach
 
@@ -668,15 +670,15 @@ Plausible Analytics is recommended for MVP because it is lightweight, privacy-fr
 
 ### 11.2 Events to Track
 
-| Event | Trigger |
-|---|---|
-| Page View | User views page |
-| CTA Click | User clicks primary CTA |
-| Contact Submit | User submits contact form successfully |
-| Calendly Click | User clicks Calendly CTA |
-| Lead Magnet Click | User downloads checklist |
-| External Link Click | User clicks LinkedIn or external site |
-| Blog View | User opens blog article |
+| Event               | Trigger                                |
+| ------------------- | -------------------------------------- |
+| Page View           | User views page                        |
+| CTA Click           | User clicks primary CTA                |
+| Contact Submit      | User submits contact form successfully |
+| Calendly Click      | User clicks Calendly CTA               |
+| Lead Magnet Click   | User downloads checklist               |
+| External Link Click | User clicks LinkedIn or external site  |
+| Blog View           | User opens blog article                |
 
 ### 11.3 Analytics Module
 
@@ -831,14 +833,14 @@ Testing must ensure:
 
 ### 14.2 Test Types
 
-| Test Type | Tool | Scope |
-|---|---|---|
-| Unit Tests | Vitest | Utilities, mappers, analytics wrappers |
-| Component Tests | React Testing Library | UI components and forms |
-| E2E Tests | Playwright | Visitor flows |
-| Accessibility Tests | Playwright + axe-core | Core pages and forms |
-| Build Test | Vite build | Production build validation |
-| Link Check | Link checker | Internal/external links |
+| Test Type           | Tool                  | Scope                                  |
+| ------------------- | --------------------- | -------------------------------------- |
+| Unit Tests          | Vitest                | Utilities, mappers, analytics wrappers |
+| Component Tests     | React Testing Library | UI components and forms                |
+| E2E Tests           | Playwright            | Visitor flows                          |
+| Accessibility Tests | Playwright + axe-core | Core pages and forms                   |
+| Build Test          | Vite build            | Production build validation            |
+| Link Check          | Link checker          | Internal/external links                |
 
 ### 14.3 Minimum MVP Test Coverage
 
@@ -970,12 +972,12 @@ Post-deployment verification
 
 ### 16.1 Hosting Options
 
-| Hosting Option | Strength |
-|---|---|
-| Railway | Flexible hosting with service-based deployments and environment management |
-| Vercel | Strong frontend workflow, preview deployments, GitHub integration |
-| Netlify | Strong static hosting, forms option, preview deployments |
-| Self-hosted | More control, more maintenance |
+| Hosting Option | Strength                                                                   |
+| -------------- | -------------------------------------------------------------------------- |
+| Railway        | Flexible hosting with service-based deployments and environment management |
+| Vercel         | Strong frontend workflow, preview deployments, GitHub integration          |
+| Netlify        | Strong static hosting, forms option, preview deployments                   |
+| Self-hosted    | More control, more maintenance                                             |
 
 ### 16.2 Recommended MVP Hosting
 
@@ -1089,28 +1091,28 @@ Branch → PR → CI → Review → Merge → Deploy
 
 ### 18.1 MVP Data Sources
 
-| Data Type | Source |
-|---|---|
-| Service content | CMS |
-| Blog content | CMS |
-| Case studies | CMS |
-| Lead magnet metadata | CMS |
-| Lead magnet file | Public downloads or CMS asset store |
-| Contact submissions | Form provider or serverless function |
-| Scheduling data | Calendly |
-| Analytics data | Plausible Analytics |
+| Data Type            | Source                               |
+| -------------------- | ------------------------------------ |
+| Service content      | CMS                                  |
+| Blog content         | CMS                                  |
+| Case studies         | CMS                                  |
+| Lead magnet metadata | CMS                                  |
+| Lead magnet file     | Public downloads or CMS asset store  |
+| Contact submissions  | Form provider or serverless function |
+| Scheduling data      | Calendly                             |
+| Analytics data       | Plausible Analytics                  |
 
 ### 18.2 No Custom Database Decision
 
 The MVP does not require a custom database because persistent content and operational data are handled by specialized services.
 
-| Need | MVP Solution |
-|---|---|
-| Marketing content | CMS |
-| Scheduling | Calendly |
-| Contact messages | Form provider/serverless function |
-| Analytics | Plausible |
-| Downloadable resource | Static file or CMS asset |
+| Need                  | MVP Solution                      |
+| --------------------- | --------------------------------- |
+| Marketing content     | CMS                               |
+| Scheduling            | Calendly                          |
+| Contact messages      | Form provider/serverless function |
+| Analytics             | Plausible                         |
+| Downloadable resource | Static file or CMS asset          |
 
 ### 18.3 Future Database Triggers
 
@@ -1237,16 +1239,16 @@ Monitor:
 
 ## 23. Architecture Risks and Mitigations
 
-| Risk | Impact | Mitigation |
-|---|---|---|
-| React + Vite client-side rendering may limit SEO | Lower organic visibility | Use strong metadata, sitemap, semantic HTML; consider prerendering later |
-| CMS provider lock-in | Migration difficulty | Isolate CMS logic in `/src/cms` and normalize content types |
-| Overbuilding backend too early | Slower launch and higher maintenance | Do not build backend/database for MVP |
-| Form spam | Operational noise | Use honeypot/provider spam protection/CAPTCHA if needed |
-| AI-generated code quality issues | Maintainability risk | Enforce PR review, CI checks, and test coverage |
-| Secrets exposed in frontend | Security risk | Use environment variables carefully; do not expose private secrets |
-| CI/CD skipped | Lower quality and harder maintenance | Make CI checks required before merge |
-| Content feels generic | Weak conversion | Use healthcare-specific case studies, service copy, and SEO content |
+| Risk                                             | Impact                               | Mitigation                                                               |
+| ------------------------------------------------ | ------------------------------------ | ------------------------------------------------------------------------ |
+| React + Vite client-side rendering may limit SEO | Lower organic visibility             | Use strong metadata, sitemap, semantic HTML; consider prerendering later |
+| CMS provider lock-in                             | Migration difficulty                 | Isolate CMS logic in `/src/cms` and normalize content types              |
+| Overbuilding backend too early                   | Slower launch and higher maintenance | Do not build backend/database for MVP                                    |
+| Form spam                                        | Operational noise                    | Use honeypot/provider spam protection/CAPTCHA if needed                  |
+| AI-generated code quality issues                 | Maintainability risk                 | Enforce PR review, CI checks, and test coverage                          |
+| Secrets exposed in frontend                      | Security risk                        | Use environment variables carefully; do not expose private secrets       |
+| CI/CD skipped                                    | Lower quality and harder maintenance | Make CI checks required before merge                                     |
+| Content feels generic                            | Weak conversion                      | Use healthcare-specific case studies, service copy, and SEO content      |
 
 ---
 
@@ -1257,15 +1259,18 @@ Monitor:
 Decision: Use React + Vite for the frontend.
 
 Reason:
+
 - Fast development experience
 - Good fit for marketing site MVP
 - Simple deployment model
 - Easy to reuse as a future template
 
 Tradeoff:
+
 - SEO requires more care than server-rendered frameworks.
 
 Mitigation:
+
 - Use strong metadata, sitemap, semantic HTML, and consider prerendering later if needed.
 
 ### ADR-002: Use CMS for Content
@@ -1273,14 +1278,17 @@ Mitigation:
 Decision: Use CMS-managed content.
 
 Reason:
+
 - Non-code content updates
 - Scalable blog/case study publishing
 - SEO fields per content type
 
 Tradeoff:
+
 - Requires CMS setup and API integration.
 
 Mitigation:
+
 - Keep CMS logic isolated and provider-replaceable.
 
 ### ADR-003: No Custom Backend for MVP
@@ -1288,13 +1296,16 @@ Mitigation:
 Decision: Do not build a custom backend for MVP.
 
 Reason:
+
 - MVP needs are satisfied by CMS, Calendly, form provider/serverless function, and analytics.
 - Avoid unnecessary complexity.
 
 Tradeoff:
+
 - Less custom control over workflows.
 
 Mitigation:
+
 - Keep backend-ready integration boundaries.
 
 ### ADR-004: No Custom Database for MVP
@@ -1302,13 +1313,16 @@ Mitigation:
 Decision: Do not build a custom database for MVP.
 
 Reason:
+
 - CMS handles content persistence.
 - Other services handle scheduling, forms, and analytics.
 
 Tradeoff:
+
 - Data is distributed across external tools.
 
 Mitigation:
+
 - Add database later only when features justify it.
 
 ### ADR-005: Use GitHub and CI/CD
@@ -1316,15 +1330,18 @@ Mitigation:
 Decision: Use GitHub for source control and CI/CD checks.
 
 Reason:
+
 - Supports maintainability
 - Enables PR workflow
 - Makes the project reusable as an AI-First template
 - Automates lint, test, and build validation
 
 Tradeoff:
+
 - Requires initial workflow setup.
 
 Mitigation:
+
 - Keep CI/CD workflow simple for MVP.
 
 ---
@@ -1382,4 +1399,3 @@ Tasks.md should be generated from:
 - Traceability_Matrix.md
 
 This ensures implementation remains aligned with product requirements, architecture decisions, testing needs, CI/CD workflow, and deployment readiness.
-

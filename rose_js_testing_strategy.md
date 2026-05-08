@@ -81,15 +81,15 @@ Prioritize:
 
 ## 4. Testing Stack
 
-| Test Layer | Tool | Purpose |
-|---|---|---|
-| Unit Tests | Vitest | Test utilities, CMS mappers, analytics wrappers, validation logic |
-| Component Tests | React Testing Library | Test React components and user-visible behavior |
-| E2E Tests | Playwright | Test full browser flows |
-| Accessibility Tests | Playwright + axe-core or manual review | Validate accessibility baseline |
-| SEO Validation | Manual review, Lighthouse, custom checks | Validate metadata, sitemap, robots.txt, headings |
-| Build Validation | Vite build | Ensure production build succeeds |
-| CI Validation | GitHub Actions | Run quality gates automatically |
+| Test Layer          | Tool                                     | Purpose                                                           |
+| ------------------- | ---------------------------------------- | ----------------------------------------------------------------- |
+| Unit Tests          | Vitest                                   | Test utilities, CMS mappers, analytics wrappers, validation logic |
+| Component Tests     | React Testing Library                    | Test React components and user-visible behavior                   |
+| E2E Tests           | Playwright                               | Test full browser flows                                           |
+| Accessibility Tests | Playwright + axe-core or manual review   | Validate accessibility baseline                                   |
+| SEO Validation      | Manual review, Lighthouse, custom checks | Validate metadata, sitemap, robots.txt, headings                  |
+| Build Validation    | Vite build                               | Ensure production build succeeds                                  |
+| CI Validation       | GitHub Actions                           | Run quality gates automatically                                   |
 
 ---
 
@@ -98,6 +98,7 @@ Prioritize:
 ## 5.1 Unit Tests
 
 ### Purpose
+
 Unit tests validate isolated logic that should behave consistently.
 
 ### Good Candidates
@@ -130,6 +131,7 @@ src/lib/utils.test.ts
 ## 5.2 Component Tests
 
 ### Purpose
+
 Component tests validate user-visible React behavior without requiring a full browser flow.
 
 ### Components to Test
@@ -147,17 +149,17 @@ Component tests validate user-visible React behavior without requiring a full br
 
 ### Component Test Expectations
 
-| Component | Required Test Coverage |
-|---|---|
-| Header / Navigation | Renders links, supports expected navigation labels |
-| MobileNavigation | Opens/closes menu, exposes accessible labels |
-| Button | Renders children, supports link/button variants |
-| ServiceCard | Displays title, summary, CTA |
-| BlogCard | Displays title, summary, date/tags where available |
-| CaseStudyCard | Displays title, summary, CTA |
-| ContactForm | Required validation, email validation, success/error states |
-| LeadMagnetSection | Displays CTA and download link |
-| CTASection | Displays heading, message, and CTA link |
+| Component           | Required Test Coverage                                      |
+| ------------------- | ----------------------------------------------------------- |
+| Header / Navigation | Renders links, supports expected navigation labels          |
+| MobileNavigation    | Opens/closes menu, exposes accessible labels                |
+| Button              | Renders children, supports link/button variants             |
+| ServiceCard         | Displays title, summary, CTA                                |
+| BlogCard            | Displays title, summary, date/tags where available          |
+| CaseStudyCard       | Displays title, summary, CTA                                |
+| ContactForm         | Required validation, email validation, success/error states |
+| LeadMagnetSection   | Displays CTA and download link                              |
+| CTASection          | Displays heading, message, and CTA link                     |
 
 ### Acceptance Criteria
 
@@ -170,28 +172,29 @@ Component tests validate user-visible React behavior without requiring a full br
 ## 5.3 End-to-End Tests
 
 ### Purpose
+
 E2E tests validate real user flows in a browser.
 
 ### Required MVP E2E Flows
 
-| Flow ID | Flow | Priority |
-|---|---|---|
-| E2E-001 | Home page loads | P0 |
-| E2E-002 | Header navigation works | P0 |
-| E2E-003 | Visitor navigates to Services | P0 |
-| E2E-004 | Visitor navigates to About | P0 |
-| E2E-005 | Visitor navigates to Insights | P0 |
-| E2E-006 | Visitor opens a blog article | P0 |
-| E2E-007 | Visitor opens Case Studies | P0 |
-| E2E-008 | Visitor opens a case study detail page | P1 |
-| E2E-009 | Visitor opens Contact page | P0 |
-| E2E-010 | Contact form rejects missing required fields | P0 |
-| E2E-011 | Contact form rejects invalid email | P0 |
-| E2E-012 | Contact form displays success state using test-safe submission | P0 |
-| E2E-013 | Calendly CTA is visible and clickable | P0 |
-| E2E-014 | Lead magnet download link exists | P1 |
-| E2E-015 | Invalid route displays 404 page | P1 |
-| E2E-016 | Mobile navigation opens and closes | P0 |
+| Flow ID | Flow                                                           | Priority |
+| ------- | -------------------------------------------------------------- | -------- |
+| E2E-001 | Home page loads                                                | P0       |
+| E2E-002 | Header navigation works                                        | P0       |
+| E2E-003 | Visitor navigates to Services                                  | P0       |
+| E2E-004 | Visitor navigates to About                                     | P0       |
+| E2E-005 | Visitor navigates to Insights                                  | P0       |
+| E2E-006 | Visitor opens a blog article                                   | P0       |
+| E2E-007 | Visitor opens Case Studies                                     | P0       |
+| E2E-008 | Visitor opens a case study detail page                         | P1       |
+| E2E-009 | Visitor opens Contact page                                     | P0       |
+| E2E-010 | Contact form rejects missing required fields                   | P0       |
+| E2E-011 | Contact form rejects invalid email                             | P0       |
+| E2E-012 | Contact form displays success state using test-safe submission | P0       |
+| E2E-013 | Calendly CTA is visible and clickable                          | P0       |
+| E2E-014 | Lead magnet download link exists                               | P1       |
+| E2E-015 | Invalid route displays 404 page                                | P1       |
+| E2E-016 | Mobile navigation opens and closes                             | P0       |
 
 ### E2E Rules
 
@@ -206,19 +209,20 @@ E2E tests validate real user flows in a browser.
 ## 5.4 Accessibility Testing
 
 ### Purpose
+
 Accessibility testing ensures the site is usable by keyboard users, screen readers, and users with visual or motor impairments.
 
 ### MVP Accessibility Coverage
 
-| Area | Requirement |
-|---|---|
-| Navigation | Keyboard accessible; mobile menu usable |
-| Forms | Labels, validation messages, focus states |
-| Contrast | Black-and-white palette must maintain readable contrast |
-| Images | Meaningful images have alt text |
-| Headings | Logical H1/H2 hierarchy |
-| Links | Descriptive link text |
-| Buttons | Accessible names and visible focus |
+| Area       | Requirement                                             |
+| ---------- | ------------------------------------------------------- |
+| Navigation | Keyboard accessible; mobile menu usable                 |
+| Forms      | Labels, validation messages, focus states               |
+| Contrast   | Black-and-white palette must maintain readable contrast |
+| Images     | Meaningful images have alt text                         |
+| Headings   | Logical H1/H2 hierarchy                                 |
+| Links      | Descriptive link text                                   |
+| Buttons    | Accessible names and visible focus                      |
 
 ### Validation Methods
 
@@ -242,20 +246,21 @@ Accessibility testing ensures the site is usable by keyboard users, screen reade
 ## 5.5 SEO Testing
 
 ### Purpose
+
 SEO validation ensures that the site is crawlable, understandable, and ready for organic traffic growth.
 
 ### SEO Test Areas
 
-| Area | Validation |
-|---|---|
-| Metadata | Each page has unique title and description |
-| Heading Structure | One clear H1 per page; logical H2/H3 usage |
-| Sitemap | `sitemap.xml` exists and includes core routes |
-| Robots | `robots.txt` exists and allows production crawl |
-| Open Graph | OG metadata exists where implemented |
-| Structured Data | Organization/ProfessionalService/Article where useful |
-| Internal Links | Services, blog posts, and case studies link logically |
-| Slugs | Blog and case study slugs are clean and readable |
+| Area              | Validation                                            |
+| ----------------- | ----------------------------------------------------- |
+| Metadata          | Each page has unique title and description            |
+| Heading Structure | One clear H1 per page; logical H2/H3 usage            |
+| Sitemap           | `sitemap.xml` exists and includes core routes         |
+| Robots            | `robots.txt` exists and allows production crawl       |
+| Open Graph        | OG metadata exists where implemented                  |
+| Structured Data   | Organization/ProfessionalService/Article where useful |
+| Internal Links    | Services, blog posts, and case studies link logically |
+| Slugs             | Blog and case study slugs are clean and readable      |
 
 ### SEO Acceptance Criteria
 
@@ -271,6 +276,7 @@ SEO validation ensures that the site is crawlable, understandable, and ready for
 ## 5.6 Build and CI Testing
 
 ### Purpose
+
 Build and CI validation prevent broken code from reaching production.
 
 ### Required CI Commands
@@ -404,16 +410,16 @@ Every pull request should include testing evidence.
 
 ### Minimum PR Testing Evidence
 
-| Change Type | Required Evidence |
-|---|---|
-| Documentation only | Manual review |
-| UI component | Component test or screenshot/manual review |
-| Page implementation | Component/E2E test and screenshot |
-| Contact form | Component test + E2E validation |
-| CMS integration | Mapper tests + manual CMS/fallback data validation |
-| SEO change | Metadata review |
-| CI/CD change | Screenshot or log showing workflow run |
-| Deployment change | Preview deployment or deployment verification |
+| Change Type         | Required Evidence                                  |
+| ------------------- | -------------------------------------------------- |
+| Documentation only  | Manual review                                      |
+| UI component        | Component test or screenshot/manual review         |
+| Page implementation | Component/E2E test and screenshot                  |
+| Contact form        | Component test + E2E validation                    |
+| CMS integration     | Mapper tests + manual CMS/fallback data validation |
+| SEO change          | Metadata review                                    |
+| CI/CD change        | Screenshot or log showing workflow run             |
+| Deployment change   | Preview deployment or deployment verification      |
 
 ### PR Checklist
 
@@ -576,4 +582,3 @@ Future AI agents must follow these testing rules:
 6. Do not introduce PHI/PII into tests.
 7. Make sure CI commands remain fast enough for pull requests.
 8. Keep tests aligned with PRD, Architecture.md, Traceability_Matrix.md, and Tasks.md.
-

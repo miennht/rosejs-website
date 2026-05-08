@@ -43,3 +43,9 @@ Branch protection for `main` is planned as follows:
 - Require at least one approving review.
 - Require CI checks after workflows are added.
 - Restrict direct pushes to `main`.
+
+## Code quality
+
+- **ESLint** — `npm run lint` runs ESLint (TypeScript + React hooks + react-refresh) and **Prettier** (`prettier --check`). Either failing breaks the command.
+- **Prettier** — Opinionated formatter; config lives in `prettier.config.js`. Run `npm run format` to apply formatting.
+- **CI** — `.github/workflows/ci.yml` runs `npm ci`, lint, typecheck, and build on pushes and pull requests to `main`.

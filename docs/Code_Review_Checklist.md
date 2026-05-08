@@ -3,6 +3,7 @@
 Status: Placeholder created for TASK-004.
 
 This checklist will cover:
+
 - Architecture alignment
 - Type safety and maintainability
 - Accessibility, SEO, and performance

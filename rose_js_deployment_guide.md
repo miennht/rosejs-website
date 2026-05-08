@@ -60,18 +60,18 @@ Post-deployment verification
 
 ### 3.2 Production System Components
 
-| Component | Tool / Service |
-|---|---|
-| Source Control | GitHub |
-| CI/CD | GitHub Actions and/or hosting-provider CI/CD |
-| Frontend Build | React + Vite |
-| Hosting | Railway (selected), Vercel, Netlify, or self-hosted static hosting |
-| CMS | Selected CMS, such as Sanity, Strapi, or Contentful |
-| Scheduling | Calendly |
-| Contact Form | Formspree, Netlify Forms, Resend, or serverless function |
-| Analytics | Plausible Analytics |
-| Search Visibility | Google Search Console |
-| Domain / SSL | Hosting provider or DNS provider |
+| Component         | Tool / Service                                                     |
+| ----------------- | ------------------------------------------------------------------ |
+| Source Control    | GitHub                                                             |
+| CI/CD             | GitHub Actions and/or hosting-provider CI/CD                       |
+| Frontend Build    | React + Vite                                                       |
+| Hosting           | Railway (selected), Vercel, Netlify, or self-hosted static hosting |
+| CMS               | Selected CMS, such as Sanity, Strapi, or Contentful                |
+| Scheduling        | Calendly                                                           |
+| Contact Form      | Formspree, Netlify Forms, Resend, or serverless function           |
+| Analytics         | Plausible Analytics                                                |
+| Search Visibility | Google Search Console                                              |
+| Domain / SSL      | Hosting provider or DNS provider                                   |
 
 ---
 
@@ -263,11 +263,11 @@ Playwright E2E tests may be added to CI after they are stable.
 Example optional workflow step:
 
 ```yaml
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+- name: Install Playwright browsers
+  run: npx playwright install --with-deps
 
-      - name: Run E2E tests
-        run: npm run test:e2e
+- name: Run E2E tests
+  run: npm run test:e2e
 ```
 
 If E2E tests are too slow or unstable early in MVP, run them locally before release and add them to CI later.
@@ -278,12 +278,12 @@ If E2E tests are too slow or unstable early in MVP, run them locally before rele
 
 ## 7.1 Hosting Options
 
-| Provider | Strength | Best Use |
-|---|---|---|
-| Railway | Unified service hosting, environment variable management, and easy path to future backend services | MVP hosting with backend-ready growth path |
-| Vercel | Clean frontend deployment and preview environments | Simple React/Vite deployment |
-| Netlify | Static hosting, preview deployments, Netlify Forms | If using Netlify Forms |
-| Self-hosted | More control | If infrastructure control is required |
+| Provider    | Strength                                                                                           | Best Use                                   |
+| ----------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| Railway     | Unified service hosting, environment variable management, and easy path to future backend services | MVP hosting with backend-ready growth path |
+| Vercel      | Clean frontend deployment and preview environments                                                 | Simple React/Vite deployment               |
+| Netlify     | Static hosting, preview deployments, Netlify Forms                                                 | If using Netlify Forms                     |
+| Self-hosted | More control                                                                                       | If infrastructure control is required      |
 
 ## 7.2 Recommended MVP Hosting
 
@@ -299,14 +299,15 @@ Recommendation:
 
 Recommended React + Vite settings on Railway:
 
-| Setting | Value |
-|---|---|
-| Build command | `npm run build` |
-| Start command | `npm run preview -- --host 0.0.0.0 --port $PORT` |
-| Node version | 20 or current LTS |
-| Production branch | `main` |
+| Setting           | Value                                            |
+| ----------------- | ------------------------------------------------ |
+| Build command     | `npm run build`                                  |
+| Start command     | `npm run preview -- --host 0.0.0.0 --port $PORT` |
+| Node version      | 20 or current LTS                                |
+| Production branch | `main`                                           |
 
 Note:
+
 - If you later switch to a Docker-based deploy, ensure the runtime serves the built `dist` directory and listens on `$PORT`.
 
 ## 7.4 SPA Routing Configuration
@@ -341,9 +342,7 @@ Create:
 
 ```json
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
 ```
 
@@ -455,11 +454,11 @@ Before launch:
 
 ## 10.1 Form Provider Options
 
-| Option | Best For |
-|---|---|
-| Formspree | Simple standalone form handling |
-| Netlify Forms | Easiest if hosting on Netlify |
-| Resend + serverless function | More control over email workflow |
+| Option                               | Best For                                           |
+| ------------------------------------ | -------------------------------------------------- |
+| Formspree                            | Simple standalone form handling                    |
+| Netlify Forms                        | Easiest if hosting on Netlify                      |
+| Resend + serverless function         | More control over email workflow                   |
 | Hosting provider serverless function | Lightweight custom processing without full backend |
 
 ## 10.2 MVP Rule
@@ -495,10 +494,10 @@ VITE_CALENDLY_URL=
 
 ## 11.2 Integration Options
 
-| Mode | Description |
-|---|---|
-| External Link | CTA opens Calendly in new tab |
-| Embed | Calendly embedded on `/schedule` page |
+| Mode          | Description                           |
+| ------------- | ------------------------------------- |
+| External Link | CTA opens Calendly in new tab         |
+| Embed         | Calendly embedded on `/schedule` page |
 
 ## 11.3 MVP Recommendation
 
@@ -529,15 +528,15 @@ VITE_PLAUSIBLE_DOMAIN=
 
 ## 12.2 Events to Track
 
-| Event | Purpose |
-|---|---|
-| Page View | Measure traffic |
-| CTA Click | Measure conversion intent |
-| Contact Submit | Measure lead generation |
-| Calendly Click | Measure scheduling intent |
-| Lead Magnet Click | Measure content conversion |
+| Event               | Purpose                     |
+| ------------------- | --------------------------- |
+| Page View           | Measure traffic             |
+| CTA Click           | Measure conversion intent   |
+| Contact Submit      | Measure lead generation     |
+| Calendly Click      | Measure scheduling intent   |
+| Lead Magnet Click   | Measure content conversion  |
 | External Link Click | Measure off-site engagement |
-| Blog View | Measure content engagement |
+| Blog View           | Measure content engagement  |
 
 ## 12.3 Analytics Production Checklist
 
@@ -696,11 +695,11 @@ Rollback may be needed if:
 
 ## 16.2 Rollback Options
 
-| Option | Description |
-|---|---|
+| Option                    | Description                                                        |
+| ------------------------- | ------------------------------------------------------------------ |
 | Hosting Provider Rollback | Revert to previous successful deployment in Railway/Vercel/Netlify |
-| Git Revert | Revert problematic commit and redeploy |
-| Hotfix Branch | Create fix branch, PR, CI, merge to main |
+| Git Revert                | Revert problematic commit and redeploy                             |
+| Hotfix Branch             | Create fix branch, PR, CI, merge to main                           |
 
 ## 16.3 Recommended MVP Rollback
 
@@ -892,4 +891,3 @@ Future AI agents must follow these deployment rules:
 6. Make sure CI passes before recommending merge.
 7. Use preview deployments for UI review when available.
 8. Confirm production deployment with a checklist, not assumptions.
-

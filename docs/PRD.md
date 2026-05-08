@@ -5,17 +5,21 @@
 ## 1. Product Overview
 
 ### 1.1 Product Name
+
 RoseJS Website for Healthcare Software Architecture and AI-First Engineering Consulting
 
 ### 1.2 Purpose
+
 The purpose of this website is to establish a professional online presence for RoseJS, a healthcare-focused software engineering and architecture consulting business. The website will communicate RoseJS services, demonstrate technical authority, generate inbound leads, and support long-term organic traffic growth through SEO-focused content.
 
 The website should not function only as a static portfolio. It should operate as a trust-building and lead-generation platform for healthcare insurance and healthcare technology organizations seeking help with software architecture, legacy modernization, AI-first product development, healthcare/RCM platform consulting, cloud/API integration, and secure enterprise systems.
 
 ### 1.3 Business Goal
+
 The primary business goal is to convert visitors into qualified leads by clearly presenting the company’s expertise, services, case studies, technical insights, and consultation options.
 
 ### 1.4 Product Vision
+
 Build a professional, high-trust, SEO-ready RoseJS website that positions the business as a credible software architecture and AI-first engineering partner for healthcare and healthcare insurance clients.
 
 This project will also serve as a reusable AI-First project template for future software projects. The repository structure, documentation, code review workflow, testing strategy, source control process, CI/CD pipeline, and deployment model should be designed so they can be adapted for future websites, applications, and consulting delivery projects.
@@ -57,7 +61,9 @@ For the MVP, RoseJS will not include a custom database or custom backend service
 ### 3.1 Primary Users
 
 #### Healthcare Business Decision Makers
+
 Examples:
+
 - Healthcare technology executives
 - Healthcare insurance platform owners
 - RCM operations leaders
@@ -67,19 +73,23 @@ Examples:
 - Consulting buyers
 
 Needs:
+
 - Understand whether the company can solve their business and technical problems
 - See proof of expertise
 - Find services quickly
 - Contact the company easily
 
 #### Technical Decision Makers
+
 Examples:
+
 - Engineering managers
 - Enterprise architects
 - Solution architects
 - Technical leads
 
 Needs:
+
 - Evaluate technical credibility
 - Understand architecture approach
 - Review methodology
@@ -87,13 +97,16 @@ Needs:
 - Assess whether the company can handle complex systems
 
 #### Healthcare Insurance / RCM Stakeholders
+
 Examples:
+
 - Healthcare insurance operations leaders
 - Revenue cycle leaders
 - Claims, enrollment, billing, and provider platform owners
 - Integration managers
 
 Needs:
+
 - Understand healthcare domain expertise
 - Evaluate experience with EHR/EMR, billing platforms, clearinghouses, EDI, HL7, FHIR, and secure data access
 - Assess risk, compliance, scalability, and delivery model
@@ -130,21 +143,21 @@ The company website must solve this by clearly explaining:
 
 ### 5.2 Success Metrics
 
-| Metric | Target |
-|---|---|
-| Website launch readiness | MVP launched with all core pages |
-| Lighthouse performance score | 90+ preferred |
-| Mobile usability | No major mobile layout issues |
-| SEO readiness | Sitemap, metadata, headings, schema, and robots.txt completed |
-| Contact conversion | Visitors can submit contact form successfully |
-| Lead magnet conversion | Visitors can download checklist successfully |
-| Blog publishing | At least 3 initial posts at launch |
-| Organic traffic growth | Measured monthly after launch |
-| Contact form submissions | Tracked as primary conversion |
-| Calendly CTA clicks | Tracked where feasible |
-| Search Console indexing | Core pages indexed after launch |
-| CI/CD readiness | Pull request checks run lint, tests, and build validation |
-| Template readiness | Documentation supports reuse for future AI-First projects |
+| Metric                       | Target                                                        |
+| ---------------------------- | ------------------------------------------------------------- |
+| Website launch readiness     | MVP launched with all core pages                              |
+| Lighthouse performance score | 90+ preferred                                                 |
+| Mobile usability             | No major mobile layout issues                                 |
+| SEO readiness                | Sitemap, metadata, headings, schema, and robots.txt completed |
+| Contact conversion           | Visitors can submit contact form successfully                 |
+| Lead magnet conversion       | Visitors can download checklist successfully                  |
+| Blog publishing              | At least 3 initial posts at launch                            |
+| Organic traffic growth       | Measured monthly after launch                                 |
+| Contact form submissions     | Tracked as primary conversion                                 |
+| Calendly CTA clicks          | Tracked where feasible                                        |
+| Search Console indexing      | Core pages indexed after launch                               |
+| CI/CD readiness              | Pull request checks run lint, tests, and build validation     |
+| Template readiness           | Documentation supports reuse for future AI-First projects     |
 
 ---
 
@@ -259,12 +272,14 @@ The website copy should:
 ### 8.1 Persona 1: Healthcare CTO / Technical Leader
 
 Needs:
+
 - Wants a trusted architecture partner
 - Needs to modernize or scale a product
 - Wants clean technical direction
 - May have limited internal architecture capacity
 
 Key Questions:
+
 - Can this company understand my system?
 - Can they help me scale?
 - Can they reduce technical debt?
@@ -273,11 +288,13 @@ Key Questions:
 ### 8.2 Persona 2: Healthcare Insurance Platform Leader
 
 Needs:
+
 - Needs integration, modernization, or automation support
 - Cares about compliance, PHI/PII, secure access, and reliability
 - Wants someone who understands healthcare workflows
 
 Key Questions:
+
 - Do they understand healthcare systems?
 - Do they understand healthcare insurance, RCM, EDI, HL7, FHIR, claims, enrollment, billing, provider data, and platform integration?
 - Can they reduce operational risk?
@@ -285,11 +302,13 @@ Key Questions:
 ### 8.3 Persona 3: Healthcare Engineering Manager
 
 Needs:
+
 - Needs architecture review, delivery acceleration, or modernization roadmap
 - Wants structured execution
 - Needs high-quality engineering practices
 
 Key Questions:
+
 - Is their methodology reliable?
 - Do they write maintainable code?
 - Do they test properly?
@@ -333,21 +352,22 @@ Key Questions:
 ## 10.1 Home Page
 
 ### Description
+
 The Home page is the primary entry point. It must immediately communicate what the company does, who it helps, and why visitors should trust it.
 
 ### Requirements
 
-| ID | Requirement | Priority |
-|---|---|---|
-| HOME-001 | Display hero section with clear value proposition | Must Have |
-| HOME-002 | Display primary CTA such as “Schedule a Consultation” | Must Have |
-| HOME-003 | Display secondary CTA such as “Explore Services” | Should Have |
-| HOME-004 | Display service overview cards | Must Have |
-| HOME-005 | Display trust/credibility section | Must Have |
-| HOME-006 | Display AI-First methodology summary | Must Have |
-| HOME-007 | Display featured blog posts or insights | Should Have |
-| HOME-008 | Display final contact CTA | Must Have |
-| HOME-009 | Display free lead magnet CTA where appropriate | Should Have |
+| ID       | Requirement                                           | Priority    |
+| -------- | ----------------------------------------------------- | ----------- |
+| HOME-001 | Display hero section with clear value proposition     | Must Have   |
+| HOME-002 | Display primary CTA such as “Schedule a Consultation” | Must Have   |
+| HOME-003 | Display secondary CTA such as “Explore Services”      | Should Have |
+| HOME-004 | Display service overview cards                        | Must Have   |
+| HOME-005 | Display trust/credibility section                     | Must Have   |
+| HOME-006 | Display AI-First methodology summary                  | Must Have   |
+| HOME-007 | Display featured blog posts or insights               | Should Have |
+| HOME-008 | Display final contact CTA                             | Must Have   |
+| HOME-009 | Display free lead magnet CTA where appropriate        | Should Have |
 
 ### Acceptance Criteria
 
@@ -362,6 +382,7 @@ The Home page is the primary entry point. It must immediately communicate what t
 ## 10.2 Services Page
 
 ### Description
+
 The Services page explains the company’s consulting and engineering offerings.
 
 ### Initial Services
@@ -376,13 +397,13 @@ The Services page explains the company’s consulting and engineering offerings.
 
 ### Requirements
 
-| ID | Requirement | Priority |
-|---|---|---|
-| SERV-001 | Display all core services | Must Have |
-| SERV-002 | Provide description, value, and example outcomes for each service | Must Have |
-| SERV-003 | Include CTA for consultation | Must Have |
-| SERV-004 | Include internal links to related blog posts or case studies | Should Have |
-| SERV-005 | Support future service-specific landing pages | Should Have |
+| ID       | Requirement                                                       | Priority    |
+| -------- | ----------------------------------------------------------------- | ----------- |
+| SERV-001 | Display all core services                                         | Must Have   |
+| SERV-002 | Provide description, value, and example outcomes for each service | Must Have   |
+| SERV-003 | Include CTA for consultation                                      | Must Have   |
+| SERV-004 | Include internal links to related blog posts or case studies      | Should Have |
+| SERV-005 | Support future service-specific landing pages                     | Should Have |
 
 ### Acceptance Criteria
 
@@ -396,17 +417,18 @@ The Services page explains the company’s consulting and engineering offerings.
 ## 10.3 About Page
 
 ### Description
+
 The About page builds trust by explaining the company background, philosophy, experience, and approach.
 
 ### Requirements
 
-| ID | Requirement | Priority |
-|---|---|---|
-| ABOUT-001 | Display founder/company background | Must Have |
-| ABOUT-002 | Explain architecture and engineering philosophy | Must Have |
+| ID        | Requirement                                               | Priority  |
+| --------- | --------------------------------------------------------- | --------- |
+| ABOUT-001 | Display founder/company background                        | Must Have |
+| ABOUT-002 | Explain architecture and engineering philosophy           | Must Have |
 | ABOUT-003 | Highlight healthcare, enterprise, and AI-first experience | Must Have |
-| ABOUT-004 | Include credibility points and differentiators | Must Have |
-| ABOUT-005 | Include CTA to contact | Must Have |
+| ABOUT-004 | Include credibility points and differentiators            | Must Have |
+| ABOUT-005 | Include CTA to contact                                    | Must Have |
 
 ### Acceptance Criteria
 
@@ -420,20 +442,21 @@ The About page builds trust by explaining the company background, philosophy, ex
 ## 10.4 Blog / Insights
 
 ### Description
+
 The Blog section is the primary long-term traffic engine. It should publish technical and business-focused content that attracts organic search traffic.
 
 ### Requirements
 
-| ID | Requirement | Priority |
-|---|---|---|
-| BLOG-001 | Display blog listing page | Must Have |
-| BLOG-002 | Display individual blog article pages | Must Have |
-| BLOG-003 | Support title, date, summary, tags, and author | Must Have |
-| BLOG-004 | Support SEO metadata per article | Must Have |
-| BLOG-005 | Support internal links to services | Should Have |
-| BLOG-006 | Support featured posts | Should Have |
-| BLOG-007 | Support categories or tags | Should Have |
-| BLOG-008 | Blog content must be CMS-managed | Must Have |
+| ID       | Requirement                                    | Priority    |
+| -------- | ---------------------------------------------- | ----------- |
+| BLOG-001 | Display blog listing page                      | Must Have   |
+| BLOG-002 | Display individual blog article pages          | Must Have   |
+| BLOG-003 | Support title, date, summary, tags, and author | Must Have   |
+| BLOG-004 | Support SEO metadata per article               | Must Have   |
+| BLOG-005 | Support internal links to services             | Should Have |
+| BLOG-006 | Support featured posts                         | Should Have |
+| BLOG-007 | Support categories or tags                     | Should Have |
+| BLOG-008 | Blog content must be CMS-managed               | Must Have   |
 
 ### Initial Blog Topics
 
@@ -459,17 +482,18 @@ The Blog section is the primary long-term traffic engine. It should publish tech
 ## 10.5 Case Study Page / Section
 
 ### Description
+
 The case study section demonstrates real-world credibility using anonymized examples.
 
 ### Requirements
 
-| ID | Requirement | Priority |
-|---|---|---|
-| CASE-001 | Display at least one anonymized case study | Must Have |
-| CASE-002 | Include problem, approach, solution, and outcome | Must Have |
-| CASE-003 | Avoid confidential client information | Must Have |
-| CASE-004 | Link case study to related services | Should Have |
-| CASE-005 | Case study content must be CMS-managed | Must Have |
+| ID       | Requirement                                      | Priority    |
+| -------- | ------------------------------------------------ | ----------- |
+| CASE-001 | Display at least one anonymized case study       | Must Have   |
+| CASE-002 | Include problem, approach, solution, and outcome | Must Have   |
+| CASE-003 | Avoid confidential client information            | Must Have   |
+| CASE-004 | Link case study to related services              | Should Have |
+| CASE-005 | Case study content must be CMS-managed           | Must Have   |
 
 ### Example Case Study Topics
 
@@ -490,21 +514,22 @@ The case study section demonstrates real-world credibility using anonymized exam
 ## 10.6 Contact Page
 
 ### Description
+
 The Contact page allows prospective clients to reach out easily.
 
 ### Requirements
 
-| ID | Requirement | Priority |
-|---|---|---|
-| CONT-001 | Display contact form | Must Have |
-| CONT-002 | Include name, email, company, service interest, and message fields | Must Have |
-| CONT-003 | Validate required fields | Must Have |
-| CONT-004 | Validate email format | Must Have |
-| CONT-005 | Display success and error states | Must Have |
-| CONT-006 | Include direct email placeholder | Must Have |
-| CONT-007 | Include LinkedIn placeholder | Should Have |
-| CONT-008 | Include Calendly or scheduling placeholder | Must Have |
-| CONT-009 | Contact form must use a third-party form provider or serverless function for MVP | Must Have |
+| ID       | Requirement                                                                      | Priority    |
+| -------- | -------------------------------------------------------------------------------- | ----------- |
+| CONT-001 | Display contact form                                                             | Must Have   |
+| CONT-002 | Include name, email, company, service interest, and message fields               | Must Have   |
+| CONT-003 | Validate required fields                                                         | Must Have   |
+| CONT-004 | Validate email format                                                            | Must Have   |
+| CONT-005 | Display success and error states                                                 | Must Have   |
+| CONT-006 | Include direct email placeholder                                                 | Must Have   |
+| CONT-007 | Include LinkedIn placeholder                                                     | Should Have |
+| CONT-008 | Include Calendly or scheduling placeholder                                       | Must Have   |
+| CONT-009 | Contact form must use a third-party form provider or serverless function for MVP | Must Have   |
 
 ### Acceptance Criteria
 
@@ -519,6 +544,7 @@ The Contact page allows prospective clients to reach out easily.
 ## 10.7 Lead Magnet
 
 ### Description
+
 The website should include a free downloadable resource to build authority and provide immediate value. The first lead magnet will be freely downloadable without requiring an email gate.
 
 ### Recommended Lead Magnet
@@ -527,13 +553,13 @@ Legacy Application Modernization Checklist
 
 ### Requirements
 
-| ID | Requirement | Priority |
-|---|---|---|
-| LEAD-001 | Display lead magnet CTA | Should Have |
-| LEAD-002 | Allow visitor to download the resource without submitting an email | Must Have |
-| LEAD-003 | Provide PDF or downloadable checklist | Should Have |
-| LEAD-004 | Track lead magnet conversion | Could Have |
-| LEAD-005 | Lead magnet content should be CMS-managed or CMS-referenced | Should Have |
+| ID       | Requirement                                                        | Priority    |
+| -------- | ------------------------------------------------------------------ | ----------- |
+| LEAD-001 | Display lead magnet CTA                                            | Should Have |
+| LEAD-002 | Allow visitor to download the resource without submitting an email | Must Have   |
+| LEAD-003 | Provide PDF or downloadable checklist                              | Should Have |
+| LEAD-004 | Track lead magnet conversion                                       | Could Have  |
+| LEAD-005 | Lead magnet content should be CMS-managed or CMS-referenced        | Should Have |
 
 ### Acceptance Criteria
 
@@ -546,16 +572,17 @@ Legacy Application Modernization Checklist
 ## 10.8 Scheduling / Calendly
 
 ### Description
+
 The website should provide a clear path for qualified visitors to schedule a consultation using Calendly.
 
 ### Requirements
 
-| ID | Requirement | Priority |
-|---|---|---|
-| CAL-001 | Display Calendly CTA on Contact page | Must Have |
+| ID      | Requirement                                                  | Priority    |
+| ------- | ------------------------------------------------------------ | ----------- |
+| CAL-001 | Display Calendly CTA on Contact page                         | Must Have   |
 | CAL-002 | Display Calendly CTA in final CTA sections where appropriate | Should Have |
-| CAL-003 | Support Calendly embed or external scheduling link | Must Have |
-| CAL-004 | Track Calendly CTA clicks through analytics where feasible | Should Have |
+| CAL-003 | Support Calendly embed or external scheduling link           | Must Have   |
+| CAL-004 | Track Calendly CTA clicks through analytics where feasible   | Should Have |
 
 ### Acceptance Criteria
 
@@ -569,68 +596,68 @@ The website should provide a clear path for qualified visitors to schedule a con
 
 ## 11.1 Performance
 
-| ID | Requirement | Priority |
-|---|---|---|
-| NFR-PERF-001 | Website should load quickly on desktop and mobile | Must Have |
-| NFR-PERF-002 | Images should be optimized | Must Have |
-| NFR-PERF-003 | JavaScript bundle should be minimized | Should Have |
-| NFR-PERF-004 | Lighthouse performance score should target 90+ | Should Have |
+| ID           | Requirement                                       | Priority    |
+| ------------ | ------------------------------------------------- | ----------- |
+| NFR-PERF-001 | Website should load quickly on desktop and mobile | Must Have   |
+| NFR-PERF-002 | Images should be optimized                        | Must Have   |
+| NFR-PERF-003 | JavaScript bundle should be minimized             | Should Have |
+| NFR-PERF-004 | Lighthouse performance score should target 90+    | Should Have |
 
 ## 11.2 SEO
 
-| ID | Requirement | Priority |
-|---|---|---|
-| NFR-SEO-001 | Each page must have unique title and meta description | Must Have |
-| NFR-SEO-002 | Website must include sitemap.xml | Must Have |
-| NFR-SEO-003 | Website must include robots.txt | Must Have |
-| NFR-SEO-004 | Pages must use proper heading hierarchy | Must Have |
-| NFR-SEO-005 | Blog posts must support metadata | Must Have |
-| NFR-SEO-006 | Open Graph metadata should be included | Should Have |
-| NFR-SEO-007 | Structured data/schema should be added where useful | Should Have |
-| NFR-SEO-008 | CMS content model must support SEO fields | Must Have |
+| ID          | Requirement                                           | Priority    |
+| ----------- | ----------------------------------------------------- | ----------- |
+| NFR-SEO-001 | Each page must have unique title and meta description | Must Have   |
+| NFR-SEO-002 | Website must include sitemap.xml                      | Must Have   |
+| NFR-SEO-003 | Website must include robots.txt                       | Must Have   |
+| NFR-SEO-004 | Pages must use proper heading hierarchy               | Must Have   |
+| NFR-SEO-005 | Blog posts must support metadata                      | Must Have   |
+| NFR-SEO-006 | Open Graph metadata should be included                | Should Have |
+| NFR-SEO-007 | Structured data/schema should be added where useful   | Should Have |
+| NFR-SEO-008 | CMS content model must support SEO fields             | Must Have   |
 
 ## 11.3 Accessibility
 
-| ID | Requirement | Priority |
-|---|---|---|
-| NFR-A11Y-001 | Site must be keyboard navigable | Must Have |
+| ID           | Requirement                                    | Priority  |
+| ------------ | ---------------------------------------------- | --------- |
+| NFR-A11Y-001 | Site must be keyboard navigable                | Must Have |
 | NFR-A11Y-002 | Images must include alt text where appropriate | Must Have |
-| NFR-A11Y-003 | Forms must include accessible labels | Must Have |
-| NFR-A11Y-004 | Color contrast must be readable | Must Have |
-| NFR-A11Y-005 | Navigation must work on mobile and keyboard | Must Have |
+| NFR-A11Y-003 | Forms must include accessible labels           | Must Have |
+| NFR-A11Y-004 | Color contrast must be readable                | Must Have |
+| NFR-A11Y-005 | Navigation must work on mobile and keyboard    | Must Have |
 
 ## 11.4 Security
 
-| ID | Requirement | Priority |
-|---|---|---|
-| NFR-SEC-001 | Contact form must validate and sanitize input | Must Have |
-| NFR-SEC-002 | API keys and secrets must not be exposed in frontend code | Must Have |
-| NFR-SEC-003 | HTTPS must be enabled | Must Have |
-| NFR-SEC-004 | Spam protection should be considered for forms | Should Have |
-| NFR-SEC-005 | The MVP must not collect or store PHI/PII beyond basic business contact information | Must Have |
-| NFR-SEC-006 | Secrets for CMS, analytics, form provider, or deployment must be stored as environment variables or platform secrets | Must Have |
+| ID          | Requirement                                                                                                          | Priority    |
+| ----------- | -------------------------------------------------------------------------------------------------------------------- | ----------- |
+| NFR-SEC-001 | Contact form must validate and sanitize input                                                                        | Must Have   |
+| NFR-SEC-002 | API keys and secrets must not be exposed in frontend code                                                            | Must Have   |
+| NFR-SEC-003 | HTTPS must be enabled                                                                                                | Must Have   |
+| NFR-SEC-004 | Spam protection should be considered for forms                                                                       | Should Have |
+| NFR-SEC-005 | The MVP must not collect or store PHI/PII beyond basic business contact information                                  | Must Have   |
+| NFR-SEC-006 | Secrets for CMS, analytics, form provider, or deployment must be stored as environment variables or platform secrets | Must Have   |
 
 ## 11.5 Maintainability
 
-| ID | Requirement | Priority |
-|---|---|---|
-| NFR-MAINT-001 | Components should be reusable | Must Have |
-| NFR-MAINT-002 | Content should be easy to update | Must Have |
-| NFR-MAINT-003 | Folder structure should support growth | Must Have |
-| NFR-MAINT-004 | Code should pass linting and formatting checks | Must Have |
+| ID            | Requirement                                       | Priority  |
+| ------------- | ------------------------------------------------- | --------- |
+| NFR-MAINT-001 | Components should be reusable                     | Must Have |
+| NFR-MAINT-002 | Content should be easy to update                  | Must Have |
+| NFR-MAINT-003 | Folder structure should support growth            | Must Have |
+| NFR-MAINT-004 | Code should pass linting and formatting checks    | Must Have |
 | NFR-MAINT-005 | Documentation should support future project reuse | Must Have |
 
 ## 11.6 Source Control and CI/CD
 
-| ID | Requirement | Priority |
-|---|---|---|
-| NFR-SCM-001 | Project source code must be managed in GitHub | Must Have |
-| NFR-SCM-002 | Repository must use a clear branching strategy | Must Have |
-| NFR-SCM-003 | Pull requests must be required before merging to the main production branch | Must Have |
-| NFR-SCM-004 | CI checks must run automatically on pull requests | Must Have |
-| NFR-SCM-005 | CI pipeline must run lint, test, and build validation | Must Have |
-| NFR-SCM-006 | Deployment should be triggered from approved merges to the production branch | Must Have |
-| NFR-SCM-007 | Repository should include pull request and issue templates | Should Have |
+| ID          | Requirement                                                                   | Priority    |
+| ----------- | ----------------------------------------------------------------------------- | ----------- |
+| NFR-SCM-001 | Project source code must be managed in GitHub                                 | Must Have   |
+| NFR-SCM-002 | Repository must use a clear branching strategy                                | Must Have   |
+| NFR-SCM-003 | Pull requests must be required before merging to the main production branch   | Must Have   |
+| NFR-SCM-004 | CI checks must run automatically on pull requests                             | Must Have   |
+| NFR-SCM-005 | CI pipeline must run lint, test, and build validation                         | Must Have   |
+| NFR-SCM-006 | Deployment should be triggered from approved merges to the production branch  | Must Have   |
+| NFR-SCM-007 | Repository should include pull request and issue templates                    | Should Have |
 | NFR-SCM-008 | Repository documentation should support reuse as an AI-First project template | Should Have |
 
 ## 11.7 Backend and Database Decision
@@ -639,13 +666,13 @@ For the MVP, RoseJS will not include a custom database or custom backend service
 
 The architecture should remain backend-ready so future features such as a client portal, CRM integration, secure intake workflow, AI assistant, admin dashboard, payment workflow, or private resource library can be added later without requiring a full rewrite.
 
-| ID | Requirement | Priority |
-|---|---|---|
-| NFR-DB-001 | MVP must not require a custom database unless a future feature requires persistent business data | Must Have |
-| NFR-DB-002 | CMS will serve as the content data source for pages, blog posts, case studies, and lead magnets | Must Have |
-| NFR-API-001 | MVP must not require a custom backend service unless needed for secure business logic | Must Have |
-| NFR-API-002 | Architecture should support future backend integration | Should Have |
-| NFR-API-003 | Contact form may use a third-party form provider or serverless function | Must Have |
+| ID          | Requirement                                                                                      | Priority    |
+| ----------- | ------------------------------------------------------------------------------------------------ | ----------- |
+| NFR-DB-001  | MVP must not require a custom database unless a future feature requires persistent business data | Must Have   |
+| NFR-DB-002  | CMS will serve as the content data source for pages, blog posts, case studies, and lead magnets  | Must Have   |
+| NFR-API-001 | MVP must not require a custom backend service unless needed for secure business logic            | Must Have   |
+| NFR-API-002 | Architecture should support future backend integration                                           | Should Have |
+| NFR-API-003 | Contact form may use a third-party form provider or serverless function                          | Must Have   |
 
 ---
 
@@ -663,6 +690,7 @@ The project will be delivered using four AI-First pillars:
 ## 12.1 Pillar 1: Skill
 
 ### Goal
+
 Use AI to accelerate research, planning, content generation, UX design, architecture, and code implementation while keeping the human architect responsible for final decisions.
 
 ### Activities
@@ -702,6 +730,7 @@ Use AI to accelerate research, planning, content generation, UX design, architec
 ## 12.2 Pillar 2: Code Review
 
 ### Goal
+
 Use AI-generated code safely by enforcing review standards before merging or deploying.
 
 ### Review Areas
@@ -721,15 +750,15 @@ Use AI-generated code safely by enforcing review standards before merging or dep
 
 ### Required Code Review Checks
 
-| ID | Requirement | Priority |
-|---|---|---|
-| CR-001 | All AI-generated code must be reviewed before merge | Must Have |
-| CR-002 | Components must follow approved folder structure | Must Have |
-| CR-003 | Pages must include SEO metadata | Must Have |
-| CR-004 | Forms must be reviewed for validation and security | Must Have |
-| CR-005 | UI must be checked on desktop and mobile | Must Have |
-| CR-006 | Duplicated code should be refactored | Should Have |
-| CR-007 | Pull requests must show evidence of passing CI checks | Must Have |
+| ID     | Requirement                                           | Priority    |
+| ------ | ----------------------------------------------------- | ----------- |
+| CR-001 | All AI-generated code must be reviewed before merge   | Must Have   |
+| CR-002 | Components must follow approved folder structure      | Must Have   |
+| CR-003 | Pages must include SEO metadata                       | Must Have   |
+| CR-004 | Forms must be reviewed for validation and security    | Must Have   |
+| CR-005 | UI must be checked on desktop and mobile              | Must Have   |
+| CR-006 | Duplicated code should be refactored                  | Should Have |
+| CR-007 | Pull requests must show evidence of passing CI checks | Must Have   |
 
 ### Acceptance Criteria
 
@@ -743,19 +772,20 @@ Use AI-generated code safely by enforcing review standards before merging or dep
 ## 12.3 Pillar 3: Test Suites
 
 ### Goal
+
 Build confidence in quality and reduce regressions using automated tests.
 
 ### Required Test Coverage
 
-| Test Type | Tool Recommendation | Scope |
-|---|---|---|
-| Unit Tests | Vitest | Utility functions and small components |
-| Component Tests | React Testing Library | UI behavior and rendering |
-| End-to-End Tests | Playwright | Visitor journeys |
-| Accessibility Tests | axe-core / Playwright | Accessibility validation |
-| SEO Checks | Lighthouse / custom scripts | Metadata and performance |
-| Link Checks | Broken link checker | Internal and external links |
-| CI Checks | GitHub Actions | Lint, tests, build validation |
+| Test Type           | Tool Recommendation         | Scope                                  |
+| ------------------- | --------------------------- | -------------------------------------- |
+| Unit Tests          | Vitest                      | Utility functions and small components |
+| Component Tests     | React Testing Library       | UI behavior and rendering              |
+| End-to-End Tests    | Playwright                  | Visitor journeys                       |
+| Accessibility Tests | axe-core / Playwright       | Accessibility validation               |
+| SEO Checks          | Lighthouse / custom scripts | Metadata and performance               |
+| Link Checks         | Broken link checker         | Internal and external links            |
+| CI Checks           | GitHub Actions              | Lint, tests, build validation          |
 
 ### Critical Flows to Test
 
@@ -785,6 +815,7 @@ Build confidence in quality and reduce regressions using automated tests.
 ## 12.4 Pillar 4: Deployment
 
 ### Goal
+
 Deploy the website through a reliable GitHub-based CI/CD pipeline with pull request checks, preview environments where supported, production release controls, monitoring, and rollback capability.
 
 ### Recommended Deployment Flow
@@ -801,20 +832,20 @@ Deploy the website through a reliable GitHub-based CI/CD pipeline with pull requ
 
 ### Requirements
 
-| ID | Requirement | Priority |
-|---|---|---|
-| DEP-001 | Website must be deployed to production hosting | Must Have |
-| DEP-002 | Preview deployments should be available for review | Should Have |
-| DEP-003 | Domain must be connected | Must Have |
-| DEP-004 | HTTPS/SSL must be enabled | Must Have |
-| DEP-005 | Rollback process must be documented | Should Have |
-| DEP-006 | Analytics must be installed | Must Have |
-| DEP-007 | Google Search Console must be configured | Must Have |
-| DEP-008 | GitHub must be used as the source control repository | Must Have |
-| DEP-009 | CI/CD pipeline must run on pull requests | Must Have |
-| DEP-010 | CI/CD pipeline must run lint, tests, and build validation | Must Have |
+| ID      | Requirement                                                       | Priority    |
+| ------- | ----------------------------------------------------------------- | ----------- |
+| DEP-001 | Website must be deployed to production hosting                    | Must Have   |
+| DEP-002 | Preview deployments should be available for review                | Should Have |
+| DEP-003 | Domain must be connected                                          | Must Have   |
+| DEP-004 | HTTPS/SSL must be enabled                                         | Must Have   |
+| DEP-005 | Rollback process must be documented                               | Should Have |
+| DEP-006 | Analytics must be installed                                       | Must Have   |
+| DEP-007 | Google Search Console must be configured                          | Must Have   |
+| DEP-008 | GitHub must be used as the source control repository              | Must Have   |
+| DEP-009 | CI/CD pipeline must run on pull requests                          | Must Have   |
+| DEP-010 | CI/CD pipeline must run lint, tests, and build validation         | Must Have   |
 | DEP-011 | CI/CD pipeline should generate preview deployments when supported | Should Have |
-| DEP-012 | Production deployment must be tied to an approved merge workflow | Must Have |
+| DEP-012 | Production deployment must be tied to an approved merge workflow  | Must Have   |
 
 ### Acceptance Criteria
 
@@ -832,22 +863,22 @@ Deploy the website through a reliable GitHub-based CI/CD pipeline with pull requ
 
 ### 13.1 Selected Stack
 
-| Layer | Recommendation |
-|---|---|
-| Framework | React + Vite |
-| Language | TypeScript |
-| Styling | Tailwind CSS |
-| Hosting | Railway, Netlify, Vercel, or self-hosted |
-| Source Control | GitHub |
-| CI/CD | GitHub Actions or hosting-provider CI/CD integrated with GitHub |
-| Content Management | CMS |
-| Backend | No custom backend required for MVP; backend-ready architecture for future expansion |
-| Database | No custom database required for MVP; CMS acts as the content data source |
-| Forms | To be selected; recommended options include Formspree, Resend, Netlify Forms, or a serverless function |
-| Scheduling | Calendly |
-| Testing | Vitest, React Testing Library, Playwright |
-| Analytics | Plausible Analytics recommended for simple, privacy-friendly analytics; Google Analytics can be added later if deeper ad/marketing attribution is needed |
-| SEO | Sitemap, robots.txt, metadata, schema, CMS-managed page metadata |
+| Layer              | Recommendation                                                                                                                                           |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Framework          | React + Vite                                                                                                                                             |
+| Language           | TypeScript                                                                                                                                               |
+| Styling            | Tailwind CSS                                                                                                                                             |
+| Hosting            | Railway, Netlify, Vercel, or self-hosted                                                                                                                 |
+| Source Control     | GitHub                                                                                                                                                   |
+| CI/CD              | GitHub Actions or hosting-provider CI/CD integrated with GitHub                                                                                          |
+| Content Management | CMS                                                                                                                                                      |
+| Backend            | No custom backend required for MVP; backend-ready architecture for future expansion                                                                      |
+| Database           | No custom database required for MVP; CMS acts as the content data source                                                                                 |
+| Forms              | To be selected; recommended options include Formspree, Resend, Netlify Forms, or a serverless function                                                   |
+| Scheduling         | Calendly                                                                                                                                                 |
+| Testing            | Vitest, React Testing Library, Playwright                                                                                                                |
+| Analytics          | Plausible Analytics recommended for simple, privacy-friendly analytics; Google Analytics can be added later if deeper ad/marketing attribution is needed |
+| SEO                | Sitemap, robots.txt, metadata, schema, CMS-managed page metadata                                                                                         |
 
 ### 13.2 CMS Recommendation
 
@@ -855,11 +886,11 @@ The website will use a CMS for content management instead of Markdown/MDX. The C
 
 Recommended CMS options:
 
-| CMS | Best For |
-|---|---|
-| Sanity | Flexible structured content and developer-friendly workflows |
-| Strapi | Self-hosted CMS with API-first content management |
-| Contentful | Managed enterprise-friendly CMS |
+| CMS        | Best For                                                     |
+| ---------- | ------------------------------------------------------------ |
+| Sanity     | Flexible structured content and developer-friendly workflows |
+| Strapi     | Self-hosted CMS with API-first content management            |
+| Contentful | Managed enterprise-friendly CMS                              |
 
 For RoseJS, Sanity or Strapi are recommended. Sanity is a strong choice if speed, flexibility, and a polished editing experience are priorities. Strapi is a strong choice if full self-hosting control is preferred.
 
@@ -871,12 +902,12 @@ Plausible Analytics is recommended for the first version because it is lightweig
 
 The form provider is still open. Recommended options are:
 
-| Option | Best For |
-|---|---|
-| Formspree | Fast setup for simple contact forms |
-| Netlify Forms | Simple form handling if hosting on Netlify |
-| Resend | Email-based workflows and developer-controlled form notifications |
-| Serverless function | More control without creating a full backend platform |
+| Option              | Best For                                                          |
+| ------------------- | ----------------------------------------------------------------- |
+| Formspree           | Fast setup for simple contact forms                               |
+| Netlify Forms       | Simple form handling if hosting on Netlify                        |
+| Resend              | Email-based workflows and developer-controlled form notifications |
+| Serverless function | More control without creating a full backend platform             |
 
 For MVP, use a third-party form provider or serverless function instead of a custom backend service.
 
@@ -1052,15 +1083,15 @@ The website should target high-intent technical and business search terms relate
 
 ### 17.1 Events to Track
 
-| Event | Description |
-|---|---|
-| Page View | Visitor views a page |
-| CTA Click | Visitor clicks primary CTA |
-| Contact Submit | Visitor submits contact form |
-| Calendly Click | Visitor clicks scheduling CTA |
-| Lead Magnet Click | Visitor clicks download CTA |
+| Event               | Description                              |
+| ------------------- | ---------------------------------------- |
+| Page View           | Visitor views a page                     |
+| CTA Click           | Visitor clicks primary CTA               |
+| Contact Submit      | Visitor submits contact form             |
+| Calendly Click      | Visitor clicks scheduling CTA            |
+| Lead Magnet Click   | Visitor clicks download CTA              |
 | External Link Click | Visitor clicks LinkedIn or external link |
-| Blog View | Visitor views blog article |
+| Blog View           | Visitor views blog article               |
 
 ### 17.2 Analytics Acceptance Criteria
 
@@ -1244,17 +1275,17 @@ Custom Database
 
 ## 20. Risks and Mitigations
 
-| Risk | Impact | Mitigation |
-|---|---|---|
-| Website sounds too generic | Weak conversion | Use specific positioning and case studies |
-| AI-generated content feels shallow | Low trust | Human review and subject-matter editing |
-| SEO takes time | Slow traffic growth | Publish consistently and use targeted keywords |
-| Contact form spam | Operational noise | Add validation and spam protection |
-| Overbuilding MVP | Delayed launch | Limit scope to core pages first; avoid custom backend/database |
-| Poor mobile UX | Lost leads | Test on mobile before launch |
-| AI-generated code quality issues | Maintenance problems | Enforce code review, tests, and CI/CD checks |
-| CMS choice delays implementation | Delayed content workflow | Select Sanity, Strapi, or Contentful before implementation begins |
-| CI/CD setup is skipped | Harder maintenance | Make GitHub and CI/CD must-have requirements |
+| Risk                               | Impact                   | Mitigation                                                        |
+| ---------------------------------- | ------------------------ | ----------------------------------------------------------------- |
+| Website sounds too generic         | Weak conversion          | Use specific positioning and case studies                         |
+| AI-generated content feels shallow | Low trust                | Human review and subject-matter editing                           |
+| SEO takes time                     | Slow traffic growth      | Publish consistently and use targeted keywords                    |
+| Contact form spam                  | Operational noise        | Add validation and spam protection                                |
+| Overbuilding MVP                   | Delayed launch           | Limit scope to core pages first; avoid custom backend/database    |
+| Poor mobile UX                     | Lost leads               | Test on mobile before launch                                      |
+| AI-generated code quality issues   | Maintenance problems     | Enforce code review, tests, and CI/CD checks                      |
+| CMS choice delays implementation   | Delayed content workflow | Select Sanity, Strapi, or Contentful before implementation begins |
+| CI/CD setup is skipped             | Harder maintenance       | Make GitHub and CI/CD must-have requirements                      |
 
 ---
 
@@ -1371,21 +1402,21 @@ The MVP is considered complete when:
 
 ### 24.1 Confirmed Decisions
 
-| Question | Decision |
-|---|---|
-| Final company name | RoseJS |
-| Primary industry focus | Healthcare, with emphasis on healthcare insurance |
-| Website framework | React + Vite |
-| Content management | CMS |
-| Scheduler | Calendly |
-| Analytics tool | Plausible Analytics recommended |
-| Brand color palette | Black and white |
-| First lead magnet access | Free downloadable, not email-gated |
-| Priority industry | Healthcare |
-| Source control | GitHub |
-| CI/CD | Required for pull request checks and deployment readiness |
+| Question                 | Decision                                                                     |
+| ------------------------ | ---------------------------------------------------------------------------- |
+| Final company name       | RoseJS                                                                       |
+| Primary industry focus   | Healthcare, with emphasis on healthcare insurance                            |
+| Website framework        | React + Vite                                                                 |
+| Content management       | CMS                                                                          |
+| Scheduler                | Calendly                                                                     |
+| Analytics tool           | Plausible Analytics recommended                                              |
+| Brand color palette      | Black and white                                                              |
+| First lead magnet access | Free downloadable, not email-gated                                           |
+| Priority industry        | Healthcare                                                                   |
+| Source control           | GitHub                                                                       |
+| CI/CD                    | Required for pull request checks and deployment readiness                    |
 | Backend/database for MVP | No custom backend or database; CMS and third-party services handle MVP needs |
-| Future architecture | Backend-ready for future expansion |
+| Future architecture      | Backend-ready for future expansion                                           |
 
 ### 24.2 Resolved Implementation Decisions
 
@@ -1425,4 +1456,3 @@ The Architecture.md should use this PRD as the source of truth for the MVP archi
 - Calendly scheduling
 - Plausible Analytics
 - Backend-ready future expansion
-

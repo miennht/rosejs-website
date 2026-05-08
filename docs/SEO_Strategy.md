@@ -3,6 +3,7 @@
 Status: Placeholder created for TASK-004.
 
 This strategy doc will include:
+
 - Keyword clusters
 - Page-level metadata strategy
 - Internal linking approach
