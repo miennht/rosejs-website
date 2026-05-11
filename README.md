@@ -38,6 +38,7 @@ Use utilities such as `bg-background`, `text-foreground`, `text-muted`, `border-
 ### UI and layout components
 
 - **Primitives:** `src/components/ui/` — `Button`, `Container`, `Section`, `Badge`, `LinkButton`
+- **Marketing sections:** `src/components/sections/` — `Hero`, `ServicesOverview`, `MethodologySection`, `TrustSection`, `FeaturedInsights`, `CTASection`, `LeadMagnetSection`
 - **Shell:** `src/components/layout/` — `Header`, `Navigation`, `MobileNavigation`, `Footer`, `PageLayout` (wired in `src/app/RootLayout.tsx`)
 
 ---

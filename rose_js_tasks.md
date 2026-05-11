@@ -541,7 +541,7 @@ PageLayout
 ## TASK-012: Create Shared Marketing Section Components
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** HOME-001 to HOME-009, SERV-003, LEAD-001  
 **Implementation Area:** UI, Frontend
 
@@ -572,6 +572,8 @@ LeadMagnetSection
 
 - Component tests for key rendering.
 - Manual UI review.
+- Added `src/components/sections/`: `Hero`, `ServicesOverview`, `MethodologySection`, `TrustSection`, `FeaturedInsights`, `CTASection`, `LeadMagnetSection`, plus `CtaRow` and `SectionCta` types for internal vs external CTAs.
+- Composed placeholder **Home** page from these sections; responsive layout and `focus-visible` styles inherited from Tailwind + primitives.
 
 ---
 
