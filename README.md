@@ -35,6 +35,11 @@ Canonical project documentation lives in `docs/`:
 
 Use utilities such as `bg-background`, `text-foreground`, `text-muted`, `border-border`, `bg-primary`, `text-primary-foreground`.
 
+### UI and layout components
+
+- **Primitives:** `src/components/ui/` — `Button`, `Container`, `Section`, `Badge`, `LinkButton`
+- **Shell:** `src/components/layout/` — `Header`, `Navigation`, `MobileNavigation`, `Footer`, `PageLayout` (wired in `src/app/RootLayout.tsx`)
+
 ---
 
 ## Branching Strategy

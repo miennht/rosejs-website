@@ -465,7 +465,7 @@ Configure React Router and centralize route definitions.
 ## TASK-010: Create Base UI Primitives
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-MAINT-001, MVP-016  
 **Implementation Area:** UX/UI, Frontend
 
@@ -494,13 +494,14 @@ LinkButton
 
 - Component tests where useful.
 - Manual UI review.
+- Added `src/components/ui/` primitives: `Button`, `Container`, `Section`, `Badge`, `LinkButton` (semantic tokens, `focus-visible` outlines, TypeScript props).
 
 ---
 
 ## TASK-011: Create Global Layout Components
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** HOME-008, NFR-A11Y-005, MVP-016  
 **Implementation Area:** Layout, Frontend
 
@@ -531,6 +532,9 @@ PageLayout
 - Component test for navigation rendering.
 - E2E test for navigation.
 - Manual mobile review.
+- Added `src/components/layout/`: `Header`, `Navigation`, `MobileNavigation`, `Footer`, `PageLayout`; shared `navConfig` with **Schedule Consultation** label.
+- `RootLayout` composes header, `PageLayout` + `<Outlet />`, and footer on all routes.
+- Mobile menu: toggle, overlay close, **Escape** to dismiss, keyboard-focusable controls (automated nav test in TASK-045 / E2E in TASK-049).
 
 ---
 
