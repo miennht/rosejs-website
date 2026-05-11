@@ -20,6 +20,23 @@ Canonical project documentation lives in `docs/`:
 - `docs/Content_Plan.md`
 - `docs/Component_Map.md`
 
+## Design system (Tailwind CSS)
+
+- **Stack:** Tailwind CSS v4 with `@tailwindcss/vite` (see `vite.config.ts`).
+- **Global styles:** `src/index.css` imports Tailwind and defines **RoseJS** semantic colors in `@theme` for layout and contrast (MVP black-and-white direction).
+
+| Token                            | Role                                    |
+| -------------------------------- | --------------------------------------- |
+| `background` / `foreground`      | Page canvas and primary text            |
+| `muted`                          | Secondary body copy                     |
+| `surface`                        | Light gray panels / alternate sections  |
+| `border`                         | Dividers and outlines                   |
+| `primary` / `primary-foreground` | Primary CTA (black button, white label) |
+
+Use utilities such as `bg-background`, `text-foreground`, `text-muted`, `border-border`, `bg-primary`, `text-primary-foreground`.
+
+---
+
 ## Branching Strategy
 
 This repository uses GitHub Flow.

@@ -1,10 +1,6 @@
-function App() {
-  return (
-    <main>
-      <h1>RoseJS Website</h1>
-      <p>React + Vite + TypeScript project scaffold is ready.</p>
-    </main>
-  )
-}
+import { RouterProvider } from 'react-router-dom'
+import { router } from './app/routes.tsx'
 
-export default App
+export default function App() {
+  return <RouterProvider router={router} />
+}

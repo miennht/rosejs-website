@@ -391,7 +391,7 @@ npm run lint
 ## TASK-008: Configure Tailwind CSS
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-016, NFR-A11Y-004  
 **Implementation Area:** UX/UI, Frontend
 
@@ -410,13 +410,17 @@ Install and configure Tailwind CSS for the black-and-white RoseJS design system.
 
 - Manual UI verification.
 - Build succeeds.
+- Installed `tailwindcss` and `@tailwindcss/vite`; registered plugin in `vite.config.ts`.
+- `src/index.css` uses `@import "tailwindcss"` and `@theme` tokens for the black-and-white palette; base `body` styles use Tailwind `@apply`.
+- `README.md` documents semantic color tokens and usage.
+- `App.tsx` uses Tailwind utility classes to verify the pipeline.
 
 ---
 
 ## TASK-009: Configure React Router
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-001 to MVP-006, Routing Architecture  
 **Implementation Area:** Routing, Frontend
 
@@ -450,6 +454,9 @@ Configure React Router and centralize route definitions.
 
 - Manual route testing.
 - E2E navigation smoke test later.
+- Added `react-router-dom` and centralized routes in `src/app/routes.tsx` using `createBrowserRouter`.
+- `App` renders `RouterProvider` with that router; `RootLayout` provides primary nav + `<Outlet />`.
+- Placeholder pages under `src/pages/` for all MVP routes; catch-all `*` maps to `NotFound`.
 
 ---
 

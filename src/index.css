@@ -1,24 +1,26 @@
-body {
-  margin: 0;
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    Segoe UI,
-    Roboto,
-    sans-serif;
-  background: #fff;
-  color: #111;
+@import 'tailwindcss';
+
+/*
+ * RoseJS black-and-white design tokens (MVP).
+ * Architecture reference: white surfaces, black text, neutral borders,
+ * primary CTA = black background + white label.
+ */
+@theme {
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+
+  --color-background: #ffffff;
+  --color-foreground: #111111;
+  --color-muted: #525252;
+  --color-surface: #fafafa;
+  --color-border: #e5e5e5;
+  --color-primary: #000000;
+  --color-primary-foreground: #ffffff;
 }
 
-#root {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 2rem;
-}
-
-h1 {
-  margin-bottom: 0.75rem;
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
 }
