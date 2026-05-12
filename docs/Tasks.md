@@ -1897,9 +1897,9 @@ Configure branch protection for the production branch.
 
 ## TASK-056: Configure Deployment Workflow or Hosting Integration
 
-**Priority:** P0  
-**Status:** Not Started  
-**Source Requirements:** DEP-001, DEP-011, DEP-012, DEC-003  
+**Priority:** P0
+**Status:** Done
+**Source Requirements:** DEP-001, DEP-011, DEP-012, DEC-003
 **Implementation Area:** Deployment, DevOps
 
 ### Description
@@ -1918,6 +1918,7 @@ Configure deployment through Railway, Vercel, Netlify, or GitHub Actions.
 
 - Preview deployment test.
 - Production deployment test.
+- **Implemented in repo:** `railway.json` pins **Railway** build to `npm ci && npm run build` and start to `npm start`. Production static server uses **`serve` with `-s`** so deep links and refresh resolve to `index.html` (React Router). `scripts/serve-prod.mjs` binds **`0.0.0.0:$PORT`** for Railway. `.env.example` documents optional build/runtime variables. **README** documents first-time Railway wiring (GitHub connect, `main`, PR previews optional). **Human step:** connect the GitHub repo in the Railway UI and confirm a live deploy; enable PR previews there if desired.
 
 ---
 

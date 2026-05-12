@@ -72,3 +72,24 @@ Branch protection for `main` is planned as follows:
 - **ESLint** — `npm run lint` runs ESLint (TypeScript + React hooks + react-refresh) and **Prettier** (`prettier --check`). Either failing breaks the command.
 - **Prettier** — Opinionated formatter; config lives in `prettier.config.js`. Run `npm run format` to apply formatting.
 - **CI** — `.github/workflows/ci.yml` runs `npm ci`, lint, typecheck, and build on pushes and pull requests to `main`.
+
+## Deployment (Railway)
+
+Hosting target for MVP is **Railway** (see `docs/Tasks.md` / DEC-003). This repo ships a **Node static server** so client-side routes work in production (SPA fallback to `index.html`).
+
+| Item         | Value                                                                                                                             |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| Config       | `railway.json` — `npm ci && npm run build`, then `npm start`                                                                      |
+| Build output | `dist/` (Vite)                                                                                                                    |
+| Start        | `node scripts/serve-prod.mjs` — serves `dist` with [`serve` `-s`](https://github.com/vercel/serve) (unknown paths → `index.html`) |
+| Listen       | `PORT` from Railway (falls back to `3000` locally)                                                                                |
+
+**First-time setup (dashboard):**
+
+1. Create a Railway project and a **service** from this GitHub repository.
+2. Set the **production** environment to deploy from the **`main`** branch (disable auto-deploy from other branches unless you intend to).
+3. Under **Variables**, no secrets are required for the static MVP; Railway sets **`PORT`**. Use **Build**-scoped variables later for any `VITE_*` keys (see `.env.example`).
+4. (Optional) Enable **PR previews** / ephemeral environments in Railway so pull requests get preview URLs.
+5. After the first successful deploy, open `/`, `/services`, and `/contact`, then **hard refresh** each URL to confirm the SPA rewrite behaves correctly.
+
+**Local production smoke test:** `npm run build && npm start`, then visit `http://127.0.0.1:3000/services`.
