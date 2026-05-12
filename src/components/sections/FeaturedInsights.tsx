@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
 import { Container } from '../ui/Container.tsx'
 import { Section } from '../ui/Section.tsx'
 import { LinkButton } from '../ui/LinkButton.tsx'
+import { BlogCard } from '../cards/BlogCard.tsx'
 
 export type InsightTeaser = {
   title: string
@@ -41,23 +41,7 @@ export function FeaturedInsights({
           <ul className="grid gap-6 md:grid-cols-2">
             {posts.map((post) => (
               <li key={post.to}>
-                <article className="flex h-full flex-col rounded-lg border border-border bg-background p-6">
-                  <h3 className="mb-2 text-lg font-semibold text-foreground">
-                    <Link
-                      to={post.to}
-                      className="underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
-                    >
-                      {post.title}
-                    </Link>
-                  </h3>
-                  <p className="mb-4 flex-1 text-sm leading-relaxed text-muted">{post.summary}</p>
-                  <Link
-                    to={post.to}
-                    className="text-sm font-medium text-foreground underline-offset-4 hover:underline"
-                  >
-                    Read more
-                  </Link>
-                </article>
+                <BlogCard title={post.title} summary={post.summary} to={post.to} />
               </li>
             ))}
           </ul>

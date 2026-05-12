@@ -579,9 +579,9 @@ LeadMagnetSection
 
 ## TASK-013: Create Card Components
 
-**Priority:** P0  
-**Status:** Not Started  
-**Source Requirements:** HOME-004, BLOG-001, CASE-001, SERV-001  
+**Priority:** P0
+**Status:** Done
+**Source Requirements:** HOME-004, BLOG-001, CASE-001, SERV-001
 **Implementation Area:** UI, Frontend, CMS
 
 ### Description
@@ -607,6 +607,7 @@ CaseStudyCard
 
 - Component tests.
 - Manual UI review.
+- Added `src/components/cards/`: shared `MarketingCardLayout` (border, hover shadow, responsive stack), **`ServiceCard`**, **`BlogCard`**, **`CaseStudyCard`** — props `title`, `summary`, `to`, optional `ctaLabel` / `className` for CMS-shaped data. **`FeaturedInsights`** uses `BlogCard`. **`Services`**, **`Insights`**, **`CaseStudies`** pages render responsive grids with placeholder teaser arrays documented as CMS stand-ins. Automated component tests not in repo yet (no Vitest/Jest task); manual verification via `npm run dev`.
 
 ---
 
