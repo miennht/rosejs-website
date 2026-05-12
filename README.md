@@ -77,12 +77,13 @@ Branch protection for `main` is planned as follows:
 
 Hosting target for MVP is **Railway** (see `docs/Tasks.md` / DEC-003). This repo ships a **Node static server** so client-side routes work in production (SPA fallback to `index.html`).
 
-| Item         | Value                                                                                                                             |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------- |
-| Config       | `railway.json` — `npm ci && npm run build`, then `npm start`                                                                      |
-| Build output | `dist/` (Vite)                                                                                                                    |
-| Start        | `node scripts/serve-prod.mjs` — serves `dist` with [`serve` `-s`](https://github.com/vercel/serve) (unknown paths → `index.html`) |
-| Listen       | `PORT` from Railway (falls back to `3000` locally)                                                                                |
+| Item           | Value                                                                                                                             |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **Production** | **[https://rosejs.up.railway.app](https://rosejs.up.railway.app)** — live RoseJS site                                             |
+| Config         | `railway.json` — `npm ci && npm run build`, then `npm start`                                                                      |
+| Build output   | `dist/` (Vite)                                                                                                                    |
+| Start          | `node scripts/serve-prod.mjs` — serves `dist` with [`serve` `-s`](https://github.com/vercel/serve) (unknown paths → `index.html`) |
+| Listen         | `PORT` from Railway (falls back to `3000` locally)                                                                                |
 
 **First-time setup (dashboard):**
 
