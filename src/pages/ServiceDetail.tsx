@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from 'react-router-dom'
 import type { ServiceDetailLoaderData } from '../app/cmsLoaders.ts'
-import { PageMeta } from '../components/seo/PageMeta.tsx'
+import { SEO } from '../components/seo/SEO.tsx'
 import { LinkButton } from '../components/ui/LinkButton.tsx'
 import { Container } from '../components/ui/Container.tsx'
 
@@ -10,9 +10,10 @@ export function ServiceDetail() {
   if (service == null) {
     return (
       <Container className="py-10">
-        <PageMeta
+        <SEO
           title="Service not found | RoseJS"
           description="The requested service page does not exist."
+          path="/services"
         />
         <h1 className="mb-3 text-3xl font-semibold tracking-tight text-foreground">Service</h1>
         <p className="mb-6 text-muted">This service could not be found.</p>
@@ -28,7 +29,14 @@ export function ServiceDetail() {
 
   return (
     <Container className="py-10">
-      <PageMeta title={service.seo.seoTitle} description={service.seo.seoDescription} />
+      <SEO
+        path={`/services/${service.slug}`}
+        title={service.seo.seoTitle}
+        description={service.seo.seoDescription}
+        {...(service.seo.ogImage != null && service.seo.ogImage !== ''
+          ? { ogImage: service.seo.ogImage }
+          : {})}
+      />
       <p className="mb-4 text-sm text-muted">
         <Link to="/services" className="underline-offset-4 hover:underline">
           Services

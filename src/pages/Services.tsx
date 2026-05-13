@@ -2,7 +2,7 @@ import { useLoaderData } from 'react-router-dom'
 import type { ServicesLoaderData } from '../app/cmsLoaders.ts'
 import { CTASection } from '../components/sections/CTASection.tsx'
 import { ServiceCard } from '../components/cards/index.ts'
-import { PageMeta } from '../components/seo/PageMeta.tsx'
+import { SEO } from '../components/seo/SEO.tsx'
 import { Container } from '../components/ui/Container.tsx'
 
 export function Services() {
@@ -10,7 +10,8 @@ export function Services() {
 
   return (
     <Container className="py-10">
-      <PageMeta
+      <SEO
+        path="/services"
         title="Services | RoseJS"
         description="RoseJS services: architecture consulting, legacy modernization, AI-first delivery, payer and RCM consulting, cloud and API integration, technical debt assessment, and secure data integration."
       />

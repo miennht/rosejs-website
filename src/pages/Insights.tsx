@@ -2,7 +2,7 @@ import { useLoaderData } from 'react-router-dom'
 import type { InsightsLoaderData } from '../app/cmsLoaders.ts'
 import { formatBlogPostMetaLine } from '../cms/mappers.ts'
 import { BlogCard } from '../components/cards/index.ts'
-import { PageMeta } from '../components/seo/PageMeta.tsx'
+import { SEO } from '../components/seo/SEO.tsx'
 import { Container } from '../components/ui/Container.tsx'
 
 export function Insights() {
@@ -10,7 +10,8 @@ export function Insights() {
 
   return (
     <Container className="py-10">
-      <PageMeta
+      <SEO
+        path="/insights"
         title="Insights | RoseJS"
         description="Articles on healthcare software architecture, legacy modernization, AI-first delivery, and integration strategy from RoseJS."
       />

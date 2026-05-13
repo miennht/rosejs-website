@@ -593,6 +593,14 @@ Contact form submissions should use one of:
 - Resend through a serverless function
 - Hosting-provider serverless function
 
+### 9.1.1 Selected provider (MVP)
+
+**Formspree** is the chosen contact receiver (aligned with Traceability / DEC-002). The SPA posts `multipart/form-data` to the HTTPS URL in **`VITE_FORM_ENDPOINT`**. That URL is public in the browser bundle by design; do not embed privileged API keys or write tokens in the client.
+
+### 9.1.2 Spam and abuse (MVP)
+
+Expect a hidden honeypot field on the client plus Formspree dashboard spam controls (and escalation paths described in §9.5). Escalate to CAPTCHA only if abuse volume warrants it.
+
 ### 9.2 Contact Form Fields
 
 ```text
@@ -812,8 +820,10 @@ Example:
 ```text
 VITE_CMS_PROJECT_ID=
 VITE_CMS_DATASET=
+VITE_SITE_URL=
 VITE_PLAUSIBLE_DOMAIN=
 VITE_CALENDLY_URL=
+VITE_CALENDLY_EMBED=
 VITE_FORM_ENDPOINT=
 ```
 

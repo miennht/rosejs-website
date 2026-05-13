@@ -1,0 +1,5 @@
+# Replace the sitemap URL hostname with your production origin (see VITE_SITE_URL / deployment docs).
+User-agent: *
+Allow: /
+
+Sitemap: https://www.rosejs.example/sitemap.xml

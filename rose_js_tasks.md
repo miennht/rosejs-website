@@ -832,7 +832,7 @@ Implement the RoseJS Home page.
 - E2E smoke test.
 - Manual UX review.
 - SEO review.
-- **Implemented:** Hero (primary → `/schedule`, secondary → `/services`), services overview + methodology + trust + featured insights + lead magnet + final CTA; CMS loaders for overview/insights/magnet; **`PageMeta`** on home for title/description. Automated component/E2E tests still pending.
+- **Implemented:** Hero (primary → `/schedule`, secondary → `/services`), services overview + methodology + trust + featured insights + lead magnet + final CTA; CMS loaders for overview/insights/magnet; **`SEO`** on home for title/description. Automated component/E2E tests still pending.
 
 ---
 
@@ -871,7 +871,7 @@ Implement the Services page using CMS-managed service content.
 - E2E navigation test.
 - SEO review.
 - Manual content review.
-- **Implemented:** All seven core services from fallback/CMS; cards link to **`/services/:slug`** detail (problem, outcomes, deliverables, related insights/case studies). Bottom **`CTASection`** consultation CTA. **`PageMeta`**.
+- **Implemented:** All seven core services from fallback/CMS; cards link to **`/services/:slug`** detail (problem, outcomes, deliverables, related insights/case studies). Bottom **`CTASection`** consultation CTA. **`SEO`**.
 
 ---
 
@@ -900,7 +900,7 @@ Implement the About page to establish credibility and explain RoseJS philosophy.
 - Manual content review.
 - E2E navigation test.
 - SEO review.
-- **Implemented:** About page with background, philosophy, differentiators, contact CTA; **`PageMeta`**.
+- **Implemented:** About page with background, philosophy, differentiators, contact CTA; **`SEO`**.
 
 ---
 
@@ -928,7 +928,7 @@ Implement the Insights listing page using CMS-managed blog posts.
 - Component tests.
 - E2E page render test.
 - SEO review.
-- **Implemented:** `getBlogPosts` via loader; **`BlogCard`** shows date·category line + tag chips; empty state; home featured posts carry **`meta`** line. **`PageMeta`**.
+- **Implemented:** `getBlogPosts` via loader; **`BlogCard`** shows date·category line + tag chips; empty state; home featured posts carry **`meta`** line. **`SEO`**.
 
 ---
 
@@ -956,7 +956,7 @@ Implement the individual blog article template.
 - Component tests with mocked CMS data.
 - E2E test for article route.
 - SEO review.
-- **Implemented:** Slug loader; title, summary, author, dates, tags, body; **`PageMeta`** from `post.seo`; invalid slug graceful message; **related services** → `/services/:slug`.
+- **Implemented:** Slug loader; title, summary, author, dates, tags, body; **`SEO`** from `post.seo`; invalid slug graceful message; **related services** → `/services/:slug`.
 
 ---
 
@@ -983,7 +983,7 @@ Implement the case studies listing page.
 - Component tests.
 - E2E page render test.
 - Manual content review.
-- **Implemented:** Anonymized fallback studies; cards + empty state; **`PageMeta`**.
+- **Implemented:** Anonymized fallback studies; cards + empty state; **`SEO`**.
 
 ---
 
@@ -1012,7 +1012,7 @@ Implement the individual case study detail template.
 - E2E route test.
 - Manual confidentiality review.
 - SEO review.
-- **Implemented:** Full narrative sections; **confidentiality callout**; related **service** links; **`PageMeta`** from `study.seo`; invalid slug handled gracefully.
+- **Implemented:** Full narrative sections; **confidentiality callout**; related **service** links; **`SEO`** from `study.seo`; invalid slug handled gracefully.
 
 ---
 
@@ -1042,7 +1042,7 @@ Implement the Contact page with contact form, direct email placeholder, LinkedIn
 - Component tests.
 - E2E contact page test.
 - Manual review.
-- **Implemented:** **`ContactForm`** (name, email, company, service interest, message, honeypot, client validation); Formspree-ready **`VITE_FORM_ENDPOINT`** POST; demo success without endpoint; email + LinkedIn placeholders; schedule aside; **`PageMeta`**.
+- **Implemented:** **`ContactForm`** (name, email, company, service interest, message, honeypot, client validation); Formspree-ready **`VITE_FORM_ENDPOINT`** POST; demo success without endpoint; email + LinkedIn placeholders; schedule aside; **`SEO`**.
 
 ---
 
@@ -1068,7 +1068,7 @@ Implement a `/schedule` page for Calendly scheduling.
 
 - E2E click test.
 - Manual scheduling flow test.
-- **Implemented:** Primary **Open Calendly** external link using **`VITE_CALENDLY_URL`** or neutral fallback; secondary link to **`/contact`**; **`PageMeta`**. Plausible “track click” deferred.
+- **Implemented:** Primary **Open Calendly** external link using **`VITE_CALENDLY_URL`** or neutral fallback; secondary link to **`/contact`**; **`SEO`**. Plausible “track click” deferred.
 
 ---
 
@@ -1092,7 +1092,7 @@ Create a branded 404 page for invalid routes.
 ### Validation
 
 - E2E invalid route test.
-- **Implemented:** Branded **`NotFound`** with home/services/contact **`LinkButton`**s, **`PageMeta`**, design-system typography.
+- **Implemented:** Branded **`NotFound`** with home/services/contact **`LinkButton`**s, **`SEO`**, design-system typography.
 
 ---
 

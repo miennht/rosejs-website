@@ -832,7 +832,7 @@ Implement the RoseJS Home page.
 - E2E smoke test.
 - Manual UX review.
 - SEO review.
-- **Implemented:** Hero (primary → `/schedule`, secondary → `/services`), services overview + methodology + trust + featured insights + lead magnet + final CTA; CMS loaders for overview/insights/magnet; **`PageMeta`** on home for title/description. Automated component/E2E tests still pending.
+- **Implemented:** Hero (primary → `/schedule`, secondary → `/services`), services overview + methodology + trust + featured insights + lead magnet + final CTA; CMS loaders for overview/insights/magnet; **`SEO`** on home for title/description. Automated component/E2E tests still pending.
 
 ---
 
@@ -871,7 +871,7 @@ Implement the Services page using CMS-managed service content.
 - E2E navigation test.
 - SEO review.
 - Manual content review.
-- **Implemented:** All seven core services from fallback/CMS; cards link to **`/services/:slug`** detail (problem, outcomes, deliverables, related insights/case studies). Bottom **`CTASection`** consultation CTA. **`PageMeta`**.
+- **Implemented:** All seven core services from fallback/CMS; cards link to **`/services/:slug`** detail (problem, outcomes, deliverables, related insights/case studies). Bottom **`CTASection`** consultation CTA. **`SEO`**.
 
 ---
 
@@ -900,7 +900,7 @@ Implement the About page to establish credibility and explain RoseJS philosophy.
 - Manual content review.
 - E2E navigation test.
 - SEO review.
-- **Implemented:** About page with background, philosophy, differentiators, contact CTA; **`PageMeta`**.
+- **Implemented:** About page with background, philosophy, differentiators, contact CTA; **`SEO`**.
 
 ---
 
@@ -928,7 +928,7 @@ Implement the Insights listing page using CMS-managed blog posts.
 - Component tests.
 - E2E page render test.
 - SEO review.
-- **Implemented:** `getBlogPosts` via loader; **`BlogCard`** shows date·category line + tag chips; empty state; home featured posts carry **`meta`** line. **`PageMeta`**.
+- **Implemented:** `getBlogPosts` via loader; **`BlogCard`** shows date·category line + tag chips; empty state; home featured posts carry **`meta`** line. **`SEO`**.
 
 ---
 
@@ -956,7 +956,7 @@ Implement the individual blog article template.
 - Component tests with mocked CMS data.
 - E2E test for article route.
 - SEO review.
-- **Implemented:** Slug loader; title, summary, author, dates, tags, body; **`PageMeta`** from `post.seo`; invalid slug graceful message; **related services** → `/services/:slug`.
+- **Implemented:** Slug loader; title, summary, author, dates, tags, body; **`SEO`** from `post.seo`; invalid slug graceful message; **related services** → `/services/:slug`.
 
 ---
 
@@ -983,7 +983,7 @@ Implement the case studies listing page.
 - Component tests.
 - E2E page render test.
 - Manual content review.
-- **Implemented:** Anonymized fallback studies; cards + empty state; **`PageMeta`**.
+- **Implemented:** Anonymized fallback studies; cards + empty state; **`SEO`**.
 
 ---
 
@@ -1012,7 +1012,7 @@ Implement the individual case study detail template.
 - E2E route test.
 - Manual confidentiality review.
 - SEO review.
-- **Implemented:** Full narrative sections; **confidentiality callout**; related **service** links; **`PageMeta`** from `study.seo`; invalid slug handled gracefully.
+- **Implemented:** Full narrative sections; **confidentiality callout**; related **service** links; **`SEO`** from `study.seo`; invalid slug handled gracefully.
 
 ---
 
@@ -1042,7 +1042,7 @@ Implement the Contact page with contact form, direct email placeholder, LinkedIn
 - Component tests.
 - E2E contact page test.
 - Manual review.
-- **Implemented:** **`ContactForm`** (name, email, company, service interest, message, honeypot, client validation); Formspree-ready **`VITE_FORM_ENDPOINT`** POST; demo success without endpoint; email + LinkedIn placeholders; schedule aside; **`PageMeta`**.
+- **Implemented:** **`ContactForm`** (name, email, company, service interest, message, honeypot, client validation); Formspree-ready **`VITE_FORM_ENDPOINT`** POST; demo success without endpoint; email + LinkedIn placeholders; schedule aside; **`SEO`**.
 
 ---
 
@@ -1068,7 +1068,7 @@ Implement a `/schedule` page for Calendly scheduling.
 
 - E2E click test.
 - Manual scheduling flow test.
-- **Implemented:** Primary **Open Calendly** external link using **`VITE_CALENDLY_URL`** or neutral fallback; secondary link to **`/contact`**; **`PageMeta`**. Plausible “track click” deferred.
+- **Implemented:** Primary **Open Calendly** external link using **`VITE_CALENDLY_URL`** or neutral fallback; secondary link to **`/contact`**; **`SEO`**. Plausible “track click” deferred.
 
 ---
 
@@ -1092,7 +1092,7 @@ Create a branded 404 page for invalid routes.
 ### Validation
 
 - E2E invalid route test.
-- **Implemented:** Branded **`NotFound`** with home/services/contact **`LinkButton`**s, **`PageMeta`**, design-system typography.
+- **Implemented:** Branded **`NotFound`** with home/services/contact **`LinkButton`**s, **`SEO`**, design-system typography.
 
 ---
 
@@ -1101,7 +1101,7 @@ Create a branded 404 page for invalid routes.
 ## TASK-029: Select Contact Form Provider
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** DEC-002, CONT-009, NFR-API-003  
 **Implementation Area:** Forms, Architecture
 
@@ -1135,7 +1135,7 @@ Use the simplest provider that fits the hosting choice. If hosting on Netlify, N
 ## TASK-030: Implement Contact Form Component
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CONT-001 to CONT-005, NFR-SEC-001, NFR-A11Y-003  
 **Implementation Area:** Forms, Frontend
 
@@ -1173,7 +1173,7 @@ message
 ## TASK-031: Integrate Contact Form Provider
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CONT-009, NFR-API-003, NFR-SEC-006  
 **Implementation Area:** Forms, Security, DevOps
 
@@ -1199,7 +1199,7 @@ Connect the contact form to the selected third-party provider or serverless func
 ## TASK-032: Add Basic Spam Protection
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SEC-004  
 **Implementation Area:** Forms, Security
 
@@ -1222,7 +1222,7 @@ Add lightweight spam protection for the contact form.
 ## TASK-033: Implement Calendly Integration
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CAL-001 to CAL-004, MVP-007  
 **Implementation Area:** Scheduling, Frontend, Analytics
 
@@ -1250,7 +1250,7 @@ Add Calendly scheduling CTA and optional embed.
 ## TASK-034: Create Free Downloadable Lead Magnet Asset
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** LEAD-002, LEAD-003, MVP-008  
 **Implementation Area:** Content, Public Assets
 
@@ -1279,7 +1279,7 @@ Legacy Application Modernization Checklist
 ## TASK-035: Implement Lead Magnet Section
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** LEAD-001 to LEAD-005, HOME-009  
 **Implementation Area:** UI, Content, CMS
 
@@ -1307,7 +1307,7 @@ Implement the lead magnet CTA section.
 ## TASK-036: Implement SEO Component
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SEO-001, NFR-SEO-006, BLOG-004  
 **Implementation Area:** SEO, Frontend
 
@@ -1340,7 +1340,7 @@ src/lib/seo.ts
 ## TASK-037: Add Page-Level SEO Metadata
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SEO-001, MVP-011  
 **Implementation Area:** SEO, Pages
 
@@ -1378,7 +1378,7 @@ Schedule
 ## TASK-038: Add robots.txt
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-013, NFR-SEO-003  
 **Implementation Area:** SEO, Public Assets
 
@@ -1401,7 +1401,7 @@ Add robots.txt to the public folder.
 ## TASK-039: Add sitemap.xml
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-012, NFR-SEO-002, DEC-006  
 **Implementation Area:** SEO, DevOps
 
@@ -1425,7 +1425,7 @@ Add initial sitemap.xml.
 ## TASK-040: Add Structured Data Support
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SEO-007  
 **Implementation Area:** SEO, Frontend
 
@@ -1458,7 +1458,7 @@ Add structured data support where useful.
 ## TASK-041: Configure Plausible Analytics
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-014, DEP-006, Analytics Requirements  
 **Implementation Area:** Analytics, Frontend
 
@@ -1483,7 +1483,7 @@ Add Plausible Analytics to the website.
 ## TASK-042: Create Analytics Utility Wrapper
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CAL-004, LEAD-004, Analytics Architecture  
 **Implementation Area:** Analytics, Frontend
 
@@ -1516,7 +1516,7 @@ src/lib/analytics.ts
 ## TASK-043: Add Accessibility Baseline Checks
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-A11Y-001 to NFR-A11Y-005  
 **Implementation Area:** Accessibility, UX/UI
 
@@ -1542,7 +1542,7 @@ Review and enforce baseline accessibility expectations.
 ## TASK-044: Add Accessible Mobile Navigation
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-A11Y-005, MVP-016  
 **Implementation Area:** Navigation, Accessibility
 
@@ -1571,7 +1571,7 @@ Ensure mobile navigation is accessible and keyboard-friendly.
 ## TASK-045: Configure Vitest
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-017, Testing Architecture  
 **Implementation Area:** Testing
 

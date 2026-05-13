@@ -1,12 +1,14 @@
 import { ContactForm } from '../components/forms/ContactForm.tsx'
-import { PageMeta } from '../components/seo/PageMeta.tsx'
+import { SEO } from '../components/seo/SEO.tsx'
 import { LinkButton } from '../components/ui/LinkButton.tsx'
 import { Container } from '../components/ui/Container.tsx'
+import { trackEvent } from '../lib/analytics.ts'
 
 export function Contact() {
   return (
     <Container className="py-10">
-      <PageMeta
+      <SEO
+        path="/contact"
         title="Contact RoseJS | Healthcare software architecture consulting"
         description="Reach RoseJS for architecture, modernization, and AI-first delivery—contact form, email, LinkedIn, or schedule a consultation."
       />
@@ -29,7 +31,11 @@ export function Contact() {
               </code>
               in production).
             </p>
-            <LinkButton to="/schedule" variant="primary">
+            <LinkButton
+              to="/schedule"
+              variant="primary"
+              onClick={() => trackEvent('calendly_click', { source: 'contact_aside' })}
+            >
               Go to scheduling
             </LinkButton>
           </div>

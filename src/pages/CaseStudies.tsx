@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router-dom'
 import type { CaseStudiesLoaderData } from '../app/cmsLoaders.ts'
 import { CaseStudyCard } from '../components/cards/index.ts'
-import { PageMeta } from '../components/seo/PageMeta.tsx'
+import { SEO } from '../components/seo/SEO.tsx'
 import { Container } from '../components/ui/Container.tsx'
 
 export function CaseStudies() {
@@ -9,7 +9,8 @@ export function CaseStudies() {
 
   return (
     <Container className="py-10">
-      <PageMeta
+      <SEO
+        path="/case-studies"
         title="Case studies | RoseJS"
         description="Anonymized healthcare and payer case studies from RoseJS—modernization, consolidation, and integration outcomes."
       />

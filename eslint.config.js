@@ -1,6 +1,7 @@
 import js from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import globals from 'globals'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
@@ -19,6 +20,11 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
+  },
+  {
+    files: ['**/*.{tsx}'],
+    ...jsxA11y.flatConfigs.recommended,
+    settings: { 'jsx-a11y': { version: '19.0' } },
   },
   eslintConfigPrettier,
 ])

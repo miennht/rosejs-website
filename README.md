@@ -40,7 +40,7 @@ Use utilities such as `bg-background`, `text-foreground`, `text-muted`, `border-
 - **Primitives:** `src/components/ui/` — `Button`, `Container`, `Section`, `Badge`, `LinkButton`
 - **Cards:** `src/components/cards/` — `ServiceCard`, `BlogCard`, `CaseStudyCard` (shared layout + CMS-shaped props)
 - **CMS layer:** `src/cms/` — types, mappers, `queries`, `client`, `fallbackContentSource` (Sanity-ready factory). Demo content: `src/content/fallback/`. Route loaders: `src/app/cmsLoaders.ts`.
-- **SEO (SPA):** `src/components/seo/PageMeta.tsx` — updates `document.title` and `meta[name=description]` per route (until SSR/meta framework is added).
+- **SEO (SPA):** `src/components/seo/SEO.tsx` — updates `document.title`, description, Open Graph, and basic Twitter tags per route; `StructuredData.tsx` + `siteSchemas.ts` for JSON-LD; `src/lib/seo.ts` for canonical URLs (set `VITE_SITE_URL` in production).
 - **Forms:** `src/components/forms/ContactForm.tsx` — PRD fields; posts to `VITE_FORM_ENDPOINT` when set.
 - **Marketing sections:** `src/components/sections/` — `Hero`, `ServicesOverview`, `MethodologySection`, `TrustSection`, `FeaturedInsights`, `CTASection`, `LeadMagnetSection`
 - **Shell:** `src/components/layout/` — `Header`, `Navigation`, `MobileNavigation`, `Footer`, `PageLayout` (wired in `src/app/RootLayout.tsx`)

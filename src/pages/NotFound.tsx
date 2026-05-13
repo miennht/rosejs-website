@@ -1,14 +1,11 @@
-import { PageMeta } from '../components/seo/PageMeta.tsx'
+import { SEO } from '../components/seo/SEO.tsx'
 import { LinkButton } from '../components/ui/LinkButton.tsx'
 import { Container } from '../components/ui/Container.tsx'
 
 export function NotFound() {
   return (
     <Container className="py-16 text-center">
-      <PageMeta
-        title="Page not found | RoseJS"
-        description="The page you requested does not exist."
-      />
+      <SEO title="Page not found | RoseJS" description="The page you requested does not exist." />
       <p className="mb-2 text-sm font-medium uppercase tracking-wide text-muted">404</p>
       <h1 className="mb-4 text-3xl font-semibold tracking-tight text-foreground">
         This page is not available

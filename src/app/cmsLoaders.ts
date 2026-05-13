@@ -57,7 +57,7 @@ export async function homePageLoader(): Promise<HomeLoaderData> {
           'A practical checklist teams can use to align stakeholders before a modernization program. Download wiring will connect to CMS or static assets later.',
         ctas: [
           {
-            label: 'Download checklist (preview)',
+            label: 'Download checklist',
             href: '/downloads/legacy-application-modernization-checklist.pdf',
             variant: 'primary' as const,
           },

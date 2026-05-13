@@ -1,6 +1,8 @@
 import { Link, useLoaderData } from 'react-router-dom'
 import type { CaseStudyDetailLoaderData } from '../app/cmsLoaders.ts'
-import { PageMeta } from '../components/seo/PageMeta.tsx'
+import { JsonLd } from '../components/seo/StructuredData.tsx'
+import { SEO } from '../components/seo/SEO.tsx'
+import { caseStudyArticleSchema } from '../components/seo/siteSchemas.ts'
 import { Container } from '../components/ui/Container.tsx'
 
 export function CaseStudyDetail() {
@@ -9,9 +11,10 @@ export function CaseStudyDetail() {
   if (study == null) {
     return (
       <Container className="py-10">
-        <PageMeta
+        <SEO
           title="Case study not found | RoseJS"
           description="The requested case study does not exist."
+          path="/case-studies"
         />
         <h1 className="mb-3 text-3xl font-semibold tracking-tight text-foreground">Case study</h1>
         <p className="mb-6 text-muted">This case study could not be found.</p>
@@ -36,7 +39,16 @@ export function CaseStudyDetail() {
 
   return (
     <Container className="py-10">
-      <PageMeta title={study.seo.seoTitle} description={study.seo.seoDescription} />
+      <SEO
+        path={`/case-studies/${study.slug}`}
+        title={study.seo.seoTitle}
+        description={study.seo.seoDescription}
+        ogType="article"
+        {...(study.seo.ogImage != null && study.seo.ogImage !== ''
+          ? { ogImage: study.seo.ogImage }
+          : {})}
+      />
+      <JsonLd data={caseStudyArticleSchema(study)} />
       <p className="mb-4 text-sm text-muted">
         <Link to="/case-studies" className="underline-offset-4 hover:underline">
           Case studies

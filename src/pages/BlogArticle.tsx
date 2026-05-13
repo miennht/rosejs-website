@@ -1,6 +1,8 @@
 import { Link, useLoaderData } from 'react-router-dom'
 import type { BlogArticleLoaderData } from '../app/cmsLoaders.ts'
-import { PageMeta } from '../components/seo/PageMeta.tsx'
+import { JsonLd } from '../components/seo/StructuredData.tsx'
+import { SEO } from '../components/seo/SEO.tsx'
+import { blogPostingSchema } from '../components/seo/siteSchemas.ts'
 import { Container } from '../components/ui/Container.tsx'
 
 function formatDate(iso: string) {
@@ -21,9 +23,10 @@ export function BlogArticle() {
   if (post == null) {
     return (
       <Container className="py-10">
-        <PageMeta
+        <SEO
           title="Article not found | RoseJS"
           description="The requested article does not exist."
+          path="/insights"
         />
         <h1 className="mb-3 text-3xl font-semibold tracking-tight text-foreground">Article</h1>
         <p className="mb-6 text-muted">This article could not be found.</p>
@@ -41,7 +44,16 @@ export function BlogArticle() {
 
   return (
     <Container className="py-10">
-      <PageMeta title={post.seo.seoTitle} description={post.seo.seoDescription} />
+      <SEO
+        path={`/insights/${post.slug}`}
+        title={post.seo.seoTitle}
+        description={post.seo.seoDescription}
+        ogType="article"
+        {...(post.seo.ogImage != null && post.seo.ogImage !== ''
+          ? { ogImage: post.seo.ogImage }
+          : {})}
+      />
+      <JsonLd data={blogPostingSchema(post)} />
       <p className="mb-4 text-sm text-muted">
         <Link to="/insights" className="underline-offset-4 hover:underline">
           Insights

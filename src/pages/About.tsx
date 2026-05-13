@@ -1,11 +1,12 @@
-import { PageMeta } from '../components/seo/PageMeta.tsx'
+import { SEO } from '../components/seo/SEO.tsx'
 import { LinkButton } from '../components/ui/LinkButton.tsx'
 import { Container } from '../components/ui/Container.tsx'
 
 export function About() {
   return (
     <Container className="py-10">
-      <PageMeta
+      <SEO
+        path="/about"
         title="About RoseJS | Healthcare software architecture consulting"
         description="RoseJS combines enterprise architecture depth with healthcare and payer domain experience—AI-first, security-minded, and pragmatic about modernization."
       />

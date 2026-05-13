@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { trackEvent } from '../../lib/analytics.ts'
 import { Button } from '../ui/Button.tsx'
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -60,9 +61,27 @@ export function ContactForm() {
           headers: { Accept: 'application/json' },
         })
         if (!res.ok) {
-          throw new Error(`Request failed: ${res.status}`)
+          let detail = `Request failed (${res.status}).`
+          try {
+            const ct = res.headers.get('content-type')
+            if (ct != null && ct.includes('application/json')) {
+              const body = (await res.json()) as {
+                error?: string
+                errors?: Record<string, string>
+              }
+              if (body.error != null && body.error !== '') detail = body.error
+              else if (body.errors != null) {
+                const first = Object.values(body.errors)[0]
+                if (first != null && first !== '') detail = first
+              }
+            }
+          } catch {
+            /* ignore parse errors */
+          }
+          throw new Error(detail)
         }
         setStatus('success')
+        trackEvent('contact_submit', { channel: 'form' })
         form.reset()
         setName('')
         setEmail('')
@@ -246,11 +265,13 @@ export function ContactForm() {
             ) : null}
           </div>
 
-          {status === 'error' && errorMessage != null ? (
-            <p className="text-sm text-foreground" role="alert">
-              {errorMessage}
-            </p>
-          ) : null}
+          <div aria-live="polite" aria-atomic="true" className="min-h-[1.25rem]">
+            {status === 'error' && errorMessage != null ? (
+              <p className="text-sm text-foreground" role="alert">
+                {errorMessage}
+              </p>
+            ) : null}
+          </div>
 
           <Button type="submit" variant="primary" disabled={status === 'submitting'}>
             {status === 'submitting' ? 'Sending…' : 'Send message'}
