@@ -422,11 +422,18 @@ The CMS should manage:
 | Strapi     | Self-hosted, API-first, full control                        | Requires more infrastructure maintenance                     |
 | Contentful | Enterprise-friendly, managed CMS                            | Can become more expensive and less flexible                  |
 
-### 7.3 Recommended CMS Decision
+### 7.3 CMS provider decision (MVP)
 
-Sanity is recommended if speed and editor experience are the top priorities.
+**Selected provider:** **Sanity** (TASK-014 / DEC-001). Strapi and Contentful remain valid alternatives; the implementation keeps provider-specific code isolated under `src/cms/` so a future swap does not rewrite marketing pages.
 
-Strapi is recommended if RoseJS wants stronger self-hosting control.
+Sanity fits the MVP priorities in `docs/Tasks.md`: structured content for services, insights, case studies, and lead magnets, with a strong editor workflow. When the Studio and Content Lake are connected, configure **read-only** browser access via:
+
+- `VITE_SANITY_PROJECT_ID`
+- `VITE_SANITY_DATASET` (for example `production`)
+
+**Never** ship write tokens or other secrets in the Vite client bundle. Content mutations belong in Studio, CI, or server-side automation—not in this SPA.
+
+Until Sanity is wired, the site uses **normalized TypeScript types** (`src/cms/types.ts`) and **fallback modules** under `src/content/fallback/` loaded through `src/cms/queries.ts` (TASK-017–018).
 
 Architecture should keep the CMS provider replaceable by isolating CMS logic inside:
 

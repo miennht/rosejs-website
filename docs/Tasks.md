@@ -616,7 +616,7 @@ CaseStudyCard
 ## TASK-014: Select CMS Provider
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** DEC-001, ADR-002, BLOG-008, CASE-005  
 **Implementation Area:** CMS, Architecture
 
@@ -644,13 +644,14 @@ Use **Sanity** if speed, flexibility, and editor experience are highest priority
 ### Validation
 
 - Manual decision review.
+- **Sanity** selected for MVP; documented in **`docs/Architecture.md` §7.3** with `VITE_SANITY_PROJECT_ID` / `VITE_SANITY_DATASET` and explicit “no write secrets in the browser” guidance.
 
 ---
 
 ## TASK-015: Create CMS Client Abstraction
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-010, NFR-DB-002, ADR-002  
 **Implementation Area:** CMS, Frontend
 
@@ -678,13 +679,14 @@ src/cms/mappers.ts
 
 - Unit tests for mappers.
 - Build succeeds.
+- Implemented **`src/cms/client.ts`** (`CmsContentSource`, `createContentSource`), **`fallbackContentSource.ts`** (fallback implementation), **`types.ts`**, **`mappers.ts`**, **`queries.ts`**. Route **loaders** in **`src/app/cmsLoaders.ts`** call queries only—pages do not import fallback files. **Mapper unit tests** still pending until a test runner task lands; `npm run build` passes.
 
 ---
 
 ## TASK-016: Define CMS Content Models
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** BLOG-003, BLOG-004, CASE-002, LEAD-005, NFR-SEO-008  
 **Implementation Area:** CMS
 
@@ -717,13 +719,14 @@ Tag
 
 - CMS schema review.
 - Manual content entry test.
+- **`src/cms/types.ts`** defines **`SeoFields`**, **`Author`**, **`Category`**, **`Tag`**, **`Service`**, **`BlogPost`**, **`CaseStudy`**, **`LeadMagnet`** aligned with Architecture §7.4. Related links expressed as **slug arrays** for services/case studies/blogs until relational CMS IDs exist.
 
 ---
 
 ## TASK-017: Add Local Fallback Content
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CMS Architecture, NFR-MAINT-002  
 **Implementation Area:** CMS, Content
 
@@ -749,13 +752,14 @@ src/content/fallback/leadMagnets.ts
 ### Validation
 
 - Local render review.
+- Files created with top-of-file comments and **seven** demo services, **four** posts, **three** case studies, **one** lead magnet; messaging is healthcare / payer / digital-health oriented.
 
 ---
 
 ## TASK-018: Implement CMS Data Fetching Functions
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-010, BLOG-008, CASE-005, NFR-DB-002  
 **Implementation Area:** CMS, Frontend
 
@@ -784,6 +788,7 @@ getLeadMagnets()
 
 - Unit tests for mappers.
 - Manual CMS fetch test.
+- **`src/cms/queries.ts`** implements the listed getters plus **`getServiceBySlug`** for service detail pages. **Try/catch** with `console.error` and safe fallbacks (`[]` / `null`). **`npm run build`** passes. **Unit tests** deferred with TASK-015 mapper tests until Vitest (or similar) is added.
 
 ---
 
