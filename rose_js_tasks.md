@@ -797,7 +797,7 @@ getLeadMagnets()
 ## TASK-019: Implement Home Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** HOME-001 to HOME-009, MVP-001  
 **Implementation Area:** Pages, UI, Content
 
@@ -832,13 +832,14 @@ Implement the RoseJS Home page.
 - E2E smoke test.
 - Manual UX review.
 - SEO review.
+- **Implemented:** Hero (primary → `/schedule`, secondary → `/services`), services overview + methodology + trust + featured insights + lead magnet + final CTA; CMS loaders for overview/insights/magnet; **`PageMeta`** on home for title/description. Automated component/E2E tests still pending.
 
 ---
 
 ## TASK-020: Implement Services Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** SERV-001 to SERV-005, MVP-002  
 **Implementation Area:** Pages, CMS, SEO
 
@@ -870,13 +871,14 @@ Implement the Services page using CMS-managed service content.
 - E2E navigation test.
 - SEO review.
 - Manual content review.
+- **Implemented:** All seven core services from fallback/CMS; cards link to **`/services/:slug`** detail (problem, outcomes, deliverables, related insights/case studies). Bottom **`CTASection`** consultation CTA. **`PageMeta`**.
 
 ---
 
 ## TASK-021: Implement About Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** ABOUT-001 to ABOUT-005, MVP-003  
 **Implementation Area:** Pages, Content, SEO
 
@@ -898,13 +900,14 @@ Implement the About page to establish credibility and explain RoseJS philosophy.
 - Manual content review.
 - E2E navigation test.
 - SEO review.
+- **Implemented:** About page with background, philosophy, differentiators, contact CTA; **`PageMeta`**.
 
 ---
 
 ## TASK-022: Implement Blog / Insights Listing Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** BLOG-001, BLOG-003, BLOG-006, BLOG-007, MVP-004  
 **Implementation Area:** Pages, CMS, SEO
 
@@ -925,13 +928,14 @@ Implement the Insights listing page using CMS-managed blog posts.
 - Component tests.
 - E2E page render test.
 - SEO review.
+- **Implemented:** `getBlogPosts` via loader; **`BlogCard`** shows date·category line + tag chips; empty state; home featured posts carry **`meta`** line. **`PageMeta`**.
 
 ---
 
 ## TASK-023: Implement Blog Detail Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** BLOG-002 to BLOG-005, MVP-005  
 **Implementation Area:** Pages, CMS, SEO
 
@@ -952,13 +956,14 @@ Implement the individual blog article template.
 - Component tests with mocked CMS data.
 - E2E test for article route.
 - SEO review.
+- **Implemented:** Slug loader; title, summary, author, dates, tags, body; **`PageMeta`** from `post.seo`; invalid slug graceful message; **related services** → `/services/:slug`.
 
 ---
 
 ## TASK-024: Implement Case Studies Listing Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CASE-001, CASE-005, MVP-009  
 **Implementation Area:** Pages, CMS, Content
 
@@ -978,13 +983,14 @@ Implement the case studies listing page.
 - Component tests.
 - E2E page render test.
 - Manual content review.
+- **Implemented:** Anonymized fallback studies; cards + empty state; **`PageMeta`**.
 
 ---
 
 ## TASK-025: Implement Case Study Detail Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CASE-001 to CASE-005  
 **Implementation Area:** Pages, CMS, SEO
 
@@ -1006,13 +1012,14 @@ Implement the individual case study detail template.
 - E2E route test.
 - Manual confidentiality review.
 - SEO review.
+- **Implemented:** Full narrative sections; **confidentiality callout**; related **service** links; **`PageMeta`** from `study.seo`; invalid slug handled gracefully.
 
 ---
 
 ## TASK-026: Implement Contact Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CONT-001 to CONT-009, MVP-006, MVP-015  
 **Implementation Area:** Pages, Forms, Scheduling
 
@@ -1035,13 +1042,14 @@ Implement the Contact page with contact form, direct email placeholder, LinkedIn
 - Component tests.
 - E2E contact page test.
 - Manual review.
+- **Implemented:** **`ContactForm`** (name, email, company, service interest, message, honeypot, client validation); Formspree-ready **`VITE_FORM_ENDPOINT`** POST; demo success without endpoint; email + LinkedIn placeholders; schedule aside; **`PageMeta`**.
 
 ---
 
 ## TASK-027: Implement Schedule Page
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CAL-001 to CAL-004, MVP-007  
 **Implementation Area:** Scheduling, Pages
 
@@ -1060,13 +1068,14 @@ Implement a `/schedule` page for Calendly scheduling.
 
 - E2E click test.
 - Manual scheduling flow test.
+- **Implemented:** Primary **Open Calendly** external link using **`VITE_CALENDLY_URL`** or neutral fallback; secondary link to **`/contact`**; **`PageMeta`**. Plausible “track click” deferred.
 
 ---
 
 ## TASK-028: Implement 404 Not Found Page
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** Routing Architecture  
 **Implementation Area:** Routing, UX/UI
 
@@ -1083,6 +1092,7 @@ Create a branded 404 page for invalid routes.
 ### Validation
 
 - E2E invalid route test.
+- **Implemented:** Branded **`NotFound`** with home/services/contact **`LinkButton`**s, **`PageMeta`**, design-system typography.
 
 ---
 

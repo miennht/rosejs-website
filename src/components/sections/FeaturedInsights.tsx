@@ -8,6 +8,8 @@ export type InsightTeaser = {
   title: string
   summary: string
   to: string
+  /** Optional line shown under the title (e.g. publish date · category). */
+  meta?: string
 }
 
 export type FeaturedInsightsProps = {
@@ -41,7 +43,12 @@ export function FeaturedInsights({
           <ul className="grid gap-6 md:grid-cols-2">
             {posts.map((post) => (
               <li key={post.to}>
-                <BlogCard title={post.title} summary={post.summary} to={post.to} />
+                <BlogCard
+                  title={post.title}
+                  summary={post.summary}
+                  to={post.to}
+                  {...(post.meta != null && post.meta !== '' ? { metaLine: post.meta } : {})}
+                />
               </li>
             ))}
           </ul>

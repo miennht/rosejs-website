@@ -1,6 +1,5 @@
 import type { LoaderFunctionArgs } from 'react-router-dom'
 import {
-  mapBlogPostToBlogCardProps,
   mapBlogPostToInsightTeaser,
   mapCaseStudyToCaseStudyCardProps,
   mapServiceToOverviewTeaser,
@@ -80,24 +79,37 @@ export async function servicesPageLoader(): Promise<ServicesLoaderData> {
 
 export type ServiceDetailLoaderData = {
   service: Service | null
+  relatedPosts: BlogPost[]
+  relatedStudies: CaseStudy[]
 }
 
 export async function serviceDetailLoader({
   params,
 }: LoaderFunctionArgs): Promise<ServiceDetailLoaderData> {
   const slug = params.slug
-  if (slug == null || slug === '') return { service: null }
-  const service = await getServiceBySlug(slug)
-  return { service }
+  if (slug == null || slug === '') {
+    return { service: null, relatedPosts: [], relatedStudies: [] }
+  }
+  const [service, posts, studies] = await Promise.all([
+    getServiceBySlug(slug),
+    getBlogPosts(),
+    getCaseStudies(),
+  ])
+  if (service == null) {
+    return { service: null, relatedPosts: [], relatedStudies: [] }
+  }
+  const relatedPosts = posts.filter((p) => service.relatedBlogPostSlugs.includes(p.slug))
+  const relatedStudies = studies.filter((c) => service.relatedCaseStudySlugs.includes(c.slug))
+  return { service, relatedPosts, relatedStudies }
 }
 
 export type InsightsLoaderData = {
-  cards: Array<ReturnType<typeof mapBlogPostToBlogCardProps>>
+  posts: BlogPost[]
 }
 
 export async function insightsPageLoader(): Promise<InsightsLoaderData> {
   const posts = await getBlogPosts()
-  return { cards: posts.map(mapBlogPostToBlogCardProps) }
+  return { posts }
 }
 
 export type CaseStudiesLoaderData = {
@@ -111,26 +123,36 @@ export async function caseStudiesPageLoader(): Promise<CaseStudiesLoaderData> {
 
 export type BlogArticleLoaderData = {
   post: BlogPost | null
+  relatedServices: Array<{ title: string; slug: string }>
 }
 
 export async function blogArticleLoader({
   params,
 }: LoaderFunctionArgs): Promise<BlogArticleLoaderData> {
   const slug = params.slug
-  if (slug == null || slug === '') return { post: null }
-  const post = await getBlogPostBySlug(slug)
-  return { post }
+  if (slug == null || slug === '') return { post: null, relatedServices: [] }
+  const [post, services] = await Promise.all([getBlogPostBySlug(slug), getServices()])
+  if (post == null) return { post: null, relatedServices: [] }
+  const relatedServices = services
+    .filter((s) => post.relatedServiceSlugs.includes(s.slug))
+    .map((s) => ({ title: s.title, slug: s.slug }))
+  return { post, relatedServices }
 }
 
 export type CaseStudyDetailLoaderData = {
   study: CaseStudy | null
+  relatedServices: Array<{ title: string; slug: string }>
 }
 
 export async function caseStudyDetailLoader({
   params,
 }: LoaderFunctionArgs): Promise<CaseStudyDetailLoaderData> {
   const slug = params.slug
-  if (slug == null || slug === '') return { study: null }
-  const study = await getCaseStudyBySlug(slug)
-  return { study }
+  if (slug == null || slug === '') return { study: null, relatedServices: [] }
+  const [study, services] = await Promise.all([getCaseStudyBySlug(slug), getServices()])
+  if (study == null) return { study: null, relatedServices: [] }
+  const relatedServices = services
+    .filter((s) => study.relatedServiceSlugs.includes(s.slug))
+    .map((s) => ({ title: s.title, slug: s.slug }))
+  return { study, relatedServices }
 }

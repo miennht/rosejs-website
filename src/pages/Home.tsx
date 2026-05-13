@@ -7,6 +7,7 @@ import { LeadMagnetSection } from '../components/sections/LeadMagnetSection.tsx'
 import { MethodologySection } from '../components/sections/MethodologySection.tsx'
 import { ServicesOverview } from '../components/sections/ServicesOverview.tsx'
 import { TrustSection } from '../components/sections/TrustSection.tsx'
+import { PageMeta } from '../components/seo/PageMeta.tsx'
 
 const methodologyPillars = [
   {
@@ -39,6 +40,10 @@ export function Home() {
 
   return (
     <div>
+      <PageMeta
+        title="RoseJS | Healthcare software architecture consulting"
+        description="RoseJS helps healthcare insurance and healthcare technology teams modernize platforms, integrate systems, and ship AI-first software with disciplined architecture—from strategy to deployment."
+      />
       <Hero
         title="Healthcare software architecture consulting—with AI-first engineering discipline."
         subtitle="RoseJS helps healthcare insurance and healthcare technology teams modernize platforms, integrate systems, and ship securely—from strategy to deployment."

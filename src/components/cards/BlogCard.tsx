@@ -5,6 +5,8 @@ export type BlogCardProps = {
   summary: string
   to: string
   ctaLabel?: string
+  metaLine?: string
+  tagLabels?: string[]
   className?: string
 }
 
@@ -13,6 +15,8 @@ export function BlogCard({
   summary,
   to,
   ctaLabel = 'Read more',
+  metaLine,
+  tagLabels,
   className = '',
 }: BlogCardProps) {
   return (
@@ -21,6 +25,8 @@ export function BlogCard({
       summary={summary}
       to={to}
       ctaLabel={ctaLabel}
+      {...(metaLine != null && metaLine !== '' ? { metaLine } : {})}
+      {...(tagLabels != null && tagLabels.length > 0 ? { tagLabels } : {})}
       className={className}
     />
   )

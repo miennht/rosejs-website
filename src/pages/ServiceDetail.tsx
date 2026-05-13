@@ -1,14 +1,19 @@
 import { Link, useLoaderData } from 'react-router-dom'
-import { Container } from '../components/ui/Container.tsx'
-import { LinkButton } from '../components/ui/LinkButton.tsx'
 import type { ServiceDetailLoaderData } from '../app/cmsLoaders.ts'
+import { PageMeta } from '../components/seo/PageMeta.tsx'
+import { LinkButton } from '../components/ui/LinkButton.tsx'
+import { Container } from '../components/ui/Container.tsx'
 
 export function ServiceDetail() {
-  const { service } = useLoaderData() as ServiceDetailLoaderData
+  const { service, relatedPosts, relatedStudies } = useLoaderData() as ServiceDetailLoaderData
 
   if (service == null) {
     return (
       <Container className="py-10">
+        <PageMeta
+          title="Service not found | RoseJS"
+          description="The requested service page does not exist."
+        />
         <h1 className="mb-3 text-3xl font-semibold tracking-tight text-foreground">Service</h1>
         <p className="mb-6 text-muted">This service could not be found.</p>
         <Link
@@ -23,6 +28,7 @@ export function ServiceDetail() {
 
   return (
     <Container className="py-10">
+      <PageMeta title={service.seo.seoTitle} description={service.seo.seoDescription} />
       <p className="mb-4 text-sm text-muted">
         <Link to="/services" className="underline-offset-4 hover:underline">
           Services
@@ -58,6 +64,42 @@ export function ServiceDetail() {
             ))}
           </ul>
         </section>
+
+        {relatedPosts.length > 0 ? (
+          <section>
+            <h2 className="mb-3 text-lg font-semibold text-foreground">Related insights</h2>
+            <ul className="space-y-2">
+              {relatedPosts.map((p) => (
+                <li key={p.slug}>
+                  <Link
+                    to={`/insights/${p.slug}`}
+                    className="text-sm font-medium text-foreground underline-offset-4 hover:underline"
+                  >
+                    {p.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+
+        {relatedStudies.length > 0 ? (
+          <section>
+            <h2 className="mb-3 text-lg font-semibold text-foreground">Related case studies</h2>
+            <ul className="space-y-2">
+              {relatedStudies.map((c) => (
+                <li key={c.slug}>
+                  <Link
+                    to={`/case-studies/${c.slug}`}
+                    className="text-sm font-medium text-foreground underline-offset-4 hover:underline"
+                  >
+                    {c.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
       </div>
 
       <div className="mt-12 flex flex-wrap gap-3">

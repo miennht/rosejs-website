@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from 'react-router-dom'
 import type { BlogArticleLoaderData } from '../app/cmsLoaders.ts'
+import { PageMeta } from '../components/seo/PageMeta.tsx'
 import { Container } from '../components/ui/Container.tsx'
 
 function formatDate(iso: string) {
@@ -15,11 +16,15 @@ function formatDate(iso: string) {
 }
 
 export function BlogArticle() {
-  const { post } = useLoaderData() as BlogArticleLoaderData
+  const { post, relatedServices } = useLoaderData() as BlogArticleLoaderData
 
   if (post == null) {
     return (
       <Container className="py-10">
+        <PageMeta
+          title="Article not found | RoseJS"
+          description="The requested article does not exist."
+        />
         <h1 className="mb-3 text-3xl font-semibold tracking-tight text-foreground">Article</h1>
         <p className="mb-6 text-muted">This article could not be found.</p>
         <Link
@@ -36,6 +41,7 @@ export function BlogArticle() {
 
   return (
     <Container className="py-10">
+      <PageMeta title={post.seo.seoTitle} description={post.seo.seoDescription} />
       <p className="mb-4 text-sm text-muted">
         <Link to="/insights" className="underline-offset-4 hover:underline">
           Insights
@@ -86,6 +92,24 @@ export function BlogArticle() {
             <p key={i}>{para}</p>
           ))}
         </div>
+
+        {relatedServices.length > 0 ? (
+          <section className="mt-12 border-t border-border pt-8">
+            <h2 className="mb-3 text-lg font-semibold text-foreground">Related services</h2>
+            <ul className="space-y-2">
+              {relatedServices.map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    to={`/services/${s.slug}`}
+                    className="text-sm font-medium text-foreground underline-offset-4 hover:underline"
+                  >
+                    {s.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
       </article>
     </Container>
   )
