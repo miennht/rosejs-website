@@ -579,9 +579,9 @@ LeadMagnetSection
 
 ## TASK-013: Create Card Components
 
-**Priority:** P0  
-**Status:** Not Started  
-**Source Requirements:** HOME-004, BLOG-001, CASE-001, SERV-001  
+**Priority:** P0
+**Status:** Done
+**Source Requirements:** HOME-004, BLOG-001, CASE-001, SERV-001
 **Implementation Area:** UI, Frontend, CMS
 
 ### Description
@@ -607,6 +607,7 @@ CaseStudyCard
 
 - Component tests.
 - Manual UI review.
+- Added `src/components/cards/`: shared `MarketingCardLayout` (border, hover shadow, responsive stack), **`ServiceCard`**, **`BlogCard`**, **`CaseStudyCard`** — props `title`, `summary`, `to`, optional `ctaLabel` / `className` for CMS-shaped data. **`FeaturedInsights`** uses `BlogCard`. **`Services`**, **`Insights`**, **`CaseStudies`** pages render responsive grids with placeholder teaser arrays documented as CMS stand-ins. Automated component tests not in repo yet (no Vitest/Jest task); manual verification via `npm run dev`.
 
 ---
 
@@ -615,7 +616,7 @@ CaseStudyCard
 ## TASK-014: Select CMS Provider
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** DEC-001, ADR-002, BLOG-008, CASE-005  
 **Implementation Area:** CMS, Architecture
 
@@ -643,13 +644,14 @@ Use **Sanity** if speed, flexibility, and editor experience are highest priority
 ### Validation
 
 - Manual decision review.
+- **Sanity** selected for MVP; documented in **`docs/Architecture.md` §7.3** with `VITE_SANITY_PROJECT_ID` / `VITE_SANITY_DATASET` and explicit “no write secrets in the browser” guidance.
 
 ---
 
 ## TASK-015: Create CMS Client Abstraction
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-010, NFR-DB-002, ADR-002  
 **Implementation Area:** CMS, Frontend
 
@@ -677,13 +679,14 @@ src/cms/mappers.ts
 
 - Unit tests for mappers.
 - Build succeeds.
+- Implemented **`src/cms/client.ts`** (`CmsContentSource`, `createContentSource`), **`fallbackContentSource.ts`** (fallback implementation), **`types.ts`**, **`mappers.ts`**, **`queries.ts`**. Route **loaders** in **`src/app/cmsLoaders.ts`** call queries only—pages do not import fallback files. **Mapper unit tests** still pending until a test runner task lands; `npm run build` passes.
 
 ---
 
 ## TASK-016: Define CMS Content Models
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** BLOG-003, BLOG-004, CASE-002, LEAD-005, NFR-SEO-008  
 **Implementation Area:** CMS
 
@@ -716,13 +719,14 @@ Tag
 
 - CMS schema review.
 - Manual content entry test.
+- **`src/cms/types.ts`** defines **`SeoFields`**, **`Author`**, **`Category`**, **`Tag`**, **`Service`**, **`BlogPost`**, **`CaseStudy`**, **`LeadMagnet`** aligned with Architecture §7.4. Related links expressed as **slug arrays** for services/case studies/blogs until relational CMS IDs exist.
 
 ---
 
 ## TASK-017: Add Local Fallback Content
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CMS Architecture, NFR-MAINT-002  
 **Implementation Area:** CMS, Content
 
@@ -748,13 +752,14 @@ src/content/fallback/leadMagnets.ts
 ### Validation
 
 - Local render review.
+- Files created with top-of-file comments and **seven** demo services, **four** posts, **three** case studies, **one** lead magnet; messaging is healthcare / payer / digital-health oriented.
 
 ---
 
 ## TASK-018: Implement CMS Data Fetching Functions
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-010, BLOG-008, CASE-005, NFR-DB-002  
 **Implementation Area:** CMS, Frontend
 
@@ -783,6 +788,7 @@ getLeadMagnets()
 
 - Unit tests for mappers.
 - Manual CMS fetch test.
+- **`src/cms/queries.ts`** implements the listed getters plus **`getServiceBySlug`** for service detail pages. **Try/catch** with `console.error` and safe fallbacks (`[]` / `null`). **`npm run build`** passes. **Unit tests** deferred with TASK-015 mapper tests until Vitest (or similar) is added.
 
 ---
 
@@ -791,7 +797,7 @@ getLeadMagnets()
 ## TASK-019: Implement Home Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** HOME-001 to HOME-009, MVP-001  
 **Implementation Area:** Pages, UI, Content
 
@@ -826,13 +832,14 @@ Implement the RoseJS Home page.
 - E2E smoke test.
 - Manual UX review.
 - SEO review.
+- **Implemented:** Hero (primary → `/schedule`, secondary → `/services`), services overview + methodology + trust + featured insights + lead magnet + final CTA; CMS loaders for overview/insights/magnet; **`SEO`** on home for title/description. Automated component/E2E tests still pending.
 
 ---
 
 ## TASK-020: Implement Services Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** SERV-001 to SERV-005, MVP-002  
 **Implementation Area:** Pages, CMS, SEO
 
@@ -864,13 +871,14 @@ Implement the Services page using CMS-managed service content.
 - E2E navigation test.
 - SEO review.
 - Manual content review.
+- **Implemented:** All seven core services from fallback/CMS; cards link to **`/services/:slug`** detail (problem, outcomes, deliverables, related insights/case studies). Bottom **`CTASection`** consultation CTA. **`SEO`**.
 
 ---
 
 ## TASK-021: Implement About Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** ABOUT-001 to ABOUT-005, MVP-003  
 **Implementation Area:** Pages, Content, SEO
 
@@ -892,13 +900,14 @@ Implement the About page to establish credibility and explain RoseJS philosophy.
 - Manual content review.
 - E2E navigation test.
 - SEO review.
+- **Implemented:** About page with background, philosophy, differentiators, contact CTA; **`SEO`**.
 
 ---
 
 ## TASK-022: Implement Blog / Insights Listing Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** BLOG-001, BLOG-003, BLOG-006, BLOG-007, MVP-004  
 **Implementation Area:** Pages, CMS, SEO
 
@@ -919,13 +928,14 @@ Implement the Insights listing page using CMS-managed blog posts.
 - Component tests.
 - E2E page render test.
 - SEO review.
+- **Implemented:** `getBlogPosts` via loader; **`BlogCard`** shows date·category line + tag chips; empty state; home featured posts carry **`meta`** line. **`SEO`**.
 
 ---
 
 ## TASK-023: Implement Blog Detail Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** BLOG-002 to BLOG-005, MVP-005  
 **Implementation Area:** Pages, CMS, SEO
 
@@ -946,13 +956,14 @@ Implement the individual blog article template.
 - Component tests with mocked CMS data.
 - E2E test for article route.
 - SEO review.
+- **Implemented:** Slug loader; title, summary, author, dates, tags, body; **`SEO`** from `post.seo`; invalid slug graceful message; **related services** → `/services/:slug`.
 
 ---
 
 ## TASK-024: Implement Case Studies Listing Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CASE-001, CASE-005, MVP-009  
 **Implementation Area:** Pages, CMS, Content
 
@@ -972,13 +983,14 @@ Implement the case studies listing page.
 - Component tests.
 - E2E page render test.
 - Manual content review.
+- **Implemented:** Anonymized fallback studies; cards + empty state; **`SEO`**.
 
 ---
 
 ## TASK-025: Implement Case Study Detail Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CASE-001 to CASE-005  
 **Implementation Area:** Pages, CMS, SEO
 
@@ -1000,13 +1012,14 @@ Implement the individual case study detail template.
 - E2E route test.
 - Manual confidentiality review.
 - SEO review.
+- **Implemented:** Full narrative sections; **confidentiality callout**; related **service** links; **`SEO`** from `study.seo`; invalid slug handled gracefully.
 
 ---
 
 ## TASK-026: Implement Contact Page
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CONT-001 to CONT-009, MVP-006, MVP-015  
 **Implementation Area:** Pages, Forms, Scheduling
 
@@ -1029,13 +1042,14 @@ Implement the Contact page with contact form, direct email placeholder, LinkedIn
 - Component tests.
 - E2E contact page test.
 - Manual review.
+- **Implemented:** **`ContactForm`** (name, email, company, service interest, message, honeypot, client validation); Formspree-ready **`VITE_FORM_ENDPOINT`** POST; demo success without endpoint; email + LinkedIn placeholders; schedule aside; **`SEO`**.
 
 ---
 
 ## TASK-027: Implement Schedule Page
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CAL-001 to CAL-004, MVP-007  
 **Implementation Area:** Scheduling, Pages
 
@@ -1054,13 +1068,14 @@ Implement a `/schedule` page for Calendly scheduling.
 
 - E2E click test.
 - Manual scheduling flow test.
+- **Implemented:** Primary **Open Calendly** external link using **`VITE_CALENDLY_URL`** or neutral fallback; secondary link to **`/contact`**; **`SEO`**. Plausible “track click” deferred.
 
 ---
 
 ## TASK-028: Implement 404 Not Found Page
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** Routing Architecture  
 **Implementation Area:** Routing, UX/UI
 
@@ -1077,6 +1092,7 @@ Create a branded 404 page for invalid routes.
 ### Validation
 
 - E2E invalid route test.
+- **Implemented:** Branded **`NotFound`** with home/services/contact **`LinkButton`**s, **`SEO`**, design-system typography.
 
 ---
 
@@ -1085,7 +1101,7 @@ Create a branded 404 page for invalid routes.
 ## TASK-029: Select Contact Form Provider
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** DEC-002, CONT-009, NFR-API-003  
 **Implementation Area:** Forms, Architecture
 
@@ -1119,7 +1135,7 @@ Use the simplest provider that fits the hosting choice. If hosting on Netlify, N
 ## TASK-030: Implement Contact Form Component
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CONT-001 to CONT-005, NFR-SEC-001, NFR-A11Y-003  
 **Implementation Area:** Forms, Frontend
 
@@ -1157,7 +1173,7 @@ message
 ## TASK-031: Integrate Contact Form Provider
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CONT-009, NFR-API-003, NFR-SEC-006  
 **Implementation Area:** Forms, Security, DevOps
 
@@ -1183,7 +1199,7 @@ Connect the contact form to the selected third-party provider or serverless func
 ## TASK-032: Add Basic Spam Protection
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SEC-004  
 **Implementation Area:** Forms, Security
 
@@ -1206,7 +1222,7 @@ Add lightweight spam protection for the contact form.
 ## TASK-033: Implement Calendly Integration
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CAL-001 to CAL-004, MVP-007  
 **Implementation Area:** Scheduling, Frontend, Analytics
 
@@ -1234,7 +1250,7 @@ Add Calendly scheduling CTA and optional embed.
 ## TASK-034: Create Free Downloadable Lead Magnet Asset
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** LEAD-002, LEAD-003, MVP-008  
 **Implementation Area:** Content, Public Assets
 
@@ -1263,7 +1279,7 @@ Legacy Application Modernization Checklist
 ## TASK-035: Implement Lead Magnet Section
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** LEAD-001 to LEAD-005, HOME-009  
 **Implementation Area:** UI, Content, CMS
 
@@ -1291,7 +1307,7 @@ Implement the lead magnet CTA section.
 ## TASK-036: Implement SEO Component
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SEO-001, NFR-SEO-006, BLOG-004  
 **Implementation Area:** SEO, Frontend
 
@@ -1324,7 +1340,7 @@ src/lib/seo.ts
 ## TASK-037: Add Page-Level SEO Metadata
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SEO-001, MVP-011  
 **Implementation Area:** SEO, Pages
 
@@ -1362,7 +1378,7 @@ Schedule
 ## TASK-038: Add robots.txt
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-013, NFR-SEO-003  
 **Implementation Area:** SEO, Public Assets
 
@@ -1385,7 +1401,7 @@ Add robots.txt to the public folder.
 ## TASK-039: Add sitemap.xml
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-012, NFR-SEO-002, DEC-006  
 **Implementation Area:** SEO, DevOps
 
@@ -1409,7 +1425,7 @@ Add initial sitemap.xml.
 ## TASK-040: Add Structured Data Support
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SEO-007  
 **Implementation Area:** SEO, Frontend
 
@@ -1442,7 +1458,7 @@ Add structured data support where useful.
 ## TASK-041: Configure Plausible Analytics
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-014, DEP-006, Analytics Requirements  
 **Implementation Area:** Analytics, Frontend
 
@@ -1467,7 +1483,7 @@ Add Plausible Analytics to the website.
 ## TASK-042: Create Analytics Utility Wrapper
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CAL-004, LEAD-004, Analytics Architecture  
 **Implementation Area:** Analytics, Frontend
 
@@ -1500,7 +1516,7 @@ src/lib/analytics.ts
 ## TASK-043: Add Accessibility Baseline Checks
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-A11Y-001 to NFR-A11Y-005  
 **Implementation Area:** Accessibility, UX/UI
 
@@ -1526,7 +1542,7 @@ Review and enforce baseline accessibility expectations.
 ## TASK-044: Add Accessible Mobile Navigation
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-A11Y-005, MVP-016  
 **Implementation Area:** Navigation, Accessibility
 
@@ -1555,7 +1571,7 @@ Ensure mobile navigation is accessible and keyboard-friendly.
 ## TASK-045: Configure Vitest
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-017, Testing Architecture  
 **Implementation Area:** Testing
 
@@ -1581,7 +1597,7 @@ npm run test
 ## TASK-046: Configure React Testing Library
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-017, Testing Coverage Matrix  
 **Implementation Area:** Testing
 
@@ -1604,7 +1620,7 @@ Configure React Testing Library for component tests.
 ## TASK-047: Configure Playwright
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-017, Testing Architecture  
 **Implementation Area:** Testing, E2E
 
@@ -1630,7 +1646,7 @@ npm run test:e2e
 ## TASK-048: Add Core Component Tests
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** Testing Coverage Matrix  
 **Implementation Area:** Testing, Frontend
 
@@ -1666,7 +1682,7 @@ npm run test
 ## TASK-049: Add E2E Navigation Tests
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** Critical Flows, MVP-017  
 **Implementation Area:** Testing, E2E
 
@@ -1700,7 +1716,7 @@ npm run test:e2e
 ## TASK-050: Add E2E Contact Form Tests
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CONT-003, CONT-004, CONT-005, MVP-015  
 **Implementation Area:** Testing, Forms
 
@@ -1731,7 +1747,7 @@ npm run test:e2e
 ## TASK-051: Add E2E Calendly and Lead Magnet Tests
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** CAL-001 to CAL-004, LEAD-001 to LEAD-004  
 **Implementation Area:** Testing, Scheduling, Content
 
@@ -1759,7 +1775,7 @@ npm run test:e2e
 ## TASK-052: Create Pull Request Template
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SCM-007, CR-007  
 **Implementation Area:** DevOps, Documentation
 
@@ -1791,13 +1807,12 @@ Create a GitHub pull request template.
 ### Validation
 
 - Manual review.
+- **Implemented in repo:** `.github/pull_request_template.md` (sections: Summary, Related task IDs, Screenshots, Testing performed, Accessibility notes, SEO notes, Deployment risk, optional AI-First hints).
 
 ---
 
-## TASK-053: Create GitHub Issue Templates
-
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SCM-007  
 **Implementation Area:** DevOps, Documentation
 
@@ -1821,13 +1836,14 @@ Create issue templates for bugs, features, and tasks.
 ### Validation
 
 - Manual review.
+- **Implemented in repo:** `.github/ISSUE_TEMPLATE/bug_report.md`, `feature_request.md`, `task.md`, and `config.yml` (traceability fields on each template).
 
 ---
 
 ## TASK-054: Configure GitHub Actions CI Workflow
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SCM-004, NFR-SCM-005, DEP-009, DEP-010  
 **Implementation Area:** CI/CD, DevOps, Testing
 
@@ -1868,13 +1884,14 @@ npm run test:e2e
 
 - Open a test pull request.
 - Confirm CI runs.
+- **Implemented in repo:** `.github/workflows/ci.yml` — job **`validate`**: `npm ci`, `npm run lint`, `npm run test`, `npm run typecheck`, `npm run build`, Playwright Chromium install, `npm run test:e2e` (supersedes optional E2E; aligns with Testing Strategy).
 
 ---
 
 ## TASK-055: Configure Branch Protection Rules
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SCM-003, DEP-012  
 **Implementation Area:** GitHub, DevOps
 
@@ -1892,6 +1909,7 @@ Configure branch protection for the production branch.
 ### Validation
 
 - Manual GitHub settings review.
+- **Repo artifact:** `docs/Branch_Protection_Setup.md` — step-by-step checklist (rulesets, require PR, required check **`validate`**, reviews, block direct pushes). **Human step:** apply settings in the GitHub UI for `main`.
 
 ---
 

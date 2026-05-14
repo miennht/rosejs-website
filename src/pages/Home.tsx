@@ -1,3 +1,5 @@
+import { useLoaderData } from 'react-router-dom'
+import type { HomeLoaderData } from '../app/cmsLoaders.ts'
 import { CTASection } from '../components/sections/CTASection.tsx'
 import { FeaturedInsights } from '../components/sections/FeaturedInsights.tsx'
 import { Hero } from '../components/sections/Hero.tsx'
@@ -5,38 +7,7 @@ import { LeadMagnetSection } from '../components/sections/LeadMagnetSection.tsx'
 import { MethodologySection } from '../components/sections/MethodologySection.tsx'
 import { ServicesOverview } from '../components/sections/ServicesOverview.tsx'
 import { TrustSection } from '../components/sections/TrustSection.tsx'
-
-const services = [
-  {
-    title: 'Software architecture consulting',
-    description:
-      'Clarify boundaries, interfaces, and scaling paths for complex healthcare platforms.',
-  },
-  {
-    title: 'Legacy modernization',
-    description:
-      'Reduce risk while evolving systems toward maintainable, observable architectures.',
-  },
-  {
-    title: 'AI-first delivery',
-    description:
-      'Ship faster with disciplined review, tests, and deployment gates—not unchecked automation.',
-  },
-  {
-    title: 'Healthcare insurance & RCM',
-    description:
-      'Navigate claims, enrollment, billing, and integration realities with domain-aware design.',
-  },
-  {
-    title: 'Cloud & API integration',
-    description:
-      'Connect services securely with clear contracts, versioning, and operational guardrails.',
-  },
-  {
-    title: 'Technical debt assessment',
-    description: 'Prioritize remediation so teams invest where risk and customer impact intersect.',
-  },
-]
+import { SEO } from '../components/seo/SEO.tsx'
 
 const methodologyPillars = [
   {
@@ -64,23 +35,16 @@ const trustPoints = [
   'Pragmatic modernization: reduce risk without boiling the ocean',
 ]
 
-const featuredPosts = [
-  {
-    title: 'How to modernize a legacy application',
-    summary:
-      'A practical framing for sequencing refactors, strangler patterns, and validation gates.',
-    to: '/insights/legacy-modernization',
-  },
-  {
-    title: 'AI-first software development methodology',
-    summary: 'Where AI accelerates delivery—and where human review must stay non-negotiable.',
-    to: '/insights/ai-first-methodology',
-  },
-]
-
 export function Home() {
+  const { servicesOverview, featuredPosts, leadMagnetSection } = useLoaderData() as HomeLoaderData
+
   return (
     <div>
+      <SEO
+        path="/"
+        title="RoseJS | Healthcare software architecture consulting"
+        description="RoseJS helps healthcare insurance and healthcare technology teams modernize platforms, integrate systems, and ship AI-first software with disciplined architecture—from strategy to deployment."
+      />
       <Hero
         title="Healthcare software architecture consulting—with AI-first engineering discipline."
         subtitle="RoseJS helps healthcare insurance and healthcare technology teams modernize platforms, integrate systems, and ship securely—from strategy to deployment."
@@ -96,7 +60,7 @@ export function Home() {
         eyebrow="Services"
         title="Where RoseJS helps most"
         description="Focused consulting engagements that connect business outcomes to technical execution."
-        services={services}
+        services={servicesOverview}
         ctas={[{ label: 'Discuss your roadmap', to: '/contact', variant: 'primary' }]}
       />
 
@@ -112,22 +76,15 @@ export function Home() {
       <FeaturedInsights
         eyebrow="Insights"
         title="Featured writing"
-        description="Long-form guidance for leaders and architects—CMS-backed content arrives in later tasks."
+        description="Long-form guidance for leaders and architects—served from the CMS layer with local fallback until Sanity is connected."
         posts={featuredPosts}
       />
 
       <LeadMagnetSection
-        eyebrow="Lead magnet"
-        title="Legacy application modernization checklist"
-        description="A practical checklist teams can use to align stakeholders before a modernization program. Download wiring will connect to CMS or static assets later."
-        ctas={[
-          {
-            label: 'Download checklist (preview)',
-            href: '/downloads/legacy-application-modernization-checklist.pdf',
-            variant: 'primary',
-          },
-          { label: 'Talk through your context', to: '/contact', variant: 'secondary' },
-        ]}
+        eyebrow={leadMagnetSection.eyebrow}
+        title={leadMagnetSection.title}
+        description={leadMagnetSection.description}
+        ctas={leadMagnetSection.ctas}
       />
 
       <CTASection

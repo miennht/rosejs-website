@@ -1,4 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom'
+import {
+  blogArticleLoader,
+  caseStudiesPageLoader,
+  caseStudyDetailLoader,
+  homePageLoader,
+  insightsPageLoader,
+  serviceDetailLoader,
+  servicesPageLoader,
+} from './cmsLoaders.ts'
 import { RootLayout } from './RootLayout.tsx'
 import { About } from '../pages/About.tsx'
 import { BlogArticle } from '../pages/BlogArticle.tsx'
@@ -9,6 +18,7 @@ import { Home } from '../pages/Home.tsx'
 import { Insights } from '../pages/Insights.tsx'
 import { NotFound } from '../pages/NotFound.tsx'
 import { Schedule } from '../pages/Schedule.tsx'
+import { ServiceDetail } from '../pages/ServiceDetail.tsx'
 import { Services } from '../pages/Services.tsx'
 
 export const router = createBrowserRouter([
@@ -16,13 +26,14 @@ export const router = createBrowserRouter([
     path: '/',
     element: <RootLayout />,
     children: [
-      { index: true, element: <Home /> },
-      { path: 'services', element: <Services /> },
+      { index: true, element: <Home />, loader: homePageLoader },
+      { path: 'services', element: <Services />, loader: servicesPageLoader },
+      { path: 'services/:slug', element: <ServiceDetail />, loader: serviceDetailLoader },
       { path: 'about', element: <About /> },
-      { path: 'insights', element: <Insights /> },
-      { path: 'insights/:slug', element: <BlogArticle /> },
-      { path: 'case-studies', element: <CaseStudies /> },
-      { path: 'case-studies/:slug', element: <CaseStudyDetail /> },
+      { path: 'insights', element: <Insights />, loader: insightsPageLoader },
+      { path: 'insights/:slug', element: <BlogArticle />, loader: blogArticleLoader },
+      { path: 'case-studies', element: <CaseStudies />, loader: caseStudiesPageLoader },
+      { path: 'case-studies/:slug', element: <CaseStudyDetail />, loader: caseStudyDetailLoader },
       { path: 'contact', element: <Contact /> },
       { path: 'schedule', element: <Schedule /> },
       { path: '*', element: <NotFound /> },

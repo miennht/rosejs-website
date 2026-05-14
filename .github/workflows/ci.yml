@@ -1,3 +1,4 @@
+# TASK-054: CI on pull_request and push to main — install, lint, test, typecheck, build, Playwright E2E.
 name: CI
 
 on:
@@ -25,8 +26,17 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Test
+        run: npm run test
+
       - name: Typecheck
         run: npm run typecheck
 
       - name: Build
         run: npm run build
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: E2E tests
+        run: npm run test:e2e
