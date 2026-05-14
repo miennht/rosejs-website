@@ -1938,7 +1938,7 @@ Configure deployment through Railway, Vercel, Netlify, or GitHub Actions.
 
 - Preview deployment test.
 - Production deployment test.
-- **Implemented in repo:** `railway.json` pins **Railway** build to `npm ci && npm run build` and start to `npm start`. Production static server uses **`serve` with `-s`** so deep links and refresh resolve to `index.html` (React Router). `scripts/serve-prod.mjs` binds **`0.0.0.0:$PORT`** for Railway. `.env.example` documents optional build/runtime variables. **README** documents first-time Railway wiring (GitHub connect, `main`, PR previews optional). **Human step:** connect the GitHub repo in the Railway UI and confirm a live deploy; enable PR previews there if desired.
+- **Implemented in repo:** `railway.json` pins **Railway** build to **`npm run build`** and start to **`npm start`**. Production static server uses **`serve` with `-s`** so deep links and refresh resolve to `index.html` (React Router). `scripts/serve-prod.mjs` binds **`0.0.0.0:$PORT`** for Railway. `.env.example` documents optional build/runtime variables. **README** documents first-time Railway wiring (GitHub connect, `main`, PR previews optional). **Human step:** connect the GitHub repo in the Railway UI and confirm a live deploy; enable PR previews there if desired.
 
 ---
 
@@ -1947,7 +1947,7 @@ Configure deployment through Railway, Vercel, Netlify, or GitHub Actions.
 ## TASK-057: Select Hosting Provider
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** DEC-003, DEP-001  
 **Implementation Area:** Deployment, Architecture
 
@@ -1974,13 +1974,14 @@ Use Railway for MVP hosting. Use Netlify if Netlify Forms is selected and you pr
 ### Validation
 
 - Manual decision review.
+- **Implemented in repo:** **`docs/Architecture.md`** §26 (decision **3. Hosting provider: Railway**). **`docs/Deployment_Guide.md`** §7 (Railway build/start aligned with **`railway.json`** and **`npm start`**).
 
 ---
 
 ## TASK-058: Configure Environment Variables
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SEC-006, Security Architecture  
 **Implementation Area:** Security, DevOps
 
@@ -1991,11 +1992,13 @@ Create `.env.example` and configure environment variables.
 ### Example Variables
 
 ```text
-VITE_CMS_PROJECT_ID=
-VITE_CMS_DATASET=
+VITE_SITE_URL=
 VITE_PLAUSIBLE_DOMAIN=
+VITE_CALENDLY_EMBED=
 VITE_CALENDLY_URL=
 VITE_FORM_ENDPOINT=
+VITE_SANITY_PROJECT_ID=
+VITE_SANITY_DATASET=
 ```
 
 ### Acceptance Criteria
@@ -2009,6 +2012,7 @@ VITE_FORM_ENDPOINT=
 
 - Manual security review.
 - Build succeeds in CI and hosting environment.
+- **Implemented in repo:** **`.env.example`** (browser-safe `VITE_*` only; comments for Railway `PORT`). **`docs/Deployment_Guide.md`** §8. **GitHub Actions:** current CI needs **no** repo secrets for lint/test/build/E2E. **Human step:** set production/preview variables in **Railway** (and Search Console / domain when ready).
 
 ---
 
@@ -2034,13 +2038,14 @@ Connect the final domain and enable HTTPS/SSL.
 
 - Manual browser test.
 - SSL check.
+- **Repo artifact:** **`docs/Domain_SSL_Setup.md`** — Railway custom domain, DNS, HTTPS, `VITE_SITE_URL`, sitemap/robots alignment. **`docs/Deployment_Guide.md`** §14. **Blocked until:** final production hostname is chosen and wired in Railway/DNS (see decision table in `docs/Tasks.md` / deployment docs).
 
 ---
 
 ## TASK-060: Configure Google Search Console
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** DEP-007  
 **Implementation Area:** SEO, Deployment
 
@@ -2058,13 +2063,14 @@ Configure Google Search Console for production domain.
 ### Validation
 
 - Manual Search Console verification.
+- **Implemented in repo:** **`docs/Google_Search_Console_Setup.md`** — property types, verification, sitemap submit, monitoring. **`docs/Deployment_Guide.md`** §13.2. **Human step:** run the checklist in Google when the production domain is live.
 
 ---
 
 ## TASK-061: Create Deployment Guide
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** DEP-005, MVP-021, NFR-MAINT-005  
 **Implementation Area:** Documentation, Deployment
 
@@ -2091,6 +2097,7 @@ Create `Deployment_Guide.md`.
 ### Validation
 
 - Manual documentation review.
+- **Implemented in repo:** **`docs/Deployment_Guide.md`** — §1.1 maps all TASK-061 required topics to sections; guide cross-links **`Domain_SSL_Setup.md`**, **`Google_Search_Console_Setup.md`**, **`Branch_Protection_Setup.md`**, and matches **`railway.json`** / **CI** behavior.
 
 ---
 

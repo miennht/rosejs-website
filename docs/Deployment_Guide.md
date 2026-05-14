@@ -16,6 +16,22 @@ This document is based on:
 - `Tasks.md`
 - `Testing_Strategy.md`
 
+### 1.1 TASK-061 content map
+
+This file is the canonical **`Deployment_Guide.md`** for **TASK-061**. Required topics map here as follows:
+
+| TASK-061 topic                | Location in this guide                           |
+| ----------------------------- | ------------------------------------------------ |
+| Hosting provider              | §7 (Railway MVP)                                 |
+| Environment variables         | §8; template **`.env.example`** in repo root     |
+| CI/CD flow                    | §6; live workflow **`.github/workflows/ci.yml`** |
+| Preview deployment process    | §4.2                                             |
+| Production deployment process | §4.3, §15                                        |
+| Rollback process              | §16                                              |
+| Post-deployment verification  | §15.3, §18, §19                                  |
+
+**Related runbooks:** **`docs/Domain_SSL_Setup.md`** (TASK-059), **`docs/Google_Search_Console_Setup.md`** (TASK-060), **`docs/Branch_Protection_Setup.md`** (TASK-055).
+
 ---
 
 ## 2. Deployment Goals
@@ -256,21 +272,11 @@ jobs:
         run: npm run build
 ```
 
-## 6.5 E2E CI Option
+## 6.5 E2E in CI
 
-Playwright E2E tests may be added to CI after they are stable.
+This repository runs **Playwright** end-to-end tests in **`.github/workflows/ci.yml`** after a successful production build: install **Chromium** with `npx playwright install --with-deps chromium`, then **`npm run test:e2e`** (against `vite preview` when `CI` is set).
 
-Example optional workflow step:
-
-```yaml
-- name: Install Playwright browsers
-  run: npx playwright install --with-deps
-
-- name: Run E2E tests
-  run: npm run test:e2e
-```
-
-If E2E tests are too slow or unstable early in MVP, run them locally before release and add them to CI later.
+For local runs without CI, use **`npm run test:e2e`** (starts the Vite dev server via Playwright config). First-time setup: **`npx playwright install chromium`**.
 
 ---
 
@@ -299,15 +305,16 @@ Recommendation:
 
 Recommended React + Vite settings on Railway:
 
-| Setting           | Value                                            |
-| ----------------- | ------------------------------------------------ |
-| Build command     | `npm run build`                                  |
-| Start command     | `npm run preview -- --host 0.0.0.0 --port $PORT` |
-| Node version      | 20 or current LTS                                |
-| Production branch | `main`                                           |
+| Setting           | Value                                                                   |
+| ----------------- | ----------------------------------------------------------------------- |
+| Build command     | `npm run build` (matches **`railway.json`** `build.buildCommand`)       |
+| Start command     | `npm start` → **`scripts/serve-prod.mjs`** (`serve dist -s` on `$PORT`) |
+| Node version      | 20 or current LTS                                                       |
+| Production branch | `main`                                                                  |
 
 Note:
 
+- **`npm run preview`** is fine for smoke tests locally; **production** on Railway for this repo uses **`npm start`** so client-side routes resolve via **`serve -s`** (see **`railway.json`**).
 - If you later switch to a Docker-based deploy, ensure the runtime serves the built `dist` directory and listens on `$PORT`.
 
 ## 7.4 SPA Routing Configuration
@@ -370,16 +377,19 @@ Never commit `.env.local`.
 
 ## 8.2 MVP Environment Variables
 
-Example variables:
+Use **`.env.example`** in the repository as the source of truth for names and comments. Summarized here:
 
 ```text
-VITE_CMS_PROJECT_ID=
-VITE_CMS_DATASET=
-VITE_CMS_API_VERSION=
+VITE_SITE_URL=
 VITE_PLAUSIBLE_DOMAIN=
+VITE_CALENDLY_EMBED=
 VITE_CALENDLY_URL=
 VITE_FORM_ENDPOINT=
+VITE_SANITY_PROJECT_ID=
+VITE_SANITY_DATASET=
 ```
+
+CMS keys use **`VITE_SANITY_*`** today; generic **`VITE_CMS_*`** names in older diagrams map to the same idea once a CMS client is wired.
 
 Only browser-safe variables should use the `VITE_` prefix.
 
@@ -393,6 +403,8 @@ Private values should be stored in:
 - Hosting provider environment variables
 - Serverless function environment variables if used
 - CMS dashboard secrets if provider-managed
+
+**GitHub Actions:** the current **CI** workflow (lint, unit tests, typecheck, build, E2E) does **not** require repository **secrets** for the static MVP. Add secrets only if you introduce deploy keys, CMS tokens in CI, or similar.
 
 Never commit:
 
@@ -561,6 +573,8 @@ sitemap.xml
 
 ## 13.2 SEO Production Checklist
 
+When the production domain is live, follow **`docs/Google_Search_Console_Setup.md`** (TASK-060) for verification and sitemap submission.
+
 - Each page has unique title.
 - Each page has unique meta description.
 - Blog posts have CMS-managed SEO fields.
@@ -592,6 +606,8 @@ If SEO performance becomes a limitation later, consider:
 ---
 
 ## 14. Domain and SSL Setup
+
+Step-by-step for Railway custom domains and HTTPS: **`docs/Domain_SSL_Setup.md`** (TASK-059).
 
 ## 14.1 Domain Decision
 

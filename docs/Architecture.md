@@ -1390,7 +1390,7 @@ The following architecture decisions are finalized for MVP implementation:
 
 1. CMS provider: Sanity.
 2. Form provider: Formspree.
-3. Hosting provider: Railway.
+3. Hosting provider: **Railway** (DEC-003 / TASK-057). Operational steps: **`docs/Deployment_Guide.md`** §7.
 4. Calendly integration mode: external scheduling link from CTA locations and `/schedule`.
 5. Branching strategy: GitHub Flow.
 6. Sitemap generation approach: static/manual initial sitemap, with automation from CMS during build as a future enhancement.
