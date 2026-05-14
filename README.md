@@ -75,7 +75,9 @@ Branch protection for `main` is planned as follows:
 
 - **ESLint** — `npm run lint` runs ESLint (TypeScript + React hooks + react-refresh) and **Prettier** (`prettier --check`). Either failing breaks the command.
 - **Prettier** — Opinionated formatter; config lives in `prettier.config.js`. Run `npm run format` to apply formatting.
-- **CI** — `.github/workflows/ci.yml` runs `npm ci`, lint, typecheck, and build on pushes and pull requests to `main`.
+- **Unit / component tests** — `npm run test` (Vitest + Testing Library + jsdom). Helpers in `src/test/test-utils.tsx`.
+- **E2E tests** — `npm run test:e2e` (Playwright, Chromium). First run: `npx playwright install chromium`. CI builds the app, installs Playwright browsers, then runs E2E against `vite preview`.
+- **CI** — `.github/workflows/ci.yml` runs `npm ci`, lint, unit tests, typecheck, build, Playwright Chromium install, and E2E on pushes and pull requests to `main`.
 
 ## Deployment (Railway)
 
