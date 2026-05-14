@@ -2061,7 +2061,7 @@ Configure Google Search Console for production domain.
 ### Validation
 
 - Manual Search Console verification.
-- **Implemented in repo:** **`docs/Google_Search_Console_Setup.md`** — property types, verification, sitemap submit, monitoring. **`docs/Deployment_Guide.md`** §13.2. **Human step:** run the checklist in Google when the production domain is live.
+- **Implemented in repo:** **`docs/Google_Search_Console_Setup.md`** (property types, verification table, sitemap, monitoring); **`index.html`** commented **`google-site-verification`** placeholder for HTML-tag method; **`docs/Deployment_Guide.md`** §13.2. **Human step:** run the checklist in Google when the production domain is live.
 
 ---
 
@@ -2095,7 +2095,7 @@ Create `Deployment_Guide.md`.
 ### Validation
 
 - Manual documentation review.
-- **Implemented in repo:** **`docs/Deployment_Guide.md`** — §1.1 maps all TASK-061 required topics to sections; guide cross-links **`Domain_SSL_Setup.md`**, **`Google_Search_Console_Setup.md`**, **`Branch_Protection_Setup.md`**, and matches **`railway.json`** / **CI** behavior.
+- **Implemented in repo:** **`docs/Deployment_Guide.md`** — §1.1 maps all TASK-061 required topics to sections; **§1.2** release quick path; cross-links **`Domain_SSL_Setup.md`**, **`Google_Search_Console_Setup.md`**, **`Branch_Protection_Setup.md`**; matches **`railway.json`** / **CI** behavior.
 
 ---
 

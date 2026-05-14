@@ -32,6 +32,16 @@ This file is the canonical **`Deployment_Guide.md`** for **TASK-061**. Required 
 
 **Related runbooks:** **`docs/Domain_SSL_Setup.md`** (TASK-059), **`docs/Google_Search_Console_Setup.md`** (TASK-060), **`docs/Branch_Protection_Setup.md`** (TASK-055).
 
+### 1.2 Release quick path (TASK-061)
+
+After CI is green on `main` and Railway (or your host) deploys from `main`:
+
+1. Confirm production URL loads over **HTTPS** and key routes refresh (SPA fallback).
+2. Set or confirm **`VITE_*`** build variables on the host (see §8 and **`.env.example`**).
+3. Run the **§15.3** post-deploy checklist and **§18** release checklist at least once per launch window.
+4. Complete **Search Console** steps in **`docs/Google_Search_Console_Setup.md`** when the public hostname is final (TASK-060).
+5. If something breaks, follow **§16** rollback first, then fix forward with a PR.
+
 ---
 
 ## 2. Deployment Goals
