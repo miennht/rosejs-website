@@ -14,6 +14,7 @@ Canonical project documentation lives in `docs/`:
 - `docs/Tasks.md`
 - `docs/Testing_Strategy.md`
 - `docs/Deployment_Guide.md`
+- `docs/Branch_Protection_Setup.md`
 - `docs/AI_Workflow_Guide.md`
 - `docs/Code_Review_Checklist.md`
 - `docs/SEO_Strategy.md`
@@ -64,12 +65,14 @@ docs/*
 
 ## Branch Protection Plan
 
-Branch protection for `main` is planned as follows:
+Configure **`main`** in GitHub (rulesets or classic branch protection) so that:
 
-- Require pull requests before merge.
-- Require at least one approving review.
-- Require CI checks after workflows are added.
-- Restrict direct pushes to `main`.
+- Pull requests are required before merging (GitHub Flow).
+- At least one approving review is required if your team wants human or AI-assisted review on every merge.
+- Required status checks include the **`validate`** job from the **CI** workflow (see `.github/workflows/ci.yml`).
+- Direct pushes to `main` are disallowed for day-to-day changes.
+
+Step-by-step UI instructions: **`docs/Branch_Protection_Setup.md`** (TASK-055).
 
 ## Code quality
 

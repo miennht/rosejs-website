@@ -1,3 +1,4 @@
+# TASK-054: CI on pull_request and push to main — install, lint, test, typecheck, build, Playwright E2E.
 name: CI
 
 on:

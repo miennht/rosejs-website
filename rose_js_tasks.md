@@ -1775,7 +1775,7 @@ npm run test:e2e
 ## TASK-052: Create Pull Request Template
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SCM-007, CR-007  
 **Implementation Area:** DevOps, Documentation
 
@@ -1807,13 +1807,14 @@ Create a GitHub pull request template.
 ### Validation
 
 - Manual review.
+- **Implemented in repo:** `.github/pull_request_template.md` (sections: Summary, Related task IDs, Screenshots, Testing performed, Accessibility notes, SEO notes, Deployment risk, optional AI-First hints).
 
 ---
 
 ## TASK-053: Create GitHub Issue Templates
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SCM-007  
 **Implementation Area:** DevOps, Documentation
 
@@ -1837,13 +1838,14 @@ Create issue templates for bugs, features, and tasks.
 ### Validation
 
 - Manual review.
+- **Implemented in repo:** `.github/ISSUE_TEMPLATE/bug_report.md`, `feature_request.md`, `task.md`, and `config.yml` (traceability fields on each template).
 
 ---
 
 ## TASK-054: Configure GitHub Actions CI Workflow
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SCM-004, NFR-SCM-005, DEP-009, DEP-010  
 **Implementation Area:** CI/CD, DevOps, Testing
 
@@ -1884,13 +1886,14 @@ npm run test:e2e
 
 - Open a test pull request.
 - Confirm CI runs.
+- **Implemented in repo:** `.github/workflows/ci.yml` — job **`validate`**: `npm ci`, `npm run lint`, `npm run test`, `npm run typecheck`, `npm run build`, Playwright Chromium install, `npm run test:e2e` (supersedes optional E2E; aligns with Testing Strategy).
 
 ---
 
 ## TASK-055: Configure Branch Protection Rules
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SCM-003, DEP-012  
 **Implementation Area:** GitHub, DevOps
 
@@ -1908,6 +1911,7 @@ Configure branch protection for the production branch.
 ### Validation
 
 - Manual GitHub settings review.
+- **Repo artifact:** `docs/Branch_Protection_Setup.md` — step-by-step checklist (rulesets, require PR, required check **`validate`**, reviews, block direct pushes). **Human step:** apply settings in the GitHub UI for `main`.
 
 ---
 
