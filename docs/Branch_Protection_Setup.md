@@ -1,6 +1,21 @@
 # Branch protection for `main` (TASK-055)
 
-Branch protection is configured in the **GitHub repository settings**, not in this repo. After the **CI** workflow (`.github/workflows/ci.yml`) has run at least once on `main`, apply the following so merges stay safe and traceable.
+Branch protection lives in **GitHub repository settings**, not in git. This file is the checklist so what you enable in GitHub matches **`.github/workflows/ci.yml`**.
+
+## Map this repo’s CI to GitHub status checks
+
+| In `.github/workflows/ci.yml` | Value          |
+| ----------------------------- | -------------- |
+| Workflow `name:`              | **`CI`**       |
+| Job id (`jobs:`)              | **`validate`** |
+
+After at least one successful run on a PR (or on `main` via `push`), GitHub usually lists the required check under one of these labels (UI varies by rulesets vs classic branch rules):
+
+- **`CI / validate`** — most common (workflow display name + job id).
+- **`validate`** — sometimes shortened in the picker.
+- Occasionally a longer form such as **`CI / validate (pull_request)`** — same job; pick the one tied to this repository’s **CI** workflow.
+
+**What to require:** whichever entry above corresponds to the workflow file **`.github/workflows/ci.yml`** and job **`validate`**. Requiring the wrong workflow (another repo or a deleted workflow name) will not gate merges correctly.
 
 ## Steps (repository admin)
 
@@ -8,9 +23,9 @@ Branch protection is configured in the **GitHub repository settings**, not in th
 2. Target **`main`** (or a ruleset that applies to `main`).
 3. Enable **Require a pull request before merging** (no direct pushes to `main` for routine work).
 4. Optionally enable **Require approvals** (for example **1** reviewer) for AI-First / human review.
-5. Under **Require status checks to pass before merging**:
-   - Click the search box and add the job from this repo’s workflow **`CI`**.
-   - The check is usually listed as **`validate`** (job id in `.github/workflows/ci.yml`). If GitHub shows a compound name such as **`CI / validate`**, select that.
+5. Under **Require status checks to pass before merging** (or the ruleset equivalent):
+   - Use the search box and add the check mapped in the table above (**prefer `CI / validate` if both appear**).
+   - If no check appears yet, merge or push something to `main` or open a PR so **CI** runs once, then refresh the rules page.
 6. Optionally enable **Require branches to be up to date before merging** so the PR branch includes the latest `main` before merge.
 7. Optionally **Require conversation resolution before merging** for review threads.
 8. Save the ruleset or branch rule.
@@ -20,7 +35,9 @@ Branch protection is configured in the **GitHub repository settings**, not in th
 - **README.md** — branching strategy (GitHub Flow) and high-level protection plan.
 - **`docs/Tasks.md` TASK-055** — acceptance criteria (PRs required, status checks, restrict direct pushes, reviews as desired).
 
-## Validation
+## Validation (after you save in GitHub)
 
-- Open a small test PR and confirm the **validate** check appears and is required before merge.
-- Confirm direct push to `main` is blocked (if you enabled that restriction).
+- Open a small test PR and confirm a check named like **`CI / validate`** (or **`validate`**) is **required** and turns green when the workflow passes.
+- Confirm a direct push to `main` is blocked if you required PRs (use a harmless branch to test).
+
+This document cannot confirm your live GitHub settings; only the **Settings** UI (or GitHub API) reflects what is actually enabled.
