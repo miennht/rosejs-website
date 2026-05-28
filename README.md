@@ -88,13 +88,13 @@ Step-by-step UI instructions: **`docs/Branch_Protection_Setup.md`** (TASK-055).
 
 Hosting target for MVP is **Railway** (see `docs/Tasks.md` / DEC-003). This repo ships a **Node static server** so client-side routes work in production (SPA fallback to `index.html`).
 
-| Item           | Value                                                                                                                             |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| **Production** | **[https://rosejs.up.railway.app](https://rosejs.up.railway.app)** — live RoseJS site                                             |
-| Config         | `railway.json` — `npm ci && npm run build`, then `npm start`                                                                      |
-| Build output   | `dist/` (Vite)                                                                                                                    |
-| Start          | `node scripts/serve-prod.mjs` — serves `dist` with [`serve` `-s`](https://github.com/vercel/serve) (unknown paths → `index.html`) |
-| Listen         | `PORT` from Railway (falls back to `3000` locally)                                                                                |
+| Item           | Value                                                                                                                                               |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Production** | **[https://www.roseng.org](https://www.roseng.org)** — live RoseJS site (Railway; apex `roseng.org` should redirect to `www` when DNS is finalized) |
+| Config         | `railway.json` — `npm ci && npm run build`, then `npm start`                                                                                        |
+| Build output   | `dist/` (Vite)                                                                                                                                      |
+| Start          | `node scripts/serve-prod.mjs` — serves `dist` with [`serve` `-s`](https://github.com/vercel/serve) (unknown paths → `index.html`)                   |
+| Listen         | `PORT` from Railway (falls back to `3000` locally)                                                                                                  |
 
 **First-time setup (dashboard):**
 

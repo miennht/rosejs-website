@@ -24,7 +24,7 @@ describe('absoluteUrl', () => {
 
   it('uses placeholder when env is missing', () => {
     vi.stubEnv('VITE_SITE_URL', '')
-    expect(absoluteUrl('/contact')).toBe('https://www.rosejs.example/contact')
+    expect(absoluteUrl('/contact')).toBe('https://www.roseng.org/contact')
   })
 
   it('joins configured site URL with path', () => {

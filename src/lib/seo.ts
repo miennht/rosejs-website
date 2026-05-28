@@ -1,5 +1,5 @@
 /** Canonical production URL without trailing slash; used for OG URLs and JSON-LD. */
-export const SITE_URL_PLACEHOLDER = 'https://www.rosejs.example'
+export const SITE_URL_PLACEHOLDER = 'https://www.roseng.org'
 
 export const DEFAULT_SITE_TITLE = 'RoseJS — Healthcare software architecture consulting'
 

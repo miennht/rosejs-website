@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Hostname is a placeholder; set production VITE_SITE_URL and replace before launch. -->
+  <!-- Canonical production host: https://www.roseng.org -->
   <!-- Blog and case study detail URLs can be emitted at build time from CMS later (Architecture §12). -->
   <url>
-    <loc>https://www.rosejs.example/</loc>
+    <loc>https://www.roseng.org/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.rosejs.example/services</loc>
+    <loc>https://www.roseng.org/services</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.rosejs.example/about</loc>
+    <loc>https://www.roseng.org/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.rosejs.example/insights</loc>
+    <loc>https://www.roseng.org/insights</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.rosejs.example/case-studies</loc>
+    <loc>https://www.roseng.org/case-studies</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.rosejs.example/contact</loc>
+    <loc>https://www.roseng.org/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.rosejs.example/schedule</loc>
+    <loc>https://www.roseng.org/schedule</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

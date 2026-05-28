@@ -1,6 +1,8 @@
 # Domain and SSL (TASK-059)
 
-Final **hostname**, **DNS**, and **HTTPS** are chosen and applied in the hosting dashboard, not in this repository. Use this checklist when the production domain is ready (see **`docs/Tasks.md`** — TASK-059 may stay **Blocked** until that decision is final).
+**Production canonical host:** **https://www.roseng.org** (RoseJS on Railway).
+
+Final **hostname**, **DNS**, and **HTTPS** are applied in the hosting dashboard, not only in git. Use this checklist when adding or changing domains.
 
 ## Railway (MVP hosting)
 
@@ -22,4 +24,4 @@ After the domain is live:
 
 - Browser: site loads on **HTTPS**, deep links (e.g. `/services`) refresh correctly (SPA fallback).
 - External: SSL Labs or similar TLS check (optional).
-- **Human:** TASK-059 remains **Blocked** in `docs/Tasks.md` until the above is completed for the chosen production domain.
+- **Follow-up:** Ensure apex **`roseng.org`** redirects to **`https://www.roseng.org`** (apex may still point at a registrar parking page until DNS is updated).

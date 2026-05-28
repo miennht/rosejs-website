@@ -5,7 +5,7 @@ Search Console is configured in **Google’s UI** using the **production** URL. 
 ## Prerequisites
 
 - Production site is reachable on **HTTPS** (see **`docs/Domain_SSL_Setup.md`**).
-- Canonical site URL is decided (with or without `www`); use **one** preferred host and redirect the other if both exist.
+- Canonical site URL: **https://www.roseng.org** (redirect apex **`roseng.org`** to `www` if both are in DNS).
 
 ## Steps
 

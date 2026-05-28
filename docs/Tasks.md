@@ -1936,7 +1936,8 @@ Configure deployment through Railway, Vercel, Netlify, or GitHub Actions.
 
 - Preview deployment test.
 - Production deployment test.
-- **Implemented in repo:** `railway.json` pins **Railway** build to **`npm run build`** and start to **`npm start`**. Production static server uses **`serve` with `-s`** so deep links and refresh resolve to `index.html` (React Router). `scripts/serve-prod.mjs` binds **`0.0.0.0:$PORT`** for Railway. `.env.example` documents optional build/runtime variables. **README** documents first-time Railway wiring (GitHub connect, `main`, PR previews optional). **Human step:** connect the GitHub repo in the Railway UI and confirm a live deploy; enable PR previews there if desired.
+- **Implemented in repo:** `railway.json` pins **Railway** build to **`npm run build`** and start to **`npm start`**. Production static server uses **`serve` with `-s`** so deep links and refresh resolve to `index.html` (React Router). `scripts/serve-prod.mjs` binds **`0.0.0.0:$PORT`** for Railway. `.env.example` documents optional build/runtime variables. **README** documents first-time Railway wiring (GitHub connect, `main`, PR previews optional).
+- **Production verified:** **[https://www.roseng.org](https://www.roseng.org)** serves the RoseJS MVP (merge-to-`main` deploy on Railway). Optional: enable PR previews in Railway; set **`VITE_SITE_URL=https://www.roseng.org`** on the Railway **build** environment and redeploy so client-side OG/JSON-LD match the live host.
 
 ---
 
@@ -1973,6 +1974,7 @@ Use Railway for MVP hosting. Use Netlify if Netlify Forms is selected and you pr
 
 - Manual decision review.
 - **Implemented in repo:** **`docs/Architecture.md`** §26 (decision **3. Hosting provider: Railway**). **`docs/Deployment_Guide.md`** §7 (Railway build/start aligned with **`railway.json`** and **`npm start`**).
+- **Production:** MVP is live at **https://www.roseng.org** on Railway (DEC-003).
 
 ---
 
@@ -2017,7 +2019,7 @@ VITE_SANITY_DATASET=
 ## TASK-059: Connect Domain and SSL
 
 **Priority:** P0  
-**Status:** Blocked  
+**Status:** Done  
 **Source Requirements:** DEP-003, DEP-004  
 **Implementation Area:** Deployment, Security
 
@@ -2036,7 +2038,7 @@ Connect the final domain and enable HTTPS/SSL.
 
 - Manual browser test.
 - SSL check.
-- **Repo artifact:** **`docs/Domain_SSL_Setup.md`** — Railway custom domain, DNS, HTTPS, `VITE_SITE_URL`, sitemap/robots alignment. **`docs/Deployment_Guide.md`** §14. **Blocked until:** final production hostname is chosen and wired in Railway/DNS (see decision table in `docs/Tasks.md` / deployment docs).
+- **Production:** **https://www.roseng.org** — RoseJS site on Railway with HTTPS. **`public/sitemap.xml`**, **`public/robots.txt`**, and **`SITE_URL_PLACEHOLDER`** use **`https://www.roseng.org`**. **Follow-up:** apex **`roseng.org`** currently shows a Squarespace parking page; point apex DNS to Railway or add redirect to **`www`** (see **`docs/Domain_SSL_Setup.md`**).
 
 ---
 
@@ -2629,12 +2631,12 @@ TASK-071 to TASK-075 Validate Launch
 
 ## 24.2 Decision-Dependent Tasks
 
-| Task ID  | Decision Status                                         |
-| -------- | ------------------------------------------------------- |
-| TASK-014 | Resolved: CMS provider selected (Sanity)                |
-| TASK-029 | Resolved: Form provider selected (Formspree)            |
-| TASK-057 | Resolved: Hosting provider selected (Railway)           |
-| TASK-059 | Pending final production domain value during deployment |
+| Task ID  | Decision Status                                                                           |
+| -------- | ----------------------------------------------------------------------------------------- |
+| TASK-014 | Resolved: CMS provider selected (Sanity)                                                  |
+| TASK-029 | Resolved: Form provider selected (Formspree)                                              |
+| TASK-057 | Resolved: Hosting provider selected (Railway)                                             |
+| TASK-059 | Resolved: production host **https://www.roseng.org** (apex redirect to `www` recommended) |
 
 ---
 
