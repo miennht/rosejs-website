@@ -12,7 +12,7 @@ const PORT = Number(process.env.PORT) || 3000
 
 /** Crawler files: never SPA-fallback; return raw bytes or 404. */
 const FIXED_STATIC = {
-  '/sitemap.xml': 'application/xml',
+  '/sitemap.xml': 'application/xml; charset=utf-8',
   '/robots.txt': 'text/plain; charset=utf-8',
 }
 
@@ -31,7 +31,7 @@ const EXT_MIME = {
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
   '.txt': 'text/plain; charset=utf-8',
-  '.xml': 'application/xml',
+  '.xml': 'application/xml; charset=utf-8',
 }
 
 function resolveDistPath(pathname) {
@@ -62,13 +62,33 @@ function respond(res, status, headers, stream = null) {
   res.end()
 }
 
-async function serveFile(req, res, filePath, contentType) {
-  const headers = { 'Content-Type': contentType }
+async function buildFileHeaders(filePath, contentType) {
+  const info = await stat(filePath)
+  return {
+    'Content-Type': contentType,
+    'Content-Length': String(info.size),
+    ETag: `"${info.size}-${Math.trunc(info.mtimeMs)}"`,
+  }
+}
+
+async function serveFile(req, res, filePath, contentType, extraHeaders = {}) {
+  const fileHeaders = await buildFileHeaders(filePath, contentType)
+  const headers = { ...fileHeaders, ...extraHeaders }
+  if (req.headers['if-none-match'] === headers.ETag) {
+    respond(res, 304, headers)
+    return
+  }
   if (req.method === 'HEAD') {
     respond(res, 200, headers)
     return
   }
   respond(res, 200, headers, createReadStream(filePath))
+}
+
+/** Prevent MIME sniffing so XML is not parsed as HTML in the browser. */
+const CRAWLER_HEADERS = {
+  'X-Content-Type-Options': 'nosniff',
+  'Cache-Control': 'no-cache, must-revalidate',
 }
 
 const server = createServer(async (req, res) => {
@@ -87,7 +107,7 @@ const server = createServer(async (req, res) => {
       respond(res, 404, { 'Content-Type': 'text/plain; charset=utf-8' })
       return
     }
-    await serveFile(req, res, filePath, fixedType)
+    await serveFile(req, res, filePath, fixedType, CRAWLER_HEADERS)
     return
   }
 
