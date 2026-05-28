@@ -95,7 +95,7 @@ Hosting target for MVP is **Railway** (see `docs/Tasks.md` / DEC-003). This repo
 | **Production** | **[https://www.roseng.org](https://www.roseng.org)** — live RoseJS site (Railway; apex `roseng.org` should redirect to `www` when DNS is finalized) |
 | Config         | `railway.json` — `npm ci && npm run build`, then `npm start`                                                                                        |
 | Build output   | `dist/` (Vite)                                                                                                                                      |
-| Start          | `node scripts/serve-prod.mjs` — serves `dist` with [`serve` `-s`](https://github.com/vercel/serve) (unknown paths → `index.html`)                   |
+| Start          | `node scripts/serve-prod.mjs` — static `dist` + SPA fallback; `/sitemap.xml` and `/robots.txt` are never rewritten to `index.html`                  |
 | Listen         | `PORT` from Railway (falls back to `3000` locally)                                                                                                  |
 
 **First-time setup (dashboard):**
