@@ -30,7 +30,7 @@ This file is the canonical **`Deployment_Guide.md`** for **TASK-061**. Required 
 | Rollback process              | §16                                              |
 | Post-deployment verification  | §15.3, §18, §19                                  |
 
-**Related runbooks:** **`docs/Domain_SSL_Setup.md`** (TASK-059), **`docs/Google_Search_Console_Setup.md`** (TASK-060), **`docs/Branch_Protection_Setup.md`** (TASK-055).
+**Related runbooks:** **`docs/Domain_SSL_Setup.md`** (TASK-059), **`docs/Google_Search_Console_Setup.md`** (TASK-060), **`docs/Branch_Protection_Setup.md`** (TASK-055), **`docs/Production_Launch_Checklist.md`**, **`docs/Railway_Production_Variables.md`**.
 
 ### 1.2 Release quick path (TASK-061)
 

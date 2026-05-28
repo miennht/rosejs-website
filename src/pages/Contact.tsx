@@ -3,8 +3,12 @@ import { SEO } from '../components/seo/SEO.tsx'
 import { LinkButton } from '../components/ui/LinkButton.tsx'
 import { Container } from '../components/ui/Container.tsx'
 import { trackEvent } from '../lib/analytics.ts'
+import { getContactEmail, getLinkedInUrl } from '../lib/site.ts'
 
 export function Contact() {
+  const contactEmail = getContactEmail()
+  const linkedInUrl = getLinkedInUrl()
+
   return (
     <Container className="py-10">
       <SEO
@@ -25,11 +29,11 @@ export function Contact() {
           <div className="rounded-xl border border-border bg-surface/40 p-6">
             <h2 className="mb-2 text-lg font-semibold text-foreground">Schedule</h2>
             <p className="mb-4 text-sm text-muted">
-              Prefer a calendar block? Open the scheduling page for a Calendly link (configure
+              Prefer a calendar block? Use the scheduling page for Calendly (set
               <code className="mx-1 rounded bg-background px-1 py-0.5 text-xs">
                 VITE_CALENDLY_URL
               </code>
-              in production).
+              in Railway build variables).
             </p>
             <LinkButton
               to="/schedule"
@@ -43,31 +47,30 @@ export function Contact() {
           <div className="rounded-xl border border-border bg-surface/40 p-6">
             <h2 className="mb-2 text-lg font-semibold text-foreground">Direct email</h2>
             <p className="mb-3 text-sm text-muted">
-              Placeholder inbox until operations publishes the live address. Replace in deployment
-              docs and environment branding.
+              For procurement-friendly threads or attachments, email works well alongside the form.
             </p>
             <a
-              href="mailto:hello@rosejs.example"
+              href={`mailto:${contactEmail}`}
               className="text-sm font-medium text-foreground underline-offset-4 hover:underline"
             >
-              hello@rosejs.example
+              {contactEmail}
             </a>
           </div>
 
-          <div className="rounded-xl border border-border bg-surface/40 p-6">
-            <h2 className="mb-2 text-lg font-semibold text-foreground">LinkedIn</h2>
-            <p className="mb-3 text-sm text-muted">
-              Placeholder profile URL—swap for the founder or company page during launch prep.
-            </p>
-            <a
-              href="https://www.linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-foreground underline-offset-4 hover:underline"
-            >
-              LinkedIn (placeholder)
-            </a>
-          </div>
+          {linkedInUrl != null ? (
+            <div className="rounded-xl border border-border bg-surface/40 p-6">
+              <h2 className="mb-2 text-lg font-semibold text-foreground">LinkedIn</h2>
+              <p className="mb-3 text-sm text-muted">Connect with RoseJS on LinkedIn.</p>
+              <a
+                href={linkedInUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-foreground underline-offset-4 hover:underline"
+              >
+                LinkedIn profile
+              </a>
+            </div>
+          ) : null}
         </aside>
       </div>
     </Container>

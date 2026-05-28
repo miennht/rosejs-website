@@ -23,9 +23,9 @@ Search Console is configured in **Google’s UI** using the **production** URL. 
 | **HTML file** | Download the file Google names (e.g. `google0123….html`) into **`public/`** at repo root, commit, deploy, then verify. Remove the file after verification if Google no longer requires it.                                                      |
 | **DNS**       | Add the **TXT** record at your DNS host (no code change). Preferred for **Domain** properties.                                                                                                                                                  |
 
-4. After verification, open **Sitemaps** and submit your sitemap URL, for example:
-   - `https://<your-production-host>/sitemap.xml`
-   - Ensure `public/sitemap.xml` in the repo uses the same host (or rebuild after updating it / `VITE_SITE_URL` workflows).
+4. After verification, open **Sitemaps** and submit:
+   - **https://www.roseng.org/sitemap.xml**
+   - Repo file **`public/sitemap.xml`** should use the same host (already aligned for production).
 5. Use **Page indexing**, **Experience**, and **Enhancements** (if shown) over the following days to confirm crawling and fix obvious errors.
 
 ## Ongoing

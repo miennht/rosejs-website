@@ -17,6 +17,8 @@ Canonical project documentation lives in `docs/`:
 - `docs/Branch_Protection_Setup.md`
 - `docs/Domain_SSL_Setup.md`
 - `docs/Google_Search_Console_Setup.md`
+- `docs/Production_Launch_Checklist.md`
+- `docs/Railway_Production_Variables.md`
 - `docs/AI_Workflow_Guide.md`
 - `docs/Code_Review_Checklist.md`
 - `docs/SEO_Strategy.md`

@@ -83,21 +83,32 @@ Inventory connectors, publish schemas, and instrument cross-system journeys so d
     status: 'published',
   },
   {
-    id: 'post-sample',
-    title: 'Sample post (slug demo)',
-    slug: 'sample-post',
-    summary: 'Short demo article used for routing smoke tests and layout previews.',
-    body: `This placeholder post exists so local and preview environments can exercise the article layout and slug routing before CMS wiring is complete.
+    id: 'post-rcm',
+    title: 'Healthcare RCM platform modernization guide',
+    slug: 'healthcare-rcm-modernization-guide',
+    summary:
+      'A practical guide for payer and provider teams modernizing revenue cycle platforms without breaking compliance windows.',
+    body: `RCM modernization is not a lift-and-shift—it is a choreography problem across claims, enrollment, billing, and partner payloads.
 
-Replace this entry with editorial content from your CMS when available.`,
+Start with revenue-critical batch paths and the regulatory calendars that constrain them. Document payload contracts, idempotency, and who owns each exception queue before you swap vendors or carve services out of a monolith.
+
+RoseJS helps teams sequence strangler migrations, add contract tests for trading partners, and tie technical milestones to SLA metrics executives already track—so modernization funding survives the next audit cycle.`,
     author: authorRose,
-    publishedDate: '2025-01-10',
-    updatedDate: '2025-01-10',
-    tags: [],
-    relatedServiceSlugs: [],
+    publishedDate: '2026-05-10',
+    updatedDate: '2026-05-10',
+    tags: [
+      { id: 'tag-rcm', title: 'RCM', slug: 'rcm' },
+      { id: 'tag-payer', title: 'Payer', slug: 'payer' },
+    ],
+    category: { id: 'cat-engineering', title: 'Engineering', slug: 'engineering' },
+    relatedServiceSlugs: [
+      'healthcare-insurance-rcm-consulting',
+      'legacy-application-modernization',
+    ],
     seo: {
-      seoTitle: 'Sample post | RoseJS',
-      seoDescription: 'Demo blog article for RoseJS website scaffolding.',
+      seoTitle: 'Healthcare RCM platform modernization | RoseJS',
+      seoDescription:
+        'Guide to modernizing payer and provider RCM platforms with compliance-aware sequencing.',
     },
     status: 'published',
   },
