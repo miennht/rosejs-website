@@ -39,16 +39,11 @@ export function Home() {
       <SEO
         path="/"
         title="RoseJS | Healthcare software architecture consulting"
-        description="RoseJS helps healthcare technology teams modernize software platforms with architecture discipline and AI-first engineering practices."
+        description="RoseJS helps healthcare and insurance platforms modernize legacy systems, integrate APIs, and adopt AI-first engineering practices with disciplined delivery."
       />
       <Hero
-        title="RoseJS helps healthcare technology teams modernize software platforms with architecture discipline and AI-first engineering practices."
-        primaryCta={{ label: 'Schedule a consultation', to: '/schedule', variant: 'primary' }}
-        secondaryCta={{
-          label: 'Explore services',
-          to: '/services',
-          variant: 'secondary',
-        }}
+        title="Healthcare platform modernization with AI-first engineering discipline."
+        subtitle="RoseJS helps healthcare and insurance platforms modernize legacy systems, integrate APIs, and adopt AI-first engineering practices with disciplined delivery."
       />
 
       <ServicesOverview
@@ -57,7 +52,10 @@ export function Home() {
         description="Focused consulting engagements that connect business outcomes to technical execution."
         services={servicesOverview}
         footnote="RoseJS brings specialized depth in healthcare insurance, RCM workflows, cloud/API integration."
-        ctas={[{ label: 'Discuss your roadmap', to: '/contact', variant: 'primary' }]}
+        ctas={[
+          { label: 'Schedule a consultation', to: '/schedule', variant: 'primary' },
+          { label: 'Discuss your roadmap', to: '/contact', variant: 'secondary' },
+        ]}
       />
 
       <MethodologySection

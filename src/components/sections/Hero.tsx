@@ -6,16 +6,23 @@ import type { SectionCta } from './types.ts'
 export type HeroProps = {
   title: string
   subtitle?: ReactNode
-  /** Primary CTA (e.g. schedule consultation) */
-  primaryCta: SectionCta
-  /** Secondary CTA (e.g. explore services) */
+  showEyebrow?: boolean
+  primaryCta?: SectionCta
   secondaryCta?: SectionCta
   className?: string
 }
 
-export function Hero({ title, subtitle, primaryCta, secondaryCta, className = '' }: HeroProps) {
-  const ctas: SectionCta[] = secondaryCta ? [primaryCta, secondaryCta] : [primaryCta]
+export function Hero({
+  title,
+  subtitle,
+  showEyebrow = false,
+  primaryCta,
+  secondaryCta,
+  className = '',
+}: HeroProps) {
+  const ctas = [primaryCta, secondaryCta].filter((cta): cta is SectionCta => cta != null)
   const hasSubtitle = subtitle != null && subtitle !== ''
+  const hasCtas = ctas.length > 0
 
   return (
     <section
@@ -23,17 +30,23 @@ export function Hero({ title, subtitle, primaryCta, secondaryCta, className = ''
       aria-labelledby="hero-heading"
     >
       <Container>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted">RoseJS</p>
+        {showEyebrow ? (
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted">RoseJS</p>
+        ) : null}
         <h1
           id="hero-heading"
-          className={`max-w-3xl text-balance text-4xl font-semibold tracking-tight text-foreground md:text-5xl ${hasSubtitle ? 'mb-6' : 'mb-10'}`}
+          className={`max-w-3xl text-balance text-4xl font-semibold tracking-tight text-foreground md:text-5xl ${hasSubtitle ? 'mb-6' : hasCtas ? 'mb-10' : ''}`}
         >
           {title}
         </h1>
         {hasSubtitle ? (
-          <div className="mb-10 max-w-2xl text-lg text-muted md:text-xl">{subtitle}</div>
+          <div
+            className={`max-w-2xl text-lg leading-relaxed text-muted md:text-xl ${hasCtas ? 'mb-10' : ''}`}
+          >
+            {subtitle}
+          </div>
         ) : null}
-        <CtaRow ctas={ctas} />
+        {hasCtas ? <CtaRow ctas={ctas} /> : null}
       </Container>
     </section>
   )
