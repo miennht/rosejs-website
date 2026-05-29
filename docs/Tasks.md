@@ -2642,14 +2642,14 @@ TASK-071 to TASK-075 Validate Launch
 
 ## 24.2 Decision-Dependent Tasks
 
-| Task ID  | Decision Status                                                            |
-| -------- | -------------------------------------------------------------------------- |
-| TASK-014 | Resolved: CMS provider selected (Sanity)                                   |
-| TASK-029 | Resolved: Form provider selected (Formspree)                               |
-| TASK-057 | Resolved: Hosting provider selected (Railway)                              |
-| TASK-058 | Resolved: Railway production build variables configured (May 2026)         |
+| Task ID  | Decision Status                                                                |
+| -------- | ------------------------------------------------------------------------------ |
+| TASK-014 | Resolved: CMS provider selected (Sanity)                                       |
+| TASK-029 | Resolved: Form provider selected (Formspree)                                   |
+| TASK-057 | Resolved: Hosting provider selected (Railway)                                  |
+| TASK-058 | Resolved: Railway production build variables configured (May 2026)             |
 | TASK-059 | Resolved: apex **roseng.org** → **www.roseng.org**; live on Railway (May 2026) |
-| TASK-060 | Resolved: Search Console verified; sitemap submitted (May 2026)            |
+| TASK-060 | Resolved: Search Console verified; sitemap submitted (May 2026)                |
 
 ---
 

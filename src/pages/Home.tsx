@@ -61,6 +61,7 @@ export function Home() {
         title="Where RoseJS helps most"
         description="Focused consulting engagements that connect business outcomes to technical execution."
         services={servicesOverview}
+        footnote="RoseJS brings specialized depth in healthcare insurance, RCM workflows, cloud/API integration."
         ctas={[{ label: 'Discuss your roadmap', to: '/contact', variant: 'primary' }]}
       />
 

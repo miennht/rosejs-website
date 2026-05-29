@@ -14,6 +14,8 @@ export type ServicesOverviewProps = {
   title: string
   description?: ReactNode
   services: ServiceTeaser[]
+  /** Supporting copy rendered below the card grid */
+  footnote?: ReactNode
   ctas?: SectionCta[]
   className?: string
 }
@@ -23,6 +25,7 @@ export function ServicesOverview({
   title,
   description,
   services,
+  footnote,
   ctas,
   className = '',
 }: ServicesOverviewProps) {
@@ -45,6 +48,9 @@ export function ServicesOverview({
               </li>
             ))}
           </ul>
+          {footnote != null ? (
+            <p className="mt-8 max-w-3xl text-sm leading-relaxed text-muted">{footnote}</p>
+          ) : null}
           {ctas && ctas.length > 0 ? <CtaRow className="mt-10" ctas={ctas} /> : null}
         </Section>
       </Container>
