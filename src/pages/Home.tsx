@@ -1,9 +1,7 @@
 import { useLoaderData } from 'react-router-dom'
 import type { HomeLoaderData } from '../app/cmsLoaders.ts'
 import { CTASection } from '../components/sections/CTASection.tsx'
-import { FeaturedInsights } from '../components/sections/FeaturedInsights.tsx'
 import { Hero } from '../components/sections/Hero.tsx'
-import { LeadMagnetSection } from '../components/sections/LeadMagnetSection.tsx'
 import { MethodologySection } from '../components/sections/MethodologySection.tsx'
 import { ServicesOverview } from '../components/sections/ServicesOverview.tsx'
 import { TrustSection } from '../components/sections/TrustSection.tsx'
@@ -29,25 +27,22 @@ const methodologyPillars = [
 ]
 
 const trustPoints = [
-  'Healthcare and healthcare insurance domain experience',
-  'Enterprise-scale architecture and integration patterns',
-  'Security-minded defaults for forms, links, and content boundaries',
-  'Pragmatic modernization: reduce risk without boiling the ocean',
+  'Healthcare insurance, RCM, and payer-platform depth',
+  'Pragmatic modernization with validation gates and observability',
 ]
 
 export function Home() {
-  const { servicesOverview, featuredPosts, leadMagnetSection } = useLoaderData() as HomeLoaderData
+  const { servicesOverview } = useLoaderData() as HomeLoaderData
 
   return (
     <div>
       <SEO
         path="/"
         title="RoseJS | Healthcare software architecture consulting"
-        description="RoseJS helps healthcare insurance and healthcare technology teams modernize platforms, integrate systems, and ship AI-first software with disciplined architecture—from strategy to deployment."
+        description="RoseJS helps healthcare technology teams modernize software platforms with architecture discipline and AI-first engineering practices."
       />
       <Hero
-        title="Healthcare software architecture consulting—with AI-first engineering discipline."
-        subtitle="RoseJS helps healthcare insurance and healthcare technology teams modernize platforms, integrate systems, and ship securely—from strategy to deployment."
+        title="RoseJS helps healthcare technology teams modernize software platforms with architecture discipline and AI-first engineering practices."
         primaryCta={{ label: 'Schedule a consultation', to: '/schedule', variant: 'primary' }}
         secondaryCta={{
           label: 'Explore services',
@@ -72,21 +67,7 @@ export function Home() {
         pillars={methodologyPillars}
       />
 
-      <TrustSection eyebrow="Trust" title="Why teams work with RoseJS" points={trustPoints} />
-
-      <FeaturedInsights
-        eyebrow="Insights"
-        title="Featured writing"
-        description="Long-form guidance for leaders and architects—served from the CMS layer with local fallback until Sanity is connected."
-        posts={featuredPosts}
-      />
-
-      <LeadMagnetSection
-        eyebrow={leadMagnetSection.eyebrow}
-        title={leadMagnetSection.title}
-        description={leadMagnetSection.description}
-        ctas={leadMagnetSection.ctas}
-      />
+      <TrustSection compact title="Why teams work with RoseJS" points={trustPoints} />
 
       <CTASection
         eyebrow="Next step"
@@ -95,12 +76,6 @@ export function Home() {
         ctas={[
           { label: 'Schedule a consultation', to: '/schedule', variant: 'primary' },
           { label: 'Contact RoseJS', to: '/contact', variant: 'secondary' },
-          {
-            label: 'Repository',
-            href: 'https://github.com/miennht/rosejs-website',
-            variant: 'secondary',
-            external: true,
-          },
         ]}
       />
     </div>
