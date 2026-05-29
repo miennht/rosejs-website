@@ -29,6 +29,13 @@ export type HomeLoaderData = {
   }
 }
 
+/** Home page shows three primary offerings in a fixed order (see PRD / marketing). */
+const HOME_FEATURED_SERVICE_SLUGS = [
+  'software-architecture-consulting',
+  'legacy-application-modernization',
+  'ai-first-product-development',
+] as const
+
 export async function homePageLoader(): Promise<HomeLoaderData> {
   const [services, posts, magnets] = await Promise.all([
     getServices(),
@@ -36,7 +43,10 @@ export async function homePageLoader(): Promise<HomeLoaderData> {
     getLeadMagnets(),
   ])
 
-  const servicesOverview = services.slice(0, 6).map(mapServiceToOverviewTeaser)
+  const servicesOverview = HOME_FEATURED_SERVICE_SLUGS.flatMap((slug) => {
+    const service = services.find((s) => s.slug === slug)
+    return service != null ? [mapServiceToOverviewTeaser(service)] : []
+  })
   const featuredPosts = posts.slice(0, 2).map(mapBlogPostToInsightTeaser)
 
   const lead = magnets[0]

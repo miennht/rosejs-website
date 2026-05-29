@@ -10,7 +10,7 @@ export const fallbackServices: Service[] = [
     title: 'Software architecture consulting',
     slug: 'software-architecture-consulting',
     summary:
-      'Clarify bounded contexts, interfaces, and scaling paths for complex healthcare and payer platforms.',
+      'Clarify system boundaries, integration patterns, and scalable architecture paths for complex healthcare and payer platforms.',
     problemSolved:
       'Teams ship features faster than the architecture can safely absorb, creating coupling, outages, and audit risk.',
     description:
@@ -36,7 +36,7 @@ export const fallbackServices: Service[] = [
     title: 'Legacy application modernization',
     slug: 'legacy-application-modernization',
     summary:
-      'Reduce modernization risk with strangler patterns, validation gates, and observability that clinical workflows can trust.',
+      'Reduce modernization risk with strangler patterns, phased migration, observability, and validation gates.',
     problemSolved:
       'Monoliths and batch jobs block new regulations, integrations, and member experiences while attrition erodes institutional knowledge.',
     description:
@@ -61,7 +61,7 @@ export const fallbackServices: Service[] = [
     title: 'AI-first product development',
     slug: 'ai-first-product-development',
     summary:
-      'Ship AI-assisted features with review gates, data boundaries, and deployment discipline suited to regulated environments.',
+      'Ship AI-assisted features with human review, data boundaries, and deployment discipline suited to regulated environments.',
     problemSolved:
       'Teams want velocity from AI while compliance and safety teams need traceability and human accountability.',
     description:
