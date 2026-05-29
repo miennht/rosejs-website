@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test'
 test.describe('launch smoke (TASK-072)', () => {
   test('core routes render expected headings', async ({ page }) => {
     const routes: { path: string; heading: string | RegExp }[] = [
-      { path: '/', heading: /Healthcare software architecture/i },
+      { path: '/', heading: /RoseJS helps healthcare technology teams modernize/i },
       { path: '/services', heading: 'Services' },
       { path: '/services/software-architecture-consulting', heading: /software architecture/i },
       { path: '/about', heading: 'About RoseJS' },

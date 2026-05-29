@@ -5,7 +5,7 @@ import type { SectionCta } from './types.ts'
 
 export type HeroProps = {
   title: string
-  subtitle: ReactNode
+  subtitle?: ReactNode
   /** Primary CTA (e.g. schedule consultation) */
   primaryCta: SectionCta
   /** Secondary CTA (e.g. explore services) */
@@ -15,6 +15,7 @@ export type HeroProps = {
 
 export function Hero({ title, subtitle, primaryCta, secondaryCta, className = '' }: HeroProps) {
   const ctas: SectionCta[] = secondaryCta ? [primaryCta, secondaryCta] : [primaryCta]
+  const hasSubtitle = subtitle != null && subtitle !== ''
 
   return (
     <section
@@ -25,11 +26,13 @@ export function Hero({ title, subtitle, primaryCta, secondaryCta, className = ''
         <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted">RoseJS</p>
         <h1
           id="hero-heading"
-          className="mb-6 max-w-3xl text-balance text-4xl font-semibold tracking-tight text-foreground md:text-5xl"
+          className={`max-w-3xl text-balance text-4xl font-semibold tracking-tight text-foreground md:text-5xl ${hasSubtitle ? 'mb-6' : 'mb-10'}`}
         >
           {title}
         </h1>
-        <div className="mb-10 max-w-2xl text-lg text-muted md:text-xl">{subtitle}</div>
+        {hasSubtitle ? (
+          <div className="mb-10 max-w-2xl text-lg text-muted md:text-xl">{subtitle}</div>
+        ) : null}
         <CtaRow ctas={ctas} />
       </Container>
     </section>

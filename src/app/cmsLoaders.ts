@@ -1,6 +1,5 @@
 import type { LoaderFunctionArgs } from 'react-router-dom'
 import {
-  mapBlogPostToInsightTeaser,
   mapCaseStudyToCaseStudyCardProps,
   mapServiceToOverviewTeaser,
   mapServiceToServiceCardProps,
@@ -10,23 +9,13 @@ import {
   getBlogPosts,
   getCaseStudies,
   getCaseStudyBySlug,
-  getLeadMagnets,
   getServiceBySlug,
   getServices,
 } from '../cms/queries.ts'
-import type { InsightTeaser } from '../components/sections/FeaturedInsights.tsx'
-import type { SectionCta } from '../components/sections/types.ts'
 import type { BlogPost, CaseStudy, Service } from '../cms/types.ts'
 
 export type HomeLoaderData = {
   servicesOverview: Array<{ title: string; description: string }>
-  featuredPosts: InsightTeaser[]
-  leadMagnetSection: {
-    eyebrow: string
-    title: string
-    description: string
-    ctas: SectionCta[]
-  }
 }
 
 /** Home page shows three primary offerings in a fixed order (see PRD / marketing). */
@@ -37,45 +26,14 @@ const HOME_FEATURED_SERVICE_SLUGS = [
 ] as const
 
 export async function homePageLoader(): Promise<HomeLoaderData> {
-  const [services, posts, magnets] = await Promise.all([
-    getServices(),
-    getBlogPosts({ limit: 4 }),
-    getLeadMagnets(),
-  ])
+  const services = await getServices()
 
   const servicesOverview = HOME_FEATURED_SERVICE_SLUGS.flatMap((slug) => {
     const service = services.find((s) => s.slug === slug)
     return service != null ? [mapServiceToOverviewTeaser(service)] : []
   })
-  const featuredPosts = posts.slice(0, 2).map(mapBlogPostToInsightTeaser)
 
-  const lead = magnets[0]
-  const leadMagnetSection = lead
-    ? {
-        eyebrow: 'Lead magnet',
-        title: lead.title,
-        description: lead.summary,
-        ctas: [
-          { label: lead.ctaText, href: lead.fileUrl, variant: 'primary' as const },
-          { label: 'Talk through your context', to: '/contact', variant: 'secondary' as const },
-        ] satisfies SectionCta[],
-      }
-    : {
-        eyebrow: 'Lead magnet',
-        title: 'Legacy application modernization checklist',
-        description:
-          'A practical checklist teams can use to align stakeholders before a modernization program. Download wiring will connect to CMS or static assets later.',
-        ctas: [
-          {
-            label: 'Download checklist',
-            href: '/downloads/legacy-application-modernization-checklist.pdf',
-            variant: 'primary' as const,
-          },
-          { label: 'Talk through your context', to: '/contact', variant: 'secondary' as const },
-        ] satisfies SectionCta[],
-      }
-
-  return { servicesOverview, featuredPosts, leadMagnetSection }
+  return { servicesOverview }
 }
 
 export type ServicesLoaderData = {
