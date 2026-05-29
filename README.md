@@ -19,6 +19,7 @@ Canonical project documentation lives in `docs/`:
 - `docs/Google_Search_Console_Setup.md`
 - `docs/Production_Launch_Checklist.md`
 - `docs/Railway_Production_Variables.md`
+- `docs/Staging_Environment_Setup.md`
 - `docs/AI_Workflow_Guide.md`
 - `docs/Code_Review_Checklist.md`
 - `docs/SEO_Strategy.md`
@@ -57,14 +58,17 @@ Use utilities such as `bg-background`, `text-foreground`, `text-muted`, `border-
 This repository uses GitHub Flow.
 
 ```text
-main
+main       → production (Railway → www.roseng.org)
+develop    → staging / integration (Railway dev environment)
 feature/*
 fix/*
 docs/*
+content/*
 ```
 
-- `main` is the production-ready branch.
-- All code changes should be made in feature/fix/docs branches and merged via pull requests.
+- `main` is the production-ready branch; deploy only via reviewed PR from `develop` (see **`docs/Staging_Environment_Setup.md`**).
+- `develop` is the integration branch for dev deploys and QA before a release PR to `main`.
+- All code changes should be made in feature/fix/docs/content branches, merged into `develop` first (or commit directly on `develop` for small polish), then released to `main` via PR.
 - Branch names should be concise and descriptive, for example `feature/home-page`, `fix/mobile-nav`, `docs/deployment-guide`.
 
 ## Branch Protection Plan
@@ -104,6 +108,7 @@ Hosting target for MVP is **Railway** (see `docs/Tasks.md` / DEC-003). This repo
 2. Set the **production** environment to deploy from the **`main`** branch (disable auto-deploy from other branches unless you intend to).
 3. Under **Variables**, no secrets are required for the static MVP; Railway sets **`PORT`**. Use **Build**-scoped variables later for any `VITE_*` keys (see `.env.example`).
 4. (Optional) Enable **PR previews** / ephemeral environments in Railway so pull requests get preview URLs.
-5. After the first successful deploy, open `/`, `/services`, and `/contact`, then **hard refresh** each URL to confirm the SPA rewrite behaves correctly.
+5. Add a **staging** service or environment on branch **`develop`** — see **`docs/Staging_Environment_Setup.md`**.
+6. After the first successful deploy, open `/`, `/services`, and `/contact`, then **hard refresh** each URL to confirm the SPA rewrite behaves correctly.
 
 **Local production smoke test:** `npm run build && npm start`, then visit `http://127.0.0.1:3000/services`.

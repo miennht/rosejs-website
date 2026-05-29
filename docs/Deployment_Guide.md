@@ -137,6 +137,8 @@ Recommended providers:
 
 Preview deployment should be created automatically for pull requests when supported by the hosting provider.
 
+For ongoing dev-first work (branch **`develop`**, fixed Railway staging URL, release PR to **`main`**), see **`docs/Staging_Environment_Setup.md`**.
+
 ## 4.3 Production Environment
 
 Purpose:
