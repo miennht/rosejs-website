@@ -1936,8 +1936,8 @@ Configure deployment through Railway, Vercel, Netlify, or GitHub Actions.
 
 - Preview deployment test.
 - Production deployment test.
-- **Implemented in repo:** `railway.json` pins **Railway** build to **`npm run build`** and start to **`npm start`**. Production static server uses **`serve` with `-s`** so deep links and refresh resolve to `index.html` (React Router). `scripts/serve-prod.mjs` binds **`0.0.0.0:$PORT`** for Railway. `.env.example` documents optional build/runtime variables. **README** documents first-time Railway wiring (GitHub connect, `main`, PR previews optional).
-- **Production verified:** **[https://www.roseng.org](https://www.roseng.org)** serves the RoseJS MVP (merge-to-`main` deploy on Railway). Optional: enable PR previews in Railway; set **`VITE_SITE_URL=https://www.roseng.org`** on the Railway **build** environment and redeploy so client-side OG/JSON-LD match the live host.
+- **Implemented in repo:** `railway.json` pins **Railway** build to **`npm run build`** and start to **`npm start`**. `scripts/serve-prod.mjs` serves `dist/` with SPA fallback and raw **`/sitemap.xml`** / **`/robots.txt`** on **`0.0.0.0:$PORT`**. `.env.example` documents optional build/runtime variables. **README** documents first-time Railway wiring (GitHub connect, `main`, PR previews optional).
+- **Production verified (May 2026):** **[https://www.roseng.org](https://www.roseng.org)** serves the RoseJS MVP on Railway; custom domain **roseng.org** DNS pointed to Railway; merge-to-`main` deploys active.
 
 ---
 
@@ -2012,7 +2012,8 @@ VITE_SANITY_DATASET=
 
 - Manual security review.
 - Build succeeds in CI and hosting environment.
-- **Implemented in repo:** **`.env.example`** (browser-safe `VITE_*` with production examples). **`docs/Railway_Production_Variables.md`**, **`docs/Production_Launch_Checklist.md`**, **`docs/Deployment_Guide.md`** §8. **GitHub Actions:** current CI needs **no** repo secrets for lint/test/build/E2E. **Human step:** copy build variables into **Railway** and redeploy; complete Search Console and apex DNS per checklists.
+- **Implemented in repo:** **`.env.example`** (browser-safe `VITE_*` with production examples). **`docs/Railway_Production_Variables.md`**, **`docs/Production_Launch_Checklist.md`**, **`docs/Deployment_Guide.md`** §8. **GitHub Actions:** current CI needs **no** repo secrets for lint/test/build/E2E.
+- **Production (May 2026):** Build variables configured in **Railway** (operator confirmed); production redeploy completed with **`VITE_SITE_URL`** and integration variables per checklist.
 
 ---
 
@@ -2038,7 +2039,7 @@ Connect the final domain and enable HTTPS/SSL.
 
 - Manual browser test.
 - SSL check.
-- **Production:** **https://www.roseng.org** — RoseJS site on Railway with HTTPS. **`public/sitemap.xml`**, **`public/robots.txt`**, and **`SITE_URL_PLACEHOLDER`** use **`https://www.roseng.org`**. **Follow-up:** apex **`roseng.org`** currently shows a Squarespace parking page; point apex DNS to Railway or add redirect to **`www`** (see **`docs/Domain_SSL_Setup.md`**).
+- **Production (May 2026):** **https://www.roseng.org** — RoseJS site on Railway with HTTPS; custom domain **roseng.org** DNS pointed to Railway (operator confirmed). **`public/sitemap.xml`**, **`public/robots.txt`**, and **`SITE_URL_PLACEHOLDER`** use **`https://www.roseng.org`**. **Optional follow-up:** confirm apex **`https://roseng.org`** redirects to **`www`** if both records exist (see **`docs/Domain_SSL_Setup.md`**).
 
 ---
 
@@ -2063,7 +2064,8 @@ Configure Google Search Console for production domain.
 ### Validation
 
 - Manual Search Console verification.
-- **Implemented in repo:** **`docs/Google_Search_Console_Setup.md`** (property types, verification table, sitemap, monitoring); **`index.html`** commented **`google-site-verification`** placeholder for HTML-tag method; **`docs/Deployment_Guide.md`** §13.2. **Human step:** run the checklist in Google when the production domain is live.
+- **Implemented in repo:** **`docs/Google_Search_Console_Setup.md`** (property types, verification table, sitemap, monitoring); **`index.html`** commented **`google-site-verification`** placeholder for HTML-tag method; **`docs/Deployment_Guide.md`** §13.2.
+- **Production (May 2026):** Search Console property verified for **https://www.roseng.org**; **https://www.roseng.org/sitemap.xml** submitted (operator confirmed).
 
 ---
 
@@ -2325,7 +2327,7 @@ Create `Code_Review_Checklist.md`.
 ## TASK-069: Create Testing Strategy Document
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** MVP-017, Testing Coverage Matrix  
 **Implementation Area:** Documentation, Testing
 
@@ -2352,6 +2354,7 @@ Create `Testing_Strategy.md`.
 ### Validation
 
 - Manual documentation review.
+- **Implemented in repo:** **`docs/Testing_Strategy.md`** — unit, component, E2E, accessibility, SEO validation, CI expectations, and mocked CMS strategy aligned with Vitest, React Testing Library, and Playwright.
 
 ---
 
@@ -2390,7 +2393,7 @@ Create `Component_Map.md`.
 ## TASK-071: Run Full Local Validation
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** Definition of Done  
 **Implementation Area:** QA, Testing
 
@@ -2418,13 +2421,14 @@ npm run test:e2e
 
 - Command output.
 - Manual review.
+- **Done (May 2026):** `npm run lint`, `npm run typecheck`, `npm run test` (22 tests), `npm run build`, and `npm run test:e2e` (15 tests, CI uses **`scripts/serve-prod.mjs`**) all pass.
 
 ---
 
 ## TASK-072: Run Production Deployment Verification
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** DEP-001 to DEP-012, Definition of Done  
 **Implementation Area:** Deployment, QA
 
@@ -2453,13 +2457,14 @@ Validate the production deployment.
 ### Validation
 
 - Manual production verification.
+- **Done (May 2026):** **`npm run verify:production`** passes against **https://www.roseng.org** (HTTPS, core routes, sitemap, robots). E2E launch smoke covers navigation, contact validation, Calendly CTA, and lead-magnet PDF link. **Follow-up:** confirm Formspree receipt and Plausible pageviews in provider dashboards (§6 checklist).
 
 ---
 
 ## TASK-073: Run Accessibility Review
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-A11Y-001 to NFR-A11Y-005  
 **Implementation Area:** Accessibility, QA
 
@@ -2479,13 +2484,14 @@ Review accessibility across core pages.
 
 - Manual accessibility review.
 - Automated checks if available.
+- **Done (May 2026):** Component tests for navigation/forms; E2E mobile menu keyboard test (**`e2e/launch-smoke.spec.ts`**) — open, Tab focus trap, Escape closes; contact form label/error coverage in **`e2e/contact-form.spec.ts`**. Manual contrast/alt-text spot-check recommended before major content changes.
 
 ---
 
 ## TASK-074: Run SEO Launch Review
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-SEO-001 to NFR-SEO-008  
 **Implementation Area:** SEO, QA
 
@@ -2507,13 +2513,14 @@ Review SEO readiness before launch.
 
 - Manual SEO review.
 - Search Console setup.
+- **Done (May 2026):** **`e2e/seo-static.spec.ts`** validates sitemap/robots, per-page title + meta description, and single H1 on core routes. Search Console verified and sitemap submitted (TASK-060).
 
 ---
 
 ## TASK-075: Run Performance Review
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-PERF-001 to NFR-PERF-004  
 **Implementation Area:** Performance, QA
 
@@ -2532,6 +2539,7 @@ Review performance before launch.
 
 - Lighthouse check.
 - Manual performance review.
+- **Done (May 2026):** Production build reviewed — main JS bundle ~350 KB (~107 KB gzip), CSS ~19 KB (~4.5 KB gzip); static assets served from `dist/`. Run Lighthouse on **https://www.roseng.org** periodically; no blocker bundle-size issues for MVP.
 
 ---
 
@@ -2634,12 +2642,14 @@ TASK-071 to TASK-075 Validate Launch
 
 ## 24.2 Decision-Dependent Tasks
 
-| Task ID  | Decision Status                                                                           |
-| -------- | ----------------------------------------------------------------------------------------- |
-| TASK-014 | Resolved: CMS provider selected (Sanity)                                                  |
-| TASK-029 | Resolved: Form provider selected (Formspree)                                              |
-| TASK-057 | Resolved: Hosting provider selected (Railway)                                             |
-| TASK-059 | Resolved: production host **https://www.roseng.org** (apex redirect to `www` recommended) |
+| Task ID  | Decision Status                                                            |
+| -------- | -------------------------------------------------------------------------- |
+| TASK-014 | Resolved: CMS provider selected (Sanity)                                   |
+| TASK-029 | Resolved: Form provider selected (Formspree)                               |
+| TASK-057 | Resolved: Hosting provider selected (Railway)                              |
+| TASK-058 | Resolved: Railway production build variables configured (May 2026)         |
+| TASK-059 | Resolved: **roseng.org** DNS → Railway; live at **https://www.roseng.org** |
+| TASK-060 | Resolved: Search Console verified; sitemap submitted (May 2026)            |
 
 ---
 

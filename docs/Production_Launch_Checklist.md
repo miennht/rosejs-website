@@ -2,7 +2,9 @@
 
 Use after **https://www.roseng.org** is live on Railway. Check items in order; human-only steps link to runbooks.
 
-## 1. Railway build variables (TASK-058)
+**Status (May 2026):** TASK-056–061, TASK-069, and TASK-071–075 validation complete. Remaining items are optional operator follow-ups.
+
+## 1. Railway build variables (TASK-058) — done
 
 In **Railway → service → Variables → Build**, set (then **redeploy**):
 
@@ -16,19 +18,21 @@ In **Railway → service → Variables → Build**, set (then **redeploy**):
 | `VITE_LINKEDIN_URL`                              | Optional — full LinkedIn profile/company URL                     |
 | `VITE_SANITY_PROJECT_ID` / `VITE_SANITY_DATASET` | When Sanity replaces fallback content                            |
 
+- [x] Variables set in Railway and production redeployed (operator confirmed May 2026)
+
 See **`.env.example`** and **`docs/Deployment_Guide.md`** §8.
 
 ## 2. DNS apex (TASK-059 follow-up)
 
-- [ ] **https://www.roseng.org** loads the RoseJS app
-- [ ] **https://roseng.org** redirects to `www` (or serves the same app)—not a parking page
+- [x] **https://www.roseng.org** loads the RoseJS app
+- [ ] **https://roseng.org** redirects to `www` (or serves the same app)—confirm if both hostnames are in DNS
 - Details: **`docs/Domain_SSL_Setup.md`**
 
-## 3. Google Search Console (TASK-060)
+## 3. Google Search Console (TASK-060) — done
 
-- [ ] Property for **https://www.roseng.org/**
-- [ ] Ownership verified (HTML tag in **`index.html`** or DNS)
-- [ ] Sitemap submitted: **https://www.roseng.org/sitemap.xml**
+- [x] Property for **https://www.roseng.org/**
+- [x] Ownership verified (HTML tag in **`index.html`** or DNS)
+- [x] Sitemap submitted: **https://www.roseng.org/sitemap.xml**
 
 Runbook: **`docs/Google_Search_Console_Setup.md`**
 
@@ -38,27 +42,27 @@ Runbook: **`docs/Google_Search_Console_Setup.md`**
 
 Runbook: **`docs/Branch_Protection_Setup.md`**
 
-## 5. Production smoke test
+## 5. Production smoke test (TASK-072) — done
 
-After redeploy with build variables:
+Automated: **`npm run verify:production`** and **`npm run test:e2e`** (launch smoke + SEO static specs).
 
-- [ ] `/`, `/services`, `/services/software-architecture-consulting`
-- [ ] `/insights`, one article slug, `/case-studies`, one case study
-- [ ] `/contact` — validation + demo or Formspree submit
-- [ ] `/schedule` — Calendly link
-- [ ] Home — **Download checklist** PDF
-- [ ] Hard refresh on a deep link (SPA fallback)
-- [ ] Mobile nav — open, Tab through links, Escape closes
+- [x] `/`, `/services`, `/services/software-architecture-consulting`
+- [x] `/insights`, one article slug, `/case-studies`, one case study
+- [x] `/contact` — validation (E2E); live Formspree submit optional
+- [x] `/schedule` — Calendly link
+- [x] Home — **Download checklist** PDF link
+- [x] Hard refresh on a deep link (SPA fallback via **`serve-prod.mjs`**)
+- [x] Mobile nav — open, Tab through links, Escape closes
 
 Local equivalent: `npm run build && npm start` then `npm run test:e2e`.
 
 ## 6. Integrations
 
-- [ ] Formspree (or provider) receives test submission
+- [ ] Formspree (or provider) receives test submission on production
 - [ ] Plausible shows pageviews (if enabled)
-- [ ] Calendly opens correct event type
+- [ ] Calendly opens correct event type in browser
 
 ## 7. Content & docs (§21)
 
-- [ ] Fallback/CMS content reviewed (**TASK-062–064**)
-- [ ] **`docs/SEO_Strategy.md`**, **`docs/Content_Plan.md`** aligned with launch
+- [x] Fallback/CMS content reviewed (**TASK-062–064**)
+- [x] **`docs/SEO_Strategy.md`**, **`docs/Content_Plan.md`** aligned with launch

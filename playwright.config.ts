@@ -17,10 +17,11 @@ export default defineConfig({
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: isCi
     ? {
-        command: 'npx vite preview --host 127.0.0.1 --port 4173',
+        command: 'node scripts/serve-prod.mjs',
         url: baseURL,
         reuseExistingServer: false,
         timeout: 90_000,
+        env: { PORT: '4173' },
       }
     : {
         command: 'npm run dev -- --host 127.0.0.1 --port 5173',

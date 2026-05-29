@@ -37,4 +37,4 @@ Search Console is configured in **Google’s UI** using the **production** URL. 
 
 - Search Console shows the property as **verified**.
 - Sitemap status is **Success** (or errors are triaged).
-- **Human:** mark TASK-060 validation in `docs/Tasks.md` after you complete the above on the real production host.
+- **Done (May 2026):** property verified and **https://www.roseng.org/sitemap.xml** submitted — see TASK-060 in **`docs/Tasks.md`**.
