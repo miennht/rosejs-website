@@ -24,4 +24,4 @@ After the domain is live:
 
 - Browser: site loads on **HTTPS**, deep links (e.g. `/services`) refresh correctly (SPA fallback).
 - External: SSL Labs or similar TLS check (optional).
-- **Follow-up:** Ensure apex **`roseng.org`** redirects to **`https://www.roseng.org`** (apex may still point at a registrar parking page until DNS is updated).
+- **Done (May 2026):** Apex **https://roseng.org** redirects to **https://www.roseng.org** (operator confirmed).

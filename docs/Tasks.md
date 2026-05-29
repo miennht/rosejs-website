@@ -2039,7 +2039,7 @@ Connect the final domain and enable HTTPS/SSL.
 
 - Manual browser test.
 - SSL check.
-- **Production (May 2026):** **https://www.roseng.org** — RoseJS site on Railway with HTTPS; custom domain **roseng.org** DNS pointed to Railway (operator confirmed). **`public/sitemap.xml`**, **`public/robots.txt`**, and **`SITE_URL_PLACEHOLDER`** use **`https://www.roseng.org`**. **Optional follow-up:** confirm apex **`https://roseng.org`** redirects to **`www`** if both records exist (see **`docs/Domain_SSL_Setup.md`**).
+- **Production (May 2026):** **https://www.roseng.org** — RoseJS site on Railway with HTTPS; custom domain **roseng.org** DNS pointed to Railway. Apex **https://roseng.org** redirects to **`www`** (operator confirmed). **`public/sitemap.xml`**, **`public/robots.txt`**, and **`SITE_URL_PLACEHOLDER`** use **`https://www.roseng.org`**.
 
 ---
 
@@ -2648,7 +2648,7 @@ TASK-071 to TASK-075 Validate Launch
 | TASK-029 | Resolved: Form provider selected (Formspree)                               |
 | TASK-057 | Resolved: Hosting provider selected (Railway)                              |
 | TASK-058 | Resolved: Railway production build variables configured (May 2026)         |
-| TASK-059 | Resolved: **roseng.org** DNS → Railway; live at **https://www.roseng.org** |
+| TASK-059 | Resolved: apex **roseng.org** → **www.roseng.org**; live on Railway (May 2026) |
 | TASK-060 | Resolved: Search Console verified; sitemap submitted (May 2026)            |
 
 ---

@@ -22,10 +22,10 @@ In **Railway → service → Variables → Build**, set (then **redeploy**):
 
 See **`.env.example`** and **`docs/Deployment_Guide.md`** §8.
 
-## 2. DNS apex (TASK-059 follow-up)
+## 2. DNS apex (TASK-059) — done
 
 - [x] **https://www.roseng.org** loads the RoseJS app
-- [ ] **https://roseng.org** redirects to `www` (or serves the same app)—confirm if both hostnames are in DNS
+- [x] **https://roseng.org** redirects to `www` (operator confirmed May 2026)
 - Details: **`docs/Domain_SSL_Setup.md`**
 
 ## 3. Google Search Console (TASK-060) — done
