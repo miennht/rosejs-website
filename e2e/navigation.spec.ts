@@ -6,7 +6,7 @@ test.describe('primary navigation', () => {
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
   })
 
-  test('navigates to Services, About, Insights, Contact', async ({ page }) => {
+  test('navigates to Services, About, Insights, and Schedule', async ({ page }) => {
     await page.goto('/')
     const nav = page.getByRole('navigation', { name: 'Primary' }).first()
     await nav.getByRole('link', { name: 'Services' }).click()
@@ -21,9 +21,17 @@ test.describe('primary navigation', () => {
     await expect(page).toHaveURL(/\/insights$/)
     await expect(page.getByRole('heading', { name: 'Insights', level: 1 })).toBeVisible()
 
-    await nav.getByRole('link', { name: 'Contact' }).click()
-    await expect(page).toHaveURL(/\/contact$/)
-    await expect(page.getByRole('heading', { name: 'Contact', level: 1 })).toBeVisible()
+    await nav.getByRole('link', { name: 'Schedule' }).click()
+    await expect(page).toHaveURL(/\/schedule$/)
+    await expect(
+      page.getByRole('heading', { name: 'Schedule a consultation', level: 1 }),
+    ).toBeVisible()
+  })
+
+  test('logo links to homepage', async ({ page }) => {
+    await page.goto('/services')
+    await page.getByRole('link', { name: 'RoseJS', exact: true }).click()
+    await expect(page).toHaveURL(/\/$/)
   })
 
   test('invalid route shows 404', async ({ page }) => {

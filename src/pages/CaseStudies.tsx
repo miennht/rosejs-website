@@ -16,13 +16,14 @@ export function CaseStudies() {
       />
       <h1 className="mb-3 text-3xl font-semibold tracking-tight text-foreground">Case studies</h1>
       <p className="mb-10 max-w-2xl text-muted">
-        Narratives loaded via `getCaseStudies`. Names and identifiers are anonymized; copy is
-        written for pattern teaching, not client disclosure.
+        Anonymized examples of platform modernization, consolidation, and integration work in
+        healthcare and payer environments—written to teach patterns and outcomes, not to disclose
+        client details.
       </p>
 
       {cards.length === 0 ? (
         <p className="rounded-lg border border-dashed border-border bg-surface/30 px-4 py-8 text-center text-sm text-muted">
-          No case studies are published yet.
+          No case studies are published yet. Check back soon for new examples.
         </p>
       ) : (
         <ul className="grid gap-6 md:grid-cols-2">

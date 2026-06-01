@@ -17,8 +17,9 @@ export function Services() {
       />
       <h1 className="mb-3 text-3xl font-semibold tracking-tight text-foreground">Services</h1>
       <p className="mb-10 max-w-2xl text-muted">
-        Core offerings sourced through the CMS layer (`getServices`). Each card links to a detail
-        page with problem framing, outcomes, and related reading.
+        Consulting engagements for healthcare technology and eCommerce teams—architecture,
+        modernization, integration, and AI-first delivery. Each service includes problem framing,
+        outcomes, and related reading.
       </p>
       <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {cards.map((item) => (

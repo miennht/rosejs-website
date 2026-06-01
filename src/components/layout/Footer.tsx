@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Container } from '../ui/Container.tsx'
-import { PRIMARY_NAV_ITEMS } from './navConfig'
+import { FOOTER_NAV_ITEMS } from './navConfig'
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -19,7 +19,7 @@ export function Footer() {
           <nav aria-label="Footer" className="flex flex-col gap-2">
             <p className="text-xs font-semibold uppercase tracking-wider text-muted">Explore</p>
             <ul className="flex flex-col gap-1">
-              {PRIMARY_NAV_ITEMS.map(({ to, label }) => (
+              {FOOTER_NAV_ITEMS.map(({ to, label }) => (
                 <li key={to}>
                   <Link
                     to={to}

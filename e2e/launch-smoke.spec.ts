@@ -39,10 +39,10 @@ test.describe('mobile navigation (TASK-073)', () => {
     const nav = page.getByRole('dialog', { name: 'Site navigation' })
     await openMenu.click()
     await expect(nav).toBeVisible()
-    await expect(nav.getByRole('link', { name: 'Home' })).toBeFocused()
+    await expect(nav.getByRole('link', { name: 'Services' })).toBeFocused()
 
     await page.keyboard.press('Tab')
-    await expect(nav.getByRole('link', { name: 'Services' })).toBeFocused()
+    await expect(nav.getByRole('link', { name: 'About' })).toBeFocused()
 
     await page.keyboard.press('Escape')
     await expect(nav).toBeHidden()

@@ -17,13 +17,13 @@ export function Insights() {
       />
       <h1 className="mb-3 text-3xl font-semibold tracking-tight text-foreground">Insights</h1>
       <p className="mb-10 max-w-2xl text-muted">
-        Editorial content from the CMS query layer (`getBlogPosts`). Dates, categories, and tags
-        render when present in the normalized model.
+        Practical articles on healthcare platform modernization, integration strategy, technical
+        debt, and AI-first engineering for teams building reliable production systems.
       </p>
 
       {posts.length === 0 ? (
         <p className="rounded-lg border border-dashed border-border bg-surface/30 px-4 py-8 text-center text-sm text-muted">
-          No articles are published yet. Add content in the CMS or fallback modules.
+          No articles are published yet. Check back soon for new insights.
         </p>
       ) : (
         <ul className="grid gap-6 md:grid-cols-2">
