@@ -2,19 +2,11 @@ import { SEO } from '../components/seo/SEO.tsx'
 import { LinkButton } from '../components/ui/LinkButton.tsx'
 import { Container } from '../components/ui/Container.tsx'
 import { trackEvent } from '../lib/analytics.ts'
-
-const defaultCalendly = 'https://calendly.com/'
+import { getCalendlyEmbedSrc, getCalendlyUrl } from '../lib/calendly.ts'
 
 export function Schedule() {
-  const calendlyUrlRaw = import.meta.env.VITE_CALENDLY_URL as string | undefined
-  const calendlyUrl =
-    calendlyUrlRaw != null && calendlyUrlRaw.trim() !== '' ? calendlyUrlRaw.trim() : defaultCalendly
-  const embedEnabled = import.meta.env.VITE_CALENDLY_EMBED === 'true'
-  const showEmbed =
-    embedEnabled && calendlyUrl !== defaultCalendly && /calendly\.com/i.test(calendlyUrl)
-  const embedSrc = showEmbed
-    ? `${calendlyUrl}${calendlyUrl.includes('?') ? '&' : '?'}embed=true`
-    : null
+  const calendlyUrl = getCalendlyUrl()
+  const embedSrc = getCalendlyEmbedSrc(calendlyUrl)
 
   return (
     <Container className="py-10">
@@ -27,8 +19,8 @@ export function Schedule() {
         Schedule a consultation
       </h1>
       <p className="mb-8 max-w-2xl text-muted">
-        Use Calendly for a first conversation. This does not replace the contact form—send written
-        context anytime if that fits your procurement process better.
+        Pick a 30-minute slot on Calendly. You can also use the contact form if written context fits
+        your procurement process better.
       </p>
 
       <div className="mb-8 flex flex-wrap gap-3">
@@ -39,7 +31,7 @@ export function Schedule() {
           rel="noopener noreferrer"
           onClick={() => trackEvent('calendly_click', { source: 'schedule_page' })}
         >
-          Open Calendly
+          Open in Calendly
         </LinkButton>
         <LinkButton to="/contact" variant="secondary">
           Use contact form instead
@@ -52,23 +44,6 @@ export function Schedule() {
           src={embedSrc}
           className="mt-2 h-[min(700px,80vh)] w-full max-w-3xl rounded-lg border border-border"
         />
-      ) : null}
-
-      {calendlyUrl === defaultCalendly ? (
-        <p className="max-w-2xl text-sm text-muted">
-          Set <code className="rounded bg-surface px-1 py-0.5 text-xs">VITE_CALENDLY_URL</code> to
-          your real Calendly scheduling link. Until then, the button opens calendly.com as a neutral
-          placeholder.
-        </p>
-      ) : null}
-
-      {!showEmbed && calendlyUrl !== defaultCalendly ? (
-        <p className="mt-6 max-w-2xl text-sm text-muted">
-          Optional: set{' '}
-          <code className="rounded bg-surface px-1 py-0.5 text-xs">VITE_CALENDLY_EMBED</code> to{' '}
-          <code className="rounded bg-surface px-1 py-0.5 text-xs">true</code> to show an embedded
-          scheduler on this page (Architecture §10).
-        </p>
       ) : null}
     </Container>
   )
