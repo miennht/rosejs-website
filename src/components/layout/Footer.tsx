@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import { BRAND_NAME, BRAND_TAGLINE, DOMAIN_LABEL } from '../../lib/brand.ts'
-import { siteUrlOrPlaceholder } from '../../lib/seo.ts'
+import { BRAND_NAME, BRAND_TAGLINE } from '../../lib/brand.ts'
 import { Container } from '../ui/Container.tsx'
 import { FOOTER_NAV_ITEMS } from './navConfig'
 
@@ -14,14 +13,8 @@ export function Footer() {
           <div>
             <p className="text-sm font-semibold text-foreground">{BRAND_TAGLINE}</p>
             <p className="mt-2 max-w-sm text-sm text-muted">
-              {BRAND_NAME} — healthcare software architecture and AI-first engineering consulting.
+              Healthcare software architecture and AI-first engineering consulting.
             </p>
-            <a
-              href={siteUrlOrPlaceholder()}
-              className="mt-2 inline-block text-sm text-foreground underline-offset-4 hover:underline"
-            >
-              {DOMAIN_LABEL}
-            </a>
             <p className="mt-4 text-xs text-muted">
               © {year} {BRAND_NAME}. All rights reserved.
             </p>
