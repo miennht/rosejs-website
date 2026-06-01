@@ -2361,7 +2361,7 @@ Create `Testing_Strategy.md`.
 ## TASK-070: Create Component Map Document
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** Component Architecture, NFR-MAINT-001  
 **Implementation Area:** Documentation, Frontend
 
@@ -2385,7 +2385,7 @@ Create `Component_Map.md`.
 ### Validation
 
 - Manual documentation review.
-- **Outstanding:** **`docs/Component_Map.md`** is still a TASK-004 placeholder; flesh out inventory and page-to-component mapping before marking Done.
+- **Done (June 2026):** **`docs/Component_Map.md`** — layer overview, component inventory (layout, UI, SEO, cards, sections, forms), CMS/loaders, page-to-component table, analytics touchpoints, and extension checklist.
 
 ---
 
