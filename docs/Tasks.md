@@ -2385,6 +2385,7 @@ Create `Component_Map.md`.
 ### Validation
 
 - Manual documentation review.
+- **Outstanding:** **`docs/Component_Map.md`** is still a TASK-004 placeholder; flesh out inventory and page-to-component mapping before marking Done.
 
 ---
 
@@ -2458,6 +2459,7 @@ Validate the production deployment.
 
 - Manual production verification.
 - **Done (May 2026):** **`npm run verify:production`** passes against **https://www.roseng.org** (HTTPS, core routes, sitemap, robots). E2E launch smoke covers navigation, contact validation, Calendly CTA, and lead-magnet PDF link. **Follow-up:** confirm Formspree receipt and Plausible pageviews in provider dashboards (§6 checklist).
+- **Re-verified (June 2026):** After **`develop` → `main`** release (PR #7) and Railway 502 target-port fix, **`origin/develop`** and **`origin/main`** are aligned at **`96ca507`**; **`npm run verify:production`** — all 13 checks passed.
 
 ---
 
@@ -2548,7 +2550,7 @@ Review performance before launch.
 ## TASK-076: Document Future Backend Expansion Boundaries
 
 **Priority:** P1  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-API-002, Future Scope  
 **Implementation Area:** Architecture, Documentation
 
@@ -2575,13 +2577,14 @@ Document how future backend/database functionality could be added without rewrit
 ### Validation
 
 - Manual architecture review.
+- **Done:** **`docs/Architecture.md`** §3.3 (future stack diagram), §19.3 (backend-ready integration boundaries in `src/lib/*` and `src/cms/`), and future capability list (client portal, CRM, intake, AI assistant, payments, resource library, admin dashboard). No custom backend shipped in MVP.
 
 ---
 
 ## TASK-077: Document No Backend/Database MVP Decision
 
 **Priority:** P0  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-DB-001, NFR-API-001, ADR-003, ADR-004  
 **Implementation Area:** Documentation, Architecture
 
@@ -2599,6 +2602,7 @@ Ensure the no custom backend/database decision is documented in project docs.
 ### Validation
 
 - Manual documentation review.
+- **Done:** **`docs/PRD.md`** (NFR-DB/API, stack table, Definition of Done), **`docs/Architecture.md`** §19.1–19.2 and **ADR-003**, **`docs/Tasks.md`** §1 and §28 (AI agent rules), **`docs/AI_Workflow_Guide.md`** (MVP scope via Architecture/Tasks references). **`README.md`** describes static Railway MVP hosting without a custom API layer.
 
 ---
 
@@ -2650,6 +2654,7 @@ TASK-071 to TASK-075 Validate Launch
 | TASK-058 | Resolved: Railway production build variables configured (May 2026)             |
 | TASK-059 | Resolved: apex **roseng.org** → **www.roseng.org**; live on Railway (May 2026) |
 | TASK-060 | Resolved: Search Console verified; sitemap submitted (May 2026)                |
+| Release  | **June 2026:** `develop` and `main` synchronized at `96ca507` (PR #7 + Railway `/health` fix); production **`npm run verify:production`** green |
 
 ---
 
