@@ -15,6 +15,10 @@ test.describe('SEO static files (TASK-072 / TASK-074)', () => {
     expect(body).toMatch(/^<\?xml/)
     expect(body).toContain('<urlset')
     expect(body).toContain('<loc>https://www.roseng.org/</loc>')
+    expect(body).toContain(
+      '<loc>https://www.roseng.org/services/software-architecture-consulting</loc>',
+    )
+    expect(body).toContain('<loc>https://www.roseng.org/insights/legacy-modernization</loc>')
     expect(body).not.toContain('<!doctype html>')
   })
 

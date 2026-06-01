@@ -1,10 +1,11 @@
+import { BRAND_NAME, DOMAIN_LABEL } from './brand.ts'
+
 /** Canonical production URL without trailing slash; used for OG URLs and JSON-LD. */
 export const SITE_URL_PLACEHOLDER = 'https://www.roseng.org'
 
-export const DEFAULT_SITE_TITLE = 'RoseJS — Healthcare software architecture consulting'
+export const DEFAULT_SITE_TITLE = `${BRAND_NAME} | ${DOMAIN_LABEL} — Healthcare software architecture consulting`
 
-export const DEFAULT_SITE_DESCRIPTION =
-  'RoseJS helps healthcare and payer teams modernize platforms, integrate systems, and ship AI-first software with disciplined architecture and delivery.'
+export const DEFAULT_SITE_DESCRIPTION = `${BRAND_NAME} (${DOMAIN_LABEL}) helps healthcare and payer teams modernize platforms, integrate systems, and ship AI-first software with disciplined architecture and delivery.`
 
 export function getSiteUrl(): string | undefined {
   const raw = import.meta.env.VITE_SITE_URL as string | undefined

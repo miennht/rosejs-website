@@ -2516,6 +2516,7 @@ Review SEO readiness before launch.
 - Manual SEO review.
 - Search Console setup.
 - **Done (May 2026):** **`e2e/seo-static.spec.ts`** validates sitemap/robots, per-page title + meta description, and single H1 on core routes. Search Console verified and sitemap submitted (TASK-060).
+- **Done (June 2026):** Option A brand/domain (**`docs/Brand_and_Domain.md`**); build-time sitemap (`scripts/generate-sitemap.mjs`) with all published CMS slugs; canonical links; indexing runbook (**`docs/Search_Indexing_Runbook.md`**).
 
 ---
 
@@ -2646,14 +2647,14 @@ TASK-071 to TASK-075 Validate Launch
 
 ## 24.2 Decision-Dependent Tasks
 
-| Task ID  | Decision Status                                                                |
-| -------- | ------------------------------------------------------------------------------ |
-| TASK-014 | Resolved: CMS provider selected (Sanity)                                       |
-| TASK-029 | Resolved: Form provider selected (Formspree)                                   |
-| TASK-057 | Resolved: Hosting provider selected (Railway)                                  |
-| TASK-058 | Resolved: Railway production build variables configured (May 2026)             |
-| TASK-059 | Resolved: apex **roseng.org** → **www.roseng.org**; live on Railway (May 2026) |
-| TASK-060 | Resolved: Search Console verified; sitemap submitted (May 2026)                |
+| Task ID  | Decision Status                                                                                                                                 |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| TASK-014 | Resolved: CMS provider selected (Sanity)                                                                                                        |
+| TASK-029 | Resolved: Form provider selected (Formspree)                                                                                                    |
+| TASK-057 | Resolved: Hosting provider selected (Railway)                                                                                                   |
+| TASK-058 | Resolved: Railway production build variables configured (May 2026)                                                                              |
+| TASK-059 | Resolved: apex **roseng.org** → **www.roseng.org**; live on Railway (May 2026)                                                                  |
+| TASK-060 | Resolved: Search Console verified; sitemap submitted (May 2026)                                                                                 |
 | Release  | **June 2026:** `develop` and `main` synchronized at `96ca507` (PR #7 + Railway `/health` fix); production **`npm run verify:production`** green |
 
 ---

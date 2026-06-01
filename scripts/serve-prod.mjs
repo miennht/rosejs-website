@@ -10,9 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DIST = path.resolve(__dirname, '..', 'dist')
 const portRaw = process.env.PORT
 const PORT =
-  portRaw != null && portRaw !== '' && Number.isFinite(Number(portRaw))
-    ? Number(portRaw)
-    : 3000
+  portRaw != null && portRaw !== '' && Number.isFinite(Number(portRaw)) ? Number(portRaw) : 3000
 
 /** Crawler files: never SPA-fallback; return raw bytes or 404. */
 const FIXED_STATIC = {

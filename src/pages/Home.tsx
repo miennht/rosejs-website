@@ -5,6 +5,7 @@ import { Hero } from '../components/sections/Hero.tsx'
 import { MethodologySection } from '../components/sections/MethodologySection.tsx'
 import { ServicesOverview } from '../components/sections/ServicesOverview.tsx'
 import { TrustSection } from '../components/sections/TrustSection.tsx'
+import { brandWithDomainSentence } from '../lib/brand.ts'
 import { SEO } from '../components/seo/SEO.tsx'
 
 const methodologyPillars = [
@@ -39,11 +40,11 @@ export function Home() {
       <SEO
         path="/"
         title="RoseJS | Healthcare software architecture consulting"
-        description="RoseJS helps healthcare and insurance platforms modernize legacy systems, integrate APIs, and adopt AI-first engineering practices with disciplined delivery."
+        description={`${brandWithDomainSentence()} helps healthcare and insurance platforms modernize legacy systems, integrate APIs, and adopt AI-first engineering practices with disciplined delivery.`}
       />
       <Hero
         title="Healthcare platform modernization with AI-first engineering discipline."
-        subtitle="RoseJS helps healthcare and insurance platforms modernize legacy systems, integrate APIs, and adopt AI-first engineering practices with disciplined delivery."
+        subtitle={`${brandWithDomainSentence()} helps healthcare and insurance platforms modernize legacy systems, integrate APIs, and adopt AI-first engineering practices with disciplined delivery.`}
       />
 
       <ServicesOverview

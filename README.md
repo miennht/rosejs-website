@@ -1,6 +1,6 @@
 # RoseJS Website
 
-Initial repository placeholder for the RoseJS website MVP.
+Marketing site for **RoseJS** (brand) at **https://www.roseng.org** (domain **roseng.org**). See **`docs/Brand_and_Domain.md`**.
 
 This project is an AI-first healthcare software architecture consulting website built with React + Vite, TypeScript, and Tailwind CSS.
 

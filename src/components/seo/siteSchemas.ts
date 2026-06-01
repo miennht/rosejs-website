@@ -1,4 +1,5 @@
 import type { BlogPost, CaseStudy } from '../../cms/types.ts'
+import { DOMAIN_LABEL, BRAND_NAME } from '../../lib/brand.ts'
 import { DEFAULT_SITE_DESCRIPTION, absoluteUrl, siteUrlOrPlaceholder } from '../../lib/seo.ts'
 
 export function organizationGraphSchema() {
@@ -9,7 +10,8 @@ export function organizationGraphSchema() {
       {
         '@type': 'Organization',
         '@id': `${url}#organization`,
-        name: 'RoseJS',
+        name: BRAND_NAME,
+        alternateName: DOMAIN_LABEL,
         url,
         description: DEFAULT_SITE_DESCRIPTION,
       },
@@ -42,7 +44,12 @@ export function blogPostingSchema(post: BlogPost) {
       ...(post.author.role != null ? { jobTitle: post.author.role } : {}),
     },
     ...(post.tags.length > 0 ? { keywords: post.tags.map((t) => t.title).join(', ') } : {}),
-    publisher: { '@type': 'Organization', name: 'RoseJS', url: siteUrlOrPlaceholder() },
+    publisher: {
+      '@type': 'Organization',
+      name: BRAND_NAME,
+      alternateName: DOMAIN_LABEL,
+      url: siteUrlOrPlaceholder(),
+    },
   }
 }
 
@@ -56,6 +63,11 @@ export function caseStudyArticleSchema(study: CaseStudy) {
     url: pageUrl,
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
     articleSection: 'Case study',
-    publisher: { '@type': 'Organization', name: 'RoseJS', url: siteUrlOrPlaceholder() },
+    publisher: {
+      '@type': 'Organization',
+      name: BRAND_NAME,
+      alternateName: DOMAIN_LABEL,
+      url: siteUrlOrPlaceholder(),
+    },
   }
 }

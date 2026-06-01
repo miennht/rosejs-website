@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import { BRAND_NAME, BRAND_TAGLINE, DOMAIN_LABEL } from '../../lib/brand.ts'
+import { siteUrlOrPlaceholder } from '../../lib/seo.ts'
 import { Container } from '../ui/Container.tsx'
 import { FOOTER_NAV_ITEMS } from './navConfig'
 
@@ -10,11 +12,19 @@ export function Footer() {
       <Container className="py-10">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div>
-            <p className="text-sm font-semibold text-foreground">RoseJS</p>
+            <p className="text-sm font-semibold text-foreground">{BRAND_TAGLINE}</p>
             <p className="mt-2 max-w-sm text-sm text-muted">
-              Healthcare software architecture and AI-first engineering consulting.
+              {BRAND_NAME} — healthcare software architecture and AI-first engineering consulting.
             </p>
-            <p className="mt-4 text-xs text-muted">© {year} RoseJS. All rights reserved.</p>
+            <a
+              href={siteUrlOrPlaceholder()}
+              className="mt-2 inline-block text-sm text-foreground underline-offset-4 hover:underline"
+            >
+              {DOMAIN_LABEL}
+            </a>
+            <p className="mt-4 text-xs text-muted">
+              © {year} {BRAND_NAME}. All rights reserved.
+            </p>
           </div>
           <nav aria-label="Footer" className="flex flex-col gap-2">
             <p className="text-xs font-semibold uppercase tracking-wider text-muted">Explore</p>

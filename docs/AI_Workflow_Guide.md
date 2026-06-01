@@ -37,6 +37,10 @@ How AI-assisted work fits this repository and future AI-First templates.
 - E2E for critical journeys only (`e2e/`).
 - No tests that only assert implementation details.
 
+## Brand and domain (Option A)
+
+- **Brand:** RoseJS · **Domain:** roseng.org · **Canonical:** https://www.roseng.org — **`docs/Brand_and_Domain.md`**.
+
 ## Documentation workflow
 
 - Update **`docs/Tasks.md`** status and validation when completing tasks.

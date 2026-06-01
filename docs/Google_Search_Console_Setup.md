@@ -1,6 +1,10 @@
 # Google Search Console (TASK-060)
 
-Search Console is configured in **Google’s UI** using the **production** URL. This document is the repeatable checklist; it does not replace verifying the property in Google.
+Search Console is configured in **Google’s UI** using the **production** URL.
+
+**Brand:** RoseJS · **Domain:** roseng.org · **Canonical:** https://www.roseng.org — see **`docs/Brand_and_Domain.md`**.
+
+For full indexing steps after deploy, see **`docs/Search_Indexing_Runbook.md`**.
 
 ## Prerequisites
 
@@ -25,8 +29,9 @@ Search Console is configured in **Google’s UI** using the **production** URL. 
 
 4. After verification, open **Sitemaps** and submit:
    - **https://www.roseng.org/sitemap.xml**
-   - Repo file **`public/sitemap.xml`** should use the same host (already aligned for production).
-5. Use **Page indexing**, **Experience**, and **Enhancements** (if shown) over the following days to confirm crawling and fix obvious errors.
+   - Sitemap is **generated at build** (`npm run generate:sitemap`) from published CMS slugs — re-submit after each production release.
+5. **URL inspection** → request indexing for `/`, `/services`, `/about`, and one article URL (see **`docs/Search_Indexing_Runbook.md`**).
+6. Use **Page indexing** over the following days; validate with `site:roseng.org` weekly.
 
 ## Ongoing
 

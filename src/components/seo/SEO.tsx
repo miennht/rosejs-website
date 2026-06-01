@@ -68,9 +68,25 @@ export function SEO({ title, description, path, ogImage, ogType = 'website' }: S
     setMeta('name', 'twitter:title', ogTitle)
     setMeta('name', 'twitter:description', ogDesc)
 
+    let canonicalEl = document.querySelector(
+      `link[rel="canonical"][${SEO_MARK}]`,
+    ) as HTMLLinkElement | null
+    if (pageUrl != null) {
+      if (canonicalEl == null) {
+        canonicalEl = document.createElement('link')
+        canonicalEl.setAttribute('rel', 'canonical')
+        canonicalEl.setAttribute(SEO_MARK, 'true')
+        document.head.appendChild(canonicalEl)
+      }
+      canonicalEl.setAttribute('href', pageUrl)
+    } else if (canonicalEl != null) {
+      canonicalEl.remove()
+    }
+
     return () => {
       document.title = previousTitle
       removeManagedMeta()
+      document.querySelector(`link[rel="canonical"][${SEO_MARK}]`)?.remove()
       if (previousDescription != null && previousDescription !== '') {
         descMeta.setAttribute('content', previousDescription)
       } else {

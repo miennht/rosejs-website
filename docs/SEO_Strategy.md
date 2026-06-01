@@ -1,6 +1,8 @@
 # SEO Strategy — RoseJS (TASK-065)
 
-Canonical site: **https://www.roseng.org**. SPA metadata is client-side (`src/components/seo/SEO.tsx`); static **`public/sitemap.xml`** and **`public/robots.txt`** support crawlers.
+**Brand:** **RoseJS** · **Domain:** **roseng.org** · **Canonical URL:** **https://www.roseng.org**
+
+See **`docs/Brand_and_Domain.md`** (Option A). SPA metadata is client-side (`src/components/seo/SEO.tsx`); **`public/sitemap.xml`** is generated at build; **`public/robots.txt`** references the sitemap.
 
 ## Keyword clusters (healthcare / payer)
 
@@ -12,11 +14,15 @@ Canonical site: **https://www.roseng.org**. SPA metadata is client-side (`src/co
 | RCM / payer integration          | Revenue cycle, APIs         | RCM service, RCM blog, case studies |
 | Technical debt / assessment      | Prioritization              | Service detail, lead magnet         |
 
+Branded queries to monitor: **RoseJS**, **roseng.org**, **RoseJS healthcare** (not bare `roseng` alone).
+
 ## Page-level SEO
 
-- **Unique** `title` and `meta description` per route via **`SEO`** component.
-- **`VITE_SITE_URL`** in production builds for `og:url` and JSON-LD (`src/lib/seo.ts`).
+- **Unique** `title` and `meta description` per route via **`SEO`** component; **`rel=canonical`** when `path` is set.
+- **`VITE_SITE_URL`** in production builds for canonical, `og:url`, and JSON-LD (`src/lib/seo.ts`).
+- Static **`index.html`** uses `RoseJS (roseng.org)` in the default description for first crawl.
 - CMS routes use **`seo.seoTitle`** / **`seo.seoDescription`** from fallback or Sanity.
+- JSON-LD **`Organization`** uses `name: RoseJS`, `alternateName: roseng.org`.
 
 ## Blog topic plan (launch)
 
@@ -31,22 +37,23 @@ Publish via CMS when connected; fallback content lives under **`src/content/fall
 
 - Service detail → related insights and case studies (loaders).
 - Insights articles → related services.
-- Home → services overview, featured insights, lead magnet, schedule/contact CTAs.
-- Footer/header primary nav covers all core routes.
+- Home → services overview, schedule/contact CTAs.
+- Footer/header primary nav covers all core routes; footer links **roseng.org**.
 
 ## Sitemap and indexing
 
-- Static sitemap: **`public/sitemap.xml`** (core routes; expand when CMS slugs are stable).
-- **`public/robots.txt`** references sitemap URL.
-- Submit sitemap in **Google Search Console**: **`docs/Google_Search_Console_Setup.md`**.
+- **Build:** `npm run generate:sitemap` → **`public/sitemap.xml`** (core routes + published service, insight, and case study slugs).
+- **`public/robots.txt`** → `Sitemap: https://www.roseng.org/sitemap.xml`
+- **Operator:** **`docs/Search_Indexing_Runbook.md`** (GSC submit, URL inspection, `site:roseng.org` checks).
+- Optional: `npm run ping:sitemap` after deploy (supplement to GSC).
 
 ## Search Console
 
 - Property: **URL-prefix** `https://www.roseng.org/`
-- Verify via meta tag (**`index.html`**) or DNS
-- Monitor **Page indexing** and sitemap status after deploy
+- Verify via DNS or meta tag (**`index.html`**)
+- Re-submit sitemap after releases that add CMS slugs
 
 ## Post-launch
 
-- Refresh sitemap when new CMS slugs ship
+- Run indexing runbook after each production release
 - Consider prerender/SSR only if organic performance plateaus (Architecture §8.3)
