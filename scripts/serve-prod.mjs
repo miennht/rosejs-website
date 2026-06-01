@@ -8,7 +8,11 @@ import process from 'node:process'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DIST = path.resolve(__dirname, '..', 'dist')
-const PORT = Number(process.env.PORT) || 3000
+const portRaw = process.env.PORT
+const PORT =
+  portRaw != null && portRaw !== '' && Number.isFinite(Number(portRaw))
+    ? Number(portRaw)
+    : 3000
 
 /** Crawler files: never SPA-fallback; return raw bytes or 404. */
 const FIXED_STATIC = {
@@ -99,6 +103,11 @@ const server = createServer(async (req, res) => {
 
   const url = new URL(req.url ?? '/', `http://${req.headers.host ?? 'localhost'}`)
   const pathname = decodeURIComponent(url.pathname)
+
+  if (pathname === '/health') {
+    respond(res, 200, { 'Content-Type': 'text/plain; charset=utf-8' })
+    return
+  }
 
   const fixedType = FIXED_STATIC[pathname]
   if (fixedType) {

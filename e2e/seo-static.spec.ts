@@ -1,6 +1,11 @@
 import { expect, test } from '@playwright/test'
 
 test.describe('SEO static files (TASK-072 / TASK-074)', () => {
+  test('health endpoint returns 200 for Railway healthchecks', async ({ request }) => {
+    const res = await request.get('/health')
+    expect(res.status()).toBe(200)
+  })
+
   test('sitemap.xml is raw XML, not SPA HTML', async ({ request }) => {
     const res = await request.get('/sitemap.xml')
     expect(res.status()).toBe(200)

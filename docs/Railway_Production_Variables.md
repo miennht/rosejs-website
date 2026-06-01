@@ -35,6 +35,16 @@ VITE_SANITY_DATASET=production
 
 ## Runtime
 
-Railway injects **`PORT`** automatically. Do not override unless debugging.
+Railway injects **`PORT`** automatically (often **8080**). Your app must listen on **`0.0.0.0:$PORT`** (`scripts/serve-prod.mjs` does this). Do not override **`PORT`** unless debugging.
 
-Reference: **`.env.example`**, **`docs/Deployment_Guide.md`** §8, **`docs/Production_Launch_Checklist.md`**.
+### HTTP 502 — “Application failed to respond”
+
+If deploy logs show `Serving … at http://0.0.0.0:8080` but **https://www.roseng.org** returns **502** with `X-Railway-Fallback: true`:
+
+1. **Networking → Custom domain (`www.roseng.org`) → Target port** must match the port in the deploy log (e.g. **8080**). A stale **3000** (old Vite/`serve` default) causes 502 while the app listens on **8080**.
+2. Remove a manual **`PORT`** variable if it disagrees with the target port.
+3. Redeploy after changing networking. Staging `*.up.railway.app` URLs usually work when production custom domains do not — that pattern almost always means target port mismatch on the custom domain only.
+
+Health check path: **`/health`** (see **`railway.json`**).
+
+Reference: [Railway — Application failed to respond](https://docs.railway.com/networking/troubleshooting/application-failed-to-respond), **`.env.example`**, **`docs/Deployment_Guide.md`** §8, **`docs/Production_Launch_Checklist.md`**.
