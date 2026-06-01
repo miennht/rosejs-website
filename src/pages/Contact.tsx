@@ -29,18 +29,14 @@ export function Contact() {
           <div className="rounded-xl border border-border bg-surface/40 p-6">
             <h2 className="mb-2 text-lg font-semibold text-foreground">Schedule</h2>
             <p className="mb-4 text-sm text-muted">
-              Prefer a calendar block? Use the scheduling page for Calendly (set
-              <code className="mx-1 rounded bg-background px-1 py-0.5 text-xs">
-                VITE_CALENDLY_URL
-              </code>
-              in Railway build variables).
+              Prefer a calendar block? Book a 30-minute consultation on our scheduling page.
             </p>
             <LinkButton
               to="/schedule"
               variant="primary"
               onClick={() => trackEvent('calendly_click', { source: 'contact_aside' })}
             >
-              Go to scheduling
+              Schedule on Calendly
             </LinkButton>
           </div>
 

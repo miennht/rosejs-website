@@ -13,7 +13,8 @@ In **Railway → service → Variables → Build**, set (then **redeploy**):
 | `VITE_SITE_URL`                                  | `https://www.roseng.org`                                         |
 | `VITE_CONTACT_EMAIL`                             | `hello@roseng.org`                                               |
 | `VITE_PLAUSIBLE_DOMAIN`                          | `roseng.org` or `www.roseng.org` (match Plausible site settings) |
-| `VITE_CALENDLY_URL`                              | Your Calendly scheduling URL                                     |
+| `VITE_CALENDLY_URL`                              | `https://calendly.com/roseng0201/30min`                          |
+| `VITE_CALENDLY_EMBED`                            | `true` (optional; embed defaults on)                             |
 | `VITE_FORM_ENDPOINT`                             | Formspree HTTPS endpoint                                         |
 | `VITE_LINKEDIN_URL`                              | Optional — full LinkedIn profile/company URL                     |
 | `VITE_SANITY_PROJECT_ID` / `VITE_SANITY_DATASET` | When Sanity replaces fallback content                            |

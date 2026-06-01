@@ -15,7 +15,7 @@ Without this, Open Graph and JSON-LD may use defaults until the next aligned bui
 ```text
 VITE_CONTACT_EMAIL=hello@roseng.org
 VITE_PLAUSIBLE_DOMAIN=roseng.org
-VITE_CALENDLY_URL=https://calendly.com/your-event
+VITE_CALENDLY_URL=https://calendly.com/roseng0201/30min
 VITE_FORM_ENDPOINT=https://formspree.io/f/your-form-id
 ```
 

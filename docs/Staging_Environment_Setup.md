@@ -37,7 +37,8 @@ feature/content branch  ──merge──►  develop  ──deploy──►  Ra
    | `VITE_SITE_URL`         | `https://<staging-service>.up.railway.app` or `https://dev.roseng.org` |
    | `VITE_CONTACT_EMAIL`    | `hello@roseng.org`                                                     |
    | `VITE_FORM_ENDPOINT`    | Formspree **test** form (optional)                                     |
-   | `VITE_CALENDLY_URL`     | Same or test Calendly link                                             |
+   | `VITE_CALENDLY_URL`     | `https://calendly.com/roseng0201/30min` (or a test event)              |
+   | `VITE_CALENDLY_EMBED`   | `true` (optional; embed defaults on)                                   |
    | `VITE_PLAUSIBLE_DOMAIN` | Omit on staging, or use a separate Plausible site                      |
 
    Do **not** copy production Search Console verification into staging unless you intend to index the staging host.
