@@ -111,8 +111,8 @@ export function ContactForm() {
       <h2 className="mb-2 text-lg font-semibold text-foreground">Send a message</h2>
       <p className="mb-6 text-sm text-muted">
         {endpoint != null && endpoint !== ''
-          ? 'Submissions post to your configured form endpoint (`VITE_FORM_ENDPOINT`).'
-          : 'Demo mode: configure `VITE_FORM_ENDPOINT` (for example Formspree) to deliver submissions. Submitting still validates input locally.'}
+          ? 'Share your constraints, timelines, and goals. We typically respond within a few business days.'
+          : 'Share your context below. Submissions are validated locally in development; use direct email on this page to reach RoseJS.'}
       </p>
 
       {status === 'success' ? (
@@ -122,7 +122,7 @@ export function ContactForm() {
         >
           {endpoint != null && endpoint !== ''
             ? 'Thanks — your message was sent.'
-            : 'Thanks — in demo mode nothing was sent remotely. Wire `VITE_FORM_ENDPOINT` for production delivery.'}
+            : 'Thanks — your details were validated. Email us using the address in the sidebar to continue the conversation.'}
         </p>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5" noValidate>

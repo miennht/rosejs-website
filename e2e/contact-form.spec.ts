@@ -31,6 +31,6 @@ test.describe('contact form', () => {
     await page.getByLabel(/service interest/i).selectOption('other')
     await page.getByLabel(/message/i).fill('E2E validation message.')
     await page.getByRole('button', { name: /send message/i }).click()
-    await expect(page.getByText(/Thanks.*demo mode.*nothing was sent remotely/i)).toBeVisible()
+    await expect(page.getByText(/Thanks — your details were validated/i)).toBeVisible()
   })
 })
