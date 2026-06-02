@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { BRAND_NAME, BRAND_TAGLINE } from '../../lib/brand.ts'
+import { BRAND_TAGLINE } from '../../lib/brand.ts'
 import { Container } from '../ui/Container.tsx'
 import { FOOTER_NAV_ITEMS } from './navConfig'
 
@@ -12,12 +12,7 @@ export function Footer() {
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div>
             <p className="text-sm font-semibold text-foreground">{BRAND_TAGLINE}</p>
-            <p className="mt-2 max-w-sm text-sm text-muted">
-              Healthcare software architecture and AI-first engineering consulting.
-            </p>
-            <p className="mt-4 text-xs text-muted">
-              © {year} {BRAND_NAME}. All rights reserved.
-            </p>
+            <p className="mt-4 text-xs text-muted">© {year}. All rights reserved.</p>
           </div>
           <nav aria-label="Footer" className="flex flex-col gap-2">
             <p className="text-xs font-semibold uppercase tracking-wider text-muted">Explore</p>
