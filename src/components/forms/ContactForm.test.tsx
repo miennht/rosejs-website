@@ -49,9 +49,7 @@ describe('ContactForm', () => {
     render(<ContactForm />)
     fillValidForm()
     fireEvent.click(screen.getByRole('button', { name: /send message/i }))
-    expect(
-      await screen.findByText(/Thanks — in demo mode nothing was sent remotely/i),
-    ).toBeVisible()
+    expect(await screen.findByText(/Thanks — your details were validated/i)).toBeVisible()
   })
 
   it('POSTs to configured endpoint and shows success on 200', async () => {
