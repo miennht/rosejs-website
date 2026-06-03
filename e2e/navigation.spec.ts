@@ -30,7 +30,7 @@ test.describe('primary navigation', () => {
 
   test('logo links to homepage', async ({ page }) => {
     await page.goto('/services')
-    await page.getByRole('link', { name: 'RoseJS', exact: true }).click()
+    await page.getByRole('link', { name: /rosejs home/i }).click()
     await expect(page).toHaveURL(/\/$/)
   })
 
