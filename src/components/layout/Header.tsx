@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { BRAND_NAME } from '../../lib/brand.ts'
 import { Container } from '../ui/Container.tsx'
 import { MobileNavigation } from './MobileNavigation.tsx'
 import { Navigation } from './Navigation.tsx'
+import { SiteLogo } from './SiteLogo.tsx'
 
 export function Header() {
   return (
@@ -9,9 +11,10 @@ export function Header() {
       <Container className="flex items-center justify-between gap-4 py-4">
         <Link
           to="/"
-          className="text-lg font-semibold tracking-tight text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+          aria-label={`${BRAND_NAME} home`}
+          className="rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >
-          RoseJS
+          <SiteLogo />
         </Link>
         <div className="hidden md:block">
           <Navigation />

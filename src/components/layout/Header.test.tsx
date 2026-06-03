@@ -6,7 +6,8 @@ import { renderWithRouter } from '../../test/test-utils.tsx'
 describe('Header', () => {
   it('renders brand link to home', () => {
     renderWithRouter(<Header />)
-    expect(screen.getByRole('link', { name: 'RoseJS' })).toHaveAttribute('href', '/')
+    expect(screen.getByRole('link', { name: /rosejs home/i })).toHaveAttribute('href', '/')
+    expect(document.querySelector('header a[href="/"] img')).toHaveAttribute('src', '/favicon.svg')
   })
 
   it('exposes primary nav destinations including Services', () => {
