@@ -5,7 +5,7 @@ import { Hero } from '../components/sections/Hero.tsx'
 import { MethodologySection } from '../components/sections/MethodologySection.tsx'
 import { ServicesOverview } from '../components/sections/ServicesOverview.tsx'
 import { TrustSection } from '../components/sections/TrustSection.tsx'
-import { brandWithDomainSentence } from '../lib/brand.ts'
+import { SITE_BRAND_IMAGE_SRC, brandWithDomainSentence } from '../lib/brand.ts'
 import { SEO } from '../components/seo/SEO.tsx'
 
 const methodologyPillars = [
@@ -45,6 +45,7 @@ export function Home() {
       <Hero
         title="Healthcare platform modernization with AI-first engineering discipline."
         subtitle={`${brandWithDomainSentence()} helps healthcare and insurance platforms modernize legacy systems, integrate APIs, and adopt AI-first engineering practices with disciplined delivery.`}
+        brandImageSrc={SITE_BRAND_IMAGE_SRC}
       />
 
       <ServicesOverview
