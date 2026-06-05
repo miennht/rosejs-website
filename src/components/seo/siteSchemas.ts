@@ -1,5 +1,5 @@
 import type { BlogPost, CaseStudy } from '../../cms/types.ts'
-import { DOMAIN_LABEL, BRAND_NAME } from '../../lib/brand.ts'
+import { DOMAIN_LABEL, BRAND_NAME, SITE_LOGO_SRC } from '../../lib/brand.ts'
 import { DEFAULT_SITE_DESCRIPTION, absoluteUrl, siteUrlOrPlaceholder } from '../../lib/seo.ts'
 
 export function organizationGraphSchema() {
@@ -13,6 +13,7 @@ export function organizationGraphSchema() {
         name: BRAND_NAME,
         alternateName: DOMAIN_LABEL,
         url,
+        logo: absoluteUrl(SITE_LOGO_SRC),
         description: DEFAULT_SITE_DESCRIPTION,
       },
       {

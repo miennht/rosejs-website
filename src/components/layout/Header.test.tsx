@@ -7,7 +7,10 @@ describe('Header', () => {
   it('renders brand link to home', () => {
     renderWithRouter(<Header />)
     expect(screen.getByRole('link', { name: /rosejs home/i })).toHaveAttribute('href', '/')
-    expect(document.querySelector('header a[href="/"] img')).toHaveAttribute('src', '/favicon.svg')
+    expect(document.querySelector('header a[href="/"] img')).toHaveAttribute(
+      'src',
+      '/rosejs-icon.png',
+    )
   })
 
   it('exposes primary nav destinations including Services', () => {
