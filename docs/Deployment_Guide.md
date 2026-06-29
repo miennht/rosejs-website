@@ -10,11 +10,12 @@ It describes how the project should move from local development to GitHub pull r
 
 This document is based on:
 
-- `PRD.md`
-- `Architecture.md`
-- `Traceability_Matrix.md`
-- `Tasks.md`
-- `Testing_Strategy.md`
+- `PRD.md` (including §26–§27 AI evaluation requirements)
+- `Architecture.md` (including §28 AI Evaluation Architecture)
+- `Traceability_Matrix.md` (including §13 eval traceability)
+- `Tasks.md` (including §29 post-MVP eval tasks)
+- `Testing_Strategy.md` (including §15 AI Evaluation Testing Strategy)
+- `AI_Workflow_Guide.md` (AI evaluation workflow)
 
 ### 1.1 TASK-061 content map
 
@@ -29,8 +30,9 @@ This file is the canonical **`Deployment_Guide.md`** for **TASK-061**. Required 
 | Production deployment process | §4.3, §15                                        |
 | Rollback process              | §16                                              |
 | Post-deployment verification  | §15.3, §18, §19                                  |
+| AI eval merge / deploy gates  | §22 (post-MVP; `TASK-084`)                       |
 
-**Related runbooks:** **`docs/Domain_SSL_Setup.md`** (TASK-059), **`docs/Google_Search_Console_Setup.md`** (TASK-060), **`docs/Branch_Protection_Setup.md`** (TASK-055), **`docs/Production_Launch_Checklist.md`**, **`docs/Railway_Production_Variables.md`**.
+**Related runbooks:** **`docs/Domain_SSL_Setup.md`** (TASK-059), **`docs/Google_Search_Console_Setup.md`** (TASK-060), **`docs/Branch_Protection_Setup.md`** (TASK-055), **`docs/Production_Launch_Checklist.md`**, **`docs/Railway_Production_Variables.md`**, **`docs/Testing_Strategy.md`** §15, **`docs/AI_Workflow_Guide.md`** (eval workflow).
 
 ### 1.2 Release quick path (TASK-061)
 
@@ -57,6 +59,7 @@ The deployment process must ensure that:
 7. The site can be rolled back if a deployment fails.
 8. The deployment model can be reused for future AI-First projects.
 9. No custom backend or database is required for MVP deployment.
+10. Post-MVP: AI evaluation gates protect production from stale positioning, forbidden claims, and unreviewed content drift (§22).
 
 ---
 
@@ -83,6 +86,8 @@ Production deployment
       ↓
 Post-deployment verification
 ```
+
+Post-MVP, **eval checks** may run on pull requests and before production promotion (§22). They extend—not replace—lint, test, and build gates.
 
 ### 3.2 Production System Components
 
@@ -121,6 +126,14 @@ npm run typecheck
 npm run test
 npm run build
 ```
+
+Post-MVP, when Phase 1 eval runner is implemented (`TASK-081`):
+
+```text
+npm run eval:sot
+```
+
+See **`docs/Testing_Strategy.md`** §15 for full eval commands and phase order.
 
 ## 4.2 Preview Environment
 
@@ -197,6 +210,7 @@ Every PR should include:
 - Accessibility notes if UI changed
 - SEO notes if metadata or routing changed
 - Deployment risk notes if applicable
+- Eval notes if `docs/rosejs-knowledge/`, `docs/evals/`, or AI-generated copy changed (§22)
 
 ## 5.4 Branch Protection Rules
 
@@ -233,6 +247,15 @@ Optional when stable:
 ```text
 npm run test:e2e
 ```
+
+Post-MVP (when implemented, `TASK-082`):
+
+```text
+npm run eval:sot
+# future: npm run eval:regression, npm run eval:stale
+```
+
+Eval CI jobs should fail the PR check when critical evals fail (§22).
 
 ## 6.3 Recommended CI Trigger
 
@@ -677,6 +700,12 @@ npm run build
 npm run test:e2e
 ```
 
+Post-MVP, when eval runners exist:
+
+```text
+npm run eval:sot
+```
+
 4. Push branch to GitHub.
 5. Confirm CI passes.
 6. Review preview deployment.
@@ -720,6 +749,7 @@ Rollback may be needed if:
 - CMS integration breaks core pages.
 - Environment variables are missing.
 - Deployment introduces major UI or SEO regression.
+- Post-MVP: critical eval failure (stale claims, knowledge-base mismatch, failed Q&A regression) ships to production without review (§22).
 
 ## 16.2 Rollback Options
 
@@ -864,6 +894,15 @@ Use this checklist before each production release.
 - Plausible receives traffic.
 - Search Console is updated if needed.
 
+### AI evaluation (post-MVP)
+
+When Phase 2 evals are active (`TASK-082`–`084`):
+
+- Knowledge-base changes reviewed if `docs/rosejs-knowledge/` changed.
+- `npm run eval:sot` (and regression evals when available) pass locally or in CI.
+- No forbidden claims in changed copy (per `forbidden-claims.md`).
+- Failed critical evals resolved or explicitly waived with documented rationale (§22).
+
 ---
 
 ## 19. Deployment Definition of Done
@@ -904,6 +943,79 @@ Post-MVP improvements may include:
 - Monitoring for 404s
 - Error tracking with Sentry or similar tool
 - Separate staging environment
+- **AI evaluation CI gates** — see **§22** (PRD §26–§27, `TASK-082`–`084`)
+
+---
+
+## 22. AI Evaluation and Deployment Gates (Post-MVP)
+
+Evals ensure AI-generated and website content stays aligned with approved RoseJS facts before merge and production deploy. This section implements deployment policy for **`TASK-084`** and PRD **`EVAL-P2-002`** (failed evals block deployment until reviewed or fixed).
+
+**Canonical guides (do not duplicate here):**
+
+| Document | Role |
+| -------- | ---- |
+| **`docs/Testing_Strategy.md`** §15 | Eval test types, phases, CI commands, definition of done |
+| **`docs/AI_Workflow_Guide.md`** | Knowledge-base prompting, change workflow, assistant rules |
+| **`docs/PRD.md`** §26–§27 | Requirement IDs (`EVAL-P*`, `NFR-EVAL-*`) |
+| **`docs/Tasks.md`** §29 | Implementation tasks (`TASK-078`–`096`, `T-EVAL-P1-*`) |
+
+### 22.1 When eval gates apply
+
+| Trigger | Minimum eval action |
+| ------- | ------------------- |
+| Change to `docs/rosejs-knowledge/` | Run Phase 1 evals (`npm run eval:sot` when available); full regression when Phase 2 live |
+| Change to marketing copy, SEO metadata, or CTAs | Static website checklist (`docs/evals/static-website-eval.md`, `TASK-103`) |
+| Change to Calendly URL, form endpoint, or lead magnet | Update knowledge base + change scenario evals (`TASK-091`) |
+| AI-generated copy in PR | Human review against knowledge base and forbidden claims |
+| New user-facing AI assistant feature | Phase 3 evals before production (`TASK-094`–`096`) |
+
+MVP releases without eval infrastructure follow §6 and §15 only. Adopt §22 gates as each phase completes (`Tasks.md` §29.1).
+
+### 22.2 Critical vs non-critical eval failures
+
+| Severity | Examples | Merge / deploy policy |
+| -------- | -------- | --------------------- |
+| **Critical** | Forbidden claim in copy; healthcare-only positioning; wrong Calendly/contact URL; removed service listed; Q&A regression fail on “What does RoseJS do?” | **Block** merge and production deploy until fixed or waived (§22.4) |
+| **Non-critical** | Minor tone drift; optional SEO checklist item; eval runner warning on non-user-facing route | Fix in PR when practical; may merge with documented follow-up issue |
+
+### 22.3 CI and branch protection
+
+When `TASK-082` is complete:
+
+1. GitHub Actions runs eval subsets on `pull_request` (diff-aware per `TASK-091`).
+2. Failed **critical** evals fail the PR status check.
+3. Branch protection on `main` requires passing CI—including eval jobs when enabled (**`docs/Branch_Protection_Setup.md`**).
+4. Solo maintainers: do not self-approve PRs that bypass failed critical evals; use ruleset bypass only with documented waiver.
+
+Retain CI artifacts on failure (`TASK-084`, `EVAL-REG-006`): logs, Playwright traces, eval reports—attached to PR or linked from Actions run.
+
+### 22.4 Exception process
+
+If a critical eval must fail temporarily (e.g., emergency hotfix):
+
+1. Document **reason**, **scope**, and **follow-up task ID** in the PR description.
+2. Obtain explicit human approval (second reviewer when available).
+3. Create a follow-up issue to fix knowledge base, content, and eval cases.
+4. Do not treat exceptions as standard practice.
+
+### 22.5 Production deploy checklist (eval-aware)
+
+Before promoting to production when Phase 2 is active:
+
+1. All required CI checks green (lint, typecheck, test, build, E2E, eval jobs).
+2. Knowledge base and website content aligned for any business-fact changes.
+3. `docs/rosejs-knowledge/forbidden-claims.md` reflected in changed pages.
+4. Post-deploy: spot-check homepage, services, and contact CTAs against knowledge base.
+
+### 22.6 Related tasks
+
+| Task | Deployment role |
+| ---- | ----------------- |
+| `TASK-084` | This section — merge/deploy gate policy |
+| `TASK-082` | CI wiring for eval jobs |
+| `TASK-091`–`093` | Change scenarios, Q&A regression, stale-claim detection |
+| `TASK-078` | Points to Testing Strategy §15 and AI Workflow Guide as canonical eval docs |
 
 ---
 
@@ -919,3 +1031,6 @@ Future AI agents must follow these deployment rules:
 6. Make sure CI passes before recommending merge.
 7. Use preview deployments for UI review when available.
 8. Confirm production deployment with a checklist, not assumptions.
+9. When changing business facts (services, industries, CTAs, Calendly, lead magnet), update **`docs/rosejs-knowledge/`** before merging website copy (§22).
+10. Do not merge or deploy with failed **critical** evals unless §22.4 exception process is followed.
+11. Follow **`docs/Testing_Strategy.md`** §15 and **`docs/AI_Workflow_Guide.md`** for eval implementation; cite `TASK-*` / `T-EVAL-P1-*` IDs in PRs.
