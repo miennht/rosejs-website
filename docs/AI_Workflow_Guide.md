@@ -69,6 +69,8 @@ Copy: folder layout, CI workflow pattern, PR/issue templates, deployment runbook
 
 ## AI evaluation workflow (post-MVP)
 
+**Index:** [`docs/evals/README.md`](evals/README.md) (`TASK-078`) — entry point; canonical detail is in this section and **Testing_Strategy.md** §15.
+
 RoseJS uses evals as **quality gates** for AI-generated content, website copy, and future AI features. Requirements: **`docs/PRD.md`** §11.8, §26, §27. Implementation tasks: **`docs/Tasks.md`** §29 (`TASK-078`–`TASK-096`, `T-EVAL-P1-*` via `TASK-097`–`103`). Architecture: **`docs/Architecture.md`** §28. Traceability: **`docs/Traceability_Matrix.md`** §13.
 
 ### Three-phase roadmap

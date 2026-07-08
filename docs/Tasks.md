@@ -2737,7 +2737,7 @@ Implementation tasks for PRD **§11.8**, **§26**, and **§27** (`NFR-EVAL-*`, `
 
 | Phase | Tasks | PRD IDs | Status |
 | ----- | ----- | ------- | ------ |
-| 1 — Source-of-truth | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | Not Started |
+| 1 — Source-of-truth | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | In Progress (`TASK-078`, `TASK-097` Done) |
 | 2 — Change-based and regression | TASK-082–084, TASK-091–093 | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Not Started |
 | 3 — AI assistant | TASK-085–087, TASK-094–096 | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started |
 
@@ -2773,7 +2773,7 @@ Implementation tasks for PRD **§11.8**, **§26**, and **§27** (`NFR-EVAL-*`, `
 ## TASK-078: Create AI Evaluation Roadmap Document
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-001, EVAL-SOT-001, NFR-EVAL-001, NFR-EVAL-002  
 **Implementation Area:** Documentation, Testing
 
@@ -2784,7 +2784,7 @@ Establish the canonical eval implementation guides for RoseJS. **Primary guides 
 - **`docs/Testing_Strategy.md`** §15 — AI Evaluation Testing Strategy (phases, validation methods, CI, file layout, definition of done)
 - **`docs/AI_Workflow_Guide.md`** — AI evaluation workflow (prompting with knowledge base, change workflow, assistant eval rules)
 
-Optionally add a short `docs/evals/README.md` index that links PRD §26–§27, Architecture §28, Traceability §13, Tasks §29, and the two guides above. Do not replace or fork content from the canonical guides.
+Index: **`docs/evals/README.md`** links PRD §26–§27, Architecture §28, Traceability §13, Tasks §29, and the two canonical guides above.
 
 ### Acceptance Criteria
 
@@ -2798,7 +2798,7 @@ Optionally add a short `docs/evals/README.md` index that links PRD §26–§27, 
 
 - Manual documentation review.
 - Cross-check IDs against PRD §11.8, §26, and §27.
-- Confirm **`Testing_Strategy.md` §15** and **`AI_Workflow_Guide.md`** eval sections are linked from `TASK-078` completion notes or `docs/evals/README.md`.
+- **Done (July 2026):** Canonical guides in **`Testing_Strategy.md`** §15 and **`AI_Workflow_Guide.md`**; deployment gates in **`Deployment_Guide.md`** §22; index at **`docs/evals/README.md`**; cross-links added from §15 and AI Workflow Guide to the index.
 
 ---
 
@@ -3027,13 +3027,13 @@ Extend `Traceability_Matrix.md` to map all eval requirement IDs to tasks, tests,
 ## TASK-097 (T-EVAL-P1-001): Create RoseJS Knowledge Base Folder
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-001, NFR-EVAL-001  
 **Implementation Area:** Documentation, Content
 
 ### Description
 
-Create the approved source-of-truth folder and empty scaffold files for RoseJS business knowledge.
+Create the approved source-of-truth folder and scaffold files for RoseJS business knowledge.
 
 ### Acceptance Criteria
 
@@ -3049,6 +3049,7 @@ Create the approved source-of-truth folder and empty scaffold files for RoseJS b
 ### Validation
 
 - Manual check: folder and all five files present in repo.
+- **Done (July 2026):** All files created with initial content aligned to PRD §7, live About/Services pages, `src/content/fallback/services.ts`, `src/lib/calendly.ts`, and `docs/Brand_and_Domain.md`. Expand per-file detail in `TASK-098`–`TASK-102`.
 
 ---
 
