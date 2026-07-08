@@ -587,7 +587,7 @@ Post-MVP testing improvements may include:
 
 Evals extend MVP testing with quality gates for AI-generated content, website accuracy, and future AI assistants. They do **not** replace unit, component, or E2E tests; they complement them.
 
-**Index:** [`docs/evals/README.md`](../evals/README.md) (`TASK-078`) — links to this section and the AI Workflow Guide without duplicating content.
+**Index:** [`docs/evals/README.md`](evals/README.md) (`TASK-078`) — links to this section and the AI Workflow Guide without duplicating content.
 
 **References:**
 
