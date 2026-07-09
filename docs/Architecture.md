@@ -24,6 +24,7 @@ The architecture is designed to support:
 - GitHub-based source control
 - CI/CD-first delivery
 - Automated quality checks
+- Post-MVP AI evaluation quality gates (PRD §26–§27; Architecture §28)
 - Future backend/database expansion without requiring a full rewrite
 
 ### 1.3 Architecture Decision Summary
@@ -125,6 +126,7 @@ Future backend-ready areas include:
 - CRM integration
 - Private resource library
 - AI assistant
+- AI evaluation infrastructure (knowledge base, eval catalog, CI eval jobs)
 - Payment workflow
 - Admin dashboard
 - Custom lead management
@@ -206,6 +208,14 @@ rosejs-website/
     Deployment_Guide.md
     AI_Workflow_Guide.md
     Code_Review_Checklist.md
+    rosejs-knowledge/
+      company-profile.md
+      services.md
+      target-industries.md
+      brand-voice.md
+      forbidden-claims.md
+
+  eval/                    # Post-MVP: golden cases, runners, Q&A regression (TASK-079–081, TASK-092–093)
 
   public/
     downloads/
@@ -848,16 +858,19 @@ Testing must ensure:
 - Build passes before deployment.
 - CI/CD protects the main branch.
 
+Post-MVP, AI evaluation extends testing with source-of-truth, change-based, regression, and assistant evals (see **§28**).
+
 ### 14.2 Test Types
 
-| Test Type           | Tool                  | Scope                                  |
-| ------------------- | --------------------- | -------------------------------------- |
-| Unit Tests          | Vitest                | Utilities, mappers, analytics wrappers |
-| Component Tests     | React Testing Library | UI components and forms                |
-| E2E Tests           | Playwright            | Visitor flows                          |
-| Accessibility Tests | Playwright + axe-core | Core pages and forms                   |
-| Build Test          | Vite build            | Production build validation            |
-| Link Check          | Link checker          | Internal/external links                |
+| Test Type           | Tool                  | Scope                                    |
+| ------------------- | --------------------- | ---------------------------------------- |
+| Unit Tests          | Vitest                | Utilities, mappers, analytics wrappers   |
+| Component Tests     | React Testing Library | UI components and forms                  |
+| E2E Tests           | Playwright            | Visitor flows                            |
+| Accessibility Tests | Playwright + axe-core | Core pages and forms                     |
+| Build Test          | Vite build            | Production build validation              |
+| Link Check          | Link checker          | Internal/external links                  |
+| Eval (Post-MVP)     | Custom scripts / CI   | Knowledge base, content, Q&A, guardrails |
 
 ### 14.3 Minimum MVP Test Coverage
 
@@ -886,7 +899,10 @@ npm run typecheck
 npm run test
 npm run build
 npm run test:e2e
+npm run eval:sot          # Post-MVP (TASK-081): Phase 1 source-of-truth evals
 ```
+
+Post-MVP eval commands and CI jobs are defined in **§28** and `Tasks.md` §29.
 
 ---
 
@@ -1091,6 +1107,14 @@ Minimum test gates:
 - Unit/component tests
 - Production build
 - E2E smoke tests where feasible
+
+Post-MVP eval gates (PRD §27) extend this pillar:
+
+- Phase 1: golden references in `docs/rosejs-knowledge/` and eval catalog
+- Phase 2: change-based and regression evals on pull requests
+- Phase 3: development-workflow and user-facing assistant evals
+
+See **§28**.
 
 ### 17.5 Deployment Pillar
 
@@ -1361,6 +1385,27 @@ Mitigation:
 
 - Keep CI/CD workflow simple for MVP.
 
+### ADR-006: Phased AI Evaluation Roadmap (Post-MVP)
+
+Decision: Adopt a three-phase AI evaluation architecture after MVP launch (PRD §26–§27).
+
+Reason:
+
+- RoseJS uses AI-first delivery; evals are quality gates for AI-generated content and future AI features.
+- Source-of-truth files prevent drift from approved positioning, services, and brand voice.
+- Change-based and regression evals catch stale claims before deployment.
+- Assistant evals apply when user-facing AI or RAG features ship.
+
+Tradeoff:
+
+- Additional documentation, catalog maintenance, and CI jobs beyond MVP test suites.
+
+Mitigation:
+
+- Implement phases sequentially (Phase 2 depends on Phase 1 knowledge base).
+- Keep eval artifacts version-controlled under `docs/rosejs-knowledge/` and `eval/`.
+- Map requirements to `Tasks.md` §29 (`TASK-078`–`TASK-096`) and `Traceability_Matrix.md` §13.
+
 ---
 
 ## 25. Architecture Definition of Done
@@ -1381,6 +1426,7 @@ Architecture is ready for implementation when:
 12. Deployment strategy is aligned with CI/CD.
 13. Backend/database MVP decision is documented.
 14. Future backend expansion boundaries are documented.
+15. Post-MVP AI evaluation architecture is documented (§28) and traceable to PRD §27 and `Tasks.md` §29.
 
 ---
 
@@ -1416,3 +1462,131 @@ Tasks.md should be generated from:
 - Traceability_Matrix.md
 
 This ensures implementation remains aligned with product requirements, architecture decisions, testing needs, CI/CD workflow, and deployment readiness.
+
+---
+
+## 28. AI Evaluation Architecture (Post-MVP)
+
+### 28.1 Purpose
+
+RoseJS follows an AI-first development methodology (§17). After MVP launch, evals act as **quality gates** so AI-generated content, future AI features, and business-facing responses stay accurate, grounded, current, safe, and aligned with RoseJS brand voice.
+
+Requirements are defined in PRD **§26** (roadmap and implementation IDs) and PRD **§27** (detailed `EVAL-P1-*`, `EVAL-P2-*`, `EVAL-P3-*`). Implementation tasks: `Tasks.md` **§29** (`TASK-078`–`TASK-096`). Traceability: `Traceability_Matrix.md` **§13**.
+
+### 28.2 Architectural Principles
+
+1. **Source before change** — Phase 1 golden references (`docs/rosejs-knowledge/`) must exist before Phase 2 CI gates.
+2. **Version-controlled truth** — Approved business facts, brand voice, and forbidden claims live in git, not only in model context.
+3. **Fail closed on critical drift** — Stale services, forbidden guarantees, and wrong CTAs fail evals and block deployment until reviewed (PRD `EVAL-P2-002`).
+4. **Separate dev vs user-facing assistants** — Cursor/workflow evals (`EVAL-AIA-*`) are distinct from chatbot/FAQ/RAG evals (`EVAL-P3-*`).
+5. **Reuse existing test stack** — Vitest, Playwright, and GitHub Actions CI extend with eval scripts; no custom backend required for MVP eval infrastructure.
+
+### 28.3 Three-Phase Roadmap
+
+| Phase | Name                              | Architecture focus                                             | Primary PRD IDs           | Primary tasks                 |
+| ----- | --------------------------------- | -------------------------------------------------------------- | ------------------------- | ----------------------------- |
+| 1     | Source-of-truth evals             | Knowledge base + golden catalog + local runner                 | `EVAL-P1-*`, `EVAL-SOT-*` | `TASK-078`–`081`, `088`–`090` |
+| 2     | Change-based and regression evals | CI diff triggers, Q&A regression, stale-claim detection        | `EVAL-P2-*`, `EVAL-REG-*` | `TASK-082`–`084`, `091`–`093` |
+| 3     | AI assistant evals                | Dev-workflow rubrics; user-facing assistant + RAG when shipped | `EVAL-P3-*`, `EVAL-AIA-*` | `TASK-085`–`087`, `094`–`096` |
+
+Phases are sequential: Phase 2 consumes Phase 1 artifacts; Phase 3 user-facing evals depend on Phase 2 CI infrastructure.
+
+### 28.4 Source-of-Truth Layer (Phase 1)
+
+**Knowledge base** (`docs/rosejs-knowledge/`, PRD `EVAL-P1-001`):
+
+| File                   | Purpose                                                  |
+| ---------------------- | -------------------------------------------------------- |
+| `company-profile.md`   | Positioning, differentiators, company facts              |
+| `services.md`          | Current service offerings and outcomes                   |
+| `target-industries.md` | Healthcare, e-commerce, and other approved industries    |
+| `brand-voice.md`       | Tone: professional, clear, practical, not hype-driven    |
+| `forbidden-claims.md`  | Stale terms, guarantees, and claims that must fail evals |
+
+**Eval catalog** (`eval/` or `docs/`, `TASK-079`): golden cases per core route and content contract, mapped to PRD functional IDs.
+
+**Static content evals** (`TASK-089`): homepage, services, about, contact, lead magnet compared against knowledge base.
+
+**Brand voice evals** (`TASK-090`): rubric-driven checks on copy and AI-generated drafts.
+
+**CMS boundary doc** (`TASK-080`): expected behavior when Sanity content is live vs local fallback, to avoid false failures.
+
+**Local runner** (`TASK-081`, e.g. `npm run eval:sot`): validates routes, titles, brand constants, CTAs against catalog and knowledge base.
+
+### 28.5 Change-Based and Regression Layer (Phase 2)
+
+```text
+PR / content change
+      ↓
+GitHub Actions (TASK-082)
+      ↓
+Diff-aware eval subset (routes, SEO, forms, knowledge base, layout)
+      ↓
+Phase 1 golden comparison + Q&A regression (TASK-092) + stale-claim scan (TASK-093)
+      ↓
+Pass → merge allowed | Fail → block deployment until review (TASK-084)
+```
+
+**Change scenarios** (`TASK-091`, PRD `EVAL-P2-001`): industries, services, lead magnet, CTAs, pricing/policy, Calendly/contact links.
+
+**Q&A regression** (`TASK-092`, PRD `EVAL-P2-002`): recurring business questions with pass/fail outcomes.
+
+**Stale answer detection** (`TASK-093`, PRD `EVAL-P2-003`): scans against `forbidden-claims.md` and configured stale terms.
+
+**Technical regression** (`TASK-083`): extends Vitest/Playwright for PRD §12.3 critical visitor journeys.
+
+### 28.6 Assistant Evaluation Layer (Phase 3)
+
+**Development-workflow assistants** (Cursor, planning, code review) — `TASK-085`–`086`, PRD `EVAL-AIA-*`:
+
+- Scenarios and rubric aligned with `AI_Workflow_Guide.md` and `Code_Review_Checklist.md`
+- Guardrails: no MVP backend/database, no PHI, no secrets in frontend, isolated `src/lib` modules
+
+**User-facing assistants** (when chatbot, FAQ, lead qualification, or proposal assistant ships) — `TASK-094`–`096`, PRD `EVAL-P3-*`:
+
+- Behavior evals: grounding, scope refusal, contact/scheduling routing, brand voice
+- RAG evals (`TASK-095`): retrieved context relevance and answer support when RAG is adopted
+- Business alignment (`TASK-096`): trust, qualification, appropriate CTAs, no overpromising
+
+### 28.7 CI/CD Integration
+
+Eval jobs extend the existing GitHub Actions pipeline (§15):
+
+| Trigger                                   | Eval scope                                                 |
+| ----------------------------------------- | ---------------------------------------------------------- |
+| PR to protected branch                    | Lint, test, build (MVP) + Phase 2 subsets when implemented |
+| Change under `docs/rosejs-knowledge/`     | Full Phase 1 + Phase 2 regression                          |
+| Change under `src/pages/` or SEO metadata | Static content + metadata golden checks                    |
+| Shared layout / routing config            | Full regression suite                                      |
+
+Merge and deployment policy: `Deployment_Guide.md` or dedicated eval doc (`TASK-084`), aligned with `Branch_Protection_Setup.md`.
+
+### 28.8 Future AI Assistant Architecture (Optional)
+
+When a user-facing assistant is added, recommended shape (backend-ready, not MVP):
+
+```text
+Visitor
+  ↓
+React chat UI (future)
+  ↓
+Serverless / API route (future) — keeps keys off the client
+  ↓
+RAG retrieval over docs/rosejs-knowledge/ + CMS exports (future)
+  ↓
+LLM with eval harness (EVAL-P3-001–003)
+```
+
+MVP does not implement this stack; Phase 3 eval requirements are documented upfront so implementation includes evals from day one.
+
+### 28.9 Traceability and Documentation
+
+| Artifact                     | Role                                            |
+| ---------------------------- | ----------------------------------------------- |
+| `PRD.md` §26–§27             | Requirement IDs and acceptance criteria         |
+| `Tasks.md` §29               | Implementation tasks `TASK-078`–`TASK-096`      |
+| `Traceability_Matrix.md` §13 | Req ID → architecture area → task → validation  |
+| `Testing_Strategy.md`        | How evals complement unit, component, E2E tests |
+| `AI_Workflow_Guide.md`       | Dev-workflow assistant expectations             |
+
+`TASK-087` completes the traceability matrix after all eval phases are defined.

@@ -26,6 +26,7 @@ The goal is to create an implementation-ready, AI-First task list that supports:
 - No custom backend/database for MVP
 - Backend-ready future expansion
 - Reuse as a future AI-First project template
+- Post-MVP AI evaluation roadmap (Phases 1–3; see **§29**, PRD **§26**, PRD **§27**)
 
 ---
 
@@ -2656,6 +2657,9 @@ TASK-071 to TASK-075 Validate Launch
 | TASK-059 | Resolved: apex **roseng.org** → **www.roseng.org**; live on Railway (May 2026)                                                                  |
 | TASK-060 | Resolved: Search Console verified; sitemap submitted (May 2026)                                                                                 |
 | Release  | **June 2026:** `develop` and `main` synchronized at `96ca507` (PR #7 + Railway `/health` fix); production **`npm run verify:production`** green |
+| Eval P1  | Depends on MVP complete; TASK-078 → TASK-097 → TASK-098–102 → TASK-101–102 → TASK-103 → TASK-079 → TASK-089 → TASK-090 → TASK-080 → TASK-081    |
+| Eval P2  | Depends on Phase 1; TASK-091 before TASK-082; TASK-092 and TASK-083 parallel; TASK-093 after knowledge base; TASK-084 after CI                  |
+| Eval P3  | Dev workflow: TASK-085 → TASK-086; user-facing (when features ship): TASK-094 → TASK-095 → TASK-096; TASK-087 after all phases defined          |
 
 ---
 
@@ -2720,3 +2724,714 @@ Future AI implementation agents should follow these rules:
 8. Keep documentation updated when architecture decisions change.
 9. Maintain healthcare and healthcare insurance positioning in copy.
 10. Do not store PHI/PII through the website MVP.
+11. When implementing post-MVP eval work, follow PRD **§26**, PRD **§27**, and Tasks **§29**; preserve traceability from `NFR-EVAL-*`, `EVAL-P*`, `EVAL-SOT-*`, `EVAL-REG-*`, and `EVAL-AIA-*` IDs to tasks and tests.
+12. Do not skip Phase 1 source-of-truth evals before adding change-based CI gates (Phase 2).
+
+---
+
+# 29. AI Evaluation Roadmap (Post-MVP)
+
+Implementation tasks for PRD **§11.8**, **§26**, and **§27** (`NFR-EVAL-*`, `EVAL-P1-*`, `EVAL-P2-*`, `EVAL-P3-*`, `EVAL-SOT-*`, `EVAL-REG-*`, `EVAL-AIA-*`). These tasks are **post-MVP**; MVP tasks (§5–§24) remain complete.
+
+## 29.1 Phase Overview
+
+| Phase                           | Tasks                                                        | PRD IDs                                           | Status                                    |
+| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | ----------------------------------------- |
+| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | In Progress (`TASK-078`, `TASK-097` Done) |
+| 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Not Started                               |
+| 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                               |
+
+**Notes:**
+
+- `TASK-085`–`086` cover **development-workflow** assistants (Cursor, PR review, code generation).
+- `TASK-094`–`096` cover **user-facing** assistants (chatbot, FAQ, RAG) when those features are added.
+- `TASK-087` maps all eval IDs in `Traceability_Matrix.md` after Phases 1–3 tasks are defined.
+- **Phase 1 detail tasks** use `T-EVAL-P1-*` IDs (`TASK-097`–`TASK-103`). `TASK-088`–`090` are umbrella implementation tasks that build on those files.
+
+## 29.2 Phase 1 — Source-of-Truth Detail Tasks (`T-EVAL-P1-*`)
+
+| T-EVAL ID     | TASK ID  | PRD requirement | Summary                                                  |
+| ------------- | -------- | --------------- | -------------------------------------------------------- |
+| T-EVAL-P1-001 | TASK-097 | EVAL-P1-001     | Create `docs/rosejs-knowledge/` folder and file scaffold |
+| T-EVAL-P1-002 | TASK-098 | EVAL-P1-001     | Write `company-profile.md`                               |
+| T-EVAL-P1-003 | TASK-099 | EVAL-P1-001     | Write `services.md`                                      |
+| T-EVAL-P1-004 | TASK-100 | EVAL-P1-001     | Write `target-industries.md`                             |
+| T-EVAL-P1-005 | TASK-101 | EVAL-P1-003     | Write `brand-voice.md`                                   |
+| T-EVAL-P1-006 | TASK-102 | EVAL-P1-003     | Write `forbidden-claims.md`                              |
+| T-EVAL-P1-007 | TASK-103 | EVAL-P1-002     | Create `docs/evals/static-website-eval.md` checklist     |
+
+**Umbrella tasks (related, broader scope):**
+
+| T-EVAL-P1-\*                 | Related TASK-\* | Relationship                                                |
+| ---------------------------- | --------------- | ----------------------------------------------------------- |
+| T-EVAL-P1-001–006            | TASK-088        | Epic-level knowledge base; decomposed into TASK-097–102     |
+| T-EVAL-P1-007                | TASK-089        | Checklist doc (`TASK-103`) vs automated eval implementation |
+| T-EVAL-P1-005, T-EVAL-P1-006 | TASK-090        | Source files vs brand-voice eval execution                  |
+
+---
+
+## TASK-078: Create AI Evaluation Roadmap Document
+
+**Priority:** P2  
+**Status:** Done  
+**Source Requirements:** EVAL-P1-001, EVAL-SOT-001, NFR-EVAL-001, NFR-EVAL-002  
+**Implementation Area:** Documentation, Testing
+
+### Description
+
+Establish the canonical eval implementation guides for RoseJS. **Primary guides (do not duplicate):**
+
+- **`docs/Testing_Strategy.md`** §15 — AI Evaluation Testing Strategy (phases, validation methods, CI, file layout, definition of done)
+- **`docs/AI_Workflow_Guide.md`** — AI evaluation workflow (prompting with knowledge base, change workflow, assistant eval rules)
+
+Index: **`docs/evals/README.md`** links PRD §26–§27, Architecture §28, Traceability §13, Tasks §29, and the two canonical guides above.
+
+### Acceptance Criteria
+
+- Document describes Phases 1–3 with goals and exit criteria aligned to PRD §26 and §27.
+- Document lists authoritative source-of-truth artifacts (PRD, Architecture, `docs/rosejs-knowledge/`, brand, Component Map, Traceability Matrix).
+- Document links each phase to `NFR-EVAL-*`, `EVAL-P*`, `EVAL-SOT-*`, `EVAL-REG-*`, and `EVAL-AIA-*` IDs.
+- **`Testing_Strategy.md` §15** and **`AI_Workflow_Guide.md`** (AI evaluation workflow section) are the canonical eval implementation guides; they cross-reference each other and PRD §26–§27.
+- If `docs/evals/README.md` is added, it points to the two canonical guides and does not duplicate their content.
+
+### Validation
+
+- Manual documentation review.
+- Cross-check IDs against PRD §11.8, §26, and §27.
+- **Done (July 2026):** Canonical guides in **`Testing_Strategy.md`** §15 and **`AI_Workflow_Guide.md`**; deployment gates in **`Deployment_Guide.md`** §22; index at **`docs/evals/README.md`**; cross-links added from §15 and AI Workflow Guide to the index.
+
+---
+
+## TASK-079: Build Source-of-Truth Eval Catalog
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P1-002, EVAL-SOT-001, EVAL-SOT-002, EVAL-SOT-004  
+**Implementation Area:** Documentation, Testing
+
+### Description
+
+Define a version-controlled catalog of golden references and golden-answer eval cases derived from `docs/rosejs-knowledge/` and project contracts. Supports static website content evals (`TASK-089`).
+
+### Acceptance Criteria
+
+- Catalog includes at least one golden case per core route (`/`, `/services`, `/about`, `/blog`, `/contact`, `/schedule`).
+- Each case maps to at least one PRD functional requirement or architecture component ID.
+- Catalog format supports automated or semi-automated comparison (JSON, markdown tables, or similar).
+- Catalog lives under `docs/` or `eval/` and is referenced in PR/commit templates when eval-related files change.
+
+### Validation
+
+- Manual catalog review.
+- Spot-check traceability to PRD IDs (e.g., `HOME-*`, `CONTACT-*`, `NFR-SEO-*`).
+
+---
+
+## TASK-080: Document CMS Fallback vs Live Content Eval Boundaries
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P1-001, EVAL-SOT-003, NFR-EVAL-001  
+**Implementation Area:** CMS, Documentation
+
+### Description
+
+Document expected behavior when Sanity CMS content is live vs when local fallback content is used, so evals do not false-fail during CMS outages or preview builds. Align with `docs/rosejs-knowledge/` boundaries where CMS and knowledge base overlap.
+
+### Acceptance Criteria
+
+- Boundaries documented for blog posts, case studies, and static page sections.
+- Eval catalog notes which fields are CMS-driven vs hardcoded fallback.
+- Document aligns with `Architecture.md` CMS abstraction and `src/cms/` fallback patterns.
+
+### Validation
+
+- Manual review against CMS client and fallback content in repo.
+
+---
+
+## TASK-081: Implement Source-of-Truth Eval Runner
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P1-002, EVAL-SOT-005, NFR-EVAL-006  
+**Implementation Area:** Testing, CI/CD
+
+### Description
+
+Provide a local (and CI-invokable) script that runs Phase 1 golden cases from `TASK-079` and knowledge base (`TASK-088`) and reports pass/fail.
+
+### Acceptance Criteria
+
+- Runner executable via npm script (e.g., `npm run eval:sot` or documented equivalent).
+- Runner validates at minimum: route list, page titles/meta defaults, brand constants, and core CTA targets.
+- Runner exits non-zero on failure for CI integration in Phase 2.
+- README or Testing Strategy documents how to run locally.
+
+### Validation
+
+- Run locally on clean checkout.
+- Confirm pass on current `main`/`develop` baseline.
+
+---
+
+## TASK-082: Wire Change-Based Eval Triggers in CI
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P2-001, EVAL-REG-001, EVAL-REG-002, NFR-EVAL-003  
+**Implementation Area:** CI/CD, Testing
+
+### Description
+
+Extend GitHub Actions so pull requests run change-based and full regression eval subsets automatically. Implements scenarios defined in `TASK-091`.
+
+### Acceptance Criteria
+
+- CI job runs on pull requests to protected branches.
+- Diff-aware step selects eval subsets when only specific areas change (routes, SEO, forms, analytics, knowledge base).
+- Full regression subset runs when shared layout, config, eval catalog, or `docs/rosejs-knowledge/` changes.
+- Failed evals surface in PR checks with actionable logs.
+
+### Validation
+
+- Open test PR touching SEO metadata; confirm targeted evals run.
+- Open test PR touching shared layout; confirm broader regression runs.
+
+---
+
+## TASK-083: Expand Regression Eval Suite for Critical Flows
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P2-002, EVAL-REG-003, EVAL-REG-005, NFR-EVAL-004  
+**Implementation Area:** Testing
+
+### Description
+
+Extend Vitest, Playwright, and SEO checks to cover PRD §12.3 critical flows and integrate recurring Q&A regression evals from `TASK-092`.
+
+### Acceptance Criteria
+
+- Regression suite covers: navigation, contact form, Calendly CTA, lead magnet download, mobile nav.
+- Integrates Q&A regression cases from `TASK-092` (run after content, prompt, or knowledge-base changes).
+- Changed pages/metadata compared against Phase 1 golden references where applicable.
+- New or updated tests reference related PRD requirement IDs in comments or test descriptions.
+- Suite integrates with CI from TASK-082.
+
+### Validation
+
+- `npm run test`, `npm run test:e2e`, and eval CI job pass on baseline branch.
+- Introduce intentional regression in test branch; confirm eval failure.
+
+---
+
+## TASK-084: Document Eval Merge Gates and Failure Handling
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P2-002, EVAL-REG-004, EVAL-REG-006, NFR-EVAL-002  
+**Implementation Area:** Documentation, CI/CD
+
+### Description
+
+Document when failed evals block merge or deployment vs when documented exceptions are allowed, and what artifacts reviewers need. **Canonical policy:** **`docs/Deployment_Guide.md`** §22.
+
+### Acceptance Criteria
+
+- Policy documented in **`docs/Deployment_Guide.md`** §22 (AI Evaluation and Deployment Gates).
+- Defines critical vs non-critical eval failures.
+- Describes artifact retention (logs, Playwright traces, Lighthouse output) for failed PRs.
+- Failed evals block deployment until reviewed or fixed (per PRD `EVAL-P2-002`).
+- Aligns with branch protection and solo-maintainer workflow in `Branch_Protection_Setup.md`.
+
+### Validation
+
+- Manual policy review.
+- Dry-run failure scenario documented with expected reviewer steps.
+
+---
+
+## TASK-085: Define Development-Workflow AI Assistant Eval Scenarios and Rubric
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-AIA-001, EVAL-AIA-004, EVAL-AIA-005, NFR-EVAL-002  
+**Implementation Area:** Documentation, AI Workflow
+
+### Description
+
+Define scenarios and a human-reviewed rubric for evaluating **development-workflow** AI assistant outputs (Cursor, task planning, code generation, PR review). User-facing assistant evals are covered by `TASK-094`–`096`.
+
+### Acceptance Criteria
+
+- Scenarios cover: task planning, component implementation, marketing copy draft, documentation update, PR review assistance.
+- Rubric includes pass/fail criteria for healthcare insurance positioning accuracy.
+- Rubric includes examples of acceptable and unacceptable assistant outputs.
+- Failure log template for recurring mistakes (e.g., backend introduction, off-brand copy).
+
+### Validation
+
+- Manual review against `AI_Workflow_Guide.md` and PRD positioning (§7).
+
+---
+
+## TASK-086: Implement Development-Workflow AI Assistant Guardrail Evals
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-AIA-002, EVAL-AIA-003, NFR-EVAL-005  
+**Implementation Area:** Documentation, Testing
+
+### Description
+
+Create checklists or automated checks that verify **development-workflow** assistant outputs respect MVP boundaries and project workflow. Complements user-facing guardrails in `TASK-094`–`096`.
+
+### Acceptance Criteria
+
+- Guardrail evals cover: no custom backend/database for MVP scope, no PHI collection, no secrets in frontend, isolated CMS/analytics/form modules.
+- Evals reference `Code_Review_Checklist.md` and `Tasks.md` §28 agent rules.
+- At least one scripted or checklist-based guardrail eval can be run before merging large AI-generated changes.
+- Document how guardrail evals complement (not replace) human code review.
+
+### Validation
+
+- Run guardrail checklist against sample AI-generated PR description and diff.
+- Confirm violations are detected for documented anti-patterns.
+
+---
+
+## TASK-087: Update Traceability Matrix for Eval Requirements
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** NFR-EVAL-001–006, EVAL-P1-001–003, EVAL-P2-001–003, EVAL-P3-001–003, EVAL-SOT-001–005, EVAL-REG-001–006, EVAL-AIA-001–006  
+**Implementation Area:** Documentation
+
+### Description
+
+Extend `Traceability_Matrix.md` to map all eval requirement IDs to tasks, tests, and CI validation.
+
+### Acceptance Criteria
+
+- Matrix rows exist for `NFR-EVAL-*`, each `EVAL-P*`, `EVAL-SOT-*`, `EVAL-REG-*`, and `EVAL-AIA-*` requirement ID.
+- Each row links to implementing task ID(s) and validation method (manual, Vitest, Playwright, CI script).
+- Matrix cross-references PRD §26, PRD §27, and Tasks.md §29.
+
+### Validation
+
+- Manual traceability audit: every eval ID in PRD has at least one matrix row and task.
+
+---
+
+## TASK-097 (T-EVAL-P1-001): Create RoseJS Knowledge Base Folder
+
+**Priority:** P2  
+**Status:** Done  
+**Source Requirements:** EVAL-P1-001, NFR-EVAL-001  
+**Implementation Area:** Documentation, Content
+
+### Description
+
+Create the approved source-of-truth folder and scaffold files for RoseJS business knowledge.
+
+### Acceptance Criteria
+
+- Folder exists: `docs/rosejs-knowledge/`
+- Files exist:
+  - `company-profile.md`
+  - `services.md`
+  - `target-industries.md`
+  - `brand-voice.md`
+  - `forbidden-claims.md`
+- Each file has initial RoseJS-approved content (may be expanded in `TASK-098`–`TASK-102`).
+
+### Validation
+
+- Manual check: folder and all five files present in repo.
+- **Done (July 2026):** All files created with initial content aligned to PRD §7, live About/Services pages, `src/content/fallback/services.ts`, `src/lib/calendly.ts`, and `docs/Brand_and_Domain.md`. Expand per-file detail in `TASK-098`–`TASK-102`.
+
+---
+
+## TASK-098 (T-EVAL-P1-002): Write Company Profile Source File
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P1-001, NFR-EVAL-001  
+**Depends On:** TASK-097  
+**Implementation Area:** Documentation, Content
+
+### Description
+
+Create `docs/rosejs-knowledge/company-profile.md` with approved RoseJS company facts.
+
+### Acceptance Criteria
+
+- Includes: what RoseJS is, founder background summary, AI-first methodology positioning, target client profile, business value proposition.
+- Company profile is clear and current.
+- Content can be used as a source of truth for website and AI responses.
+
+### Validation
+
+- Manual review against PRD §7 positioning and live About/homepage content.
+
+---
+
+## TASK-099 (T-EVAL-P1-003): Write Services Source File
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P1-001, NFR-EVAL-001  
+**Depends On:** TASK-097  
+**Implementation Area:** Documentation, Content
+
+### Description
+
+Create `docs/rosejs-knowledge/services.md` with current RoseJS service offerings.
+
+### Acceptance Criteria
+
+- Includes current services such as: AI-first legacy modernization, architecture review, technical debt assessment, healthcare system integration, e-commerce modernization, AI workflow implementation.
+- Services are clearly listed.
+- Removed or outdated services are not included.
+- Services match website positioning.
+
+### Validation
+
+- Manual review against Services page and CMS service content.
+
+---
+
+## TASK-100 (T-EVAL-P1-004): Write Target Industries Source File
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P1-001, NFR-EVAL-001  
+**Depends On:** TASK-097  
+**Implementation Area:** Documentation, Content
+
+### Description
+
+Create `docs/rosejs-knowledge/target-industries.md` with approved industry focus.
+
+### Acceptance Criteria
+
+- Includes: Healthcare, E-commerce, and future industries if applicable.
+- File confirms RoseJS does **not** serve healthcare only.
+- Website content can be checked against this file.
+
+### Validation
+
+- Manual review; confirm no “healthcare only” positioning.
+
+---
+
+## TASK-101 (T-EVAL-P1-005): Write Brand Voice Source File
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P1-003, NFR-EVAL-001, NFR-EVAL-002  
+**Depends On:** TASK-097  
+**Implementation Area:** Documentation, Content
+
+### Description
+
+Create `docs/rosejs-knowledge/brand-voice.md` with tone rules for RoseJS content.
+
+### Acceptance Criteria
+
+- Tone rules documented: professional, clear, human, practical, AI-first but not hype-driven, confident but not exaggerated, helpful to healthcare and e-commerce leaders.
+- Brand voice rules can be used by future eval scripts or human reviewers (`TASK-090`).
+
+### Validation
+
+- Manual review against PRD `EVAL-P1-003` and live site copy samples.
+
+---
+
+## TASK-102 (T-EVAL-P1-006): Write Forbidden Claims Source File
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P1-003, EVAL-P2-003, NFR-EVAL-002  
+**Depends On:** TASK-097  
+**Implementation Area:** Documentation, Content
+
+### Description
+
+Create `docs/rosejs-knowledge/forbidden-claims.md` with claims RoseJS must avoid.
+
+### Acceptance Criteria
+
+- Includes: guaranteed ROI, guaranteed project success, instant transformation, healthcare only, unapproved client claims, unverified certifications or partnerships.
+- Forbidden claims are documented.
+- File can be used for stale-answer detection (`TASK-093`).
+
+### Validation
+
+- Manual review; cross-check examples from PRD `EVAL-P2-003`.
+
+---
+
+## TASK-103 (T-EVAL-P1-007): Create Static Website Eval Checklist
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P1-002, NFR-EVAL-002  
+**Depends On:** TASK-098–102  
+**Implementation Area:** Documentation, Testing
+
+### Description
+
+Create `docs/evals/static-website-eval.md` — a human-review checklist for key marketing pages against the knowledge base.
+
+### Acceptance Criteria
+
+- Checklist covers: Homepage, Services page, About page, Contact page, Lead magnet section.
+- Checklist validates clarity, accuracy, CTA, SEO, tone, and safety.
+- Checklist references the RoseJS knowledge base (`docs/rosejs-knowledge/`).
+- Supports automated/static eval implementation in `TASK-089` and `TASK-081`.
+
+### Validation
+
+- Manual walkthrough of checklist against live site.
+- Confirm each checklist item maps to a knowledge-base file.
+
+---
+
+## TASK-088: Create RoseJS Knowledge Base Files
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P1-001, NFR-EVAL-001, NFR-EVAL-002  
+**Depends On:** TASK-097–102  
+**Implementation Area:** Documentation, Content
+
+### Description
+
+Umbrella task: complete and maintain approved source-of-truth knowledge files under `docs/rosejs-knowledge/`. **Decomposed into `TASK-097`–`TASK-102` (`T-EVAL-P1-001`–`T-EVAL-P1-006`).**
+
+### Acceptance Criteria
+
+- All `T-EVAL-P1-001`–`T-EVAL-P1-006` definition-of-done criteria met.
+- Website content and AI-generated content can be evaluated against these files.
+- Knowledge files are referenced from eval catalog (`TASK-079`) and static content evals (`TASK-089`).
+
+### Validation
+
+- Verify `TASK-097`–`TASK-102` complete.
+- Manual review against PRD §7 positioning and live site content.
+
+---
+
+## TASK-089: Implement Static Website Content Evals
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P1-002, EVAL-SOT-002, EVAL-SOT-004, NFR-EVAL-002  
+**Depends On:** TASK-103, TASK-088  
+**Implementation Area:** Testing, Content
+
+### Description
+
+Implement static website content evals (automated or semi-automated) using the checklist in `docs/evals/static-website-eval.md` (`TASK-103` / `T-EVAL-P1-007`) and the knowledge base.
+
+### Acceptance Criteria
+
+- Evals cover: Homepage, Services page, About page, Contact page, Lead magnet section.
+- Page content matches approved RoseJS positioning.
+- Page content does not include outdated services, outdated industries, or exaggerated claims.
+- Page content reflects RoseJS brand voice.
+- Evaluation results are documented (pass/fail report or CI artifact).
+
+### Validation
+
+- Run evals against current `main`/`develop` baseline.
+- Introduce intentional positioning drift in test branch; confirm eval failure.
+
+---
+
+## TASK-090: Implement Brand Voice Evals
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P1-003, NFR-EVAL-001, NFR-EVAL-002  
+**Depends On:** TASK-101, TASK-102  
+**Implementation Area:** Testing, Content
+
+### Description
+
+Execute brand-voice evals using `docs/rosejs-knowledge/brand-voice.md` (`TASK-101` / `T-EVAL-P1-005`) and forbidden-claims context from `TASK-102`.
+
+### Acceptance Criteria
+
+- Eval rubric derived from `docs/rosejs-knowledge/brand-voice.md`.
+- Content avoids exaggerated AI claims.
+- Content sounds human and credible.
+- Content is aligned with RoseJS consulting identity.
+- Content is appropriate for healthcare and e-commerce modernization audiences.
+- Eval can run on website copy and AI-generated draft content.
+
+### Validation
+
+- Manual rubric review on sample pages and AI-generated copy.
+- Document pass/fail examples in eval catalog or Testing Strategy.
+
+---
+
+## TASK-091: Define Change-Based Business Eval Scenarios
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P2-001, EVAL-REG-002, NFR-EVAL-003  
+**Implementation Area:** Documentation, Testing
+
+### Description
+
+Define eval scenarios that verify RoseJS AI-generated and website content adapts when business data changes.
+
+### Acceptance Criteria
+
+- Scenarios documented for: target industries change, service offerings change, lead magnet change, CTA change, pricing or consultation policy change, Calendly or contact link change.
+- Each major business change type has a matching eval scenario.
+- Scenarios specify expected pass criteria (latest approved info present; stale/removed info absent).
+- Scenarios are implemented in CI via `TASK-082`.
+
+### Validation
+
+- Manual scenario review against `docs/rosejs-knowledge/`.
+- Dry-run one scenario (e.g., outdated Calendly link) and confirm eval detects failure.
+
+---
+
+## TASK-092: Build Recurring RoseJS Q&A Regression Eval Suite
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P2-002, NFR-EVAL-004, NFR-EVAL-006  
+**Implementation Area:** Testing, Documentation
+
+### Description
+
+Maintain a regression eval suite for recurring RoseJS business questions, runnable after content, prompt, or knowledge-base changes.
+
+### Acceptance Criteria
+
+- Suite includes eval cases for:
+  - What does RoseJS do?
+  - Who does RoseJS help?
+  - What is AI-first development?
+  - Does RoseJS work with e-commerce companies?
+  - Can RoseJS guarantee project success?
+  - How can someone contact RoseJS?
+  - What makes RoseJS different?
+- Eval results identify pass/fail outcomes.
+- Suite integrates with `TASK-083` and CI from `TASK-082`.
+
+### Validation
+
+- Run suite after knowledge-base update; confirm pass on baseline.
+- Change approved answer in knowledge base; confirm eval detects mismatch.
+
+---
+
+## TASK-093: Implement Stale Answer and Forbidden Claim Detection
+
+**Priority:** P2  
+**Status:** Not Started  
+**Source Requirements:** EVAL-P2-003, EVAL-P1-001, NFR-EVAL-002, NFR-EVAL-003  
+**Implementation Area:** Testing, Documentation
+
+### Description
+
+Detect outdated or forbidden RoseJS claims in website content and AI-generated responses.
+
+### Acceptance Criteria
+
+- Stale terms and forbidden claims listed in `docs/rosejs-knowledge/forbidden-claims.md` (and eval config).
+- Eval checks fail if stale or forbidden claims appear (e.g., healthcare-only positioning, ROI guarantees, removed services, old Calendly link, outdated lead magnet).
+- Failures are reported clearly with matched term and source location.
+- Detection runs as part of Phase 2 CI (`TASK-082`).
+
+### Validation
+
+- Inject forbidden claim in test content; confirm eval failure and clear report.
+- Verify examples from PRD `EVAL-P2-003` are covered.
+
+---
+
+## TASK-094: Define User-Facing AI Assistant Behavior Evals
+
+**Priority:** P2  
+**Status:** Not Started  
+**Blocked By:** Future RoseJS chatbot, FAQ assistant, lead qualification assistant, or AI proposal assistant feature  
+**Source Requirements:** EVAL-P3-001, EVAL-AIA-001, NFR-EVAL-005  
+**Implementation Area:** Documentation, AI Workflow
+
+### Description
+
+When RoseJS adds a user-facing assistant, define eval scenarios for assistant behavior against the knowledge base and brand voice.
+
+### Acceptance Criteria
+
+- Scenarios cover: grounding in source-of-truth files, unsupported claims, routing to contact/scheduling, out-of-scope refusal, brand voice.
+- Rubric includes pass/fail examples for acceptable and unacceptable assistant responses.
+- Scenarios distinguish user-facing assistant behavior from development-workflow evals (`TASK-085`).
+
+### Validation
+
+- Manual rubric review before assistant launch.
+- Run scenario set against prototype assistant; document results.
+
+---
+
+## TASK-095: Implement Retrieval-Grounded Evals
+
+**Priority:** P2  
+**Status:** Not Started  
+**Blocked By:** RoseJS adoption of retrieval-augmented generation (RAG) for assistant or content features  
+**Source Requirements:** EVAL-P3-002, EVAL-P1-001, EVAL-P2-003, NFR-EVAL-005  
+**Implementation Area:** Testing, AI Workflow
+
+### Description
+
+When RoseJS uses RAG, evaluate both retrieved context quality and final answer quality.
+
+### Acceptance Criteria
+
+- Evals verify retrieved context is relevant to the user question.
+- Final answer is supported by retrieved RoseJS documents.
+- Final answer does not contradict approved source files.
+- Final answer uses current information (not stale knowledge).
+- Failed retrieval or grounding evals are reported clearly.
+
+### Validation
+
+- Test with questions that should retrieve specific knowledge files.
+- Test with adversarial questions; confirm unsupported answers fail eval.
+
+---
+
+## TASK-096: Implement Business Alignment Evals for AI Assistants
+
+**Priority:** P2  
+**Status:** Not Started  
+**Blocked By:** User-facing AI assistant feature (`TASK-094`)  
+**Source Requirements:** EVAL-P3-003, EVAL-P3-001, NFR-EVAL-005  
+**Implementation Area:** Testing, AI Workflow
+
+### Description
+
+Evaluate whether user-facing AI assistant responses support RoseJS business goals.
+
+### Acceptance Criteria
+
+- Eval rubric covers: build trust, explain services clearly, qualify potential clients, encourage appropriate next steps, avoid misleading claims.
+- Responses are scored for business alignment (helpful, credible, on-scope).
+- Responses include an appropriate CTA when relevant (contact, schedule, lead magnet).
+- Responses avoid overpromising (aligned with `forbidden-claims.md`).
+
+### Validation
+
+- Run rubric on sample assistant conversations.
+- Confirm overpromising and missing-CTA cases fail eval.

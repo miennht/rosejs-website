@@ -10,10 +10,11 @@ It supports the AI-First delivery methodology by ensuring that AI-assisted imple
 
 This document is based on:
 
-- `PRD.md`
-- `Architecture.md`
-- `Traceability_Matrix.md`
-- `Tasks.md`
+- `PRD.md` (including §26–§27 AI evaluation requirements)
+- `Architecture.md` (including §28 AI Evaluation Architecture)
+- `Traceability_Matrix.md` (including §13 eval traceability)
+- `Tasks.md` (including §29 post-MVP eval tasks)
+- `AI_Workflow_Guide.md`
 
 ---
 
@@ -90,6 +91,7 @@ Prioritize:
 | SEO Validation      | Manual review, Lighthouse, custom checks | Validate metadata, sitemap, robots.txt, headings                  |
 | Build Validation    | Vite build                               | Ensure production build succeeds                                  |
 | CI Validation       | GitHub Actions                           | Run quality gates automatically                                   |
+| Eval (Post-MVP)     | Custom scripts, checklists, CI jobs      | Source-of-truth, regression, stale-claim, assistant evals         |
 
 ---
 
@@ -402,6 +404,14 @@ Recommended scripts:
 }
 ```
 
+Post-MVP (when `TASK-081` is complete):
+
+```json
+"eval:sot": "node scripts/eval-sot.mjs"
+```
+
+(Exact script path to be finalized in `TASK-081`.)
+
 ---
 
 ## 9. Pull Request Testing Requirements
@@ -410,16 +420,18 @@ Every pull request should include testing evidence.
 
 ### Minimum PR Testing Evidence
 
-| Change Type         | Required Evidence                                  |
-| ------------------- | -------------------------------------------------- |
-| Documentation only  | Manual review                                      |
-| UI component        | Component test or screenshot/manual review         |
-| Page implementation | Component/E2E test and screenshot                  |
-| Contact form        | Component test + E2E validation                    |
-| CMS integration     | Mapper tests + manual CMS/fallback data validation |
-| SEO change          | Metadata review                                    |
-| CI/CD change        | Screenshot or log showing workflow run             |
-| Deployment change   | Preview deployment or deployment verification      |
+| Change Type           | Required Evidence                                                               |
+| --------------------- | ------------------------------------------------------------------------------- |
+| Documentation only    | Manual review                                                                   |
+| UI component          | Component test or screenshot/manual review                                      |
+| Page implementation   | Component/E2E test and screenshot                                               |
+| Contact form          | Component test + E2E validation                                                 |
+| CMS integration       | Mapper tests + manual CMS/fallback data validation                              |
+| SEO change            | Metadata review                                                                 |
+| CI/CD change          | Screenshot or log showing workflow run                                          |
+| Deployment change     | Preview deployment or deployment verification                                   |
+| Knowledge base / eval | Manual checklist or `npm run eval:sot` when available; cite `TASK-097`–`103`    |
+| AI-generated copy     | Review against `docs/rosejs-knowledge/` and `docs/evals/static-website-eval.md` |
 
 ### PR Checklist
 
@@ -567,10 +579,157 @@ Post-MVP testing improvements may include:
 - Deployment smoke tests
 - Analytics event validation tests
 - Cross-browser test matrix
+- **AI evaluation roadmap** (PRD §26–§27) — see **§15** below
 
 ---
 
-## 15. Notes for Future AI Agents
+## 15. AI Evaluation Testing Strategy (Post-MVP)
+
+Evals extend MVP testing with quality gates for AI-generated content, website accuracy, and future AI assistants. They do **not** replace unit, component, or E2E tests; they complement them.
+
+**Index:** [`docs/evals/README.md`](evals/README.md) (`TASK-078`) — links to this section and the AI Workflow Guide without duplicating content.
+
+**References:**
+
+| Document                     | Content                                              |
+| ---------------------------- | ---------------------------------------------------- |
+| `PRD.md` §11.8, §26, §27     | `NFR-EVAL-*`, `EVAL-P1/P2/P3-*`, acceptance criteria |
+| `Tasks.md` §29               | `TASK-078`–`096`, `T-EVAL-P1-*` (`TASK-097`–`103`)   |
+| `Architecture.md` §28        | Eval architecture, CI integration, file layout       |
+| `Traceability_Matrix.md` §13 | Requirement → task → validation mapping              |
+| `AI_Workflow_Guide.md`       | Prompting and review workflow using knowledge base   |
+
+### 15.1 Eval goals
+
+1. Website and AI-generated content match approved RoseJS facts in `docs/rosejs-knowledge/`.
+2. Content avoids forbidden or stale claims (e.g., healthcare-only, guaranteed ROI).
+3. Brand voice stays professional, clear, and not hype-driven.
+4. Business changes trigger matching eval scenarios and regression checks.
+5. Future assistants ground answers in source-of-truth files.
+6. Failed critical evals block deployment until reviewed or fixed.
+
+### 15.2 Three phases
+
+| Phase                               | What to test                                           | Primary artifacts                                             | Tasks                                |
+| ----------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------- | ------------------------------------ |
+| **1 — Source-of-truth**             | Knowledge files, static pages, brand voice             | `docs/rosejs-knowledge/`, `docs/evals/static-website-eval.md` | `TASK-097`–`103`, `088`–`090`, `081` |
+| **2 — Change-based and regression** | Business-change scenarios, recurring Q&A, stale claims | Eval scenarios, Q&A suite, forbidden-terms config             | `TASK-091`–`093`, `082`–`084`        |
+| **3 — AI assistant**                | Dev-workflow and user-facing assistant behavior        | Rubrics, guardrail checklists, RAG eval cases                 | `TASK-085`–`086`, `094`–`096`        |
+
+### 15.3 Phase 1 — Source-of-truth evals
+
+**Knowledge base** (`EVAL-P1-001`, `T-EVAL-P1-001`–`T-EVAL-P1-006`):
+
+```text
+docs/rosejs-knowledge/
+  company-profile.md      # TASK-098 / T-EVAL-P1-002
+  services.md               # TASK-099 / T-EVAL-P1-003
+  target-industries.md      # TASK-100 / T-EVAL-P1-004
+  brand-voice.md            # TASK-101 / T-EVAL-P1-005
+  forbidden-claims.md       # TASK-102 / T-EVAL-P1-006
+```
+
+**Static website eval checklist** (`EVAL-P1-002`, `T-EVAL-P1-007`):
+
+```text
+docs/evals/static-website-eval.md   # TASK-103
+```
+
+Checklist pages: Homepage, Services, About, Contact, Lead magnet section. Validates clarity, accuracy, CTA, SEO, tone, and safety against the knowledge base.
+
+**Validation methods:**
+
+| Method                               | Scope                                                                   |
+| ------------------------------------ | ----------------------------------------------------------------------- |
+| Manual checklist walkthrough         | `docs/evals/static-website-eval.md`                                     |
+| Brand voice rubric review            | `brand-voice.md` + `TASK-090`                                           |
+| Local eval runner (when implemented) | `npm run eval:sot` — routes, titles, brand constants, CTAs (`TASK-081`) |
+| Golden eval catalog                  | `eval/` or `docs/` — `TASK-079`                                         |
+
+**Recommended Phase 1 order:** `TASK-097` → `TASK-098`–`102` → `TASK-103` → `TASK-088` → `TASK-079` → `TASK-089` → `TASK-090` → `TASK-080` → `TASK-081`.
+
+### 15.4 Phase 2 — Change-based and regression evals
+
+**Change scenarios** (`EVAL-P2-001`, `TASK-091`): eval cases when target industries, services, lead magnet, CTAs, pricing/consultation policy, or Calendly/contact links change.
+
+**Q&A regression suite** (`EVAL-P2-002`, `TASK-092`) — example questions:
+
+- What does RoseJS do?
+- Who does RoseJS help?
+- What is AI-first development?
+- Does RoseJS work with e-commerce companies?
+- Can RoseJS guarantee project success?
+- How can someone contact RoseJS?
+- What makes RoseJS different?
+
+Run after content, prompt, or knowledge-base changes. Pass/fail required; failures block deployment until reviewed (`EVAL-P2-002`, `TASK-084`).
+
+**Stale answer detection** (`EVAL-P2-003`, `TASK-093`): fail if content includes terms from `forbidden-claims.md` or configured stale terms (e.g., healthcare-only, old Calendly URL, removed services).
+
+**CI integration** (`TASK-082`): diff-aware eval subsets on pull requests; full regression when `docs/rosejs-knowledge/`, shared layout, or eval catalog changes.
+
+**Extends MVP regression** (`§12`): add eval commands to minimum regression set when Phase 2 is implemented:
+
+```text
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+npm run test:e2e
+npm run eval:sot          # when TASK-081 complete
+# future: npm run eval:regression, npm run eval:stale
+```
+
+### 15.5 Phase 3 — AI assistant evals
+
+**Development-workflow** (`EVAL-AIA-*`, `TASK-085`–`086`): Cursor/planning/code/PR-review scenarios; guardrails for MVP scope, PHI, secrets, `src/lib` isolation.
+
+**User-facing** (when features ship, `EVAL-P3-*`, `TASK-094`–`096`):
+
+| Requirement                      | Validation                                                                   |
+| -------------------------------- | ---------------------------------------------------------------------------- |
+| `EVAL-P3-001` Behavior           | Grounded in knowledge base; routes to contact/schedule; refuses out-of-scope |
+| `EVAL-P3-002` RAG                | Retrieved context relevant; answer supported by docs; no contradictions      |
+| `EVAL-P3-003` Business alignment | Trust, clear services, qualification, appropriate CTA, no overpromising      |
+
+### 15.6 Eval file organization (post-MVP)
+
+```text
+docs/
+  rosejs-knowledge/           # Approved business source of truth
+  evals/
+    static-website-eval.md    # Human checklist (TASK-103)
+
+eval/                         # Optional: golden cases, runners, Q&A fixtures (TASK-079, 081, 092)
+  catalog.json                # example — format TBD in TASK-079
+  scenarios/                  # change-based scenarios (TASK-091)
+```
+
+### 15.7 Eval definition of done (post-MVP)
+
+Phase 1 is eval-ready when:
+
+1. All `docs/rosejs-knowledge/` files exist with current content (`TASK-097`–`102`).
+2. `docs/evals/static-website-eval.md` exists (`TASK-103`).
+3. Static content and brand-voice evals documented or automated (`TASK-089`, `TASK-090`).
+4. Local eval runner passes on baseline branch (`TASK-081`).
+
+Phase 2 is eval-ready when:
+
+5. Change scenarios and Q&A regression suite exist (`TASK-091`, `TASK-092`).
+6. Stale/forbidden claim detection runs (`TASK-093`).
+7. CI runs eval subsets on PRs (`TASK-082`).
+8. Merge/deployment gate policy documented (`TASK-084`).
+
+Phase 3 is eval-ready when:
+
+9. Dev-workflow rubric and guardrails exist (`TASK-085`, `TASK-086`).
+10. User-facing assistant evals defined before launch (`TASK-094`–`096`, when applicable).
+11. `Traceability_Matrix.md` §13 updated (`TASK-087`).
+
+---
+
+## 16. Notes for Future AI Agents
 
 Future AI agents must follow these testing rules:
 
@@ -582,3 +741,6 @@ Future AI agents must follow these testing rules:
 6. Do not introduce PHI/PII into tests.
 7. Make sure CI commands remain fast enough for pull requests.
 8. Keep tests aligned with PRD, Architecture.md, Traceability_Matrix.md, and Tasks.md.
+9. For post-MVP eval work, follow **§15**, PRD §26–§27, and `Tasks.md` §29; update knowledge base before website copy.
+10. Do not skip Phase 1 source-of-truth files (`TASK-097`–`103`) before adding Phase 2 CI eval gates.
+11. Cite `T-EVAL-P1-*` or `TASK-097`–`103` in PRs that change `docs/rosejs-knowledge/` or eval checklists.
