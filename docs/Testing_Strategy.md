@@ -420,18 +420,18 @@ Every pull request should include testing evidence.
 
 ### Minimum PR Testing Evidence
 
-| Change Type         | Required Evidence                                  |
-| ------------------- | -------------------------------------------------- |
-| Documentation only  | Manual review                                      |
-| UI component        | Component test or screenshot/manual review         |
-| Page implementation | Component/E2E test and screenshot                  |
-| Contact form        | Component test + E2E validation                    |
-| CMS integration     | Mapper tests + manual CMS/fallback data validation |
-| SEO change          | Metadata review                                    |
-| CI/CD change        | Screenshot or log showing workflow run             |
-| Deployment change   | Preview deployment or deployment verification      |
-| Knowledge base / eval | Manual checklist or `npm run eval:sot` when available; cite `TASK-097`–`103` |
-| AI-generated copy   | Review against `docs/rosejs-knowledge/` and `docs/evals/static-website-eval.md` |
+| Change Type           | Required Evidence                                                               |
+| --------------------- | ------------------------------------------------------------------------------- |
+| Documentation only    | Manual review                                                                   |
+| UI component          | Component test or screenshot/manual review                                      |
+| Page implementation   | Component/E2E test and screenshot                                               |
+| Contact form          | Component test + E2E validation                                                 |
+| CMS integration       | Mapper tests + manual CMS/fallback data validation                              |
+| SEO change            | Metadata review                                                                 |
+| CI/CD change          | Screenshot or log showing workflow run                                          |
+| Deployment change     | Preview deployment or deployment verification                                   |
+| Knowledge base / eval | Manual checklist or `npm run eval:sot` when available; cite `TASK-097`–`103`    |
+| AI-generated copy     | Review against `docs/rosejs-knowledge/` and `docs/evals/static-website-eval.md` |
 
 ### PR Checklist
 
@@ -591,13 +591,13 @@ Evals extend MVP testing with quality gates for AI-generated content, website ac
 
 **References:**
 
-| Document | Content |
-| -------- | ------- |
-| `PRD.md` §11.8, §26, §27 | `NFR-EVAL-*`, `EVAL-P1/P2/P3-*`, acceptance criteria |
-| `Tasks.md` §29 | `TASK-078`–`096`, `T-EVAL-P1-*` (`TASK-097`–`103`) |
-| `Architecture.md` §28 | Eval architecture, CI integration, file layout |
-| `Traceability_Matrix.md` §13 | Requirement → task → validation mapping |
-| `AI_Workflow_Guide.md` | Prompting and review workflow using knowledge base |
+| Document                     | Content                                              |
+| ---------------------------- | ---------------------------------------------------- |
+| `PRD.md` §11.8, §26, §27     | `NFR-EVAL-*`, `EVAL-P1/P2/P3-*`, acceptance criteria |
+| `Tasks.md` §29               | `TASK-078`–`096`, `T-EVAL-P1-*` (`TASK-097`–`103`)   |
+| `Architecture.md` §28        | Eval architecture, CI integration, file layout       |
+| `Traceability_Matrix.md` §13 | Requirement → task → validation mapping              |
+| `AI_Workflow_Guide.md`       | Prompting and review workflow using knowledge base   |
 
 ### 15.1 Eval goals
 
@@ -610,11 +610,11 @@ Evals extend MVP testing with quality gates for AI-generated content, website ac
 
 ### 15.2 Three phases
 
-| Phase | What to test | Primary artifacts | Tasks |
-| ----- | ------------ | ----------------- | ----- |
-| **1 — Source-of-truth** | Knowledge files, static pages, brand voice | `docs/rosejs-knowledge/`, `docs/evals/static-website-eval.md` | `TASK-097`–`103`, `088`–`090`, `081` |
-| **2 — Change-based and regression** | Business-change scenarios, recurring Q&A, stale claims | Eval scenarios, Q&A suite, forbidden-terms config | `TASK-091`–`093`, `082`–`084` |
-| **3 — AI assistant** | Dev-workflow and user-facing assistant behavior | Rubrics, guardrail checklists, RAG eval cases | `TASK-085`–`086`, `094`–`096` |
+| Phase                               | What to test                                           | Primary artifacts                                             | Tasks                                |
+| ----------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------- | ------------------------------------ |
+| **1 — Source-of-truth**             | Knowledge files, static pages, brand voice             | `docs/rosejs-knowledge/`, `docs/evals/static-website-eval.md` | `TASK-097`–`103`, `088`–`090`, `081` |
+| **2 — Change-based and regression** | Business-change scenarios, recurring Q&A, stale claims | Eval scenarios, Q&A suite, forbidden-terms config             | `TASK-091`–`093`, `082`–`084`        |
+| **3 — AI assistant**                | Dev-workflow and user-facing assistant behavior        | Rubrics, guardrail checklists, RAG eval cases                 | `TASK-085`–`086`, `094`–`096`        |
 
 ### 15.3 Phase 1 — Source-of-truth evals
 
@@ -639,12 +639,12 @@ Checklist pages: Homepage, Services, About, Contact, Lead magnet section. Valida
 
 **Validation methods:**
 
-| Method | Scope |
-| ------ | ----- |
-| Manual checklist walkthrough | `docs/evals/static-website-eval.md` |
-| Brand voice rubric review | `brand-voice.md` + `TASK-090` |
+| Method                               | Scope                                                                   |
+| ------------------------------------ | ----------------------------------------------------------------------- |
+| Manual checklist walkthrough         | `docs/evals/static-website-eval.md`                                     |
+| Brand voice rubric review            | `brand-voice.md` + `TASK-090`                                           |
 | Local eval runner (when implemented) | `npm run eval:sot` — routes, titles, brand constants, CTAs (`TASK-081`) |
-| Golden eval catalog | `eval/` or `docs/` — `TASK-079` |
+| Golden eval catalog                  | `eval/` or `docs/` — `TASK-079`                                         |
 
 **Recommended Phase 1 order:** `TASK-097` → `TASK-098`–`102` → `TASK-103` → `TASK-088` → `TASK-079` → `TASK-089` → `TASK-090` → `TASK-080` → `TASK-081`.
 
@@ -686,11 +686,11 @@ npm run eval:sot          # when TASK-081 complete
 
 **User-facing** (when features ship, `EVAL-P3-*`, `TASK-094`–`096`):
 
-| Requirement | Validation |
-| ----------- | ---------- |
-| `EVAL-P3-001` Behavior | Grounded in knowledge base; routes to contact/schedule; refuses out-of-scope |
-| `EVAL-P3-002` RAG | Retrieved context relevant; answer supported by docs; no contradictions |
-| `EVAL-P3-003` Business alignment | Trust, clear services, qualification, appropriate CTA, no overpromising |
+| Requirement                      | Validation                                                                   |
+| -------------------------------- | ---------------------------------------------------------------------------- |
+| `EVAL-P3-001` Behavior           | Grounded in knowledge base; routes to contact/schedule; refuses out-of-scope |
+| `EVAL-P3-002` RAG                | Retrieved context relevant; answer supported by docs; no contradictions      |
+| `EVAL-P3-003` Business alignment | Trust, clear services, qualification, appropriate CTA, no overpromising      |
 
 ### 15.6 Eval file organization (post-MVP)
 

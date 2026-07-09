@@ -22,11 +22,11 @@ eCommerce platform modernization, integration strategy, technical debt reduction
 
 ## Positioning rules for evals
 
-| Approved | Not approved |
-| -------- | ------------ |
-| “Healthcare **and** eCommerce modernization” | “RoseJS serves healthcare only” |
-| “Specialized depth in healthcare insurance and RCM” | “RoseJS only works with hospitals” (unless engagement-specific) |
-| “Healthcare-focused consulting with eCommerce experience” | Excluding eCommerce when describing who RoseJS helps |
+| Approved                                                  | Not approved                                                    |
+| --------------------------------------------------------- | --------------------------------------------------------------- |
+| “Healthcare **and** eCommerce modernization”              | “RoseJS serves healthcare only”                                 |
+| “Specialized depth in healthcare insurance and RCM”       | “RoseJS only works with hospitals” (unless engagement-specific) |
+| “Healthcare-focused consulting with eCommerce experience” | Excluding eCommerce when describing who RoseJS helps            |
 
 ## Future industries
 

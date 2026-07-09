@@ -34,12 +34,12 @@ RoseJS content should sound:
 
 ## Audience notes
 
-| Audience | Emphasis |
-| -------- | -------- |
-| CTO / VP Engineering | Architecture clarity, risk reduction, roadmap defensibility |
-| Architects / tech leads | Boundaries, integration patterns, migration sequencing |
-| Healthcare / payer stakeholders | Compliance-aware pragmatism, operational reliability |
-| eCommerce leaders | Platform modernization, integrations, sustainable delivery |
+| Audience                        | Emphasis                                                    |
+| ------------------------------- | ----------------------------------------------------------- |
+| CTO / VP Engineering            | Architecture clarity, risk reduction, roadmap defensibility |
+| Architects / tech leads         | Boundaries, integration patterns, migration sequencing      |
+| Healthcare / payer stakeholders | Compliance-aware pragmatism, operational reliability        |
+| eCommerce leaders               | Platform modernization, integrations, sustainable delivery  |
 
 ## Eval checklist (voice)
 

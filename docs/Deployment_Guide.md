@@ -953,31 +953,31 @@ Evals ensure AI-generated and website content stays aligned with approved RoseJS
 
 **Canonical guides (do not duplicate here):**
 
-| Document | Role |
-| -------- | ---- |
-| **`docs/Testing_Strategy.md`** §15 | Eval test types, phases, CI commands, definition of done |
-| **`docs/AI_Workflow_Guide.md`** | Knowledge-base prompting, change workflow, assistant rules |
-| **`docs/PRD.md`** §26–§27 | Requirement IDs (`EVAL-P*`, `NFR-EVAL-*`) |
-| **`docs/Tasks.md`** §29 | Implementation tasks (`TASK-078`–`096`, `T-EVAL-P1-*`) |
+| Document                           | Role                                                       |
+| ---------------------------------- | ---------------------------------------------------------- |
+| **`docs/Testing_Strategy.md`** §15 | Eval test types, phases, CI commands, definition of done   |
+| **`docs/AI_Workflow_Guide.md`**    | Knowledge-base prompting, change workflow, assistant rules |
+| **`docs/PRD.md`** §26–§27          | Requirement IDs (`EVAL-P*`, `NFR-EVAL-*`)                  |
+| **`docs/Tasks.md`** §29            | Implementation tasks (`TASK-078`–`096`, `T-EVAL-P1-*`)     |
 
 ### 22.1 When eval gates apply
 
-| Trigger | Minimum eval action |
-| ------- | ------------------- |
-| Change to `docs/rosejs-knowledge/` | Run Phase 1 evals (`npm run eval:sot` when available); full regression when Phase 2 live |
-| Change to marketing copy, SEO metadata, or CTAs | Static website checklist (`docs/evals/static-website-eval.md`, `TASK-103`) |
-| Change to Calendly URL, form endpoint, or lead magnet | Update knowledge base + change scenario evals (`TASK-091`) |
-| AI-generated copy in PR | Human review against knowledge base and forbidden claims |
-| New user-facing AI assistant feature | Phase 3 evals before production (`TASK-094`–`096`) |
+| Trigger                                               | Minimum eval action                                                                      |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Change to `docs/rosejs-knowledge/`                    | Run Phase 1 evals (`npm run eval:sot` when available); full regression when Phase 2 live |
+| Change to marketing copy, SEO metadata, or CTAs       | Static website checklist (`docs/evals/static-website-eval.md`, `TASK-103`)               |
+| Change to Calendly URL, form endpoint, or lead magnet | Update knowledge base + change scenario evals (`TASK-091`)                               |
+| AI-generated copy in PR                               | Human review against knowledge base and forbidden claims                                 |
+| New user-facing AI assistant feature                  | Phase 3 evals before production (`TASK-094`–`096`)                                       |
 
 MVP releases without eval infrastructure follow §6 and §15 only. Adopt §22 gates as each phase completes (`Tasks.md` §29.1).
 
 ### 22.2 Critical vs non-critical eval failures
 
-| Severity | Examples | Merge / deploy policy |
-| -------- | -------- | --------------------- |
-| **Critical** | Forbidden claim in copy; healthcare-only positioning; wrong Calendly/contact URL; removed service listed; Q&A regression fail on “What does RoseJS do?” | **Block** merge and production deploy until fixed or waived (§22.4) |
-| **Non-critical** | Minor tone drift; optional SEO checklist item; eval runner warning on non-user-facing route | Fix in PR when practical; may merge with documented follow-up issue |
+| Severity         | Examples                                                                                                                                                | Merge / deploy policy                                               |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| **Critical**     | Forbidden claim in copy; healthcare-only positioning; wrong Calendly/contact URL; removed service listed; Q&A regression fail on “What does RoseJS do?” | **Block** merge and production deploy until fixed or waived (§22.4) |
+| **Non-critical** | Minor tone drift; optional SEO checklist item; eval runner warning on non-user-facing route                                                             | Fix in PR when practical; may merge with documented follow-up issue |
 
 ### 22.3 CI and branch protection
 
@@ -1010,12 +1010,12 @@ Before promoting to production when Phase 2 is active:
 
 ### 22.6 Related tasks
 
-| Task | Deployment role |
-| ---- | ----------------- |
-| `TASK-084` | This section — merge/deploy gate policy |
-| `TASK-082` | CI wiring for eval jobs |
-| `TASK-091`–`093` | Change scenarios, Q&A regression, stale-claim detection |
-| `TASK-078` | Points to Testing Strategy §15 and AI Workflow Guide as canonical eval docs |
+| Task             | Deployment role                                                             |
+| ---------------- | --------------------------------------------------------------------------- |
+| `TASK-084`       | This section — merge/deploy gate policy                                     |
+| `TASK-082`       | CI wiring for eval jobs                                                     |
+| `TASK-091`–`093` | Change scenarios, Q&A regression, stale-claim detection                     |
+| `TASK-078`       | Points to Testing Strategy §15 and AI Workflow Guide as canonical eval docs |
 
 ---
 

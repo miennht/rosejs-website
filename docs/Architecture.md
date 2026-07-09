@@ -862,14 +862,14 @@ Post-MVP, AI evaluation extends testing with source-of-truth, change-based, regr
 
 ### 14.2 Test Types
 
-| Test Type           | Tool                  | Scope                                  |
-| ------------------- | --------------------- | -------------------------------------- |
-| Unit Tests          | Vitest                | Utilities, mappers, analytics wrappers |
-| Component Tests     | React Testing Library | UI components and forms                |
-| E2E Tests           | Playwright            | Visitor flows                          |
-| Accessibility Tests | Playwright + axe-core | Core pages and forms                   |
-| Build Test          | Vite build            | Production build validation            |
-| Link Check          | Link checker          | Internal/external links                |
+| Test Type           | Tool                  | Scope                                    |
+| ------------------- | --------------------- | ---------------------------------------- |
+| Unit Tests          | Vitest                | Utilities, mappers, analytics wrappers   |
+| Component Tests     | React Testing Library | UI components and forms                  |
+| E2E Tests           | Playwright            | Visitor flows                            |
+| Accessibility Tests | Playwright + axe-core | Core pages and forms                     |
+| Build Test          | Vite build            | Production build validation              |
+| Link Check          | Link checker          | Internal/external links                  |
 | Eval (Post-MVP)     | Custom scripts / CI   | Knowledge base, content, Q&A, guardrails |
 
 ### 14.3 Minimum MVP Test Coverage
@@ -1483,11 +1483,11 @@ Requirements are defined in PRD **§26** (roadmap and implementation IDs) and PR
 
 ### 28.3 Three-Phase Roadmap
 
-| Phase | Name | Architecture focus | Primary PRD IDs | Primary tasks |
-| ----- | ---- | ------------------ | --------------- | ------------- |
-| 1 | Source-of-truth evals | Knowledge base + golden catalog + local runner | `EVAL-P1-*`, `EVAL-SOT-*` | `TASK-078`–`081`, `088`–`090` |
-| 2 | Change-based and regression evals | CI diff triggers, Q&A regression, stale-claim detection | `EVAL-P2-*`, `EVAL-REG-*` | `TASK-082`–`084`, `091`–`093` |
-| 3 | AI assistant evals | Dev-workflow rubrics; user-facing assistant + RAG when shipped | `EVAL-P3-*`, `EVAL-AIA-*` | `TASK-085`–`087`, `094`–`096` |
+| Phase | Name                              | Architecture focus                                             | Primary PRD IDs           | Primary tasks                 |
+| ----- | --------------------------------- | -------------------------------------------------------------- | ------------------------- | ----------------------------- |
+| 1     | Source-of-truth evals             | Knowledge base + golden catalog + local runner                 | `EVAL-P1-*`, `EVAL-SOT-*` | `TASK-078`–`081`, `088`–`090` |
+| 2     | Change-based and regression evals | CI diff triggers, Q&A regression, stale-claim detection        | `EVAL-P2-*`, `EVAL-REG-*` | `TASK-082`–`084`, `091`–`093` |
+| 3     | AI assistant evals                | Dev-workflow rubrics; user-facing assistant + RAG when shipped | `EVAL-P3-*`, `EVAL-AIA-*` | `TASK-085`–`087`, `094`–`096` |
 
 Phases are sequential: Phase 2 consumes Phase 1 artifacts; Phase 3 user-facing evals depend on Phase 2 CI infrastructure.
 
@@ -1495,13 +1495,13 @@ Phases are sequential: Phase 2 consumes Phase 1 artifacts; Phase 3 user-facing e
 
 **Knowledge base** (`docs/rosejs-knowledge/`, PRD `EVAL-P1-001`):
 
-| File | Purpose |
-| ---- | ------- |
-| `company-profile.md` | Positioning, differentiators, company facts |
-| `services.md` | Current service offerings and outcomes |
-| `target-industries.md` | Healthcare, e-commerce, and other approved industries |
-| `brand-voice.md` | Tone: professional, clear, practical, not hype-driven |
-| `forbidden-claims.md` | Stale terms, guarantees, and claims that must fail evals |
+| File                   | Purpose                                                  |
+| ---------------------- | -------------------------------------------------------- |
+| `company-profile.md`   | Positioning, differentiators, company facts              |
+| `services.md`          | Current service offerings and outcomes                   |
+| `target-industries.md` | Healthcare, e-commerce, and other approved industries    |
+| `brand-voice.md`       | Tone: professional, clear, practical, not hype-driven    |
+| `forbidden-claims.md`  | Stale terms, guarantees, and claims that must fail evals |
 
 **Eval catalog** (`eval/` or `docs/`, `TASK-079`): golden cases per core route and content contract, mapped to PRD functional IDs.
 
@@ -1552,12 +1552,12 @@ Pass → merge allowed | Fail → block deployment until review (TASK-084)
 
 Eval jobs extend the existing GitHub Actions pipeline (§15):
 
-| Trigger | Eval scope |
-| ------- | ---------- |
-| PR to protected branch | Lint, test, build (MVP) + Phase 2 subsets when implemented |
-| Change under `docs/rosejs-knowledge/` | Full Phase 1 + Phase 2 regression |
-| Change under `src/pages/` or SEO metadata | Static content + metadata golden checks |
-| Shared layout / routing config | Full regression suite |
+| Trigger                                   | Eval scope                                                 |
+| ----------------------------------------- | ---------------------------------------------------------- |
+| PR to protected branch                    | Lint, test, build (MVP) + Phase 2 subsets when implemented |
+| Change under `docs/rosejs-knowledge/`     | Full Phase 1 + Phase 2 regression                          |
+| Change under `src/pages/` or SEO metadata | Static content + metadata golden checks                    |
+| Shared layout / routing config            | Full regression suite                                      |
 
 Merge and deployment policy: `Deployment_Guide.md` or dedicated eval doc (`TASK-084`), aligned with `Branch_Protection_Setup.md`.
 
@@ -1581,12 +1581,12 @@ MVP does not implement this stack; Phase 3 eval requirements are documented upfr
 
 ### 28.9 Traceability and Documentation
 
-| Artifact | Role |
-| -------- | ---- |
-| `PRD.md` §26–§27 | Requirement IDs and acceptance criteria |
-| `Tasks.md` §29 | Implementation tasks `TASK-078`–`TASK-096` |
-| `Traceability_Matrix.md` §13 | Req ID → architecture area → task → validation |
-| `Testing_Strategy.md` | How evals complement unit, component, E2E tests |
-| `AI_Workflow_Guide.md` | Dev-workflow assistant expectations |
+| Artifact                     | Role                                            |
+| ---------------------------- | ----------------------------------------------- |
+| `PRD.md` §26–§27             | Requirement IDs and acceptance criteria         |
+| `Tasks.md` §29               | Implementation tasks `TASK-078`–`TASK-096`      |
+| `Traceability_Matrix.md` §13 | Req ID → architecture area → task → validation  |
+| `Testing_Strategy.md`        | How evals complement unit, component, E2E tests |
+| `AI_Workflow_Guide.md`       | Dev-workflow assistant expectations             |
 
 `TASK-087` completes the traceability matrix after all eval phases are defined.

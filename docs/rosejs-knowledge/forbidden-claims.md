@@ -43,13 +43,13 @@ Use this file for **stale-answer detection** and human/AI review. If content mat
 
 Maintain current approved values here. Evals fail if content uses an outdated value.
 
-| Topic | Stale (fail) | Current approved |
-| ----- | ------------ | ---------------- |
-| Calendly URL | Any URL other than approved link | `https://calendly.com/roseng0201/30min` |
-| Primary domain | Old preview-only URLs presented as production canonical | `https://www.roseng.org` |
-| Contact email | Non-roseng.org emails presented as primary | `hello@roseng.org` |
-| Lead magnet | Outdated checklist title or download not on site | See live `/` lead magnet section and `public/downloads/` |
-| Removed services | Services not listed in `services.md` | Match `services.md` only |
+| Topic            | Stale (fail)                                            | Current approved                                         |
+| ---------------- | ------------------------------------------------------- | -------------------------------------------------------- |
+| Calendly URL     | Any URL other than approved link                        | `https://calendly.com/roseng0201/30min`                  |
+| Primary domain   | Old preview-only URLs presented as production canonical | `https://www.roseng.org`                                 |
+| Contact email    | Non-roseng.org emails presented as primary              | `hello@roseng.org`                                       |
+| Lead magnet      | Outdated checklist title or download not on site        | See live `/` lead magnet section and `public/downloads/` |
+| Removed services | Services not listed in `services.md`                    | Match `services.md` only                                 |
 
 ## Examples from regression evals (must not appear)
 

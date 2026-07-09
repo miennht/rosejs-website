@@ -75,11 +75,11 @@ RoseJS uses evals as **quality gates** for AI-generated content, website copy, a
 
 ### Three-phase roadmap
 
-| Phase | Focus | PRD IDs | Key tasks |
-| ----- | ----- | ------- | --------- |
-| 1 — Source-of-truth | Approved knowledge base, static content and brand-voice checks | `EVAL-P1-*`, `EVAL-SOT-*` | `TASK-097`–`103`, `TASK-088`–`090`, `TASK-081` |
-| 2 — Change-based and regression | Business-change scenarios, Q&A regression, stale/forbidden claims | `EVAL-P2-*`, `EVAL-REG-*` | `TASK-091`–`093`, `TASK-082`–`084` |
-| 3 — AI assistant | Dev-workflow assistants (Cursor) and user-facing assistants (when shipped) | `EVAL-P3-*`, `EVAL-AIA-*` | `TASK-085`–`086`, `TASK-094`–`096` |
+| Phase                           | Focus                                                                      | PRD IDs                   | Key tasks                                      |
+| ------------------------------- | -------------------------------------------------------------------------- | ------------------------- | ---------------------------------------------- |
+| 1 — Source-of-truth             | Approved knowledge base, static content and brand-voice checks             | `EVAL-P1-*`, `EVAL-SOT-*` | `TASK-097`–`103`, `TASK-088`–`090`, `TASK-081` |
+| 2 — Change-based and regression | Business-change scenarios, Q&A regression, stale/forbidden claims          | `EVAL-P2-*`, `EVAL-REG-*` | `TASK-091`–`093`, `TASK-082`–`084`             |
+| 3 — AI assistant                | Dev-workflow assistants (Cursor) and user-facing assistants (when shipped) | `EVAL-P3-*`, `EVAL-AIA-*` | `TASK-085`–`086`, `TASK-094`–`096`             |
 
 Phases are sequential: complete Phase 1 knowledge base before Phase 2 CI gates; Phase 3 user-facing evals apply when chatbot/FAQ/RAG features ship.
 
@@ -87,13 +87,13 @@ Phases are sequential: complete Phase 1 knowledge base before Phase 2 CI gates; 
 
 Anchor AI copy and planning prompts in **`docs/rosejs-knowledge/`** (not model memory alone):
 
-| File | Use in AI workflow |
-| ---- | ------------------ |
-| `company-profile.md` | Positioning, founder summary, value proposition |
-| `services.md` | Current offerings only — no removed services |
-| `target-industries.md` | Healthcare **and** e-commerce — not healthcare-only |
-| `brand-voice.md` | Tone: professional, clear, practical, not hype-driven |
-| `forbidden-claims.md` | Claims to reject (guaranteed ROI/success, healthcare-only, etc.) |
+| File                   | Use in AI workflow                                               |
+| ---------------------- | ---------------------------------------------------------------- |
+| `company-profile.md`   | Positioning, founder summary, value proposition                  |
+| `services.md`          | Current offerings only — no removed services                     |
+| `target-industries.md` | Healthcare **and** e-commerce — not healthcare-only              |
+| `brand-voice.md`       | Tone: professional, clear, practical, not hype-driven            |
+| `forbidden-claims.md`  | Claims to reject (guaranteed ROI/success, healthcare-only, etc.) |
 
 Detail tasks: **`T-EVAL-P1-001`–`T-EVAL-P1-007`** → **`TASK-097`–`TASK-103`**. Static page checklist: **`docs/evals/static-website-eval.md`** (`TASK-103`).
 

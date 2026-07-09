@@ -2657,9 +2657,9 @@ TASK-071 to TASK-075 Validate Launch
 | TASK-059 | Resolved: apex **roseng.org** → **www.roseng.org**; live on Railway (May 2026)                                                                  |
 | TASK-060 | Resolved: Search Console verified; sitemap submitted (May 2026)                                                                                 |
 | Release  | **June 2026:** `develop` and `main` synchronized at `96ca507` (PR #7 + Railway `/health` fix); production **`npm run verify:production`** green |
-| Eval P1  | Depends on MVP complete; TASK-078 → TASK-097 → TASK-098–102 → TASK-101–102 → TASK-103 → TASK-079 → TASK-089 → TASK-090 → TASK-080 → TASK-081 |
-| Eval P2  | Depends on Phase 1; TASK-091 before TASK-082; TASK-092 and TASK-083 parallel; TASK-093 after knowledge base; TASK-084 after CI |
-| Eval P3  | Dev workflow: TASK-085 → TASK-086; user-facing (when features ship): TASK-094 → TASK-095 → TASK-096; TASK-087 after all phases defined |
+| Eval P1  | Depends on MVP complete; TASK-078 → TASK-097 → TASK-098–102 → TASK-101–102 → TASK-103 → TASK-079 → TASK-089 → TASK-090 → TASK-080 → TASK-081    |
+| Eval P2  | Depends on Phase 1; TASK-091 before TASK-082; TASK-092 and TASK-083 parallel; TASK-093 after knowledge base; TASK-084 after CI                  |
+| Eval P3  | Dev workflow: TASK-085 → TASK-086; user-facing (when features ship): TASK-094 → TASK-095 → TASK-096; TASK-087 after all phases defined          |
 
 ---
 
@@ -2735,11 +2735,11 @@ Implementation tasks for PRD **§11.8**, **§26**, and **§27** (`NFR-EVAL-*`, `
 
 ## 29.1 Phase Overview
 
-| Phase | Tasks | PRD IDs | Status |
-| ----- | ----- | ------- | ------ |
-| 1 — Source-of-truth | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | In Progress (`TASK-078`, `TASK-097` Done) |
-| 2 — Change-based and regression | TASK-082–084, TASK-091–093 | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Not Started |
-| 3 — AI assistant | TASK-085–087, TASK-094–096 | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started |
+| Phase                           | Tasks                                                        | PRD IDs                                           | Status                                    |
+| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | ----------------------------------------- |
+| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | In Progress (`TASK-078`, `TASK-097` Done) |
+| 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Not Started                               |
+| 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                               |
 
 **Notes:**
 
@@ -2750,23 +2750,23 @@ Implementation tasks for PRD **§11.8**, **§26**, and **§27** (`NFR-EVAL-*`, `
 
 ## 29.2 Phase 1 — Source-of-Truth Detail Tasks (`T-EVAL-P1-*`)
 
-| T-EVAL ID | TASK ID | PRD requirement | Summary |
-| --------- | ------- | --------------- | ------- |
-| T-EVAL-P1-001 | TASK-097 | EVAL-P1-001 | Create `docs/rosejs-knowledge/` folder and file scaffold |
-| T-EVAL-P1-002 | TASK-098 | EVAL-P1-001 | Write `company-profile.md` |
-| T-EVAL-P1-003 | TASK-099 | EVAL-P1-001 | Write `services.md` |
-| T-EVAL-P1-004 | TASK-100 | EVAL-P1-001 | Write `target-industries.md` |
-| T-EVAL-P1-005 | TASK-101 | EVAL-P1-003 | Write `brand-voice.md` |
-| T-EVAL-P1-006 | TASK-102 | EVAL-P1-003 | Write `forbidden-claims.md` |
-| T-EVAL-P1-007 | TASK-103 | EVAL-P1-002 | Create `docs/evals/static-website-eval.md` checklist |
+| T-EVAL ID     | TASK ID  | PRD requirement | Summary                                                  |
+| ------------- | -------- | --------------- | -------------------------------------------------------- |
+| T-EVAL-P1-001 | TASK-097 | EVAL-P1-001     | Create `docs/rosejs-knowledge/` folder and file scaffold |
+| T-EVAL-P1-002 | TASK-098 | EVAL-P1-001     | Write `company-profile.md`                               |
+| T-EVAL-P1-003 | TASK-099 | EVAL-P1-001     | Write `services.md`                                      |
+| T-EVAL-P1-004 | TASK-100 | EVAL-P1-001     | Write `target-industries.md`                             |
+| T-EVAL-P1-005 | TASK-101 | EVAL-P1-003     | Write `brand-voice.md`                                   |
+| T-EVAL-P1-006 | TASK-102 | EVAL-P1-003     | Write `forbidden-claims.md`                              |
+| T-EVAL-P1-007 | TASK-103 | EVAL-P1-002     | Create `docs/evals/static-website-eval.md` checklist     |
 
 **Umbrella tasks (related, broader scope):**
 
-| T-EVAL-P1-* | Related TASK-* | Relationship |
-| ----------- | -------------- | ------------ |
-| T-EVAL-P1-001–006 | TASK-088 | Epic-level knowledge base; decomposed into TASK-097–102 |
-| T-EVAL-P1-007 | TASK-089 | Checklist doc (`TASK-103`) vs automated eval implementation |
-| T-EVAL-P1-005, T-EVAL-P1-006 | TASK-090 | Source files vs brand-voice eval execution |
+| T-EVAL-P1-\*                 | Related TASK-\* | Relationship                                                |
+| ---------------------------- | --------------- | ----------------------------------------------------------- |
+| T-EVAL-P1-001–006            | TASK-088        | Epic-level knowledge base; decomposed into TASK-097–102     |
+| T-EVAL-P1-007                | TASK-089        | Checklist doc (`TASK-103`) vs automated eval implementation |
+| T-EVAL-P1-005, T-EVAL-P1-006 | TASK-090        | Source files vs brand-voice eval execution                  |
 
 ---
 
