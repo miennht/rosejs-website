@@ -12,16 +12,16 @@ Use this file—not model memory alone—when drafting or evaluating RoseJS comp
 
 ## Brand and presence
 
-| Field             | Approved value                                       |
-| ----------------- | ---------------------------------------------------- |
-| **Brand**         | RoseJS                                               |
-| **Domain**        | roseng.org                                           |
-| **Canonical URL** | https://www.roseng.org                               |
-| **Tagline**       | RoseJS · roseng.org                                  |
-| **Contact email** | hello@roseng.org                                     |
-| **Contact page**  | https://www.roseng.org/contact                       |
-| **Schedule page** | https://www.roseng.org/schedule                      |
-| **Calendly**      | https://calendly.com/roseng0201/30min                |
+| Field             | Approved value                        |
+| ----------------- | ------------------------------------- |
+| **Brand**         | RoseJS                                |
+| **Domain**        | roseng.org                            |
+| **Canonical URL** | https://www.roseng.org                |
+| **Tagline**       | RoseJS · roseng.org                   |
+| **Contact email** | hello@roseng.org                      |
+| **Contact page**  | https://www.roseng.org/contact        |
+| **Schedule page** | https://www.roseng.org/schedule       |
+| **Calendly**      | https://calendly.com/roseng0201/30min |
 
 Do not rename the brand to “RoseNG” or “Roseng” unless `docs/Brand_and_Domain.md` is revised.
 
@@ -72,12 +72,12 @@ AI accelerates analysis, documentation, development, and testing. **Engineering 
 
 RoseJS delivers using four pillars (PRD AI-First methodology; homepage “AI-first delivery pillars”):
 
-| Pillar         | Meaning                                                                                          |
-| -------------- | ------------------------------------------------------------------------------------------------ |
-| **Skill**      | AI accelerates research, planning, documentation, and implementation; senior architecture judgment owns final decisions. |
-| **Code review**| Security, accessibility, SEO, maintainability, and scope boundaries are reviewed before merge.   |
-| **Test suites**| Automated checks protect core journeys and reduce regressions.                                   |
-| **Deployment** | CI/CD-first releases with clear environments and rollback thinking.                              |
+| Pillar          | Meaning                                                                                                                  |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **Skill**       | AI accelerates research, planning, documentation, and implementation; senior architecture judgment owns final decisions. |
+| **Code review** | Security, accessibility, SEO, maintainability, and scope boundaries are reviewed before merge.                           |
+| **Test suites** | Automated checks protect core journeys and reduce regressions.                                                           |
+| **Deployment**  | CI/CD-first releases with clear environments and rollback thinking.                                                      |
 
 **Correct framing:** AI assists; humans remain accountable.  
 **Incorrect framing:** AI replaces architects, guarantees outcomes, or ships unreviewed production changes (see `forbidden-claims.md`).
@@ -132,7 +132,7 @@ RoseJS connects business outcomes to technical execution:
 
 > RoseJS helps healthcare organizations modernize legacy systems, design scalable software architecture, and build AI-first digital products with secure, maintainable, production-ready engineering practices.
 
-When copy must also reflect eCommerce (About page, industries), prefer phrasing such as: *healthcare technology, healthcare insurance, and eCommerce platforms*—without dropping eCommerce or claiming healthcare-only.
+When copy must also reflect eCommerce (About page, industries), prefer phrasing such as: _healthcare technology, healthcare insurance, and eCommerce platforms_—without dropping eCommerce or claiming healthcare-only.
 
 ### Where RoseJS helps (About page list)
 

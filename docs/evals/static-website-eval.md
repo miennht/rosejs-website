@@ -12,13 +12,13 @@
 
 ## Knowledge-base map
 
-| Checklist theme | Primary source file |
-| --------------- | ------------------- |
-| Company facts, positioning, CTAs | [`company-profile.md`](../rosejs-knowledge/company-profile.md) |
-| Service names and scope | [`services.md`](../rosejs-knowledge/services.md) |
-| Industries served | [`target-industries.md`](../rosejs-knowledge/target-industries.md) |
-| Tone | [`brand-voice.md`](../rosejs-knowledge/brand-voice.md) |
-| Forbidden / stale claims | [`forbidden-claims.md`](../rosejs-knowledge/forbidden-claims.md) |
+| Checklist theme                  | Primary source file                                                |
+| -------------------------------- | ------------------------------------------------------------------ |
+| Company facts, positioning, CTAs | [`company-profile.md`](../rosejs-knowledge/company-profile.md)     |
+| Service names and scope          | [`services.md`](../rosejs-knowledge/services.md)                   |
+| Industries served                | [`target-industries.md`](../rosejs-knowledge/target-industries.md) |
+| Tone                             | [`brand-voice.md`](../rosejs-knowledge/brand-voice.md)             |
+| Forbidden / stale claims         | [`forbidden-claims.md`](../rosejs-knowledge/forbidden-claims.md)   |
 
 ---
 
@@ -79,62 +79,62 @@ Apply to Homepage, Services, About, Contact, and Lead magnet section.
 
 ## 1. Homepage (`/`)
 
-| # | Check | Severity | KB file |
-| - | ----- | -------- | ------- |
-| H1 | Hero communicates modernization / architecture / AI-first delivery without guarantees | Critical | company-profile, brand-voice |
-| H2 | Services overview titles match `services.md` (or accurate summaries) | Critical | services |
-| H3 | Methodology pillars match Skill / Code review / Test suites / Deployment | Critical | company-profile |
-| H4 | Trust points do not imply healthcare-only exclusivity | Critical | target-industries |
-| H5 | CTAs: schedule and/or contact present and correct | Critical | company-profile |
-| H6 | Lead magnet section (if shown): see §5 | Critical | forbidden-claims |
-| H7 | SEO title/description on-brand | Should | company-profile |
+| #   | Check                                                                                 | Severity | KB file                      |
+| --- | ------------------------------------------------------------------------------------- | -------- | ---------------------------- |
+| H1  | Hero communicates modernization / architecture / AI-first delivery without guarantees | Critical | company-profile, brand-voice |
+| H2  | Services overview titles match `services.md` (or accurate summaries)                  | Critical | services                     |
+| H3  | Methodology pillars match Skill / Code review / Test suites / Deployment              | Critical | company-profile              |
+| H4  | Trust points do not imply healthcare-only exclusivity                                 | Critical | target-industries            |
+| H5  | CTAs: schedule and/or contact present and correct                                     | Critical | company-profile              |
+| H6  | Lead magnet section (if shown): see §5                                                | Critical | forbidden-claims             |
+| H7  | SEO title/description on-brand                                                        | Should   | company-profile              |
 
-**Reviewer notes:** ________________________________
+**Reviewer notes:** _(optional)_
 
 ---
 
 ## 2. Services page (`/services`)
 
-| # | Check | Severity | KB file |
-| - | ----- | -------- | ------- |
-| S1 | Intro mentions healthcare technology **and** eCommerce (or equivalent dual framing) | Critical | target-industries |
-| S2 | Listed cards match published services in `services.md` | Critical | services |
-| S3 | No removed or invented service titles | Critical | services, forbidden-claims |
-| S4 | Detail pages (spot-check ≥2): problem / outcome framing present; tone practical | Should | services, brand-voice |
-| S5 | Consultation CTAs correct | Critical | company-profile |
-| S6 | SEO description lists real service themes only | Should | services |
+| #   | Check                                                                               | Severity | KB file                    |
+| --- | ----------------------------------------------------------------------------------- | -------- | -------------------------- |
+| S1  | Intro mentions healthcare technology **and** eCommerce (or equivalent dual framing) | Critical | target-industries          |
+| S2  | Listed cards match published services in `services.md`                              | Critical | services                   |
+| S3  | No removed or invented service titles                                               | Critical | services, forbidden-claims |
+| S4  | Detail pages (spot-check ≥2): problem / outcome framing present; tone practical     | Should   | services, brand-voice      |
+| S5  | Consultation CTAs correct                                                           | Critical | company-profile            |
+| S6  | SEO description lists real service themes only                                      | Should   | services                   |
 
-**Reviewer notes:** ________________________________
+**Reviewer notes:** _(optional)_
 
 ---
 
 ## 3. About page (`/about`)
 
-| # | Check | Severity | KB file |
-| - | ----- | -------- | ------- |
-| A1 | Founder/background summary matches `company-profile.md` (no invented employers/certs) | Critical | company-profile |
-| A2 | Mentions healthcare technology, healthcare insurance, **and** eCommerce | Critical | target-industries, company-profile |
-| A3 | Philosophy: AI assists; humans accountable | Critical | company-profile, brand-voice |
-| A4 | “Where RoseJS helps” items align with approved help areas / services | Critical | company-profile, services |
-| A5 | Schedule CTA present and correct | Critical | company-profile |
-| A6 | Tone: human, practical, not hype | Critical | brand-voice |
+| #   | Check                                                                                 | Severity | KB file                            |
+| --- | ------------------------------------------------------------------------------------- | -------- | ---------------------------------- |
+| A1  | Founder/background summary matches `company-profile.md` (no invented employers/certs) | Critical | company-profile                    |
+| A2  | Mentions healthcare technology, healthcare insurance, **and** eCommerce               | Critical | target-industries, company-profile |
+| A3  | Philosophy: AI assists; humans accountable                                            | Critical | company-profile, brand-voice       |
+| A4  | “Where RoseJS helps” items align with approved help areas / services                  | Critical | company-profile, services          |
+| A5  | Schedule CTA present and correct                                                      | Critical | company-profile                    |
+| A6  | Tone: human, practical, not hype                                                      | Critical | brand-voice                        |
 
-**Reviewer notes:** ________________________________
+**Reviewer notes:** _(optional)_
 
 ---
 
 ## 4. Contact page (`/contact`)
 
-| # | Check | Severity | KB file |
-| - | ----- | -------- | ------- |
-| C1 | Form collects business contact fields only (no PHI solicitation) | Critical | forbidden-claims |
-| C2 | Displayed email is `hello@roseng.org` (or current approved) | Critical | company-profile, forbidden-claims |
-| C3 | Schedule / Calendly path uses approved URL | Critical | forbidden-claims |
-| C4 | Copy does not promise response SLAs or outcomes not approved | Should | brand-voice, forbidden-claims |
-| C5 | Industries framing (if present) is not healthcare-only | Critical | target-industries |
-| C6 | SEO title/description on-brand | Should | company-profile |
+| #   | Check                                                            | Severity | KB file                           |
+| --- | ---------------------------------------------------------------- | -------- | --------------------------------- |
+| C1  | Form collects business contact fields only (no PHI solicitation) | Critical | forbidden-claims                  |
+| C2  | Displayed email is `hello@roseng.org` (or current approved)      | Critical | company-profile, forbidden-claims |
+| C3  | Schedule / Calendly path uses approved URL                       | Critical | forbidden-claims                  |
+| C4  | Copy does not promise response SLAs or outcomes not approved     | Should   | brand-voice, forbidden-claims     |
+| C5  | Industries framing (if present) is not healthcare-only           | Critical | target-industries                 |
+| C6  | SEO title/description on-brand                                   | Should   | company-profile                   |
 
-**Reviewer notes:** ________________________________
+**Reviewer notes:** _(optional)_
 
 ---
 
@@ -142,36 +142,36 @@ Apply to Homepage, Services, About, Contact, and Lead magnet section.
 
 Appears on homepage and/or dedicated resource surfaces. Current approved asset:
 
-| Field | Approved value |
-| ----- | -------------- |
-| **Title** | Legacy application modernization checklist |
-| **Slug** | `legacy-application-modernization-checklist` |
-| **File** | `/downloads/legacy-application-modernization-checklist.pdf` |
-| **Source** | `src/content/fallback/leadMagnets.ts` |
+| Field      | Approved value                                              |
+| ---------- | ----------------------------------------------------------- |
+| **Title**  | Legacy application modernization checklist                  |
+| **Slug**   | `legacy-application-modernization-checklist`                |
+| **File**   | `/downloads/legacy-application-modernization-checklist.pdf` |
+| **Source** | `src/content/fallback/leadMagnets.ts`                       |
 
-| # | Check | Severity | KB file |
-| - | ----- | -------- | ------- |
-| L1 | Title matches approved lead magnet | Critical | forbidden-claims |
-| L2 | Download href matches approved file path | Critical | forbidden-claims |
-| L3 | Not email-gated (free download per PRD LEAD-*) | Critical | company-profile / PRD |
-| L4 | Related services (if shown) exist in `services.md` | Critical | services |
-| L5 | No outdated checklist name or alternate PDF promoted as current | Critical | forbidden-claims |
-| L6 | Tone of surrounding copy is practical, not hype | Should | brand-voice |
+| #   | Check                                                           | Severity | KB file               |
+| --- | --------------------------------------------------------------- | -------- | --------------------- |
+| L1  | Title matches approved lead magnet                              | Critical | forbidden-claims      |
+| L2  | Download href matches approved file path                        | Critical | forbidden-claims      |
+| L3  | Not email-gated (free download per PRD LEAD-\*)                 | Critical | company-profile / PRD |
+| L4  | Related services (if shown) exist in `services.md`              | Critical | services              |
+| L5  | No outdated checklist name or alternate PDF promoted as current | Critical | forbidden-claims      |
+| L6  | Tone of surrounding copy is practical, not hype                 | Should   | brand-voice           |
 
-**Reviewer notes:** ________________________________
+**Reviewer notes:** _(optional)_
 
 ---
 
 ## Sign-off
 
-| Field | Value |
-| ----- | ----- |
-| Reviewer | |
-| Date | |
-| Environment (local / preview / production) | |
-| Result (Pass / Fail) | |
-| Failed item IDs | |
-| Follow-up task / PR | |
+| Field                                      | Value |
+| ------------------------------------------ | ----- |
+| Reviewer                                   |       |
+| Date                                       |       |
+| Environment (local / preview / production) |       |
+| Result (Pass / Fail)                       |       |
+| Failed item IDs                            |       |
+| Follow-up task / PR                        |       |
 
 ---
 

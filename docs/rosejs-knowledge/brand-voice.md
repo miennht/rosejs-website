@@ -14,15 +14,15 @@ Use this file with `forbidden-claims.md` (hard fails) and `company-profile.md` /
 
 RoseJS content should sound:
 
-| Principle | Meaning |
-| --------- | ------- |
-| **Professional** | Credible for executives and engineering leaders |
-| **Clear** | Plain language; explain value without jargon walls |
-| **Human** | Written by practitioners, not generic marketing AI |
-| **Practical** | Phased paths, trade-offs, and what teams can actually ship |
-| **AI-first but not hype-driven** | AI accelerates work; humans own judgment and accountability |
-| **Confident but not exaggerated** | Strength without guarantees or miracle claims |
-| **Helpful** | Useful to healthcare **and** e-commerce modernization audiences |
+| Principle                         | Meaning                                                         |
+| --------------------------------- | --------------------------------------------------------------- |
+| **Professional**                  | Credible for executives and engineering leaders                 |
+| **Clear**                         | Plain language; explain value without jargon walls              |
+| **Human**                         | Written by practitioners, not generic marketing AI              |
+| **Practical**                     | Phased paths, trade-offs, and what teams can actually ship      |
+| **AI-first but not hype-driven**  | AI accelerates work; humans own judgment and accountability     |
+| **Confident but not exaggerated** | Strength without guarantees or miracle claims                   |
+| **Helpful**                       | Useful to healthcare **and** e-commerce modernization audiences |
 
 Aligned with PRD §7.3 brand tone: professional, clear, trustworthy, technical but approachable, strategic, practical, senior-level, outcome-focused.
 
@@ -98,11 +98,11 @@ Score each draft or page section. **Fail** the voice eval if any Must item fails
 
 ### Pass / fail examples
 
-| Pass | Fail |
-| ---- | ---- |
-| “Phased migration with validation gates and rollback plans.” | “Guaranteed 10x delivery with zero-risk AI.” |
-| “Specialized depth in healthcare insurance and RCM, plus eCommerce modernization.” | “We only serve healthcare.” |
-| “AI assists; humans remain accountable.” | “Our AI fully replaces your architecture team.” |
+| Pass                                                                               | Fail                                            |
+| ---------------------------------------------------------------------------------- | ----------------------------------------------- |
+| “Phased migration with validation gates and rollback plans.”                       | “Guaranteed 10x delivery with zero-risk AI.”    |
+| “Specialized depth in healthcare insurance and RCM, plus eCommerce modernization.” | “We only serve healthcare.”                     |
+| “AI assists; humans remain accountable.”                                           | “Our AI fully replaces your architecture team.” |
 
 ---
 

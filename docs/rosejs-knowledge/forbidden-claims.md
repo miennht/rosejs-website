@@ -12,10 +12,10 @@ If content matches a **forbidden** or **stale** claim below, evals should **fail
 
 ## How to use this file
 
-| Severity | Meaning | Deploy policy (when Phase 2 active) |
-| -------- | ------- | ----------------------------------- |
-| **Forbidden** | Never state, regardless of context | Critical — block merge/deploy until fixed or waived |
-| **Stale** | Was true or appeared before; no longer approved | Critical if user-facing; update knowledge base + site together |
+| Severity      | Meaning                                         | Deploy policy (when Phase 2 active)                            |
+| ------------- | ----------------------------------------------- | -------------------------------------------------------------- |
+| **Forbidden** | Never state, regardless of context              | Critical — block merge/deploy until fixed or waived            |
+| **Stale**     | Was true or appeared before; no longer approved | Critical if user-facing; update knowledge base + site together |
 
 String matching for automation (`TASK-093`) should treat the examples below as fail patterns; expand synonyms carefully to avoid false positives on legitimate “healthcare insurance” specialization language.
 
@@ -73,15 +73,15 @@ See `target-industries.md`.
 
 Maintain current approved values here. Evals fail if content uses an outdated value as the live fact.
 
-| Topic            | Stale (fail)                                            | Current approved                                                                 |
-| ---------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| Calendly URL     | Any URL other than approved link                        | `https://calendly.com/roseng0201/30min`                                          |
-| Schedule path    | Booking CTAs that skip `/schedule` without reason       | https://www.roseng.org/schedule                                                  |
-| Primary domain   | Old preview-only URLs presented as production canonical | `https://www.roseng.org`                                                         |
-| Contact email    | Non-roseng.org emails presented as primary              | `hello@roseng.org`                                                               |
-| Lead magnet      | Outdated title, slug, or file path                      | Title: *Legacy application modernization checklist*; file: `/downloads/legacy-application-modernization-checklist.pdf` (`src/content/fallback/leadMagnets.ts`) |
-| Removed services | Services not listed in `services.md`                    | Match `services.md` only                                                         |
-| Brand name       | “RoseNG” / “Roseng” as company brand                    | **RoseJS** (`docs/Brand_and_Domain.md`)                                          |
+| Topic            | Stale (fail)                                            | Current approved                                                                                                                                               |
+| ---------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Calendly URL     | Any URL other than approved link                        | `https://calendly.com/roseng0201/30min`                                                                                                                        |
+| Schedule path    | Booking CTAs that skip `/schedule` without reason       | https://www.roseng.org/schedule                                                                                                                                |
+| Primary domain   | Old preview-only URLs presented as production canonical | `https://www.roseng.org`                                                                                                                                       |
+| Contact email    | Non-roseng.org emails presented as primary              | `hello@roseng.org`                                                                                                                                             |
+| Lead magnet      | Outdated title, slug, or file path                      | Title: _Legacy application modernization checklist_; file: `/downloads/legacy-application-modernization-checklist.pdf` (`src/content/fallback/leadMagnets.ts`) |
+| Removed services | Services not listed in `services.md`                    | Match `services.md` only                                                                                                                                       |
+| Brand name       | “RoseNG” / “Roseng” as company brand                    | **RoseJS** (`docs/Brand_and_Domain.md`)                                                                                                                        |
 
 ---
 

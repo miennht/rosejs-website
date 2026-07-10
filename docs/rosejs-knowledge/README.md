@@ -10,13 +10,13 @@
 
 ## File inventory (DoD)
 
-| File | Task | PRD | Role |
-| ---- | ---- | --- | ---- |
-| [`company-profile.md`](company-profile.md) | TASK-098 / T-EVAL-P1-002 | EVAL-P1-001 | What RoseJS is, founder summary, methodology, clients, value prop, CTAs |
-| [`services.md`](services.md) | TASK-099 / T-EVAL-P1-003 | EVAL-P1-001 | Current services (published + cross-cutting); no removed offerings |
-| [`target-industries.md`](target-industries.md) | TASK-100 / T-EVAL-P1-004 | EVAL-P1-001 | Healthcare **and** eCommerce; not healthcare-only |
-| [`brand-voice.md`](brand-voice.md) | TASK-101 / T-EVAL-P1-005 | EVAL-P1-003 | Tone rules and voice rubric for `TASK-090` |
-| [`forbidden-claims.md`](forbidden-claims.md) | TASK-102 / T-EVAL-P1-006 | EVAL-P1-003, EVAL-P2-003 | Forbidden/stale claims for `TASK-093` |
+| File                                           | Task                     | PRD                      | Role                                                                    |
+| ---------------------------------------------- | ------------------------ | ------------------------ | ----------------------------------------------------------------------- |
+| [`company-profile.md`](company-profile.md)     | TASK-098 / T-EVAL-P1-002 | EVAL-P1-001              | What RoseJS is, founder summary, methodology, clients, value prop, CTAs |
+| [`services.md`](services.md)                   | TASK-099 / T-EVAL-P1-003 | EVAL-P1-001              | Current services (published + cross-cutting); no removed offerings      |
+| [`target-industries.md`](target-industries.md) | TASK-100 / T-EVAL-P1-004 | EVAL-P1-001              | Healthcare **and** eCommerce; not healthcare-only                       |
+| [`brand-voice.md`](brand-voice.md)             | TASK-101 / T-EVAL-P1-005 | EVAL-P1-003              | Tone rules and voice rubric for `TASK-090`                              |
+| [`forbidden-claims.md`](forbidden-claims.md)   | TASK-102 / T-EVAL-P1-006 | EVAL-P1-003, EVAL-P2-003 | Forbidden/stale claims for `TASK-093`                                   |
 
 Scaffold: **TASK-097** / T-EVAL-P1-001 — folder and initial files created.
 
@@ -40,15 +40,15 @@ Verified:
 
 ## How consumers must reference this folder
 
-| Consumer | Task | Required reference |
-| -------- | ---- | ------------------ |
-| Static page checklist | TASK-103 (done) | KB map in `docs/evals/static-website-eval.md` |
-| Static content evals | TASK-089 | Load/compare against files in this folder; report pass/fail per checklist IDs |
-| Brand-voice evals | TASK-090 | Rubric in `brand-voice.md`; hard fails via `forbidden-claims.md` |
-| Eval catalog / golden cases | TASK-079 | Each golden case must cite at least one file path under `docs/rosejs-knowledge/` (or PRD/Architecture ID) |
-| Local / CI runner | TASK-081 | `npm run eval:sot` reads catalog + this folder |
-| Stale-claim detection | TASK-093 | Pattern source: `forbidden-claims.md` |
-| AI prompting | — | Cite relevant file(s) in prompts (`docs/AI_Workflow_Guide.md`) |
+| Consumer                    | Task            | Required reference                                                                                        |
+| --------------------------- | --------------- | --------------------------------------------------------------------------------------------------------- |
+| Static page checklist       | TASK-103 (done) | KB map in `docs/evals/static-website-eval.md`                                                             |
+| Static content evals        | TASK-089        | Load/compare against files in this folder; report pass/fail per checklist IDs                             |
+| Brand-voice evals           | TASK-090        | Rubric in `brand-voice.md`; hard fails via `forbidden-claims.md`                                          |
+| Eval catalog / golden cases | TASK-079        | Each golden case must cite at least one file path under `docs/rosejs-knowledge/` (or PRD/Architecture ID) |
+| Local / CI runner           | TASK-081        | `npm run eval:sot` reads catalog + this folder                                                            |
+| Stale-claim detection       | TASK-093        | Pattern source: `forbidden-claims.md`                                                                     |
+| AI prompting                | —               | Cite relevant file(s) in prompts (`docs/AI_Workflow_Guide.md`)                                            |
 
 Until `TASK-079` creates `eval/` (or equivalent catalog), treat this README + `docs/evals/static-website-eval.md` as the interim catalog entry points.
 

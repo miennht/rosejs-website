@@ -54,24 +54,24 @@ eCommerce platform modernization, integration strategy, technical debt reduction
 
 ## Industry summary table
 
-| Industry                         | Status     | Role                                      |
-| -------------------------------- | ---------- | ----------------------------------------- |
-| Healthcare technology            | Approved   | Primary focus                             |
-| Healthcare insurance / payer / RCM | Approved | Primary specialization (depth)            |
-| eCommerce                        | Approved   | Explicit secondary focus — **required** in “who we serve” framing |
-| Digital health (related)         | Approved as adjacent | May appear with healthcare technology |
+| Industry                           | Status               | Role                                                              |
+| ---------------------------------- | -------------------- | ----------------------------------------------------------------- |
+| Healthcare technology              | Approved             | Primary focus                                                     |
+| Healthcare insurance / payer / RCM | Approved             | Primary specialization (depth)                                    |
+| eCommerce                          | Approved             | Explicit secondary focus — **required** in “who we serve” framing |
+| Digital health (related)           | Approved as adjacent | May appear with healthcare technology                             |
 
 ---
 
 ## Positioning rules for evals
 
-| Approved                                                              | Not approved / fail eval                                              |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| “Healthcare **and** eCommerce modernization”                          | “RoseJS serves healthcare only”                                       |
-| “Specialized depth in healthcare insurance and RCM”                   | “RoseJS only works with hospitals” (unless engagement-specific case)  |
-| “Healthcare-focused consulting with eCommerce experience”             | Excluding eCommerce when describing who RoseJS helps                  |
-| “Consulting for healthcare technology and eCommerce teams”            | “RoseJS does not work with e-commerce companies”                      |
-| Homepage may lead with healthcare insurance depth                     | Homepage or About that permanently drops eCommerce from scope         |
+| Approved                                                   | Not approved / fail eval                                             |
+| ---------------------------------------------------------- | -------------------------------------------------------------------- |
+| “Healthcare **and** eCommerce modernization”               | “RoseJS serves healthcare only”                                      |
+| “Specialized depth in healthcare insurance and RCM”        | “RoseJS only works with hospitals” (unless engagement-specific case) |
+| “Healthcare-focused consulting with eCommerce experience”  | Excluding eCommerce when describing who RoseJS helps                 |
+| “Consulting for healthcare technology and eCommerce teams” | “RoseJS does not work with e-commerce companies”                     |
+| Homepage may lead with healthcare insurance depth          | Homepage or About that permanently drops eCommerce from scope        |
 
 **Homepage nuance:** Leading with healthcare insurance messaging is allowed (specialization). Claiming or implying **exclusive** healthcare scope is not.
 

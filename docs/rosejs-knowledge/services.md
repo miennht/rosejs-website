@@ -28,15 +28,15 @@ These seven services have published records and detail routes under `/services/{
 
 ### 1. Software architecture consulting
 
-| Field | Approved content |
-| ----- | ---------------- |
-| **Title** | Software architecture consulting |
-| **Slug** | `software-architecture-consulting` |
-| **Summary** | Clarify system boundaries, integration patterns, and scalable architecture paths for complex healthcare and payer platforms. |
-| **Problem** | Teams ship features faster than the architecture can safely absorb, creating coupling, outages, and audit risk. |
-| **Description** | RoseJS leads structured discovery, decision records, and incremental hardening so architecture matches how care and revenue actually flow. |
-| **Business outcome** | Fewer production incidents, clearer ownership between clinical and finance systems, and roadmaps teams can defend to compliance partners. |
-| **Typical deliverables** | Current-state and target-state diagrams; risk-ranked modernization backlog; architecture review cadence with engineering leadership |
+| Field                    | Approved content                                                                                                                           |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Title**                | Software architecture consulting                                                                                                           |
+| **Slug**                 | `software-architecture-consulting`                                                                                                         |
+| **Summary**              | Clarify system boundaries, integration patterns, and scalable architecture paths for complex healthcare and payer platforms.               |
+| **Problem**              | Teams ship features faster than the architecture can safely absorb, creating coupling, outages, and audit risk.                            |
+| **Description**          | RoseJS leads structured discovery, decision records, and incremental hardening so architecture matches how care and revenue actually flow. |
+| **Business outcome**     | Fewer production incidents, clearer ownership between clinical and finance systems, and roadmaps teams can defend to compliance partners.  |
+| **Typical deliverables** | Current-state and target-state diagrams; risk-ranked modernization backlog; architecture review cadence with engineering leadership        |
 
 **Also called in evals:** architecture review / architecture consulting.
 
@@ -44,15 +44,15 @@ These seven services have published records and detail routes under `/services/{
 
 ### 2. Legacy application modernization (AI-first)
 
-| Field | Approved content |
-| ----- | ---------------- |
-| **Title** | Legacy application modernization |
-| **Slug** | `legacy-application-modernization` |
-| **Summary** | Reduce modernization risk with strangler patterns, phased migration, observability, and validation gates. |
-| **Problem** | Monoliths and batch jobs block new regulations, integrations, and member experiences while attrition erodes institutional knowledge. |
-| **Description** | Sequence refactors around revenue-critical paths, add safety nets (tests, telemetry, rollback), and align business and engineering on measurable milestones. |
-| **Business outcome** | Predictable releases, lower mean-time-to-recover, and defensible documentation for security and payer audits. |
-| **Typical deliverables** | Strangler-map and cutover plan; test and release strategy for high-risk domains; executive-ready risk narrative |
+| Field                    | Approved content                                                                                                                                             |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Title**                | Legacy application modernization                                                                                                                             |
+| **Slug**                 | `legacy-application-modernization`                                                                                                                           |
+| **Summary**              | Reduce modernization risk with strangler patterns, phased migration, observability, and validation gates.                                                    |
+| **Problem**              | Monoliths and batch jobs block new regulations, integrations, and member experiences while attrition erodes institutional knowledge.                         |
+| **Description**          | Sequence refactors around revenue-critical paths, add safety nets (tests, telemetry, rollback), and align business and engineering on measurable milestones. |
+| **Business outcome**     | Predictable releases, lower mean-time-to-recover, and defensible documentation for security and payer audits.                                                |
+| **Typical deliverables** | Strangler-map and cutover plan; test and release strategy for high-risk domains; executive-ready risk narrative                                              |
 
 **Also called in evals:** AI-first legacy modernization / legacy modernization.
 
@@ -60,43 +60,43 @@ These seven services have published records and detail routes under `/services/{
 
 ### 3. Technical debt assessment
 
-| Field | Approved content |
-| ----- | ---------------- |
-| **Title** | Technical debt assessment |
-| **Slug** | `technical-debt-assessment` |
-| **Summary** | Prioritize remediation where risk, customer impact, and regulatory exposure intersect—not where politics is loudest. |
-| **Problem** | Debt backlogs become political instead of evidence-led, starving the changes that actually reduce operational risk. |
-| **Description** | Score debt across reliability, security, maintainability, and time-to-market, then tie recommendations to business outcomes. |
-| **Business outcome** | A defensible roadmap engineering and product can fund together. |
-| **Typical deliverables** | Heat-mapped debt inventory; cost-of-delay framing for top items; 90-day execution slice with owners |
+| Field                    | Approved content                                                                                                             |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| **Title**                | Technical debt assessment                                                                                                    |
+| **Slug**                 | `technical-debt-assessment`                                                                                                  |
+| **Summary**              | Prioritize remediation where risk, customer impact, and regulatory exposure intersect—not where politics is loudest.         |
+| **Problem**              | Debt backlogs become political instead of evidence-led, starving the changes that actually reduce operational risk.          |
+| **Description**          | Score debt across reliability, security, maintainability, and time-to-market, then tie recommendations to business outcomes. |
+| **Business outcome**     | A defensible roadmap engineering and product can fund together.                                                              |
+| **Typical deliverables** | Heat-mapped debt inventory; cost-of-delay framing for top items; 90-day execution slice with owners                          |
 
 ---
 
 ### 4. Healthcare insurance & RCM platform consulting
 
-| Field | Approved content |
-| ----- | ---------------- |
-| **Title** | Healthcare insurance & RCM platform consulting |
-| **Slug** | `healthcare-insurance-rcm-consulting` |
-| **Summary** | Navigate claims, enrollment, billing, and partner integrations with domain-aware architecture and vendor coordination. |
-| **Problem** | RCM platforms accumulate vendor adapters, idiosyncratic payer rules, and fragile batch windows that resist change. |
-| **Description** | Align service boundaries to how money and eligibility actually move, and design APIs and events that survive the next payer mandate. |
-| **Business outcome** | Cleaner integrations, fewer manual interventions, and faster onboarding of new lines of business. |
-| **Typical deliverables** | Integration landscape map; payer and clearinghouse touchpoint matrix; operational playbooks for batch and real-time flows |
+| Field                    | Approved content                                                                                                                     |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| **Title**                | Healthcare insurance & RCM platform consulting                                                                                       |
+| **Slug**                 | `healthcare-insurance-rcm-consulting`                                                                                                |
+| **Summary**              | Navigate claims, enrollment, billing, and partner integrations with domain-aware architecture and vendor coordination.               |
+| **Problem**              | RCM platforms accumulate vendor adapters, idiosyncratic payer rules, and fragile batch windows that resist change.                   |
+| **Description**          | Align service boundaries to how money and eligibility actually move, and design APIs and events that survive the next payer mandate. |
+| **Business outcome**     | Cleaner integrations, fewer manual interventions, and faster onboarding of new lines of business.                                    |
+| **Typical deliverables** | Integration landscape map; payer and clearinghouse touchpoint matrix; operational playbooks for batch and real-time flows            |
 
 ---
 
 ### 5. Cloud and API integration (healthcare system integration)
 
-| Field | Approved content |
-| ----- | ---------------- |
-| **Title** | Cloud and API integration |
-| **Slug** | `cloud-api-integration` |
-| **Summary** | Connect clinical, payer, and operations systems with explicit contracts, versioning, and operational guardrails. |
-| **Problem** | Point-to-point integrations hide failures until revenue or care is impacted, and teams fear changing working-but-fragile pipes. |
-| **Description** | Design event-first boundaries where appropriate, document failure modes, and sequence cutovers with measurable rollback points. |
-| **Business outcome** | Safer partner onboarding, clearer ownership of payloads, and reduced weekend-war-room frequency. |
-| **Typical deliverables** | API and event catalog; versioning and deprecation policy; observability plan for cross-system journeys |
+| Field                    | Approved content                                                                                                                |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| **Title**                | Cloud and API integration                                                                                                       |
+| **Slug**                 | `cloud-api-integration`                                                                                                         |
+| **Summary**              | Connect clinical, payer, and operations systems with explicit contracts, versioning, and operational guardrails.                |
+| **Problem**              | Point-to-point integrations hide failures until revenue or care is impacted, and teams fear changing working-but-fragile pipes. |
+| **Description**          | Design event-first boundaries where appropriate, document failure modes, and sequence cutovers with measurable rollback points. |
+| **Business outcome**     | Safer partner onboarding, clearer ownership of payloads, and reduced weekend-war-room frequency.                                |
+| **Typical deliverables** | API and event catalog; versioning and deprecation policy; observability plan for cross-system journeys                          |
 
 **Also called in evals:** healthcare system integration / cloud and API integration.
 
@@ -104,28 +104,28 @@ These seven services have published records and detail routes under `/services/{
 
 ### 6. Secure data and system integration
 
-| Field | Approved content |
-| ----- | ---------------- |
-| **Title** | Secure data and system integration |
-| **Slug** | `secure-data-system-integration` |
-| **Summary** | Design PHI-aware flows, least-privilege access, and integration patterns that auditors and security partners can follow. |
-| **Problem** | Data copies proliferate across vendors, warehouses, and internal tools without consistent controls or lineage. |
-| **Description** | Align integration design to minimum-necessary data movement, with clear retention and access narratives. |
-| **Business outcome** | Fewer shadow integrations and clearer answers under security review. |
-| **Typical deliverables** | Data-flow and trust-boundary diagrams; control mapping for high-risk interfaces; hardening checklist for new connectors |
+| Field                    | Approved content                                                                                                         |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| **Title**                | Secure data and system integration                                                                                       |
+| **Slug**                 | `secure-data-system-integration`                                                                                         |
+| **Summary**              | Design PHI-aware flows, least-privilege access, and integration patterns that auditors and security partners can follow. |
+| **Problem**              | Data copies proliferate across vendors, warehouses, and internal tools without consistent controls or lineage.           |
+| **Description**          | Align integration design to minimum-necessary data movement, with clear retention and access narratives.                 |
+| **Business outcome**     | Fewer shadow integrations and clearer answers under security review.                                                     |
+| **Typical deliverables** | Data-flow and trust-boundary diagrams; control mapping for high-risk interfaces; hardening checklist for new connectors  |
 
 ---
 
 ### 7. AI-first product development
 
-| Field | Approved content |
-| ----- | ---------------- |
-| **Title** | AI-first product development |
-| **Slug** | `ai-first-product-development` |
-| **Summary** | Ship AI-assisted features with human review, data boundaries, and deployment discipline suited to regulated environments. |
-| **Problem** | Teams want velocity from AI while compliance and safety teams need traceability and human accountability. |
-| **Description** | Define where models assist, where humans decide, and how logging and rollback behave when automation misfires. |
-| **Business outcome** | Faster experimentation without turning models into silent single points of failure. |
+| Field                    | Approved content                                                                                                               |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| **Title**                | AI-first product development                                                                                                   |
+| **Slug**                 | `ai-first-product-development`                                                                                                 |
+| **Summary**              | Ship AI-assisted features with human review, data boundaries, and deployment discipline suited to regulated environments.      |
+| **Problem**              | Teams want velocity from AI while compliance and safety teams need traceability and human accountability.                      |
+| **Description**          | Define where models assist, where humans decide, and how logging and rollback behave when automation misfires.                 |
+| **Business outcome**     | Faster experimentation without turning models into silent single points of failure.                                            |
 | **Typical deliverables** | AI boundary and review checklist; threat-modeling workshop for new AI surfaces; CI/CD hooks for policy checks where applicable |
 
 ---
@@ -154,17 +154,17 @@ Practical adoption of AI-assisted engineering workflows: prompting discipline, r
 
 ## Quick reference (eval checklist)
 
-| Must appear when describing “current services” | Site slug / note |
-| ---------------------------------------------- | ---------------- |
-| AI-first legacy modernization | `legacy-application-modernization` |
-| Architecture review / consulting | `software-architecture-consulting` |
-| Technical debt assessment | `technical-debt-assessment` |
-| Healthcare system / cloud & API integration | `cloud-api-integration` |
-| Healthcare insurance & RCM consulting | `healthcare-insurance-rcm-consulting` |
-| Secure data and system integration | `secure-data-system-integration` |
-| AI-first product development | `ai-first-product-development` |
-| eCommerce modernization | Cross-cutting (About / industries) |
-| AI workflow implementation | Cross-cutting (methodology + AI-first product) |
+| Must appear when describing “current services” | Site slug / note                               |
+| ---------------------------------------------- | ---------------------------------------------- |
+| AI-first legacy modernization                  | `legacy-application-modernization`             |
+| Architecture review / consulting               | `software-architecture-consulting`             |
+| Technical debt assessment                      | `technical-debt-assessment`                    |
+| Healthcare system / cloud & API integration    | `cloud-api-integration`                        |
+| Healthcare insurance & RCM consulting          | `healthcare-insurance-rcm-consulting`          |
+| Secure data and system integration             | `secure-data-system-integration`               |
+| AI-first product development                   | `ai-first-product-development`                 |
+| eCommerce modernization                        | Cross-cutting (About / industries)             |
+| AI workflow implementation                     | Cross-cutting (methodology + AI-first product) |
 
 ---
 
