@@ -31,11 +31,11 @@ Phases are sequential. See PRD §26 exit criteria and Tasks.md §25.2 dependenci
 
 ## Authoritative source-of-truth artifacts
 
-- `docs/rosejs-knowledge/` — approved business, brand, and forbidden-claims files (`TASK-097` Done; expand in `TASK-098`–`102`)
-- `docs/evals/static-website-eval.md` — static page checklist (`TASK-103`; not yet created)
+- [`docs/rosejs-knowledge/`](../rosejs-knowledge/README.md) — approved business, brand, and forbidden-claims files (`TASK-088` / `TASK-097`–`102` Done)
+- `docs/evals/static-website-eval.md` — static page checklist (`TASK-103` Done; input to `TASK-089`)
 - `docs/Brand_and_Domain.md` — brand and domain defaults
 - `docs/Component_Map.md` — UI and route map
-- `eval/` (repo root, optional) — golden catalog and runners (`TASK-079`, `TASK-081`)
+- `eval/` (repo root, optional) — golden catalog and runners (`TASK-079`, `TASK-081`); catalog cases must cite `docs/rosejs-knowledge/` paths
 
 ## Requirement ID families
 
@@ -51,4 +51,4 @@ Phases are sequential. See PRD §26 exit criteria and Tasks.md §25.2 dependenci
 
 ## Next task
 
-**TASK-097** (`T-EVAL-P1-001`): knowledge base scaffold — **Done**. Next: **`TASK-098`–`TASK-102`** to expand each file, then **`TASK-103`** for static website eval checklist.
+**Knowledge base umbrella `TASK-088` signed off.** Next: **`TASK-089`** (static content evals using `static-website-eval.md`), **`TASK-090`** (brand-voice evals), then catalog/runner work (`TASK-079`–`081`).

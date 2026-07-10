@@ -2735,11 +2735,11 @@ Implementation tasks for PRD **§11.8**, **§26**, and **§27** (`NFR-EVAL-*`, `
 
 ## 29.1 Phase Overview
 
-| Phase                           | Tasks                                                        | PRD IDs                                           | Status                                    |
-| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | ----------------------------------------- |
-| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | In Progress (`TASK-078`, `TASK-097` Done) |
-| 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Not Started                               |
-| 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                               |
+| Phase                           | Tasks                                                        | PRD IDs                                           | Status                                                                                               |
+| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | In Progress (`TASK-078`, `TASK-088`, `TASK-097`–`103` Done; next `TASK-089`–`090`, `TASK-079`–`081`) |
+| 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Not Started                                                                                          |
+| 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                                                                                          |
 
 **Notes:**
 
@@ -3056,7 +3056,7 @@ Create the approved source-of-truth folder and scaffold files for RoseJS busines
 ## TASK-098 (T-EVAL-P1-002): Write Company Profile Source File
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-001, NFR-EVAL-001  
 **Depends On:** TASK-097  
 **Implementation Area:** Documentation, Content
@@ -3075,12 +3075,16 @@ Create `docs/rosejs-knowledge/company-profile.md` with approved RoseJS company f
 
 - Manual review against PRD §7 positioning and live About/homepage content.
 
+### Completion Notes
+
+- **Done (July 2026):** Expanded `docs/rosejs-knowledge/company-profile.md` with brand table, what RoseJS is / is not, founder summary, philosophy, four AI-first pillars, target clients (orgs + buyers + fit), value proposition, PRD §7 positioning statements, About “where RoseJS helps” list, messaging principles, CTAs, and change-control steps. Aligned to PRD §7, `About.tsx`, `Home.tsx`, and `docs/Brand_and_Domain.md`.
+
 ---
 
 ## TASK-099 (T-EVAL-P1-003): Write Services Source File
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-001, NFR-EVAL-001  
 **Depends On:** TASK-097  
 **Implementation Area:** Documentation, Content
@@ -3100,12 +3104,16 @@ Create `docs/rosejs-knowledge/services.md` with current RoseJS service offerings
 
 - Manual review against Services page and CMS service content.
 
+### Completion Notes
+
+- **Done (July 2026):** Expanded `docs/rosejs-knowledge/services.md` with all seven published fallback services (title, slug, summary, problem, description, outcome, deliverables), plus cross-cutting eCommerce modernization and AI workflow implementation. Added eval quick-reference, out-of-scope list, engagement framing, and change control. Aligned to `src/content/fallback/services.ts` and `Services.tsx`.
+
 ---
 
 ## TASK-100 (T-EVAL-P1-004): Write Target Industries Source File
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-001, NFR-EVAL-001  
 **Depends On:** TASK-097  
 **Implementation Area:** Documentation, Content
@@ -3124,12 +3132,16 @@ Create `docs/rosejs-knowledge/target-industries.md` with approved industry focus
 
 - Manual review; confirm no “healthcare only” positioning.
 
+### Completion Notes
+
+- **Done (July 2026):** Expanded `docs/rosejs-knowledge/target-industries.md` with healthcare technology, healthcare insurance/payer/RCM, and eCommerce; non-negotiable dual-industry rule; positioning pass/fail table; future-industry gate; eval checklist; change control. Aligned to About/Services and `forbidden-claims.md`.
+
 ---
 
 ## TASK-101 (T-EVAL-P1-005): Write Brand Voice Source File
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-003, NFR-EVAL-001, NFR-EVAL-002  
 **Depends On:** TASK-097  
 **Implementation Area:** Documentation, Content
@@ -3147,12 +3159,16 @@ Create `docs/rosejs-knowledge/brand-voice.md` with tone rules for RoseJS content
 
 - Manual review against PRD `EVAL-P1-003` and live site copy samples.
 
+### Completion Notes
+
+- **Done (July 2026):** Expanded `docs/rosejs-knowledge/brand-voice.md` with tone table, write/avoid guidance, live-site voice samples, audience notes, Must/Should rubric for `TASK-090`, pass/fail examples, and change control. Aligned to PRD §7.3–7.4 and `EVAL-P1-003`.
+
 ---
 
 ## TASK-102 (T-EVAL-P1-006): Write Forbidden Claims Source File
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-003, EVAL-P2-003, NFR-EVAL-002  
 **Depends On:** TASK-097  
 **Implementation Area:** Documentation, Content
@@ -3171,12 +3187,16 @@ Create `docs/rosejs-knowledge/forbidden-claims.md` with claims RoseJS must avoid
 
 - Manual review; cross-check examples from PRD `EVAL-P2-003`.
 
+### Completion Notes
+
+- **Done (July 2026):** Expanded `docs/rosejs-knowledge/forbidden-claims.md` with forbidden categories (guarantees, industry, AI hype, social proof, compliance, commercial), stale-term table (Calendly, domain, email, lead magnet, services, brand), PRD `EVAL-P2-003` examples, and `TASK-093` detection notes. Lead magnet path synced to `leadMagnets.ts`.
+
 ---
 
 ## TASK-103 (T-EVAL-P1-007): Create Static Website Eval Checklist
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-002, NFR-EVAL-002  
 **Depends On:** TASK-098–102  
 **Implementation Area:** Documentation, Testing
@@ -3197,12 +3217,16 @@ Create `docs/evals/static-website-eval.md` — a human-review checklist for key 
 - Manual walkthrough of checklist against live site.
 - Confirm each checklist item maps to a knowledge-base file.
 
+### Completion Notes
+
+- **Done (July 2026):** Created `docs/evals/static-website-eval.md` with shared Critical checks (clarity, accuracy, CTA, SEO, tone, safety), per-page tables for Home/Services/About/Contact/Lead magnet, KB file map, sign-off block, and automation hooks for `TASK-089` / `TASK-081`.
+
 ---
 
 ## TASK-088: Create RoseJS Knowledge Base Files
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-001, NFR-EVAL-001, NFR-EVAL-002  
 **Depends On:** TASK-097–102  
 **Implementation Area:** Documentation, Content
@@ -3221,6 +3245,10 @@ Umbrella task: complete and maintain approved source-of-truth knowledge files un
 
 - Verify `TASK-097`–`TASK-102` complete.
 - Manual review against PRD §7 positioning and live site content.
+
+### Completion Notes
+
+- **Done (July 2026):** Umbrella signed off. `TASK-097`–`102` all Done. Added `docs/rosejs-knowledge/README.md` as inventory + sign-off + consumer contract (how `TASK-079`, `TASK-089`, `TASK-090`, `TASK-081`, `TASK-093` must reference this folder). Static checklist already maps to KB files (`TASK-103`). Interim catalog entry points: this README + `docs/evals/static-website-eval.md` until `TASK-079` lands.
 
 ---
 
