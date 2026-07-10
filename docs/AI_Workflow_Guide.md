@@ -85,7 +85,7 @@ Phases are sequential: complete Phase 1 knowledge base before Phase 2 CI gates; 
 
 ### Phase 1: Source-of-truth for AI prompts
 
-Anchor AI copy and planning prompts in **`docs/rosejs-knowledge/`** (not model memory alone):
+Anchor AI copy and planning prompts in **`docs/rosejs-knowledge/`** (not model memory alone). Index and sign-off: [`docs/rosejs-knowledge/README.md`](rosejs-knowledge/README.md) (`TASK-088`).
 
 | File                   | Use in AI workflow                                               |
 | ---------------------- | ---------------------------------------------------------------- |
