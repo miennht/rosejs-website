@@ -19,15 +19,15 @@ Exit code `0` = pass; non-zero = fail.
 
 ## What is checked
 
-| Layer            | Checks                                                                 |
-| ---------------- | ---------------------------------------------------------------------- |
-| Core routes      | `/`, `/services`, `/about`, `/insights`, `/contact`, `/schedule` in `routes.tsx` |
-| Brand constants  | RoseJS, roseng.org, site origin, contact email, Calendly URL           |
-| Per-route cases  | SEO `titleExact`, description tokens, CTA paths, body tokens           |
-| Services         | Seven published fallback slugs                                         |
-| Nav / CTAs       | Primary and footer nav paths                                           |
-| Positioning      | eCommerce framing on About + Services; forbidden-claim scans           |
-| Lead magnet      | Fallback slug + PDF path                                               |
+| Layer           | Checks                                                                           |
+| --------------- | -------------------------------------------------------------------------------- |
+| Core routes     | `/`, `/services`, `/about`, `/insights`, `/contact`, `/schedule` in `routes.tsx` |
+| Brand constants | RoseJS, roseng.org, site origin, contact email, Calendly URL                     |
+| Per-route cases | SEO `titleExact`, description tokens, CTA paths, body tokens                     |
+| Services        | Seven published fallback slugs                                                   |
+| Nav / CTAs      | Primary and footer nav paths                                                     |
+| Positioning     | eCommerce framing on About + Services; forbidden-claim scans                     |
+| Lead magnet     | Fallback slug + PDF path                                                         |
 
 Respects `contentSource` notes in the catalog: Phase 1 pins **fallback + hardcoded chrome**, not live Sanity bodies (`TASK-080`).
 

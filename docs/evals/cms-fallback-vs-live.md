@@ -28,26 +28,26 @@ Page → src/app/cmsLoaders.ts → src/cms/queries.ts → createContentSource()
 
 `createContentSource()` in `src/cms/client.ts` **always** returns `FallbackCmsContentSource`. Comments mention swapping in Sanity when `VITE_SANITY_PROJECT_ID` is set — **that branch is not implemented**. There is no Sanity SDK in the app.
 
-| Mode                         | When                                              | Content source                                      |
-| ---------------------------- | ------------------------------------------------- | --------------------------------------------------- |
-| **Fallback-only (current)**  | All environments until live client lands          | `src/content/fallback/{services,blogPosts,caseStudies,leadMagnets}.ts` |
-| **Live Sanity (future)**     | After `createContentSource` branches on env       | Sanity dataset; loaders/pages unchanged             |
-| **Query failure**            | Thrown error in `safeList` / by-slug helpers      | Lists → `[]`; by-slug → `null` (empty / soft not-found UI) — **no automatic re-read of fallback** once a live source exists |
+| Mode                        | When                                         | Content source                                                                                                              |
+| --------------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Fallback-only (current)** | All environments until live client lands     | `src/content/fallback/{services,blogPosts,caseStudies,leadMagnets}.ts`                                                      |
+| **Live Sanity (future)**    | After `createContentSource` branches on env  | Sanity dataset; loaders/pages unchanged                                                                                     |
+| **Query failure**           | Thrown error in `safeList` / by-slug helpers | Lists → `[]`; by-slug → `null` (empty / soft not-found UI) — **no automatic re-read of fallback** once a live source exists |
 
 Unset `VITE_SANITY_PROJECT_ID` / `VITE_SANITY_DATASET` has **no runtime effect** today.
 
 ## Source-of-truth matrix
 
-| Surface                         | Runtime fields                                                                 | Page chrome (hardcoded)                                      | Phase 1 eval source                                                                 |
-| ------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
-| Services list / detail          | All `Service` fields from CMS layer (fallback modules today)                   | Listing H1, intro, SEO title/description, bottom CTAs        | Fallback `services.ts` + `Services.tsx` / detail chrome                             |
-| Home featured services          | Title/summary from CMS layer; **featured slug order** hardcoded in loader      | Hero, methodology, trust, CTA copy, SEO                      | `Home.tsx` + loaders/fallback for service teasers                                   |
-| Insights (`/insights`, articles)| All `BlogPost` fields from CMS layer                                           | Listing H1, intro, SEO, empty-state copy                     | Listing chrome in `Insights.tsx`; article body **not** pinned by static-content eval |
-| Case studies                    | All `CaseStudy` fields from CMS layer                                          | Listing chrome; confidentiality banner on detail             | Not in TASK-089 scan set; catalog notes CMS-shaped                                  |
-| Lead magnet                     | `LeadMagnet` in fallback + `getLeadMagnets`; **UI not wired via loader**       | `LeadMagnetSection` copy if mounted                          | `leadMagnets.ts` + section component (TASK-089)                                     |
-| About / Contact / Schedule      | N/A (no CMS)                                                                   | Entire page; Contact/Schedule use `VITE_*` defaults          | Page TSX + `site.ts` / `calendly.ts`                                                |
-| Brand / domain / Calendly       | Constants + env overrides                                                      | —                                                            | Hardcoded defaults in `brand.ts`, `site.ts`, `calendly.ts`                          |
-| Sitemap                         | Build script imports fallback modules directly                                 | —                                                            | Fallback slugs until sitemap uses live CMS                                          |
+| Surface                          | Runtime fields                                                            | Page chrome (hardcoded)                               | Phase 1 eval source                                                                  |
+| -------------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Services list / detail           | All `Service` fields from CMS layer (fallback modules today)              | Listing H1, intro, SEO title/description, bottom CTAs | Fallback `services.ts` + `Services.tsx` / detail chrome                              |
+| Home featured services           | Title/summary from CMS layer; **featured slug order** hardcoded in loader | Hero, methodology, trust, CTA copy, SEO               | `Home.tsx` + loaders/fallback for service teasers                                    |
+| Insights (`/insights`, articles) | All `BlogPost` fields from CMS layer                                      | Listing H1, intro, SEO, empty-state copy              | Listing chrome in `Insights.tsx`; article body **not** pinned by static-content eval |
+| Case studies                     | All `CaseStudy` fields from CMS layer                                     | Listing chrome; confidentiality banner on detail      | Not in TASK-089 scan set; catalog notes CMS-shaped                                   |
+| Lead magnet                      | `LeadMagnet` in fallback + `getLeadMagnets`; **UI not wired via loader**  | `LeadMagnetSection` copy if mounted                   | `leadMagnets.ts` + section component (TASK-089)                                      |
+| About / Contact / Schedule       | N/A (no CMS)                                                              | Entire page; Contact/Schedule use `VITE_*` defaults   | Page TSX + `site.ts` / `calendly.ts`                                                 |
+| Brand / domain / Calendly        | Constants + env overrides                                                 | —                                                     | Hardcoded defaults in `brand.ts`, `site.ts`, `calendly.ts`                           |
+| Sitemap                          | Build script imports fallback modules directly                            | —                                                     | Fallback slugs until sitemap uses live CMS                                           |
 
 ## Field ownership
 
@@ -77,22 +77,22 @@ Unset `VITE_SANITY_PROJECT_ID` / `VITE_SANITY_DATASET` has **no runtime effect**
 
 ### Static page sections
 
-| Page       | CMS? | Eval pin                                      |
-| ---------- | ---- | --------------------------------------------- |
-| About      | No   | Full copy in `About.tsx`                      |
-| Contact    | No   | Copy + default email from `site.ts`           |
-| Schedule   | No   | Copy + default Calendly from `calendly.ts`    |
-| Home chrome| No   | Hero/methodology/trust/CTA/SEO in `Home.tsx`  |
-| Nav / footer | No | `navConfig.ts`                              |
+| Page         | CMS? | Eval pin                                     |
+| ------------ | ---- | -------------------------------------------- |
+| About        | No   | Full copy in `About.tsx`                     |
+| Contact      | No   | Copy + default email from `site.ts`          |
+| Schedule     | No   | Copy + default Calendly from `calendly.ts`   |
+| Home chrome  | No   | Hero/methodology/trust/CTA/SEO in `Home.tsx` |
+| Nav / footer | No   | `navConfig.ts`                               |
 
 ## Knowledge base vs CMS
 
-| Artifact                         | Owns                                                         |
-| -------------------------------- | ------------------------------------------------------------ |
-| `docs/rosejs-knowledge/*`        | Approved positioning, voice, forbidden claims (eval truth)   |
-| `src/content/fallback/*`         | Runtime CMS-shaped records **today**                         |
-| Sanity (future)                  | Runtime CMS-shaped records when live client ships            |
-| Hardcoded page TSX               | Marketing chrome that is not a CMS document                  |
+| Artifact                  | Owns                                                       |
+| ------------------------- | ---------------------------------------------------------- |
+| `docs/rosejs-knowledge/*` | Approved positioning, voice, forbidden claims (eval truth) |
+| `src/content/fallback/*`  | Runtime CMS-shaped records **today**                       |
+| Sanity (future)           | Runtime CMS-shaped records when live client ships          |
+| Hardcoded page TSX        | Marketing chrome that is not a CMS document                |
 
 Evals must prefer knowledge-base + hardcoded chrome + **fallback modules** for Phase 1. Live CMS copy may diverge; that is not a Phase 1 failure unless a case is explicitly `cmsLive`.
 
@@ -110,12 +110,12 @@ Evals must prefer knowledge-base + hardcoded chrome + **fallback modules** for P
 
 Each case in `eval/catalog.json` includes `contentSource`:
 
-| Value        | Meaning                                                                 |
-| ------------ | ----------------------------------------------------------------------- |
-| `hardcoded`  | Assert page/lib TSX only                                                |
-| `fallback`   | Assert `src/content/fallback/*` and/or listing chrome; safe in CI today |
-| `mixed`      | Hardcoded chrome + CMS-shaped records from fallback                     |
-| `cms-live`   | Reserved — do not use until live Sanity client + dedicated eval mode    |
+| Value       | Meaning                                                                 |
+| ----------- | ----------------------------------------------------------------------- |
+| `hardcoded` | Assert page/lib TSX only                                                |
+| `fallback`  | Assert `src/content/fallback/*` and/or listing chrome; safe in CI today |
+| `mixed`     | Hardcoded chrome + CMS-shaped records from fallback                     |
+| `cms-live`  | Reserved — do not use until live Sanity client + dedicated eval mode    |
 
 See catalog `notes.cmsFields` and per-case `contentSource` / `cmsFields`.
 

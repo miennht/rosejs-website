@@ -2,25 +2,25 @@
 
 Machine-readable golden references for Phase 1 source-of-truth evals (`EVAL-SOT-001`, `EVAL-SOT-002`, `EVAL-SOT-004`).
 
-| Artifact       | Path              | Role                                      |
-| -------------- | ----------------- | ----------------------------------------- |
-| Catalog        | `catalog.json`    | Golden cases for routes, brand, CTAs      |
-| Knowledge base | `docs/rosejs-knowledge/` | Approved business/brand claims     |
-| Runner         | `npm run eval:sot` | TASK-081 — validates catalog against sources |
+| Artifact       | Path                                                                          | Role                                          |
+| -------------- | ----------------------------------------------------------------------------- | --------------------------------------------- |
+| Catalog        | `catalog.json`                                                                | Golden cases for routes, brand, CTAs          |
+| Knowledge base | `docs/rosejs-knowledge/`                                                      | Approved business/brand claims                |
+| Runner         | `npm run eval:sot`                                                            | TASK-081 — validates catalog against sources  |
 | CMS boundaries | [`docs/evals/cms-fallback-vs-live.md`](../docs/evals/cms-fallback-vs-live.md) | Fallback vs live field ownership (`TASK-080`) |
 
 ## Core routes
 
 Every PRD core page has at least one golden case:
 
-| PRD route | Catalog route   | Case id            |
-| --------- | --------------- | ------------------ |
-| `/`       | `/`             | `route-home`       |
-| `/services` | `/services`   | `route-services`   |
-| `/about`  | `/about`        | `route-about`      |
-| `/blog`   | `/insights`     | `route-insights`   |
-| `/contact` | `/contact`     | `route-contact`    |
-| `/schedule` | `/schedule`   | `route-schedule`   |
+| PRD route   | Catalog route | Case id          |
+| ----------- | ------------- | ---------------- |
+| `/`         | `/`           | `route-home`     |
+| `/services` | `/services`   | `route-services` |
+| `/about`    | `/about`      | `route-about`    |
+| `/blog`     | `/insights`   | `route-insights` |
+| `/contact`  | `/contact`    | `route-contact`  |
+| `/schedule` | `/schedule`   | `route-schedule` |
 
 `/blog` is the PRD label; the live app route is **`/insights`** (`BLOG-*`).
 

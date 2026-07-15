@@ -2,11 +2,7 @@
  * Source-of-truth eval runner (TASK-081 / EVAL-SOT-005).
  * Compares repo sources against eval/catalog.json golden cases.
  */
-import {
-  FORBIDDEN_CLAIM_PATTERNS,
-  findPatternHits,
-  normalizeSourceText,
-} from './patterns.ts'
+import { FORBIDDEN_CLAIM_PATTERNS, findPatternHits, normalizeSourceText } from './patterns.ts'
 
 export type SotCatalogExpect = {
   titleExact?: string
@@ -84,17 +80,13 @@ function extractRegisteredRoutes(routesTs: string): Set<string> {
   if (/index:\s*true/.test(routesTs)) routes.add('/')
   for (const match of routesTs.matchAll(/path:\s*['"]([^'"]+)['"]/g)) {
     const segment = match[1]
-    if (segment === '*' || segment.includes(':')) continue
+    if (segment == null || segment === '*' || segment.includes(':')) continue
     routes.add(`/${segment}`)
   }
   return routes
 }
 
-function assertContainsAll(
-  text: string,
-  needles: string[],
-  label: string,
-): { ok: boolean; missing: string[] } {
+function assertContainsAll(text: string, needles: string[]): { ok: boolean; missing: string[] } {
   const missing = needles.filter((n) => !text.includes(n))
   return { ok: missing.length === 0, missing }
 }
@@ -225,7 +217,7 @@ export function runSourceOfTruthEval(catalog: SotCatalog, files: SotFileMap): So
     }
 
     if (exp.descriptionContains != null) {
-      const { ok, missing } = assertContainsAll(combined, exp.descriptionContains, 'description')
+      const { ok, missing } = assertContainsAll(combined, exp.descriptionContains)
       checks.push(
         check(
           `description:${item.id}`,
@@ -238,7 +230,7 @@ export function runSourceOfTruthEval(catalog: SotCatalog, files: SotFileMap): So
     }
 
     if (exp.ctaPaths != null) {
-      const { ok, missing } = assertContainsAll(combined, exp.ctaPaths, 'cta')
+      const { ok, missing } = assertContainsAll(combined, exp.ctaPaths)
       checks.push(
         check(
           `cta:${item.id}`,
@@ -251,7 +243,7 @@ export function runSourceOfTruthEval(catalog: SotCatalog, files: SotFileMap): So
     }
 
     if (exp.bodyContains != null) {
-      const { ok, missing } = assertContainsAll(combined, exp.bodyContains, 'body')
+      const { ok, missing } = assertContainsAll(combined, exp.bodyContains)
       checks.push(
         check(
           `body:${item.id}`,
@@ -297,7 +289,7 @@ export function runSourceOfTruthEval(catalog: SotCatalog, files: SotFileMap): So
 
     if (exp.primaryNavPaths != null) {
       const nav = files['src/components/layout/navConfig.ts'] ?? ''
-      const { ok, missing } = assertContainsAll(nav, exp.primaryNavPaths, 'primaryNav')
+      const { ok, missing } = assertContainsAll(nav, exp.primaryNavPaths)
       checks.push(
         check(
           `nav-primary:${item.id}`,
@@ -311,7 +303,7 @@ export function runSourceOfTruthEval(catalog: SotCatalog, files: SotFileMap): So
 
     if (exp.footerNavPaths != null) {
       const nav = files['src/components/layout/navConfig.ts'] ?? ''
-      const { ok, missing } = assertContainsAll(nav, exp.footerNavPaths, 'footerNav')
+      const { ok, missing } = assertContainsAll(nav, exp.footerNavPaths)
       checks.push(
         check(
           `nav-footer:${item.id}`,
@@ -385,9 +377,7 @@ export function runSourceOfTruthEval(catalog: SotCatalog, files: SotFileMap): So
           item.id,
           `No forbidden patterns (${exp.forbiddenRuleIds.join(', ')})`,
           ok,
-          ok
-            ? 'Clean'
-            : hits.map((h) => `${h.ruleId}: ${h.reason}`).join('; '),
+          ok ? 'Clean' : hits.map((h) => `${h.ruleId}: ${h.reason}`).join('; '),
         ),
       )
     }

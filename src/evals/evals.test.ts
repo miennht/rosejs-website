@@ -5,11 +5,7 @@ import { describe, expect, it } from 'vitest'
 import { BRAND_VOICE_HYPE_PATTERNS, FORBIDDEN_CLAIM_PATTERNS, findPatternHits } from './patterns.ts'
 import { runBrandVoiceEval, evaluateVoiceText } from './brandVoiceEval.ts'
 import { listContentEvalPaths, runStaticWebsiteContentEval } from './websiteContentEval.ts'
-import {
-  listSotEvalPaths,
-  runSourceOfTruthEval,
-  type SotCatalog,
-} from './sotEval.ts'
+import { listSotEvalPaths, runSourceOfTruthEval, type SotCatalog } from './sotEval.ts'
 
 function loadRepoFiles(): Record<string, string | null> {
   const root = process.cwd()

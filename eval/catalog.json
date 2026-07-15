@@ -17,10 +17,7 @@
     "hardcodedFields": ["brandName", "domainLabel", "siteOrigin", "contactEmail", "calendlyUrl"],
     "prdIds": ["NFR-SEO-001"],
     "architectureRefs": ["Architecture.md §28.4", "Component_Map.md"],
-    "knowledgeRefs": [
-      "docs/rosejs-knowledge/company-profile.md",
-      "docs/Brand_and_Domain.md"
-    ],
+    "knowledgeRefs": ["docs/rosejs-knowledge/company-profile.md", "docs/Brand_and_Domain.md"],
     "sourceFiles": ["src/lib/brand.ts", "src/lib/site.ts", "src/lib/calendly.ts"],
     "expect": {
       "brandName": "RoseJS",
@@ -173,11 +170,7 @@
       "prdIds": ["CONT-001", "CONT-006", "CONT-008", "NFR-SEO-001"],
       "architectureRefs": ["Component_Map.md § routes Contact"],
       "knowledgeRefs": ["docs/rosejs-knowledge/company-profile.md"],
-      "sourceFiles": [
-        "src/pages/Contact.tsx",
-        "src/lib/site.ts",
-        "src/app/routes.tsx"
-      ],
+      "sourceFiles": ["src/pages/Contact.tsx", "src/lib/site.ts", "src/app/routes.tsx"],
       "expect": {
         "titleExact": "Contact RoseJS | Healthcare software architecture consulting",
         "descriptionContains": ["contact", "RoseJS"],
@@ -196,11 +189,7 @@
       "prdIds": ["HOME-002", "CONT-008", "NFR-SEO-001"],
       "architectureRefs": ["Component_Map.md § routes Schedule"],
       "knowledgeRefs": ["docs/rosejs-knowledge/company-profile.md"],
-      "sourceFiles": [
-        "src/pages/Schedule.tsx",
-        "src/lib/calendly.ts",
-        "src/app/routes.tsx"
-      ],
+      "sourceFiles": ["src/pages/Schedule.tsx", "src/lib/calendly.ts", "src/app/routes.tsx"],
       "expect": {
         "titleExact": "Schedule a consultation | RoseJS",
         "descriptionContains": ["Book", "RoseJS"],

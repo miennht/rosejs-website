@@ -639,14 +639,14 @@ Checklist pages: Homepage, Services, About, Contact, Lead magnet section. Valida
 
 **Validation methods:**
 
-| Method                               | Scope                                                                   |
-| ------------------------------------ | ----------------------------------------------------------------------- |
-| Manual checklist walkthrough         | `docs/evals/static-website-eval.md`                                     |
-| Static content eval (`TASK-089`)     | `npm run eval:content` — forbidden claims, services, industries, CTAs   |
-| Brand voice eval (`TASK-090`)        | `npm run eval:voice` — rubric + optional AI draft (`--text` / `--file`) |
-| Local eval runner (`TASK-081`)       | `npm run eval:sot` — routes, titles, brand constants, CTAs vs catalog |
-| Golden eval catalog (`TASK-079`)     | `eval/catalog.json` — per-route golden titles, CTAs, brand, PRD IDs     |
-| CMS vs fallback boundaries (`TASK-080`) | `docs/evals/cms-fallback-vs-live.md` — avoid false fails on CMS drift |
+| Method                                  | Scope                                                                   |
+| --------------------------------------- | ----------------------------------------------------------------------- |
+| Manual checklist walkthrough            | `docs/evals/static-website-eval.md`                                     |
+| Static content eval (`TASK-089`)        | `npm run eval:content` — forbidden claims, services, industries, CTAs   |
+| Brand voice eval (`TASK-090`)           | `npm run eval:voice` — rubric + optional AI draft (`--text` / `--file`) |
+| Local eval runner (`TASK-081`)          | `npm run eval:sot` — routes, titles, brand constants, CTAs vs catalog   |
+| Golden eval catalog (`TASK-079`)        | `eval/catalog.json` — per-route golden titles, CTAs, brand, PRD IDs     |
+| CMS vs fallback boundaries (`TASK-080`) | `docs/evals/cms-fallback-vs-live.md` — avoid false fails on CMS drift   |
 
 **Recommended Phase 1 order:** `TASK-097` → `TASK-098`–`102` → `TASK-103` → `TASK-088` → `TASK-079` → `TASK-089` → `TASK-090` → `TASK-080` → `TASK-081`.
 
