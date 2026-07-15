@@ -642,7 +642,8 @@ Checklist pages: Homepage, Services, About, Contact, Lead magnet section. Valida
 | Method                               | Scope                                                                   |
 | ------------------------------------ | ----------------------------------------------------------------------- |
 | Manual checklist walkthrough         | `docs/evals/static-website-eval.md`                                     |
-| Brand voice rubric review            | `brand-voice.md` + `TASK-090`                                           |
+| Static content eval (`TASK-089`)     | `npm run eval:content` — forbidden claims, services, industries, CTAs   |
+| Brand voice eval (`TASK-090`)        | `npm run eval:voice` — rubric + optional AI draft (`--text` / `--file`) |
 | Local eval runner (when implemented) | `npm run eval:sot` — routes, titles, brand constants, CTAs (`TASK-081`) |
 | Golden eval catalog                  | `eval/` or `docs/` — `TASK-079`                                         |
 

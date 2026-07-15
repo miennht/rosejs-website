@@ -2735,11 +2735,11 @@ Implementation tasks for PRD **§11.8**, **§26**, and **§27** (`NFR-EVAL-*`, `
 
 ## 29.1 Phase Overview
 
-| Phase                           | Tasks                                                        | PRD IDs                                           | Status                                                                                               |
-| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | In Progress (`TASK-078`, `TASK-088`, `TASK-097`–`103` Done; next `TASK-089`–`090`, `TASK-079`–`081`) |
-| 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Not Started                                                                                          |
-| 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                                                                                          |
+| Phase                           | Tasks                                                        | PRD IDs                                           | Status                                                                                   |
+| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | In Progress (`TASK-078`, `TASK-088`–`090`, `TASK-097`–`103` Done; next `TASK-079`–`081`) |
+| 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Not Started                                                                              |
+| 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                                                                              |
 
 **Notes:**
 
@@ -3255,7 +3255,7 @@ Umbrella task: complete and maintain approved source-of-truth knowledge files un
 ## TASK-089: Implement Static Website Content Evals
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-002, EVAL-SOT-002, EVAL-SOT-004, NFR-EVAL-002  
 **Depends On:** TASK-103, TASK-088  
 **Implementation Area:** Testing, Content
@@ -3277,12 +3277,16 @@ Implement static website content evals (automated or semi-automated) using the c
 - Run evals against current `main`/`develop` baseline.
 - Introduce intentional positioning drift in test branch; confirm eval failure.
 
+### Completion Notes
+
+- **Done (July 2026):** Added `src/evals/websiteContentEval.ts` + `npm run eval:content` (and `eval:phase1`). Scans Home/Services/About/Contact/lead-magnet sources for forbidden claims, service slugs, eCommerce framing, Calendly/email/origin/brand, and lead magnet asset. Documented in `docs/evals/static-content-eval.md`. Vitest covers baseline pass + intentional “healthcare only” drift failure. Wired into CI.
+
 ---
 
 ## TASK-090: Implement Brand Voice Evals
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-003, NFR-EVAL-001, NFR-EVAL-002  
 **Depends On:** TASK-101, TASK-102  
 **Implementation Area:** Testing, Content
@@ -3304,6 +3308,10 @@ Execute brand-voice evals using `docs/rosejs-knowledge/brand-voice.md` (`TASK-10
 
 - Manual rubric review on sample pages and AI-generated copy.
 - Document pass/fail examples in eval catalog or Testing Strategy.
+
+### Completion Notes
+
+- **Done (July 2026):** Added `src/evals/brandVoiceEval.ts` + `npm run eval:voice` (`--text` / `--file` for AI drafts). Automates forbidden + hype patterns and golden pass/fail samples from `brand-voice.md`. Documented in `docs/evals/brand-voice-eval.md`. Vitest proves fail draft is rejected and practical draft passes. Wired into CI via `eval:phase1`.
 
 ---
 
