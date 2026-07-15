@@ -1,0 +1,213 @@
+{
+  "version": 1,
+  "task": "TASK-079",
+  "requirements": ["EVAL-SOT-001", "EVAL-SOT-002", "EVAL-SOT-004", "EVAL-P1-002"],
+  "lastReviewed": "2026-07-15",
+  "description": "Source-of-truth golden references for Phase 1 evals. Consumed by TASK-081 (npm run eval:sot). Knowledge grounding: docs/rosejs-knowledge/.",
+  "notes": {
+    "blogRoute": "PRD core route list includes /blog; production implements BLOG-* as /insights. Catalog cases use /insights.",
+    "cmsFields": "CMS vs fallback boundaries for blog, case studies, and page sections are documented in TASK-080."
+  },
+  "brand": {
+    "id": "brand-constants",
+    "label": "Brand and site defaults",
+    "prdIds": ["NFR-SEO-001"],
+    "architectureRefs": ["Architecture.md §28.4", "Component_Map.md"],
+    "knowledgeRefs": [
+      "docs/rosejs-knowledge/company-profile.md",
+      "docs/Brand_and_Domain.md"
+    ],
+    "sourceFiles": ["src/lib/brand.ts", "src/lib/site.ts", "src/lib/calendly.ts"],
+    "expect": {
+      "brandName": "RoseJS",
+      "domainLabel": "roseng.org",
+      "siteOrigin": "https://www.roseng.org",
+      "contactEmail": "hello@roseng.org",
+      "calendlyUrl": "https://calendly.com/roseng0201/30min"
+    }
+  },
+  "coreRoutes": ["/", "/services", "/about", "/insights", "/contact", "/schedule"],
+  "cases": [
+    {
+      "id": "route-home",
+      "route": "/",
+      "page": "Home",
+      "prdIds": ["HOME-001", "HOME-002", "HOME-003", "HOME-008", "NFR-SEO-001"],
+      "architectureRefs": ["Component_Map.md § routes Home", "Architecture.md §28.4"],
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/company-profile.md",
+        "docs/rosejs-knowledge/services.md"
+      ],
+      "sourceFiles": ["src/pages/Home.tsx", "src/app/routes.tsx"],
+      "expect": {
+        "titleExact": "RoseJS | Healthcare software architecture consulting",
+        "descriptionContains": ["healthcare", "RoseJS"],
+        "ctaPaths": ["/schedule", "/contact", "/services"],
+        "bodyContains": ["AI-first", "healthcare"],
+        "forbiddenRuleIds": ["healthcare-only", "wrong-brand-roseng", "zero-risk"]
+      }
+    },
+    {
+      "id": "route-services",
+      "route": "/services",
+      "page": "Services",
+      "prdIds": ["SERV-001", "SERV-002", "SERV-003", "NFR-SEO-001"],
+      "architectureRefs": ["Component_Map.md § routes Services"],
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/services.md",
+        "docs/rosejs-knowledge/target-industries.md"
+      ],
+      "sourceFiles": [
+        "src/pages/Services.tsx",
+        "src/content/fallback/services.ts",
+        "src/app/routes.tsx"
+      ],
+      "expect": {
+        "titleExact": "Services | RoseJS",
+        "descriptionContains": ["architecture", "RoseJS"],
+        "ctaPaths": ["/schedule"],
+        "bodyContains": ["eCommerce", "healthcare"],
+        "publishedServiceSlugs": [
+          "software-architecture-consulting",
+          "legacy-application-modernization",
+          "ai-first-product-development",
+          "healthcare-insurance-rcm-consulting",
+          "cloud-api-integration",
+          "technical-debt-assessment",
+          "secure-data-system-integration"
+        ],
+        "forbiddenRuleIds": ["healthcare-only", "no-ecommerce"]
+      }
+    },
+    {
+      "id": "route-about",
+      "route": "/about",
+      "page": "About",
+      "prdIds": ["ABOUT-001", "ABOUT-002", "ABOUT-003", "ABOUT-005", "NFR-SEO-001"],
+      "architectureRefs": ["Component_Map.md § routes About"],
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/company-profile.md",
+        "docs/rosejs-knowledge/target-industries.md",
+        "docs/rosejs-knowledge/brand-voice.md"
+      ],
+      "sourceFiles": ["src/pages/About.tsx", "src/app/routes.tsx"],
+      "expect": {
+        "titleExact": "About RoseJS | Healthcare software architecture consulting",
+        "descriptionContains": ["eCommerce", "healthcare", "RoseJS"],
+        "ctaPaths": ["/schedule"],
+        "bodyContains": ["eCommerce", "healthcare"],
+        "forbiddenRuleIds": ["healthcare-only", "we-only-serve-healthcare"]
+      }
+    },
+    {
+      "id": "route-insights",
+      "route": "/insights",
+      "prdRouteAlias": "/blog",
+      "page": "Insights (blog listing)",
+      "prdIds": ["BLOG-001", "BLOG-008", "NFR-SEO-001", "NFR-SEO-005"],
+      "architectureRefs": ["Component_Map.md § routes Insights", "Architecture.md CMS BlogPost"],
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/company-profile.md",
+        "docs/rosejs-knowledge/brand-voice.md"
+      ],
+      "sourceFiles": ["src/pages/Insights.tsx", "src/app/routes.tsx"],
+      "expect": {
+        "titleExact": "Insights | RoseJS",
+        "descriptionContains": ["healthcare", "RoseJS"],
+        "bodyContains": ["Insights"],
+        "notes": "Listing content is CMS-managed with local fallback (TASK-080).",
+        "forbiddenRuleIds": ["wrong-brand-roseng"]
+      }
+    },
+    {
+      "id": "route-contact",
+      "route": "/contact",
+      "page": "Contact",
+      "prdIds": ["CONT-001", "CONT-006", "CONT-008", "NFR-SEO-001"],
+      "architectureRefs": ["Component_Map.md § routes Contact"],
+      "knowledgeRefs": ["docs/rosejs-knowledge/company-profile.md"],
+      "sourceFiles": [
+        "src/pages/Contact.tsx",
+        "src/lib/site.ts",
+        "src/app/routes.tsx"
+      ],
+      "expect": {
+        "titleExact": "Contact RoseJS | Healthcare software architecture consulting",
+        "descriptionContains": ["contact", "RoseJS"],
+        "ctaPaths": ["/schedule"],
+        "contactEmail": "hello@roseng.org",
+        "forbiddenRuleIds": ["wrong-brand-roseng"]
+      }
+    },
+    {
+      "id": "route-schedule",
+      "route": "/schedule",
+      "page": "Schedule",
+      "prdIds": ["HOME-002", "CONT-008", "NFR-SEO-001"],
+      "architectureRefs": ["Component_Map.md § routes Schedule"],
+      "knowledgeRefs": ["docs/rosejs-knowledge/company-profile.md"],
+      "sourceFiles": [
+        "src/pages/Schedule.tsx",
+        "src/lib/calendly.ts",
+        "src/app/routes.tsx"
+      ],
+      "expect": {
+        "titleExact": "Schedule a consultation | RoseJS",
+        "descriptionContains": ["Book", "RoseJS"],
+        "ctaPaths": ["/contact"],
+        "calendlyUrl": "https://calendly.com/roseng0201/30min",
+        "forbiddenRuleIds": ["wrong-brand-roseng"]
+      }
+    },
+    {
+      "id": "cta-primary-targets",
+      "route": "*",
+      "page": "Site-wide CTA contracts",
+      "prdIds": ["HOME-002", "HOME-008", "SERV-003", "CONT-008"],
+      "architectureRefs": ["Component_Map.md navConfig"],
+      "knowledgeRefs": ["docs/rosejs-knowledge/company-profile.md"],
+      "sourceFiles": [
+        "src/components/layout/navConfig.ts",
+        "src/lib/calendly.ts",
+        "src/lib/site.ts"
+      ],
+      "expect": {
+        "primaryNavPaths": ["/services", "/about", "/insights", "/schedule"],
+        "footerNavPaths": [
+          "/services",
+          "/about",
+          "/insights",
+          "/case-studies",
+          "/schedule",
+          "/contact"
+        ],
+        "calendlyUrl": "https://calendly.com/roseng0201/30min",
+        "contactEmail": "hello@roseng.org"
+      }
+    },
+    {
+      "id": "positioning-dual-industry",
+      "route": "*",
+      "page": "Industry positioning",
+      "prdIds": ["ABOUT-003", "SERV-001", "EVAL-SOT-002"],
+      "architectureRefs": ["Architecture.md §28.4"],
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/target-industries.md",
+        "docs/rosejs-knowledge/forbidden-claims.md"
+      ],
+      "sourceFiles": ["src/pages/About.tsx", "src/pages/Services.tsx"],
+      "expect": {
+        "bodyContainsAnyPerFile": {
+          "src/pages/About.tsx": ["eCommerce", "e-commerce"],
+          "src/pages/Services.tsx": ["eCommerce", "e-commerce"]
+        },
+        "forbiddenRuleIds": [
+          "healthcare-only",
+          "we-only-serve-healthcare",
+          "no-ecommerce",
+          "hospitals-only"
+        ]
+      }
+    }
+  ]
+}

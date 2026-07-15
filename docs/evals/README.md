@@ -37,7 +37,7 @@ Phases are sequential. See PRD §26 exit criteria and Tasks.md §25.2 dependenci
 - [`brand-voice-eval.md`](brand-voice-eval.md) — brand-voice eval (`TASK-090` Done; `npm run eval:voice`)
 - `docs/Brand_and_Domain.md` — brand and domain defaults
 - `docs/Component_Map.md` — UI and route map
-- `eval/` (repo root, optional) — golden catalog and runners (`TASK-079`, `TASK-081`); catalog cases must cite `docs/rosejs-knowledge/` paths
+- [`eval/catalog.json`](../../eval/catalog.json) — golden catalog (`TASK-079` Done); cases cite `docs/rosejs-knowledge/` paths; runner is `TASK-081`
 
 ## Requirement ID families
 
@@ -61,4 +61,4 @@ npm run eval:phase1    # both
 
 ## Next task
 
-**`TASK-089` and `TASK-090` Done.** Next Phase 1: catalog/runner work (`TASK-079`–`081`), then CMS boundary (`TASK-080`).
+**`TASK-079` Done** (`eval/catalog.json`). Next Phase 1: **`TASK-080`** (CMS fallback vs live boundaries), then **`TASK-081`** (`npm run eval:sot` against the catalog).

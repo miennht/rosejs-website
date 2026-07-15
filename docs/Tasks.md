@@ -2737,7 +2737,7 @@ Implementation tasks for PRD **§11.8**, **§26**, and **§27** (`NFR-EVAL-*`, `
 
 | Phase                           | Tasks                                                        | PRD IDs                                           | Status                                                                                   |
 | ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | In Progress (`TASK-078`, `TASK-088`–`090`, `TASK-097`–`103` Done; next `TASK-079`–`081`) |
+| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | In Progress (`TASK-078`–`079`, `TASK-088`–`090`, `TASK-097`–`103` Done; next `TASK-080`–`081`) |
 | 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Not Started                                                                              |
 | 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                                                                              |
 
@@ -2805,7 +2805,7 @@ Index: **`docs/evals/README.md`** links PRD §26–§27, Architecture §28, Trac
 ## TASK-079: Build Source-of-Truth Eval Catalog
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-002, EVAL-SOT-001, EVAL-SOT-002, EVAL-SOT-004  
 **Implementation Area:** Documentation, Testing
 
@@ -2824,6 +2824,10 @@ Define a version-controlled catalog of golden references and golden-answer eval 
 
 - Manual catalog review.
 - Spot-check traceability to PRD IDs (e.g., `HOME-*`, `CONTACT-*`, `NFR-SEO-*`).
+
+### Completion Notes
+
+- **Done (July 2026):** Added `eval/catalog.json` + `eval/README.md` with golden cases for `/`, `/services`, `/about`, `/insights` (PRD `/blog`), `/contact`, `/schedule`, plus brand, CTA, and dual-industry positioning cases. Each case cites PRD IDs and `docs/rosejs-knowledge/` paths. PR template checklist references catalog updates.
 
 ---
 

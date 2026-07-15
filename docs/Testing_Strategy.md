@@ -645,7 +645,7 @@ Checklist pages: Homepage, Services, About, Contact, Lead magnet section. Valida
 | Static content eval (`TASK-089`)     | `npm run eval:content` — forbidden claims, services, industries, CTAs   |
 | Brand voice eval (`TASK-090`)        | `npm run eval:voice` — rubric + optional AI draft (`--text` / `--file`) |
 | Local eval runner (when implemented) | `npm run eval:sot` — routes, titles, brand constants, CTAs (`TASK-081`) |
-| Golden eval catalog                  | `eval/` or `docs/` — `TASK-079`                                         |
+| Golden eval catalog (`TASK-079`)     | `eval/catalog.json` — per-route golden titles, CTAs, brand, PRD IDs     |
 
 **Recommended Phase 1 order:** `TASK-097` → `TASK-098`–`102` → `TASK-103` → `TASK-088` → `TASK-079` → `TASK-089` → `TASK-090` → `TASK-080` → `TASK-081`.
 
@@ -701,8 +701,9 @@ docs/
   evals/
     static-website-eval.md    # Human checklist (TASK-103)
 
-eval/                         # Optional: golden cases, runners, Q&A fixtures (TASK-079, 081, 092)
-  catalog.json                # example — format TBD in TASK-079
+eval/                         # Golden cases, runners, Q&A fixtures (TASK-079, 081, 092)
+  catalog.json                # TASK-079 Done — source-of-truth golden cases
+  README.md                   # Catalog schema and update rules
   scenarios/                  # change-based scenarios (TASK-091)
 ```
 
