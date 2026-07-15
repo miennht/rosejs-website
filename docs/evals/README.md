@@ -40,6 +40,7 @@ Phases are sequential. See PRD §26 exit criteria and Tasks.md §25.2 dependenci
 - [`eval/catalog.json`](../../eval/catalog.json) — golden catalog (`TASK-079` Done); cases cite `docs/rosejs-knowledge/` paths; runner is `TASK-081`
 - [`cms-fallback-vs-live.md`](cms-fallback-vs-live.md) — CMS vs fallback eval boundaries (`TASK-080` Done)
 - [`sot-eval.md`](sot-eval.md) — source-of-truth runner (`TASK-081` Done; `npm run eval:sot`)
+- [`change-scenarios.md`](change-scenarios.md) — change-based business scenarios (`TASK-091` Done; `npm run eval:scenarios`)
 
 ## Requirement ID families
 
@@ -59,9 +60,10 @@ Phases are sequential. See PRD §26 exit criteria and Tasks.md §25.2 dependenci
 npm run eval:content   # TASK-089 static website content eval
 npm run eval:voice     # TASK-090 brand-voice eval (+ optional --text / --file)
 npm run eval:sot       # TASK-081 source-of-truth catalog runner
+npm run eval:scenarios # TASK-091 change-based scenario baseline + Calendly dry-run
 npm run eval:phase1    # content + voice + sot
 ```
 
 ## Next task
 
-**Phase 1 complete** (`TASK-078`–`081`, `088`–`090`, `097`–`103`). Next: Phase 2 — start with **`TASK-091`** (change-based business eval scenarios).
+**`TASK-091` Done.** Next Phase 2: **`TASK-093`** (stale/forbidden detection) and/or **`TASK-092`** (Q&A regression), then **`TASK-082`** (diff-aware CI).

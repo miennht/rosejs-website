@@ -2,10 +2,21 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { BRAND_VOICE_HYPE_PATTERNS, FORBIDDEN_CLAIM_PATTERNS, findPatternHits } from './patterns.ts'
+import {
+  APPROVED,
+  BRAND_VOICE_HYPE_PATTERNS,
+  FORBIDDEN_CLAIM_PATTERNS,
+  findPatternHits,
+} from './patterns.ts'
 import { runBrandVoiceEval, evaluateVoiceText } from './brandVoiceEval.ts'
 import { listContentEvalPaths, runStaticWebsiteContentEval } from './websiteContentEval.ts'
 import { listSotEvalPaths, runSourceOfTruthEval, type SotCatalog } from './sotEval.ts'
+import {
+  findStaleCalendlyUrls,
+  listScenarioScanPaths,
+  runChangeScenarioEval,
+  type ChangeScenarioCatalog,
+} from './changeScenarioEval.ts'
 
 function loadRepoFiles(): Record<string, string | null> {
   const root = process.cwd()
@@ -25,6 +36,22 @@ function loadSotFiles(catalog: SotCatalog): Record<string, string | null> {
   const root = process.cwd()
   const files: Record<string, string | null> = {}
   for (const rel of listSotEvalPaths(catalog)) {
+    const abs = join(root, rel)
+    files[rel] = existsSync(abs) ? readFileSync(abs, 'utf8') : null
+  }
+  return files
+}
+
+function loadScenarioCatalog(): ChangeScenarioCatalog {
+  return JSON.parse(
+    readFileSync(join(process.cwd(), 'eval/scenarios/change-scenarios.json'), 'utf8'),
+  ) as ChangeScenarioCatalog
+}
+
+function loadScenarioFiles(catalog: ChangeScenarioCatalog): Record<string, string | null> {
+  const root = process.cwd()
+  const files: Record<string, string | null> = {}
+  for (const rel of listScenarioScanPaths(catalog)) {
     const abs = join(root, rel)
     files[rel] = existsSync(abs) ? readFileSync(abs, 'utf8') : null
   }
@@ -134,6 +161,33 @@ describe('source-of-truth eval (TASK-081)', () => {
     const report = runSourceOfTruthEval(catalog, files)
     expect(report.ok).toBe(false)
     expect(report.checks.some((c) => c.id.startsWith('core-route:') && !c.ok)).toBe(true)
+  })
+})
+
+describe('change-based scenarios (TASK-091)', () => {
+  it('defines all six required change types and passes baseline', () => {
+    const catalog = loadScenarioCatalog()
+    const report = runChangeScenarioEval(catalog, loadScenarioFiles(catalog))
+    expect(
+      report.ok,
+      report.checks
+        .filter((c) => !c.ok)
+        .map((c) => `${c.id}: ${c.detail}`)
+        .join('\n'),
+    ).toBe(true)
+    expect(report.dryRunDetectedStaleCalendly).toBe(true)
+    expect(catalog.scenarios).toHaveLength(6)
+  })
+
+  it('detects an outdated Calendly URL in a fixture (dry-run)', () => {
+    const stale = findStaleCalendlyUrls(
+      'Book at https://calendly.com/old-rosejs/30min',
+      APPROVED.calendlyUrl,
+    )
+    expect(stale).toEqual(['https://calendly.com/old-rosejs/30min'])
+    expect(findStaleCalendlyUrls(`Book at ${APPROVED.calendlyUrl}`, APPROVED.calendlyUrl)).toEqual(
+      [],
+    )
   })
 })
 

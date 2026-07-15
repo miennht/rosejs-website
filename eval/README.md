@@ -2,12 +2,13 @@
 
 Machine-readable golden references for Phase 1 source-of-truth evals (`EVAL-SOT-001`, `EVAL-SOT-002`, `EVAL-SOT-004`).
 
-| Artifact       | Path                                                                          | Role                                          |
-| -------------- | ----------------------------------------------------------------------------- | --------------------------------------------- |
-| Catalog        | `catalog.json`                                                                | Golden cases for routes, brand, CTAs          |
-| Knowledge base | `docs/rosejs-knowledge/`                                                      | Approved business/brand claims                |
-| Runner         | `npm run eval:sot`                                                            | TASK-081 — validates catalog against sources  |
-| CMS boundaries | [`docs/evals/cms-fallback-vs-live.md`](../docs/evals/cms-fallback-vs-live.md) | Fallback vs live field ownership (`TASK-080`) |
+| Artifact         | Path                                                                          | Role                                          |
+| ---------------- | ----------------------------------------------------------------------------- | --------------------------------------------- |
+| Catalog          | `catalog.json`                                                                | Golden cases for routes, brand, CTAs          |
+| Knowledge base   | `docs/rosejs-knowledge/`                                                      | Approved business/brand claims                |
+| Runner           | `npm run eval:sot`                                                            | TASK-081 — validates catalog against sources  |
+| Change scenarios | [`scenarios/`](scenarios/README.md)                                           | TASK-091 — business-change eval scenarios     |
+| CMS boundaries   | [`docs/evals/cms-fallback-vs-live.md`](../docs/evals/cms-fallback-vs-live.md) | Fallback vs live field ownership (`TASK-080`) |
 
 ## Core routes
 

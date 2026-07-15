@@ -22,6 +22,7 @@
     "eval:content": "tsx scripts/eval-content.ts",
     "eval:voice": "tsx scripts/eval-brand-voice.ts",
     "eval:sot": "tsx scripts/eval-sot.ts",
+    "eval:scenarios": "tsx scripts/eval-scenarios.ts",
     "eval:phase1": "npm run eval:content && npm run eval:voice && npm run eval:sot"
   },
   "engines": {

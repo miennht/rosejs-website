@@ -652,7 +652,7 @@ Checklist pages: Homepage, Services, About, Contact, Lead magnet section. Valida
 
 ### 15.4 Phase 2 — Change-based and regression evals
 
-**Change scenarios** (`EVAL-P2-001`, `TASK-091`): eval cases when target industries, services, lead magnet, CTAs, pricing/consultation policy, or Calendly/contact links change.
+**Change scenarios** (`EVAL-P2-001`, `TASK-091` Done): `eval/scenarios/change-scenarios.json` + `npm run eval:scenarios` — industries, services, lead magnet, CTAs, pricing/consultation policy, Calendly/contact.
 
 **Q&A regression suite** (`EVAL-P2-002`, `TASK-092`) — example questions:
 
@@ -705,7 +705,7 @@ docs/
 eval/                         # Golden cases, runners, Q&A fixtures (TASK-079, 081, 092)
   catalog.json                # TASK-079 Done — source-of-truth golden cases
   README.md                   # Catalog schema and update rules
-  scenarios/                  # change-based scenarios (TASK-091)
+  scenarios/                  # TASK-091 Done — change-based scenarios + runner
 ```
 
 ### 15.7 Eval definition of done (post-MVP)

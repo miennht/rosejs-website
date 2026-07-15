@@ -2735,11 +2735,11 @@ Implementation tasks for PRD **§11.8**, **§26**, and **§27** (`NFR-EVAL-*`, `
 
 ## 29.1 Phase Overview
 
-| Phase                           | Tasks                                                        | PRD IDs                                           | Status                                                      |
-| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | ----------------------------------------------------------- |
-| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | Done (`TASK-078`–`081`, `TASK-088`–`090`, `TASK-097`–`103`) |
-| 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Not Started                                                 |
-| 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                                                 |
+| Phase                           | Tasks                                                        | PRD IDs                                           | Status                                                                             |
+| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | Done (`TASK-078`–`081`, `TASK-088`–`090`, `TASK-097`–`103`)                        |
+| 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | In Progress (`TASK-091` Done; next `TASK-093` / `TASK-092`, then `TASK-082`–`084`) |
+| 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                                                                        |
 
 **Notes:**
 
@@ -3330,7 +3330,7 @@ Execute brand-voice evals using `docs/rosejs-knowledge/brand-voice.md` (`TASK-10
 ## TASK-091: Define Change-Based Business Eval Scenarios
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P2-001, EVAL-REG-002, NFR-EVAL-003  
 **Implementation Area:** Documentation, Testing
 
@@ -3349,6 +3349,10 @@ Define eval scenarios that verify RoseJS AI-generated and website content adapts
 
 - Manual scenario review against `docs/rosejs-knowledge/`.
 - Dry-run one scenario (e.g., outdated Calendly link) and confirm eval detects failure.
+
+### Completion Notes
+
+- **Done (July 2026):** Added `eval/scenarios/change-scenarios.json` (six change types with trigger paths, mustPresent/mustAbsent, ciSubset) + `docs/evals/change-scenarios.md`. Runner `npm run eval:scenarios` validates baseline and dry-runs outdated Calendly detection. CI path filtering remains `TASK-082`.
 
 ---
 
