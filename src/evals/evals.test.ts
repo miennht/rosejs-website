@@ -5,11 +5,30 @@ import { describe, expect, it } from 'vitest'
 import { BRAND_VOICE_HYPE_PATTERNS, FORBIDDEN_CLAIM_PATTERNS, findPatternHits } from './patterns.ts'
 import { runBrandVoiceEval, evaluateVoiceText } from './brandVoiceEval.ts'
 import { listContentEvalPaths, runStaticWebsiteContentEval } from './websiteContentEval.ts'
+import {
+  listSotEvalPaths,
+  runSourceOfTruthEval,
+  type SotCatalog,
+} from './sotEval.ts'
 
 function loadRepoFiles(): Record<string, string | null> {
   const root = process.cwd()
   const files: Record<string, string | null> = {}
   for (const rel of listContentEvalPaths()) {
+    const abs = join(root, rel)
+    files[rel] = existsSync(abs) ? readFileSync(abs, 'utf8') : null
+  }
+  return files
+}
+
+function loadCatalog(): SotCatalog {
+  return JSON.parse(readFileSync(join(process.cwd(), 'eval/catalog.json'), 'utf8')) as SotCatalog
+}
+
+function loadSotFiles(catalog: SotCatalog): Record<string, string | null> {
+  const root = process.cwd()
+  const files: Record<string, string | null> = {}
+  for (const rel of listSotEvalPaths(catalog)) {
     const abs = join(root, rel)
     files[rel] = existsSync(abs) ? readFileSync(abs, 'utf8') : null
   }
@@ -94,6 +113,31 @@ describe('brand voice eval (TASK-090)', () => {
     })
     expect(report.ok).toBe(true)
     expect(report.draftHits).toEqual([])
+  })
+})
+
+describe('source-of-truth eval (TASK-081)', () => {
+  it('passes against eval/catalog.json and the develop baseline', () => {
+    const catalog = loadCatalog()
+    const report = runSourceOfTruthEval(catalog, loadSotFiles(catalog))
+    expect(
+      report.ok,
+      report.checks
+        .filter((c) => !c.ok)
+        .map((c) => `${c.id}: ${c.detail}`)
+        .join('\n'),
+    ).toBe(true)
+    expect(report.checks.some((c) => c.id.startsWith('core-route:') && c.ok)).toBe(true)
+    expect(report.checks.some((c) => c.id === 'brand:name' && c.ok)).toBe(true)
+  })
+
+  it('fails when a core route is missing from routes.tsx', () => {
+    const catalog = loadCatalog()
+    const files = loadSotFiles(catalog)
+    files['src/app/routes.tsx'] = 'export const router = createBrowserRouter([])'
+    const report = runSourceOfTruthEval(catalog, files)
+    expect(report.ok).toBe(false)
+    expect(report.checks.some((c) => c.id.startsWith('core-route:') && !c.ok)).toBe(true)
   })
 })
 

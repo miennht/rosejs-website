@@ -21,7 +21,8 @@
     "verify:production": "node scripts/verify-production.mjs",
     "eval:content": "tsx scripts/eval-content.ts",
     "eval:voice": "tsx scripts/eval-brand-voice.ts",
-    "eval:phase1": "npm run eval:content && npm run eval:voice"
+    "eval:sot": "tsx scripts/eval-sot.ts",
+    "eval:phase1": "npm run eval:content && npm run eval:voice && npm run eval:sot"
   },
   "engines": {
     "node": ">=20"

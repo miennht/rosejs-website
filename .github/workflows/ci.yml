@@ -29,7 +29,7 @@ jobs:
       - name: Test
         run: npm run test
 
-      - name: Phase 1 content and brand-voice evals
+      - name: Phase 1 content, brand-voice, and SoT evals
         run: npm run eval:phase1
 
       - name: Typecheck

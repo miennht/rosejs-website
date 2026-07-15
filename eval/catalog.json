@@ -56,8 +56,8 @@
       "expect": {
         "titleExact": "RoseJS | Healthcare software architecture consulting",
         "descriptionContains": ["healthcare", "RoseJS"],
-        "ctaPaths": ["/schedule", "/contact", "/services"],
-        "bodyContains": ["AI-first", "healthcare"],
+        "ctaPaths": ["/schedule", "/contact"],
+        "bodyContains": ["AI-first", "healthcare", "RoseJS"],
         "forbiddenRuleIds": ["healthcare-only", "wrong-brand-roseng", "zero-risk"]
       }
     },

@@ -2737,7 +2737,7 @@ Implementation tasks for PRD **§11.8**, **§26**, and **§27** (`NFR-EVAL-*`, `
 
 | Phase                           | Tasks                                                        | PRD IDs                                           | Status                                                                                   |
 | ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | In Progress (`TASK-078`–`080`, `TASK-088`–`090`, `TASK-097`–`103` Done; next `TASK-081`) |
+| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | Done (`TASK-078`–`081`, `TASK-088`–`090`, `TASK-097`–`103`) |
 | 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Not Started                                                                              |
 | 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                                                                              |
 
@@ -2861,7 +2861,7 @@ Document expected behavior when Sanity CMS content is live vs when local fallbac
 ## TASK-081: Implement Source-of-Truth Eval Runner
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-002, EVAL-SOT-005, NFR-EVAL-006  
 **Implementation Area:** Testing, CI/CD
 
@@ -2880,6 +2880,10 @@ Provide a local (and CI-invokable) script that runs Phase 1 golden cases from `T
 
 - Run locally on clean checkout.
 - Confirm pass on current `main`/`develop` baseline.
+
+### Completion Notes
+
+- **Done (July 2026):** Added `src/evals/sotEval.ts` + `scripts/eval-sot.ts` (`npm run eval:sot`). Validates core routes, brand defaults, SEO titles, CTAs, service slugs, nav, dual-industry framing, and lead magnet against `eval/catalog.json`. Documented in `docs/evals/sot-eval.md`. Vitest covers baseline pass + missing-route failure. Included in `eval:phase1` (CI).
 
 ---
 

@@ -1525,7 +1525,7 @@ Phases are sequential: Phase 2 consumes Phase 1 artifacts; Phase 3 user-facing e
 
 **CMS boundary doc** (`TASK-080` Done): [`docs/evals/cms-fallback-vs-live.md`](evals/cms-fallback-vs-live.md) — fallback vs live field ownership for evals.
 
-**Local runner** (`TASK-081`, e.g. `npm run eval:sot`): validates routes, titles, brand constants, CTAs against catalog and knowledge base.
+**Local runner** (`TASK-081` Done): `npm run eval:sot` — see [`docs/evals/sot-eval.md`](evals/sot-eval.md).
 
 ### 28.5 Change-Based and Regression Layer (Phase 2)
 

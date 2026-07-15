@@ -6,7 +6,7 @@ Machine-readable golden references for Phase 1 source-of-truth evals (`EVAL-SOT-
 | -------------- | ----------------- | ----------------------------------------- |
 | Catalog        | `catalog.json`    | Golden cases for routes, brand, CTAs      |
 | Knowledge base | `docs/rosejs-knowledge/` | Approved business/brand claims     |
-| Runner         | `TASK-081`        | `npm run eval:sot` (not yet implemented)  |
+| Runner         | `npm run eval:sot` | TASK-081 — validates catalog against sources |
 | CMS boundaries | [`docs/evals/cms-fallback-vs-live.md`](../docs/evals/cms-fallback-vs-live.md) | Fallback vs live field ownership (`TASK-080`) |
 
 ## Core routes
@@ -53,5 +53,5 @@ Also update matching knowledge files under `docs/rosejs-knowledge/` and note the
 - Index: [`docs/evals/README.md`](../docs/evals/README.md)
 - Static content eval: `npm run eval:content` (`TASK-089`)
 - Brand voice eval: `npm run eval:voice` (`TASK-090`)
-- CMS boundaries: `TASK-080`
-- Local runner: `TASK-081`
+- CMS boundaries: [`cms-fallback-vs-live.md`](../docs/evals/cms-fallback-vs-live.md)
+- Local runner: `npm run eval:sot` (`TASK-081` Done) — see [`sot-eval.md`](../docs/evals/sot-eval.md)
