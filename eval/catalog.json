@@ -6,11 +6,15 @@
   "description": "Source-of-truth golden references for Phase 1 evals. Consumed by TASK-081 (npm run eval:sot). Knowledge grounding: docs/rosejs-knowledge/.",
   "notes": {
     "blogRoute": "PRD core route list includes /blog; production implements BLOG-* as /insights. Catalog cases use /insights.",
-    "cmsFields": "CMS vs fallback boundaries for blog, case studies, and page sections are documented in TASK-080."
+    "cmsFields": "See docs/evals/cms-fallback-vs-live.md (TASK-080). contentSource: hardcoded | fallback | mixed | cms-live (reserved). Phase 1 asserts fallback modules + hardcoded chrome only."
   },
+  "cmsBoundaryDoc": "docs/evals/cms-fallback-vs-live.md",
   "brand": {
     "id": "brand-constants",
     "label": "Brand and site defaults",
+    "contentSource": "hardcoded",
+    "cmsFields": [],
+    "hardcodedFields": ["brandName", "domainLabel", "siteOrigin", "contactEmail", "calendlyUrl"],
     "prdIds": ["NFR-SEO-001"],
     "architectureRefs": ["Architecture.md §28.4", "Component_Map.md"],
     "knowledgeRefs": [
@@ -32,6 +36,16 @@
       "id": "route-home",
       "route": "/",
       "page": "Home",
+      "contentSource": "mixed",
+      "cmsFields": ["featured service title/summary from Service records"],
+      "hardcodedFields": [
+        "SEO title/description",
+        "hero title/subtitle",
+        "methodology pillars",
+        "trust points",
+        "CTA copy",
+        "featured service slug order"
+      ],
       "prdIds": ["HOME-001", "HOME-002", "HOME-003", "HOME-008", "NFR-SEO-001"],
       "architectureRefs": ["Component_Map.md § routes Home", "Architecture.md §28.4"],
       "knowledgeRefs": [
@@ -51,6 +65,19 @@
       "id": "route-services",
       "route": "/services",
       "page": "Services",
+      "contentSource": "mixed",
+      "cmsFields": [
+        "title",
+        "slug",
+        "summary",
+        "problemSolved",
+        "description",
+        "businessOutcome",
+        "deliverables",
+        "seo",
+        "status"
+      ],
+      "hardcodedFields": ["listing H1", "intro", "listing SEO", "bottom CTASection"],
       "prdIds": ["SERV-001", "SERV-002", "SERV-003", "NFR-SEO-001"],
       "architectureRefs": ["Component_Map.md § routes Services"],
       "knowledgeRefs": [
@@ -83,6 +110,9 @@
       "id": "route-about",
       "route": "/about",
       "page": "About",
+      "contentSource": "hardcoded",
+      "cmsFields": [],
+      "hardcodedFields": ["full page copy", "SEO", "CTA"],
       "prdIds": ["ABOUT-001", "ABOUT-002", "ABOUT-003", "ABOUT-005", "NFR-SEO-001"],
       "architectureRefs": ["Component_Map.md § routes About"],
       "knowledgeRefs": [
@@ -104,6 +134,20 @@
       "route": "/insights",
       "prdRouteAlias": "/blog",
       "page": "Insights (blog listing)",
+      "contentSource": "mixed",
+      "cmsFields": [
+        "title",
+        "slug",
+        "summary",
+        "body",
+        "author",
+        "dates",
+        "tags",
+        "category",
+        "seo",
+        "status"
+      ],
+      "hardcodedFields": ["listing H1", "intro", "listing SEO", "empty-state copy"],
       "prdIds": ["BLOG-001", "BLOG-008", "NFR-SEO-001", "NFR-SEO-005"],
       "architectureRefs": ["Component_Map.md § routes Insights", "Architecture.md CMS BlogPost"],
       "knowledgeRefs": [
@@ -115,7 +159,7 @@
         "titleExact": "Insights | RoseJS",
         "descriptionContains": ["healthcare", "RoseJS"],
         "bodyContains": ["Insights"],
-        "notes": "Listing content is CMS-managed with local fallback (TASK-080).",
+        "notes": "Phase 1 pins listing chrome only; article bodies are CMS-shaped (fallback today). See cms-fallback-vs-live.md.",
         "forbiddenRuleIds": ["wrong-brand-roseng"]
       }
     },
@@ -123,6 +167,9 @@
       "id": "route-contact",
       "route": "/contact",
       "page": "Contact",
+      "contentSource": "hardcoded",
+      "cmsFields": [],
+      "hardcodedFields": ["page copy", "SEO", "form chrome", "default contact email"],
       "prdIds": ["CONT-001", "CONT-006", "CONT-008", "NFR-SEO-001"],
       "architectureRefs": ["Component_Map.md § routes Contact"],
       "knowledgeRefs": ["docs/rosejs-knowledge/company-profile.md"],
@@ -143,6 +190,9 @@
       "id": "route-schedule",
       "route": "/schedule",
       "page": "Schedule",
+      "contentSource": "hardcoded",
+      "cmsFields": [],
+      "hardcodedFields": ["page copy", "SEO", "default Calendly URL"],
       "prdIds": ["HOME-002", "CONT-008", "NFR-SEO-001"],
       "architectureRefs": ["Component_Map.md § routes Schedule"],
       "knowledgeRefs": ["docs/rosejs-knowledge/company-profile.md"],
@@ -163,6 +213,9 @@
       "id": "cta-primary-targets",
       "route": "*",
       "page": "Site-wide CTA contracts",
+      "contentSource": "hardcoded",
+      "cmsFields": [],
+      "hardcodedFields": ["primaryNavPaths", "footerNavPaths", "calendlyUrl", "contactEmail"],
       "prdIds": ["HOME-002", "HOME-008", "SERV-003", "CONT-008"],
       "architectureRefs": ["Component_Map.md navConfig"],
       "knowledgeRefs": ["docs/rosejs-knowledge/company-profile.md"],
@@ -189,6 +242,9 @@
       "id": "positioning-dual-industry",
       "route": "*",
       "page": "Industry positioning",
+      "contentSource": "hardcoded",
+      "cmsFields": [],
+      "hardcodedFields": ["About and Services listing chrome industry framing"],
       "prdIds": ["ABOUT-003", "SERV-001", "EVAL-SOT-002"],
       "architectureRefs": ["Architecture.md §28.4"],
       "knowledgeRefs": [
@@ -207,6 +263,59 @@
           "no-ecommerce",
           "hospitals-only"
         ]
+      }
+    },
+    {
+      "id": "content-case-studies",
+      "route": "/case-studies",
+      "page": "Case studies (CMS-shaped)",
+      "contentSource": "mixed",
+      "cmsFields": [
+        "title",
+        "slug",
+        "summary",
+        "problem",
+        "context",
+        "approach",
+        "solution",
+        "outcome",
+        "lessonsLearned",
+        "seo",
+        "status"
+      ],
+      "hardcodedFields": ["listing H1", "intro", "listing SEO", "detail confidentiality banner"],
+      "prdIds": ["EVAL-SOT-003"],
+      "architectureRefs": ["Architecture.md §7", "Component_Map.md § routes Case studies"],
+      "knowledgeRefs": ["docs/evals/cms-fallback-vs-live.md"],
+      "sourceFiles": [
+        "src/pages/CaseStudies.tsx",
+        "src/content/fallback/caseStudies.ts",
+        "src/app/routes.tsx"
+      ],
+      "expect": {
+        "notes": "Boundary case for TASK-080. Phase 1 does not pin case-study body copy; asserts route + fallback module exist. Live Sanity drift must not fail Phase 1.",
+        "titleExact": "Case studies | RoseJS",
+        "bodyContains": ["Case studies"]
+      }
+    },
+    {
+      "id": "content-lead-magnet",
+      "route": "*",
+      "page": "Lead magnet (fallback metadata)",
+      "contentSource": "fallback",
+      "cmsFields": ["title", "slug", "summary", "fileUrl", "ctaText", "seo", "status"],
+      "hardcodedFields": ["LeadMagnetSection chrome if mounted"],
+      "prdIds": ["HOME-009", "EVAL-SOT-003"],
+      "architectureRefs": ["Architecture.md §7.5"],
+      "knowledgeRefs": ["docs/evals/cms-fallback-vs-live.md"],
+      "sourceFiles": [
+        "src/content/fallback/leadMagnets.ts",
+        "src/components/sections/LeadMagnetSection.tsx"
+      ],
+      "expect": {
+        "notes": "getLeadMagnets exists; no page loader mounts it yet. TASK-089 pins fallback title/slug/PDF path.",
+        "leadMagnetSlug": "legacy-application-modernization-checklist",
+        "leadMagnetFile": "/downloads/legacy-application-modernization-checklist.pdf"
       }
     }
   ]

@@ -38,6 +38,7 @@ Phases are sequential. See PRD §26 exit criteria and Tasks.md §25.2 dependenci
 - `docs/Brand_and_Domain.md` — brand and domain defaults
 - `docs/Component_Map.md` — UI and route map
 - [`eval/catalog.json`](../../eval/catalog.json) — golden catalog (`TASK-079` Done); cases cite `docs/rosejs-knowledge/` paths; runner is `TASK-081`
+- [`cms-fallback-vs-live.md`](cms-fallback-vs-live.md) — CMS vs fallback eval boundaries (`TASK-080` Done)
 
 ## Requirement ID families
 
@@ -61,4 +62,4 @@ npm run eval:phase1    # both
 
 ## Next task
 
-**`TASK-079` Done** (`eval/catalog.json`). Next Phase 1: **`TASK-080`** (CMS fallback vs live boundaries), then **`TASK-081`** (`npm run eval:sot` against the catalog).
+**`TASK-080` Done.** Last Phase 1 implementation task: **`TASK-081`** (`npm run eval:sot` against `eval/catalog.json`).

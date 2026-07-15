@@ -7,6 +7,7 @@ Machine-readable golden references for Phase 1 source-of-truth evals (`EVAL-SOT-
 | Catalog        | `catalog.json`    | Golden cases for routes, brand, CTAs      |
 | Knowledge base | `docs/rosejs-knowledge/` | Approved business/brand claims     |
 | Runner         | `TASK-081`        | `npm run eval:sot` (not yet implemented)  |
+| CMS boundaries | [`docs/evals/cms-fallback-vs-live.md`](../docs/evals/cms-fallback-vs-live.md) | Fallback vs live field ownership (`TASK-080`) |
 
 ## Core routes
 
@@ -33,6 +34,8 @@ Each entry in `cases[]` includes:
 - `expect` — titles, description substrings, CTA paths, brand URLs, optional `forbiddenRuleIds` aligned with `src/evals/patterns.ts`
 
 Site-wide contracts use `route: "*"`.
+
+Each case also declares `contentSource` (`hardcoded` | `fallback` | `mixed` | `cms-live`) plus `cmsFields` / `hardcodedFields` — see [`cms-fallback-vs-live.md`](../docs/evals/cms-fallback-vs-live.md).
 
 ## When to update
 

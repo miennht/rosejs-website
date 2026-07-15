@@ -537,13 +537,27 @@ LeadMagnet
 
 ### 7.5 CMS Fallback Strategy
 
-During development, the site may use fallback static content from:
+Runtime content access:
+
+```text
+src/app/cmsLoaders.ts → src/cms/queries.ts → createContentSource() → CmsContentSource
+```
+
+Until a Sanity-backed `CmsContentSource` is wired in `src/cms/client.ts`, **`createContentSource()` always returns `FallbackCmsContentSource`**, which reads published records from:
 
 ```text
 src/content/fallback/
+  services.ts
+  blogPosts.ts
+  caseStudies.ts
+  leadMagnets.ts
 ```
 
-Fallback content should only be used for local development and early implementation. Production content should come from the selected CMS.
+Pages must not import fallback modules directly; they use loaders + `queries.ts` (exception: sitemap build script still imports fallback for slug lists).
+
+**Production intent:** live Sanity when `VITE_SANITY_PROJECT_ID` / `VITE_SANITY_DATASET` drive a real client. **Current production** still serves fallback modules through that abstraction.
+
+**Eval boundaries** (when not to false-fail on CMS outage / preview / live drift): **`docs/evals/cms-fallback-vs-live.md`** (`TASK-080` / `EVAL-SOT-003`).
 
 ---
 
@@ -1509,7 +1523,7 @@ Phases are sequential: Phase 2 consumes Phase 1 artifacts; Phase 3 user-facing e
 
 **Brand voice evals** (`TASK-090`): rubric-driven checks on copy and AI-generated drafts.
 
-**CMS boundary doc** (`TASK-080`): expected behavior when Sanity content is live vs local fallback, to avoid false failures.
+**CMS boundary doc** (`TASK-080` Done): [`docs/evals/cms-fallback-vs-live.md`](evals/cms-fallback-vs-live.md) — fallback vs live field ownership for evals.
 
 **Local runner** (`TASK-081`, e.g. `npm run eval:sot`): validates routes, titles, brand constants, CTAs against catalog and knowledge base.
 
