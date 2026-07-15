@@ -33,9 +33,13 @@ Phases are sequential. See PRD §26 exit criteria and Tasks.md §25.2 dependenci
 
 - [`docs/rosejs-knowledge/`](../rosejs-knowledge/README.md) — approved business, brand, and forbidden-claims files (`TASK-088` / `TASK-097`–`102` Done)
 - `docs/evals/static-website-eval.md` — static page checklist (`TASK-103` Done; input to `TASK-089`)
+- [`static-content-eval.md`](static-content-eval.md) — automated static content eval (`TASK-089` Done; `npm run eval:content`)
+- [`brand-voice-eval.md`](brand-voice-eval.md) — brand-voice eval (`TASK-090` Done; `npm run eval:voice`)
 - `docs/Brand_and_Domain.md` — brand and domain defaults
 - `docs/Component_Map.md` — UI and route map
-- `eval/` (repo root, optional) — golden catalog and runners (`TASK-079`, `TASK-081`); catalog cases must cite `docs/rosejs-knowledge/` paths
+- [`eval/catalog.json`](../../eval/catalog.json) — golden catalog (`TASK-079` Done); cases cite `docs/rosejs-knowledge/` paths; runner is `TASK-081`
+- [`cms-fallback-vs-live.md`](cms-fallback-vs-live.md) — CMS vs fallback eval boundaries (`TASK-080` Done)
+- [`sot-eval.md`](sot-eval.md) — source-of-truth runner (`TASK-081` Done; `npm run eval:sot`)
 
 ## Requirement ID families
 
@@ -49,6 +53,15 @@ Phases are sequential. See PRD §26 exit criteria and Tasks.md §25.2 dependenci
 | `EVAL-REG-*` | §26.4       | 2 (implementation) |
 | `EVAL-AIA-*` | §26.5       | 3 (dev-workflow)   |
 
+## Commands
+
+```text
+npm run eval:content   # TASK-089 static website content eval
+npm run eval:voice     # TASK-090 brand-voice eval (+ optional --text / --file)
+npm run eval:sot       # TASK-081 source-of-truth catalog runner
+npm run eval:phase1    # content + voice + sot
+```
+
 ## Next task
 
-**Knowledge base umbrella `TASK-088` signed off.** Next: **`TASK-089`** (static content evals using `static-website-eval.md`), **`TASK-090`** (brand-voice evals), then catalog/runner work (`TASK-079`–`081`).
+**Phase 1 complete** (`TASK-078`–`081`, `088`–`090`, `097`–`103`). Next: Phase 2 — start with **`TASK-091`** (change-based business eval scenarios).

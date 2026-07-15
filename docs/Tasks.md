@@ -2735,11 +2735,11 @@ Implementation tasks for PRD **§11.8**, **§26**, and **§27** (`NFR-EVAL-*`, `
 
 ## 29.1 Phase Overview
 
-| Phase                           | Tasks                                                        | PRD IDs                                           | Status                                                                                               |
-| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | In Progress (`TASK-078`, `TASK-088`, `TASK-097`–`103` Done; next `TASK-089`–`090`, `TASK-079`–`081`) |
-| 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Not Started                                                                                          |
-| 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                                                                                          |
+| Phase                           | Tasks                                                        | PRD IDs                                           | Status                                                      |
+| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | ----------------------------------------------------------- |
+| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | Done (`TASK-078`–`081`, `TASK-088`–`090`, `TASK-097`–`103`) |
+| 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Not Started                                                 |
+| 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                                                 |
 
 **Notes:**
 
@@ -2805,7 +2805,7 @@ Index: **`docs/evals/README.md`** links PRD §26–§27, Architecture §28, Trac
 ## TASK-079: Build Source-of-Truth Eval Catalog
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-002, EVAL-SOT-001, EVAL-SOT-002, EVAL-SOT-004  
 **Implementation Area:** Documentation, Testing
 
@@ -2825,12 +2825,16 @@ Define a version-controlled catalog of golden references and golden-answer eval 
 - Manual catalog review.
 - Spot-check traceability to PRD IDs (e.g., `HOME-*`, `CONTACT-*`, `NFR-SEO-*`).
 
+### Completion Notes
+
+- **Done (July 2026):** Added `eval/catalog.json` + `eval/README.md` with golden cases for `/`, `/services`, `/about`, `/insights` (PRD `/blog`), `/contact`, `/schedule`, plus brand, CTA, and dual-industry positioning cases. Each case cites PRD IDs and `docs/rosejs-knowledge/` paths. PR template checklist references catalog updates.
+
 ---
 
 ## TASK-080: Document CMS Fallback vs Live Content Eval Boundaries
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-001, EVAL-SOT-003, NFR-EVAL-001  
 **Implementation Area:** CMS, Documentation
 
@@ -2848,12 +2852,16 @@ Document expected behavior when Sanity CMS content is live vs when local fallbac
 
 - Manual review against CMS client and fallback content in repo.
 
+### Completion Notes
+
+- **Done (July 2026):** Added `docs/evals/cms-fallback-vs-live.md`. Documented fallback-only runtime (`createContentSource` → `FallbackCmsContentSource`), field ownership for blog/case studies/services/static pages/lead magnet, outage/`safeList` behavior, and Phase 1 eval rules. Annotated `eval/catalog.json` with `contentSource` / `cmsFields` / `hardcodedFields`. Updated Architecture §7.5.
+
 ---
 
 ## TASK-081: Implement Source-of-Truth Eval Runner
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-002, EVAL-SOT-005, NFR-EVAL-006  
 **Implementation Area:** Testing, CI/CD
 
@@ -2872,6 +2880,10 @@ Provide a local (and CI-invokable) script that runs Phase 1 golden cases from `T
 
 - Run locally on clean checkout.
 - Confirm pass on current `main`/`develop` baseline.
+
+### Completion Notes
+
+- **Done (July 2026):** Added `src/evals/sotEval.ts` + `scripts/eval-sot.ts` (`npm run eval:sot`). Validates core routes, brand defaults, SEO titles, CTAs, service slugs, nav, dual-industry framing, and lead magnet against `eval/catalog.json`. Documented in `docs/evals/sot-eval.md`. Vitest covers baseline pass + missing-route failure. Included in `eval:phase1` (CI).
 
 ---
 
@@ -3255,7 +3267,7 @@ Umbrella task: complete and maintain approved source-of-truth knowledge files un
 ## TASK-089: Implement Static Website Content Evals
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-002, EVAL-SOT-002, EVAL-SOT-004, NFR-EVAL-002  
 **Depends On:** TASK-103, TASK-088  
 **Implementation Area:** Testing, Content
@@ -3277,12 +3289,16 @@ Implement static website content evals (automated or semi-automated) using the c
 - Run evals against current `main`/`develop` baseline.
 - Introduce intentional positioning drift in test branch; confirm eval failure.
 
+### Completion Notes
+
+- **Done (July 2026):** Added `src/evals/websiteContentEval.ts` + `npm run eval:content` (and `eval:phase1`). Scans Home/Services/About/Contact/lead-magnet sources for forbidden claims, service slugs, eCommerce framing, Calendly/email/origin/brand, and lead magnet asset. Documented in `docs/evals/static-content-eval.md`. Vitest covers baseline pass + intentional “healthcare only” drift failure. Wired into CI.
+
 ---
 
 ## TASK-090: Implement Brand Voice Evals
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P1-003, NFR-EVAL-001, NFR-EVAL-002  
 **Depends On:** TASK-101, TASK-102  
 **Implementation Area:** Testing, Content
@@ -3304,6 +3320,10 @@ Execute brand-voice evals using `docs/rosejs-knowledge/brand-voice.md` (`TASK-10
 
 - Manual rubric review on sample pages and AI-generated copy.
 - Document pass/fail examples in eval catalog or Testing Strategy.
+
+### Completion Notes
+
+- **Done (July 2026):** Added `src/evals/brandVoiceEval.ts` + `npm run eval:voice` (`--text` / `--file` for AI drafts). Automates forbidden + hype patterns and golden pass/fail samples from `brand-voice.md`. Documented in `docs/evals/brand-voice-eval.md`. Vitest proves fail draft is rejected and practical draft passes. Wired into CI via `eval:phase1`.
 
 ---
 
