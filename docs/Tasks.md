@@ -2735,11 +2735,11 @@ Implementation tasks for PRD **§11.8**, **§26**, and **§27** (`NFR-EVAL-*`, `
 
 ## 29.1 Phase Overview
 
-| Phase                           | Tasks                                                        | PRD IDs                                           | Status                                                                             |
-| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | Done (`TASK-078`–`081`, `TASK-088`–`090`, `TASK-097`–`103`)                        |
-| 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | In Progress (`TASK-091` Done; next `TASK-093` / `TASK-092`, then `TASK-082`–`084`) |
-| 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                                                                        |
+| Phase                           | Tasks                                                        | PRD IDs                                           | Status                                                                            |
+| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | --------------------------------------------------------------------------------- |
+| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | Done (`TASK-078`–`081`, `TASK-088`–`090`, `TASK-097`–`103`)                       |
+| 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | In Progress (`TASK-091`, `TASK-093` Done; next `TASK-092`, then `TASK-082`–`084`) |
+| 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                                                                       |
 
 **Notes:**
 
@@ -3390,7 +3390,7 @@ Maintain a regression eval suite for recurring RoseJS business questions, runnab
 ## TASK-093: Implement Stale Answer and Forbidden Claim Detection
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P2-003, EVAL-P1-001, NFR-EVAL-002, NFR-EVAL-003  
 **Implementation Area:** Testing, Documentation
 
@@ -3409,6 +3409,10 @@ Detect outdated or forbidden RoseJS claims in website content and AI-generated r
 
 - Inject forbidden claim in test content; confirm eval failure and clear report.
 - Verify examples from PRD `EVAL-P2-003` are covered.
+
+### Completion Notes
+
+- **Done (July 2026):** Added `src/evals/staleClaimEval.ts` + `npm run eval:stale` (`--text` / `--file`). Scans marketing sources for forbidden patterns, removed-service denylist, stale Calendly/email/lead-magnet. Reports rule, source, excerpt, suggested fix. Vitest covers all PRD `EVAL-P2-003` fixtures. Documented in `docs/evals/stale-claim-eval.md`. CI wiring remains `TASK-082`.
 
 ---
 

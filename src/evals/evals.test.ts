@@ -17,6 +17,7 @@ import {
   runChangeScenarioEval,
   type ChangeScenarioCatalog,
 } from './changeScenarioEval.ts'
+import { EVAL_P2_003_FIXTURES, listStaleScanPaths, runStaleClaimEval } from './staleClaimEval.ts'
 
 function loadRepoFiles(): Record<string, string | null> {
   const root = process.cwd()
@@ -188,6 +189,50 @@ describe('change-based scenarios (TASK-091)', () => {
     expect(findStaleCalendlyUrls(`Book at ${APPROVED.calendlyUrl}`, APPROVED.calendlyUrl)).toEqual(
       [],
     )
+  })
+})
+
+describe('stale / forbidden claim detection (TASK-093)', () => {
+  it('passes against the current marketing baseline', () => {
+    const root = process.cwd()
+    const files: Record<string, string | null> = {}
+    for (const rel of listStaleScanPaths()) {
+      const abs = join(root, rel)
+      files[rel] = existsSync(abs) ? readFileSync(abs, 'utf8') : null
+    }
+    const report = runStaleClaimEval({ files })
+    expect(
+      report.ok,
+      report.findings.map((f) => `${f.source}: ${f.ruleId} — ${f.reason}`).join('\n'),
+    ).toBe(true)
+    expect(report.scannedFiles.length).toBeGreaterThan(5)
+  })
+
+  it('covers all PRD EVAL-P2-003 example fixtures', () => {
+    for (const fixture of EVAL_P2_003_FIXTURES) {
+      const report = runStaleClaimEval({
+        draftText: fixture.text,
+        draftSource: `fixture:${fixture.id}`,
+      })
+      expect(report.ok, fixture.id).toBe(false)
+      if (fixture.expectRuleId != null) {
+        expect(
+          report.findings.some((f) => f.ruleId === fixture.expectRuleId),
+          `${fixture.id} missing rule ${fixture.expectRuleId}: ${report.findings.map((f) => f.ruleId).join(',')}`,
+        ).toBe(true)
+      }
+      expect(report.findings[0]?.suggestedFix.length).toBeGreaterThan(10)
+    }
+  })
+
+  it('fails an AI draft with a forbidden claim and reports location', () => {
+    const report = runStaleClaimEval({
+      draftText: 'RoseJS guarantees ROI on every modernization.',
+      draftSource: 'ai-draft',
+    })
+    expect(report.ok).toBe(false)
+    expect(report.findings[0]?.source).toBe('ai-draft')
+    expect(report.findings[0]?.reason).toMatch(/ROI/i)
   })
 })
 

@@ -48,7 +48,7 @@ npm run test -- src/evals/evals.test.ts
 
 ## Related
 
-- Stale detection expansion: `TASK-093`
+- Stale detection expansion: [`stale-claim-eval.md`](stale-claim-eval.md) (`TASK-093` Done)
 - Q&A regression: `TASK-092`
 - Diff-aware CI: `TASK-082`
 - Merge gates: `TASK-084` / Deployment Guide §22

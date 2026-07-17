@@ -41,6 +41,7 @@ Phases are sequential. See PRD §26 exit criteria and Tasks.md §25.2 dependenci
 - [`cms-fallback-vs-live.md`](cms-fallback-vs-live.md) — CMS vs fallback eval boundaries (`TASK-080` Done)
 - [`sot-eval.md`](sot-eval.md) — source-of-truth runner (`TASK-081` Done; `npm run eval:sot`)
 - [`change-scenarios.md`](change-scenarios.md) — change-based business scenarios (`TASK-091` Done; `npm run eval:scenarios`)
+- [`stale-claim-eval.md`](stale-claim-eval.md) — stale/forbidden claim detection (`TASK-093` Done; `npm run eval:stale`)
 
 ## Requirement ID families
 
@@ -61,9 +62,10 @@ npm run eval:content   # TASK-089 static website content eval
 npm run eval:voice     # TASK-090 brand-voice eval (+ optional --text / --file)
 npm run eval:sot       # TASK-081 source-of-truth catalog runner
 npm run eval:scenarios # TASK-091 change-based scenario baseline + Calendly dry-run
+npm run eval:stale     # TASK-093 stale / forbidden claim detection (+ optional --text / --file)
 npm run eval:phase1    # content + voice + sot
 ```
 
 ## Next task
 
-**`TASK-091` Done.** Next Phase 2: **`TASK-093`** (stale/forbidden detection) and/or **`TASK-092`** (Q&A regression), then **`TASK-082`** (diff-aware CI).
+**`TASK-093` Done.** Next Phase 2: **`TASK-092`** (Q&A regression), then **`TASK-082`** (diff-aware CI) and **`TASK-083`/`TASK-084`**.

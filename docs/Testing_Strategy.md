@@ -666,7 +666,7 @@ Checklist pages: Homepage, Services, About, Contact, Lead magnet section. Valida
 
 Run after content, prompt, or knowledge-base changes. Pass/fail required; failures block deployment until reviewed (`EVAL-P2-002`, `TASK-084`).
 
-**Stale answer detection** (`EVAL-P2-003`, `TASK-093`): fail if content includes terms from `forbidden-claims.md` or configured stale terms (e.g., healthcare-only, old Calendly URL, removed services).
+**Stale answer detection** (`EVAL-P2-003`, `TASK-093` Done): `npm run eval:stale` — forbidden-claims patterns, removed-service denylist, stale Calendly/email/lead magnet (`docs/evals/stale-claim-eval.md`).
 
 **CI integration** (`TASK-082`): diff-aware eval subsets on pull requests; full regression when `docs/rosejs-knowledge/`, shared layout, or eval catalog changes.
 

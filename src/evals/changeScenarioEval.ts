@@ -6,6 +6,7 @@ import {
   APPROVED,
   FORBIDDEN_CLAIM_PATTERNS,
   findPatternHits,
+  findStaleCalendlyUrls,
   normalizeSourceText,
 } from './patterns.ts'
 
@@ -67,18 +68,7 @@ const REQUIRED_CHANGE_TYPES = [
 ] as const
 
 /** Detect Calendly URLs that are not the approved booking link. */
-export function findStaleCalendlyUrls(text: string, approvedUrl: string): string[] {
-  const matches = text.match(/https?:\/\/(?:www\.)?calendly\.com\/[^\s"'`)]+/gi) ?? []
-  const stale: string[] = []
-  for (const url of matches) {
-    const normalized = url.replace(/\/$/, '')
-    const approved = approvedUrl.replace(/\/$/, '')
-    if (normalized !== approved && !normalized.startsWith(`${approved}?`)) {
-      stale.push(url)
-    }
-  }
-  return stale
-}
+export { findStaleCalendlyUrls } from './patterns.ts'
 
 function check(
   id: string,

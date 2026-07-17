@@ -118,4 +118,4 @@ Report failures with: claim text, location (file/route), category, and suggested
 1. Change the **Last reviewed** date.
 2. Sync approved Calendly, email, lead magnet, and service lists with live site / CMS.
 3. Update `Tasks.md` / eval catalog if automated checks reference specific strings.
-4. Run Phase 2 stale-claim detection after changes (`TASK-093`) when implemented.
+4. Run Phase 2 stale-claim detection after changes: `npm run eval:stale` (`TASK-093` Done).
