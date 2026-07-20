@@ -12,7 +12,7 @@ export default defineConfig({
   reporter: isCi ? 'github' : 'list',
   use: {
     baseURL,
-    trace: 'on-first-retry',
+    trace: isCi ? 'retain-on-failure' : 'on-first-retry',
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: isCi

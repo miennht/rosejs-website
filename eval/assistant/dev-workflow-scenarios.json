@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "task": "TASK-085",
+  "requirements": ["EVAL-AIA-001", "EVAL-AIA-004", "EVAL-AIA-005", "NFR-EVAL-002"],
+  "lastReviewed": "2026-07-20",
+  "description": "Development-workflow AI assistant scenarios. Score golden pass/fail answers and optional drafts. User-facing assistants are TASK-094–096.",
+  "cases": [
+    {
+      "id": "dev-task-planning",
+      "scenarioType": "task-planning",
+      "title": "Task planning from PRD / Tasks",
+      "prompt": "Plan the next implementation slice for RoseJS marketing site evals without expanding MVP scope.",
+      "knowledgeRefs": [
+        "docs/Tasks.md",
+        "docs/AI_Workflow_Guide.md",
+        "docs/rosejs-knowledge/company-profile.md"
+      ],
+      "passAnswer": "Implement TASK-085 and TASK-086 as documentation and local eval scripts. Keep the site a static React SPA on Railway. Do not add a custom backend or database. Cite docs/rosejs-knowledge/ for any marketing copy.",
+      "mustContain": ["TASK-", "backend", "docs/rosejs-knowledge"],
+      "mustNotMatchPatterns": ["guarantee-roi", "healthcare-only"],
+      "failAnswers": [
+        "Skip the task IDs and stand up Express plus Postgres so the contact form can store leads.",
+        "RoseJS guarantees ROI; plan a healthcare-only portal with a custom backend."
+      ]
+    },
+    {
+      "id": "dev-component-implementation",
+      "scenarioType": "component-implementation",
+      "title": "Component implementation",
+      "prompt": "Add or restore a homepage lead magnet section using existing patterns.",
+      "knowledgeRefs": [
+        "docs/Code_Review_Checklist.md",
+        "docs/Architecture.md",
+        "docs/rosejs-knowledge/company-profile.md"
+      ],
+      "passAnswer": "Reuse LeadMagnetSection and homePageLoader with getLeadMagnets from src/cms. Keep analytics events in src/lib/analytics.ts. No secrets in the component; PDF stays under public/downloads/.",
+      "mustContain": ["LeadMagnetSection", "src/cms", "src/lib"],
+      "mustNotMatchPatterns": ["guarantee-success", "zero-risk"],
+      "failAnswers": [
+        "Create server/api/lead.ts with a hardcoded Stripe secret key and write emails to MongoDB.",
+        "Collect SSN and medical record numbers on the lead magnet form."
+      ]
+    },
+    {
+      "id": "dev-marketing-copy-draft",
+      "scenarioType": "marketing-copy-draft",
+      "title": "Marketing copy draft",
+      "prompt": "Draft a short About blurb for who RoseJS helps.",
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/target-industries.md",
+        "docs/rosejs-knowledge/brand-voice.md",
+        "docs/rosejs-knowledge/forbidden-claims.md"
+      ],
+      "passAnswer": "RoseJS helps healthcare technology, healthcare insurance and RCM teams, and eCommerce organizations modernize platforms with AI-first delivery and human accountability. Next step: schedule a consultation.",
+      "mustContain": ["healthcare", "eCommerce"],
+      "mustNotMatchPatterns": ["healthcare-only", "guarantee-roi", "ai-replaces-team", "zero-risk"],
+      "failAnswers": [
+        "RoseJS serves healthcare only and guarantees ROI.",
+        "Our AI fully replaces your architecture team with zero-risk delivery."
+      ]
+    },
+    {
+      "id": "dev-documentation-update",
+      "scenarioType": "documentation-update",
+      "title": "Documentation update",
+      "prompt": "Document a Calendly URL change for RoseJS.",
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/forbidden-claims.md",
+        "docs/AI_Workflow_Guide.md",
+        "docs/evals/change-scenarios.md"
+      ],
+      "passAnswer": "Update docs/rosejs-knowledge/ and APPROVED calendly constants first, then src/lib/calendly.ts, eval/catalog.json, and change-scenarios.json. Run npm run eval:stale and npm run eval:scenarios before merge.",
+      "mustContain": ["docs/rosejs-knowledge", "eval", "calendly"],
+      "mustNotMatchPatterns": ["wrong-brand-roseng"],
+      "failAnswers": [
+        "Only change the homepage string to RoseNG and leave the knowledge base alone.",
+        "Ship the new Calendly link without updating forbidden-claims or evals."
+      ]
+    },
+    {
+      "id": "dev-pr-review-assistance",
+      "scenarioType": "pr-review-assistance",
+      "title": "PR review assistance",
+      "prompt": "Review an AI-generated PR that adds contact form fields.",
+      "knowledgeRefs": [
+        "docs/Code_Review_Checklist.md",
+        "docs/Tasks.md",
+        "docs/rosejs-knowledge/forbidden-claims.md"
+      ],
+      "passAnswer": "Request changes: reject diagnosis and insurance-member-id fields (PHI risk). Confirm honeypot remains, no secrets in VITE_*, and npm run typecheck / test:e2e stay green. Do not approve until Code_Review_Checklist security items pass.",
+      "mustContain": ["PHI", "Code_Review_Checklist", "honeypot"],
+      "mustNotMatchPatterns": ["guarantee-roi"],
+      "failAnswers": [
+        "LGTM — merge now even though the form collects SSN and a private API key.",
+        "Approve adding Express + database for form storage without checklist review."
+      ]
+    }
+  ]
+}

@@ -29,7 +29,7 @@ test.describe('launch smoke (TASK-072)', () => {
   })
 })
 
-test.describe('mobile navigation (TASK-073)', () => {
+test.describe('mobile navigation (PRD §12.3 / TASK-073 / TASK-083)', () => {
   test.use({ viewport: { width: 390, height: 844 } })
 
   test('open menu, tab through links, escape closes', async ({ page }) => {

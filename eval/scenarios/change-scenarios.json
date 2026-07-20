@@ -4,7 +4,7 @@
   "requirements": ["EVAL-P2-001", "EVAL-REG-002", "NFR-EVAL-003"],
   "lastReviewed": "2026-07-15",
   "description": "Change-based business eval scenarios. When listed trigger paths change, CI (TASK-082) should run the named evalCommands / ciSubset. Pass = latest approved info present and stale/removed info absent.",
-  "ciNote": "Diff-aware wiring is TASK-082. Until then, run npm run eval:scenarios locally after business-fact PRs.",
+  "ciNote": "Diff-aware wiring is TASK-082 (Done). CI runs npm run eval:ci from the PR diff; use npm run eval:regression locally for the full set.",
   "approvedDefaults": {
     "brandName": "RoseJS",
     "siteOrigin": "https://www.roseng.org",

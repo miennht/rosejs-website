@@ -9,13 +9,15 @@ import {
   getBlogPosts,
   getCaseStudies,
   getCaseStudyBySlug,
+  getLeadMagnets,
   getServiceBySlug,
   getServices,
 } from '../cms/queries.ts'
-import type { BlogPost, CaseStudy, Service } from '../cms/types.ts'
+import type { BlogPost, CaseStudy, LeadMagnet, Service } from '../cms/types.ts'
 
 export type HomeLoaderData = {
   servicesOverview: Array<{ title: string; description: string }>
+  leadMagnet: LeadMagnet | null
 }
 
 /** Home page shows three primary offerings in a fixed order (see PRD / marketing). */
@@ -26,14 +28,14 @@ const HOME_FEATURED_SERVICE_SLUGS = [
 ] as const
 
 export async function homePageLoader(): Promise<HomeLoaderData> {
-  const services = await getServices()
+  const [services, leadMagnets] = await Promise.all([getServices(), getLeadMagnets()])
 
   const servicesOverview = HOME_FEATURED_SERVICE_SLUGS.flatMap((slug) => {
     const service = services.find((s) => s.slug === slug)
     return service != null ? [mapServiceToOverviewTeaser(service)] : []
   })
 
-  return { servicesOverview }
+  return { servicesOverview, leadMagnet: leadMagnets[0] ?? null }
 }
 
 export type ServicesLoaderData = {

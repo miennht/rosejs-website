@@ -18,6 +18,24 @@ import {
   type ChangeScenarioCatalog,
 } from './changeScenarioEval.ts'
 import { EVAL_P2_003_FIXTURES, listStaleScanPaths, runStaleClaimEval } from './staleClaimEval.ts'
+import {
+  listQaKnowledgePaths,
+  runQaRegressionEval,
+  scoreQaAnswer,
+  type QaSuite,
+} from './qaRegressionEval.ts'
+import {
+  BASELINE_EVAL_COMMANDS,
+  FULL_REGRESSION_COMMANDS,
+  pathMatchesTrigger,
+  selectEvalCommands,
+} from './ciEvalSelector.ts'
+import { runDevWorkflowEval, type DevWorkflowSuite } from './devWorkflowEval.ts'
+import {
+  GUARDRAIL_FAIL_FIXTURES,
+  runDevWorkflowGuardrailEval,
+  runGuardrailBaselineFixtures,
+} from './devWorkflowGuardrailEval.ts'
 
 function loadRepoFiles(): Record<string, string | null> {
   const root = process.cwd()
@@ -233,6 +251,153 @@ describe('stale / forbidden claim detection (TASK-093)', () => {
     expect(report.ok).toBe(false)
     expect(report.findings[0]?.source).toBe('ai-draft')
     expect(report.findings[0]?.reason).toMatch(/ROI/i)
+  })
+})
+
+function loadQaSuite(): QaSuite {
+  return JSON.parse(
+    readFileSync(join(process.cwd(), 'eval/qa/regression-suite.json'), 'utf8'),
+  ) as QaSuite
+}
+
+function loadQaFiles(suite: QaSuite): Record<string, string | null> {
+  const root = process.cwd()
+  const files: Record<string, string | null> = {}
+  for (const rel of listQaKnowledgePaths(suite)) {
+    const abs = join(root, rel)
+    files[rel] = existsSync(abs) ? readFileSync(abs, 'utf8') : null
+  }
+  return files
+}
+
+describe('Q&A regression suite (TASK-092)', () => {
+  it('covers seven PRD questions and passes baseline', () => {
+    const suite = loadQaSuite()
+    const report = runQaRegressionEval(suite, loadQaFiles(suite))
+    expect(
+      report.ok,
+      report.checks
+        .filter((c) => !c.ok)
+        .map((c) => `${c.id}: ${c.detail}`)
+        .join('\n'),
+    ).toBe(true)
+    expect(suite.cases).toHaveLength(7)
+  })
+
+  it('rejects a bad draft for a named question', () => {
+    const suite = loadQaSuite()
+    const report = runQaRegressionEval(suite, loadQaFiles(suite), {
+      questionId: 'guarantee-project-success',
+      draftText: 'Yes. RoseJS guarantees project success and ROI.',
+      draftSource: 'ai-draft',
+    })
+    expect(report.ok).toBe(false)
+    expect(report.draftOk).toBe(false)
+  })
+
+  it('detects knowledge-base mismatch when required tokens are missing', () => {
+    const suite = loadQaSuite()
+    const files = loadQaFiles(suite)
+    files['docs/rosejs-knowledge/target-industries.md'] = '# Empty industries file\n'
+    const report = runQaRegressionEval(suite, files)
+    expect(report.ok).toBe(false)
+    expect(
+      report.checks.some((c) => c.id.startsWith('kb-token:works-with-ecommerce:') && !c.ok),
+    ).toBe(true)
+  })
+
+  it('scores golden pass answers as pass and fail fixtures as fail', () => {
+    const suite = loadQaSuite()
+    const ecommerce = suite.cases.find((c) => c.id === 'works-with-ecommerce')
+    expect(ecommerce).toBeDefined()
+    expect(scoreQaAnswer(ecommerce!, ecommerce!.passAnswer).ok).toBe(true)
+    expect(scoreQaAnswer(ecommerce!, ecommerce!.failAnswers[0]!).ok).toBe(false)
+  })
+})
+
+describe('diff-aware eval CI selector (TASK-082)', () => {
+  it('matches directory and file trigger paths', () => {
+    expect(pathMatchesTrigger('public/downloads/a.pdf', 'public/downloads/')).toBe(true)
+    expect(pathMatchesTrigger('src/pages/Home.tsx', 'src/pages/Home.tsx')).toBe(true)
+    expect(pathMatchesTrigger('src/pages/About.tsx', 'src/pages/Home.tsx')).toBe(false)
+  })
+
+  it('forces full regression for knowledge-base changes', () => {
+    const catalog = loadScenarioCatalog()
+    const selection = selectEvalCommands(['docs/rosejs-knowledge/target-industries.md'], catalog)
+    expect(selection.mode).toBe('full')
+    expect(selection.commands).toEqual([...FULL_REGRESSION_COMMANDS])
+  })
+
+  it('selects a subset for SEO-only changes', () => {
+    const catalog = loadScenarioCatalog()
+    const selection = selectEvalCommands(['src/lib/seo.ts'], catalog)
+    expect(selection.mode).toBe('subset')
+    expect(selection.reasons.some((r) => r.startsWith('Area seo'))).toBe(true)
+    expect(selection.commands).toEqual([...BASELINE_EVAL_COMMANDS])
+    expect(selection.commands).not.toContain('eval:qa')
+  })
+
+  it('unions scenario evalCommands for Home page changes', () => {
+    const catalog = loadScenarioCatalog()
+    const selection = selectEvalCommands(['src/pages/Home.tsx'], catalog)
+    expect(selection.mode).toBe('subset')
+    expect(selection.matchedScenarioIds.length).toBeGreaterThan(0)
+    expect(selection.commands).toContain('eval:scenarios')
+  })
+})
+
+function loadDevWorkflowSuite(): DevWorkflowSuite {
+  return JSON.parse(
+    readFileSync(join(process.cwd(), 'eval/assistant/dev-workflow-scenarios.json'), 'utf8'),
+  ) as DevWorkflowSuite
+}
+
+describe('dev-workflow assistant scenarios (TASK-085)', () => {
+  it('covers five scenario types and passes baseline', () => {
+    const suite = loadDevWorkflowSuite()
+    const report = runDevWorkflowEval(suite)
+    expect(
+      report.ok,
+      report.checks
+        .filter((c) => !c.ok)
+        .map((c) => `${c.id}: ${c.detail}`)
+        .join('\n'),
+    ).toBe(true)
+    expect(suite.cases).toHaveLength(5)
+  })
+
+  it('rejects an off-brand marketing draft', () => {
+    const suite = loadDevWorkflowSuite()
+    const report = runDevWorkflowEval(suite, {
+      scenarioId: 'dev-marketing-copy-draft',
+      draftText: 'RoseJS serves healthcare only and guarantees ROI.',
+      draftSource: 'ai-draft',
+    })
+    expect(report.ok).toBe(false)
+    expect(report.draftOk).toBe(false)
+  })
+})
+
+describe('dev-workflow guardrails (TASK-086)', () => {
+  it('passes baseline fixtures and detects documented anti-patterns', () => {
+    const report = runGuardrailBaselineFixtures()
+    expect(report.ok, report.findings.map((f) => `${f.ruleId}: ${f.reason}`).join('\n')).toBe(true)
+  })
+
+  it('fails Express + Postgres MVP boundary violation', () => {
+    const fixture = GUARDRAIL_FAIL_FIXTURES[0]!
+    const report = runDevWorkflowGuardrailEval({
+      draftText: fixture.text,
+      draftSource: fixture.id,
+    })
+    expect(report.ok).toBe(false)
+    for (const id of fixture.expectRuleIds) {
+      expect(
+        report.findings.some((f) => f.ruleId === id),
+        id,
+      ).toBe(true)
+    }
   })
 })
 

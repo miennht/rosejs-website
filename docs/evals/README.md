@@ -21,11 +21,11 @@ This folder is the entry point for post-MVP AI evaluation work. **Do not duplica
 
 ## Three phases (summary)
 
-| Phase                           | Goal                                                    | Start here                                                               |
-| ------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------ |
-| 1 — Source-of-truth             | Knowledge base, static page checks, brand voice         | `TASK-097` (`T-EVAL-P1-001`) after this index                            |
-| 2 — Change-based and regression | Business-change scenarios, Q&A regression, stale claims | After Phase 1 complete (`TASK-091`–`093`)                                |
-| 3 — AI assistant                | Dev-workflow and user-facing assistant evals            | After Phase 2 CI (`TASK-085`–`086`; `TASK-094`–`096` when features ship) |
+| Phase                           | Goal                                                    | Start here                                      |
+| ------------------------------- | ------------------------------------------------------- | ----------------------------------------------- |
+| 1 — Source-of-truth             | Knowledge base, static page checks, brand voice         | `TASK-097` (`T-EVAL-P1-001`) after this index   |
+| 2 — Change-based and regression | Business-change scenarios, Q&A regression, stale claims | After Phase 1 complete (`TASK-091`–`093`)       |
+| 3 — AI assistant                | Dev-workflow Done; user-facing when features ship       | `TASK-085`–`087` Done; `TASK-094`–`096` Blocked |
 
 Phases are sequential. See PRD §26 exit criteria and Tasks.md §25.2 dependencies.
 
@@ -42,6 +42,10 @@ Phases are sequential. See PRD §26 exit criteria and Tasks.md §25.2 dependenci
 - [`sot-eval.md`](sot-eval.md) — source-of-truth runner (`TASK-081` Done; `npm run eval:sot`)
 - [`change-scenarios.md`](change-scenarios.md) — change-based business scenarios (`TASK-091` Done; `npm run eval:scenarios`)
 - [`stale-claim-eval.md`](stale-claim-eval.md) — stale/forbidden claim detection (`TASK-093` Done; `npm run eval:stale`)
+- [`qa-regression-eval.md`](qa-regression-eval.md) — Q&A regression suite (`TASK-092` Done; `npm run eval:qa`)
+- [`ci-eval-selection.md`](ci-eval-selection.md) — diff-aware CI eval selection (`TASK-082` Done; `npm run eval:ci`)
+- [`dev-workflow-assistant-eval.md`](dev-workflow-assistant-eval.md) — Cursor/planning/code/PR scenarios + rubric (`TASK-085` Done; `npm run eval:dev-workflow`)
+- [`dev-workflow-guardrails.md`](dev-workflow-guardrails.md) — MVP boundary guardrails (`TASK-086` Done; `npm run eval:dev-guardrails`)
 
 ## Requirement ID families
 
@@ -63,9 +67,14 @@ npm run eval:voice     # TASK-090 brand-voice eval (+ optional --text / --file)
 npm run eval:sot       # TASK-081 source-of-truth catalog runner
 npm run eval:scenarios # TASK-091 change-based scenario baseline + Calendly dry-run
 npm run eval:stale     # TASK-093 stale / forbidden claim detection (+ optional --text / --file)
+npm run eval:qa        # TASK-092 Q&A regression suite (+ optional --question / --text / --file)
+npm run eval:ci        # TASK-082 diff-aware selection (+ --full / --base / --changed)
+npm run eval:dev-workflow   # TASK-085 development-workflow assistant scenarios
+npm run eval:dev-guardrails # TASK-086 MVP boundary guardrails (+ optional --text / --file)
+npm run eval:regression # Full Phase 1 + Phase 2 eval set
 npm run eval:phase1    # content + voice + sot
 ```
 
 ## Next task
 
-**`TASK-093` Done.** Next Phase 2: **`TASK-092`** (Q&A regression), then **`TASK-082`** (diff-aware CI) and **`TASK-083`/`TASK-084`**.
+**Phase 3 shippable scope complete** (`TASK-085`–`087`). User-facing assistants (`TASK-094`–`096`) remain **Blocked** until chatbot/FAQ/RAG features ship.

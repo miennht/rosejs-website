@@ -117,7 +117,8 @@ When business facts change (services, industries, lead magnet, CTAs, Calendly UR
 
 **Development-workflow assistants** (Cursor, task planning, code generation, PR review):
 
-- Follow scenarios and rubric in **`TASK-085`**; guardrails in **`TASK-086`**.
+- Scenarios and rubric: **`docs/evals/dev-workflow-assistant-eval.md`** (`TASK-085` Done; `npm run eval:dev-workflow`).
+- Guardrails: **`docs/evals/dev-workflow-guardrails.md`** (`TASK-086` Done; `npm run eval:dev-guardrails`).
 - Must respect MVP boundaries in this guide’s Security boundaries section.
 - Cross-check **`docs/Code_Review_Checklist.md`**.
 

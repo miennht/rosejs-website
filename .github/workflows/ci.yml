@@ -1,4 +1,6 @@
-# TASK-054: CI on pull_request and push to main — install, lint, test, typecheck, build, Playwright E2E.
+# CI
+
+# TASK-054 + TASK-082: lint/test/typecheck/build/E2E + diff-aware eval gates on PRs.
 name: CI
 
 on:
@@ -13,6 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -29,8 +33,33 @@ jobs:
       - name: Test
         run: npm run test
 
-      - name: Phase 1 content, brand-voice, and SoT evals
-        run: npm run eval:phase1
+      - name: Collect changed files for eval selection
+        id: changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+          else
+            BASE="${{ github.event.before }}"
+            if [ -z "${BASE}" ] || [ "${BASE}" = "0000000000000000000000000000000000000000" ]; then
+              BASE="$(git rev-parse HEAD~1 2>/dev/null || true)"
+            fi
+          fi
+          if [ -z "${BASE}" ]; then
+            echo "No base SHA — forcing full eval regression"
+            printf 'docs/rosejs-knowledge/company-profile.md\n' > changed-files.txt
+          else
+            git diff --name-only "${BASE}"...HEAD > changed-files.txt || true
+            if [ ! -s changed-files.txt ]; then
+              printf 'docs/rosejs-knowledge/company-profile.md\n' > changed-files.txt
+            fi
+          fi
+          echo "Changed files:"
+          cat changed-files.txt
+
+      - name: Diff-aware evals (TASK-082)
+        run: npm run eval:ci -- --changed-file changed-files.txt
 
       - name: Typecheck
         run: npm run typecheck
@@ -43,3 +72,15 @@ jobs:
 
       - name: E2E tests
         run: npm run test:e2e
+
+      - name: Upload failure artifacts (TASK-084 / EVAL-REG-006)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-failure-artifacts
+          path: |
+            artifacts/eval-ci-report.txt
+            test-results/
+            playwright-report/
+          if-no-files-found: ignore
+          retention-days: 14

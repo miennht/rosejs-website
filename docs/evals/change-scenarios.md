@@ -6,7 +6,7 @@
 
 **Catalog:** [`eval/scenarios/change-scenarios.json`](../../eval/scenarios/change-scenarios.json)  
 **Knowledge:** [`docs/rosejs-knowledge/`](../rosejs-knowledge/README.md)  
-**CI wiring:** `TASK-082` (not started)
+**CI wiring:** `TASK-082` Done (`npm run eval:ci`)
 
 ## Purpose
 
@@ -49,7 +49,7 @@ npm run test -- src/evals/evals.test.ts
 ## Related
 
 - Stale detection expansion: [`stale-claim-eval.md`](stale-claim-eval.md) (`TASK-093` Done)
-- Q&A regression: `TASK-092`
-- Diff-aware CI: `TASK-082`
+- Q&A regression: `npm run eval:qa` (`TASK-092` Done)
+- Diff-aware CI: `npm run eval:ci` (`TASK-082` Done)
 - Merge gates: `TASK-084` / Deployment Guide §22
 - Phase 1 SoT: `npm run eval:sot`

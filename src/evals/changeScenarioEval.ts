@@ -15,6 +15,8 @@ export type ChangeScenario = {
   changeType: string
   title: string
   scanFiles: string[]
+  triggerPaths?: string[]
+  evalCommands?: string[]
   mustPresent?: string[]
   mustAbsent?: string[]
   mustAbsentPatterns?: string[]

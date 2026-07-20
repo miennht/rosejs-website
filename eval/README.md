@@ -8,6 +8,8 @@ Machine-readable golden references for Phase 1 source-of-truth evals (`EVAL-SOT-
 | Knowledge base   | `docs/rosejs-knowledge/`                                                      | Approved business/brand claims                |
 | Runner           | `npm run eval:sot`                                                            | TASK-081 — validates catalog against sources  |
 | Change scenarios | [`scenarios/`](scenarios/README.md)                                           | TASK-091 — business-change eval scenarios     |
+| Q&A regression   | [`qa/`](qa/README.md)                                                         | TASK-092 — recurring business Q&A suite       |
+| Dev-workflow AI  | [`assistant/`](assistant/README.md)                                           | TASK-085/086 — Cursor/planning guardrails     |
 | CMS boundaries   | [`docs/evals/cms-fallback-vs-live.md`](../docs/evals/cms-fallback-vs-live.md) | Fallback vs live field ownership (`TASK-080`) |
 
 ## Core routes

@@ -2,6 +2,7 @@ import { useLoaderData } from 'react-router-dom'
 import type { HomeLoaderData } from '../app/cmsLoaders.ts'
 import { CTASection } from '../components/sections/CTASection.tsx'
 import { Hero } from '../components/sections/Hero.tsx'
+import { LeadMagnetSection } from '../components/sections/LeadMagnetSection.tsx'
 import { MethodologySection } from '../components/sections/MethodologySection.tsx'
 import { ServicesOverview } from '../components/sections/ServicesOverview.tsx'
 import { TrustSection } from '../components/sections/TrustSection.tsx'
@@ -33,7 +34,7 @@ const trustPoints = [
 ]
 
 export function Home() {
-  const { servicesOverview } = useLoaderData() as HomeLoaderData
+  const { servicesOverview, leadMagnet } = useLoaderData() as HomeLoaderData
 
   return (
     <div>
@@ -68,6 +69,21 @@ export function Home() {
       />
 
       <TrustSection compact title="Why teams work with RoseJS" points={trustPoints} />
+
+      {leadMagnet != null ? (
+        <LeadMagnetSection
+          eyebrow="Free resource"
+          title={leadMagnet.title}
+          description={leadMagnet.summary}
+          ctas={[
+            {
+              label: leadMagnet.ctaText,
+              href: leadMagnet.fileUrl,
+              variant: 'primary',
+            },
+          ]}
+        />
+      ) : null}
 
       <CTASection
         eyebrow="Next step"

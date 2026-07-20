@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "task": "TASK-092",
+  "requirements": ["EVAL-P2-002", "NFR-EVAL-004", "NFR-EVAL-006"],
+  "lastReviewed": "2026-07-17",
+  "description": "Recurring RoseJS Q&A regression suite. Baseline scores golden pass/fail answers and checks knowledge-base grounding. Optional --question + --text/--file scores an AI draft.",
+  "cases": [
+    {
+      "id": "what-does-rosejs-do",
+      "question": "What does RoseJS do?",
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/company-profile.md",
+        "docs/rosejs-knowledge/services.md"
+      ],
+      "passAnswer": "RoseJS is an AI-first software architecture and modernization consulting practice. It helps organizations modernize legacy platforms, clarify architecture, integrate APIs and cloud services, reduce technical debt, and adopt disciplined AI-assisted engineering.",
+      "mustContain": ["architecture", "modernization", "consulting"],
+      "knowledgeMustContain": ["architecture", "modernization", "consulting"],
+      "mustNotContain": [],
+      "mustNotMatchPatterns": ["healthcare-only", "guarantee-roi", "ai-replaces-team"],
+      "failAnswers": [
+        "RoseJS is a staffing agency that guarantees ROI.",
+        "RoseJS serves healthcare only and replaces your engineering team with AI."
+      ]
+    },
+    {
+      "id": "who-does-rosejs-help",
+      "question": "Who does RoseJS help?",
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/target-industries.md",
+        "docs/rosejs-knowledge/company-profile.md"
+      ],
+      "passAnswer": "RoseJS helps healthcare technology, healthcare insurance and payer/RCM teams, and eCommerce organizations modernize platforms and improve delivery discipline.",
+      "mustContain": ["healthcare", "eCommerce"],
+      "knowledgeMustContain": ["healthcare", "eCommerce"],
+      "mustNotContain": [],
+      "mustNotMatchPatterns": ["healthcare-only", "we-only-serve-healthcare", "no-ecommerce"],
+      "failAnswers": [
+        "RoseJS only helps hospitals.",
+        "RoseJS does not work with e-commerce companies."
+      ]
+    },
+    {
+      "id": "what-is-ai-first",
+      "question": "What is AI-first development?",
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/company-profile.md",
+        "docs/rosejs-knowledge/brand-voice.md"
+      ],
+      "passAnswer": "AI-first at RoseJS means AI assists research, planning, implementation, and testing while humans remain accountable for architecture judgment, security, and production decisions—Skill, Code review, Test suites, and Deployment.",
+      "mustContain": ["AI", "human"],
+      "knowledgeMustContain": ["AI-first", "human"],
+      "mustNotContain": [],
+      "mustNotMatchPatterns": ["ai-replaces-team", "fully-autonomous", "zero-risk"],
+      "failAnswers": [
+        "AI fully replaces architects and delivers zero-risk automation.",
+        "RoseJS uses fully autonomous engineering with no human review."
+      ]
+    },
+    {
+      "id": "works-with-ecommerce",
+      "question": "Does RoseJS work with e-commerce companies?",
+      "knowledgeRefs": ["docs/rosejs-knowledge/target-industries.md"],
+      "passAnswer": "Yes. eCommerce is an approved industry focus alongside healthcare technology and healthcare insurance. RoseJS serves both healthcare and eCommerce organizations.",
+      "mustContain": ["Yes", "eCommerce"],
+      "knowledgeMustContain": ["eCommerce"],
+      "mustNotContain": [],
+      "mustNotMatchPatterns": ["no-ecommerce", "healthcare-only"],
+      "failAnswers": [
+        "No. RoseJS does not work with e-commerce companies.",
+        "RoseJS serves healthcare only."
+      ]
+    },
+    {
+      "id": "guarantee-project-success",
+      "question": "Can RoseJS guarantee project success?",
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/forbidden-claims.md",
+        "docs/rosejs-knowledge/brand-voice.md"
+      ],
+      "passAnswer": "No. RoseJS does not make outcome guarantees for ROI or delivery success. Engagements use phased delivery, validation gates, and human-owned accountability instead of promises.",
+      "mustContain": ["No", "does not make outcome guarantees"],
+      "knowledgeMustContain": ["guarantees project success"],
+      "mustNotContain": [],
+      "mustNotMatchPatterns": ["guarantee-roi", "guarantee-success", "zero-risk"],
+      "failAnswers": [
+        "Yes. RoseJS guarantees project success.",
+        "RoseJS guarantees ROI on every engagement."
+      ]
+    },
+    {
+      "id": "how-to-contact",
+      "question": "How can someone contact RoseJS?",
+      "knowledgeRefs": ["docs/rosejs-knowledge/company-profile.md"],
+      "passAnswer": "Use the contact form at https://www.roseng.org/contact, email hello@roseng.org, or schedule a consultation at https://www.roseng.org/schedule (Calendly: https://calendly.com/roseng0201/30min).",
+      "mustContain": ["hello@roseng.org", "/contact", "/schedule"],
+      "knowledgeMustContain": ["hello@roseng.org", "/contact", "/schedule"],
+      "mustNotContain": ["hello@example.com"],
+      "mustNotMatchPatterns": ["wrong-brand-roseng"],
+      "failAnswers": [
+        "Email hello@example.com or use https://calendly.com/old-rosejs/30min.",
+        "Contact RoseNG at info@roseng.com."
+      ]
+    },
+    {
+      "id": "what-makes-rosejs-different",
+      "question": "What makes RoseJS different?",
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/company-profile.md",
+        "docs/rosejs-knowledge/brand-voice.md"
+      ],
+      "passAnswer": "RoseJS combines specialized depth in healthcare insurance and RCM with eCommerce modernization experience, AI-first delivery with human accountability, and practical phased modernization—not staffing or hype-driven guarantees.",
+      "mustContain": ["healthcare", "AI-first"],
+      "knowledgeMustContain": ["healthcare", "AI-first"],
+      "mustNotContain": [],
+      "mustNotMatchPatterns": ["guarantee-roi", "healthcare-only", "ai-replaces-team"],
+      "failAnswers": [
+        "We guarantee faster delivery with cutting-edge AI that replaces your team.",
+        "We only serve healthcare and promise zero-risk transformation."
+      ]
+    }
+  ]
+}

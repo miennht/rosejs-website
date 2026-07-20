@@ -48,11 +48,12 @@ When retiring a service or replacing Calendly/lead magnet:
 3. Update `eval/catalog.json` / `eval/scenarios/change-scenarios.json` approved defaults.
 4. Run `npm run eval:stale`.
 
-CI path filtering for this command is **`TASK-082`**.
+CI path filtering for this command is **`TASK-082` Done** (`npm run eval:ci`).
 
 ## Related
 
 - Change scenarios: `npm run eval:scenarios` (`TASK-091`)
+- Q&A regression: `npm run eval:qa` (`TASK-092`)
 - Static content: `npm run eval:content` (`TASK-089`)
 - Brand voice: `npm run eval:voice` (`TASK-090`)
 - Deployment Guide §22
