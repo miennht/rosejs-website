@@ -1,0 +1,234 @@
+{
+  "version": 1,
+  "task": "TASK-091",
+  "requirements": ["EVAL-P2-001", "EVAL-REG-002", "NFR-EVAL-003"],
+  "lastReviewed": "2026-07-15",
+  "description": "Change-based business eval scenarios. When listed trigger paths change, CI (TASK-082) should run the named evalCommands / ciSubset. Pass = latest approved info present and stale/removed info absent.",
+  "ciNote": "Diff-aware wiring is TASK-082 (Done). CI runs npm run eval:ci from the PR diff; use npm run eval:regression locally for the full set.",
+  "approvedDefaults": {
+    "brandName": "RoseJS",
+    "siteOrigin": "https://www.roseng.org",
+    "contactEmail": "hello@roseng.org",
+    "calendlyUrl": "https://calendly.com/roseng0201/30min",
+    "schedulePath": "/schedule",
+    "contactPath": "/contact",
+    "leadMagnetTitle": "Legacy application modernization checklist",
+    "leadMagnetSlug": "legacy-application-modernization-checklist",
+    "leadMagnetFile": "/downloads/legacy-application-modernization-checklist.pdf",
+    "industriesMustMention": ["healthcare", "eCommerce"],
+    "publishedServiceSlugs": [
+      "software-architecture-consulting",
+      "legacy-application-modernization",
+      "ai-first-product-development",
+      "healthcare-insurance-rcm-consulting",
+      "cloud-api-integration",
+      "technical-debt-assessment",
+      "secure-data-system-integration"
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "change-target-industries",
+      "changeType": "target-industries",
+      "title": "Target industries change",
+      "prdIds": ["EVAL-P2-001", "ABOUT-003", "SERV-001"],
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/target-industries.md",
+        "docs/rosejs-knowledge/forbidden-claims.md",
+        "docs/rosejs-knowledge/company-profile.md"
+      ],
+      "triggerPaths": [
+        "docs/rosejs-knowledge/target-industries.md",
+        "src/pages/About.tsx",
+        "src/pages/Services.tsx",
+        "src/pages/Home.tsx",
+        "eval/catalog.json"
+      ],
+      "scanFiles": ["src/pages/About.tsx", "src/pages/Services.tsx"],
+      "mustPresent": ["eCommerce", "healthcare"],
+      "mustAbsentPatterns": ["healthcare-only", "we-only-serve-healthcare", "no-ecommerce"],
+      "staleExamples": [
+        "RoseJS serves healthcare only.",
+        "RoseJS does not work with e-commerce companies."
+      ],
+      "passCriteria": "About and Services (and knowledge file) still show dual healthcare + eCommerce framing; exclusivity phrases absent.",
+      "evalCommands": ["eval:content", "eval:sot", "eval:scenarios"],
+      "ciSubset": "positioning"
+    },
+    {
+      "id": "change-service-offerings",
+      "changeType": "service-offerings",
+      "title": "Service offerings change",
+      "prdIds": ["EVAL-P2-001", "SERV-001", "SERV-002"],
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/services.md",
+        "docs/rosejs-knowledge/forbidden-claims.md"
+      ],
+      "triggerPaths": [
+        "docs/rosejs-knowledge/services.md",
+        "src/content/fallback/services.ts",
+        "src/pages/Services.tsx",
+        "eval/catalog.json",
+        "src/evals/patterns.ts"
+      ],
+      "scanFiles": ["src/content/fallback/services.ts", "docs/rosejs-knowledge/services.md"],
+      "mustPresent": [
+        "software-architecture-consulting",
+        "legacy-application-modernization",
+        "ai-first-product-development",
+        "healthcare-insurance-rcm-consulting",
+        "cloud-api-integration",
+        "technical-debt-assessment",
+        "secure-data-system-integration"
+      ],
+      "mustAbsent": [],
+      "staleExamples": [
+        "RoseJS offers blockchain consulting as a core service.",
+        "Promoting a slug removed from services.md / fallback without updating knowledge base."
+      ],
+      "passCriteria": "Published fallback slugs match services.md and APPROVED.publishedServiceSlugs; removed offerings not marketed as current.",
+      "evalCommands": ["eval:content", "eval:sot", "eval:scenarios"],
+      "ciSubset": "services"
+    },
+    {
+      "id": "change-lead-magnet",
+      "changeType": "lead-magnet",
+      "title": "Lead magnet change",
+      "prdIds": ["EVAL-P2-001", "HOME-009"],
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/company-profile.md",
+        "docs/rosejs-knowledge/forbidden-claims.md"
+      ],
+      "triggerPaths": [
+        "src/content/fallback/leadMagnets.ts",
+        "src/components/sections/LeadMagnetSection.tsx",
+        "public/downloads/",
+        "eval/catalog.json",
+        "src/evals/patterns.ts"
+      ],
+      "scanFiles": ["src/content/fallback/leadMagnets.ts"],
+      "mustPresent": [
+        "Legacy application modernization checklist",
+        "legacy-application-modernization-checklist",
+        "/downloads/legacy-application-modernization-checklist.pdf"
+      ],
+      "mustAbsent": [],
+      "staleExamples": [
+        "Promoting an old PDF path or title after the asset was replaced.",
+        "Lead magnet slug that does not match the published file."
+      ],
+      "passCriteria": "Fallback lead magnet title, slug, and fileUrl match approvedDefaults; PDF exists under public/downloads/.",
+      "evalCommands": ["eval:content", "eval:sot", "eval:scenarios"],
+      "ciSubset": "lead-magnet"
+    },
+    {
+      "id": "change-cta",
+      "changeType": "cta",
+      "title": "CTA change",
+      "prdIds": ["EVAL-P2-001", "HOME-002", "HOME-008", "SERV-003"],
+      "knowledgeRefs": ["docs/rosejs-knowledge/company-profile.md"],
+      "triggerPaths": [
+        "src/pages/Home.tsx",
+        "src/components/sections/CTASection.tsx",
+        "src/components/layout/navConfig.ts",
+        "eval/catalog.json"
+      ],
+      "scanFiles": [
+        "src/pages/Home.tsx",
+        "src/components/layout/navConfig.ts",
+        "src/pages/Services.tsx"
+      ],
+      "mustPresent": ["/schedule", "/contact"],
+      "mustAbsent": [],
+      "staleExamples": [
+        "Primary homepage CTAs that drop /schedule and /contact without catalog update.",
+        "Nav that removes Schedule while marketing still promises bookable consultation."
+      ],
+      "passCriteria": "Core CTAs still reach /schedule and /contact; catalog and nav stay aligned.",
+      "evalCommands": ["eval:content", "eval:sot", "eval:scenarios"],
+      "ciSubset": "cta"
+    },
+    {
+      "id": "change-pricing-consultation-policy",
+      "changeType": "pricing-consultation-policy",
+      "title": "Pricing or consultation policy change",
+      "prdIds": ["EVAL-P2-001", "EVAL-P2-003"],
+      "knowledgeRefs": [
+        "docs/rosejs-knowledge/company-profile.md",
+        "docs/rosejs-knowledge/forbidden-claims.md",
+        "docs/rosejs-knowledge/brand-voice.md"
+      ],
+      "triggerPaths": [
+        "docs/rosejs-knowledge/company-profile.md",
+        "docs/rosejs-knowledge/forbidden-claims.md",
+        "src/pages/About.tsx",
+        "src/pages/Home.tsx",
+        "src/pages/Contact.tsx",
+        "src/pages/Schedule.tsx"
+      ],
+      "scanFiles": [
+        "src/pages/About.tsx",
+        "src/pages/Home.tsx",
+        "src/pages/Contact.tsx",
+        "src/pages/Schedule.tsx"
+      ],
+      "mustPresent": [],
+      "mustAbsentPatterns": [
+        "guarantee-roi",
+        "guarantee-success",
+        "zero-risk",
+        "instant-transformation"
+      ],
+      "staleExamples": [
+        "Guaranteed ROI packages.",
+        "Fixed-price SLAs invented without approved policy.",
+        "Zero-risk modernization promises."
+      ],
+      "passCriteria": "No outcome/pricing guarantees; consultation framing stays invite-to-talk (/schedule, /contact) without invented packages.",
+      "evalCommands": ["eval:content", "eval:voice", "eval:scenarios"],
+      "ciSubset": "policy"
+    },
+    {
+      "id": "change-calendly-contact-link",
+      "changeType": "calendly-contact-link",
+      "title": "Calendly or contact link change",
+      "prdIds": ["EVAL-P2-001", "CONT-006", "CONT-008", "EVAL-P2-003"],
+      "knowledgeRefs": ["docs/rosejs-knowledge/forbidden-claims.md", "docs/Brand_and_Domain.md"],
+      "triggerPaths": [
+        "src/lib/calendly.ts",
+        "src/lib/site.ts",
+        "src/pages/Contact.tsx",
+        "src/pages/Schedule.tsx",
+        "eval/catalog.json",
+        "src/evals/patterns.ts",
+        "docs/rosejs-knowledge/forbidden-claims.md"
+      ],
+      "scanFiles": [
+        "src/lib/calendly.ts",
+        "src/lib/site.ts",
+        "src/pages/Contact.tsx",
+        "src/pages/Schedule.tsx"
+      ],
+      "mustPresent": [
+        "https://calendly.com/roseng0201/30min",
+        "hello@roseng.org",
+        "https://www.roseng.org"
+      ],
+      "mustAbsent": [],
+      "staleExamples": [
+        "https://calendly.com/old-rosejs/30min",
+        "hello@example.com as primary contact",
+        "Railway preview URL as canonical public origin"
+      ],
+      "passCriteria": "DEFAULT_CALENDLY_URL, contact email, and site origin match approvedDefaults; no alternate Calendly host presented as current.",
+      "evalCommands": ["eval:content", "eval:sot", "eval:scenarios"],
+      "ciSubset": "contact-links",
+      "dryRun": {
+        "id": "outdated-calendly",
+        "description": "Inject an outdated Calendly URL; scenario check must fail.",
+        "fixtureText": "Book at https://calendly.com/old-rosejs/30min for a consult.",
+        "expectFail": true
+      }
+    }
+  ]
+}

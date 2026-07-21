@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 
+/** PRD §12.3 — contact form submit + validation (TASK-083 / EVAL-REG-005). */
 test.describe('contact form', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/contact')

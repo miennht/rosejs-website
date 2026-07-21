@@ -190,3 +190,61 @@ export function normalizeSourceText(raw: string): string {
     .replace(/^\s*\/\/.*$/gm, ' ')
     .replace(/\s+/g, ' ')
 }
+
+/**
+ * Known removed / never-offered service claims (TASK-093).
+ * Append a pattern whenever a published service is retired from services.md.
+ */
+export const REMOVED_SERVICE_PATTERNS: PatternRule[] = [
+  {
+    id: 'removed-blockchain-consulting',
+    category: 'Removed services',
+    pattern: /\boffers?\s+blockchain\s+consulting\b/i,
+    reason: 'Stale: blockchain consulting is not a published RoseJS service',
+    severity: 'critical',
+  },
+  {
+    id: 'removed-staffing-agency',
+    category: 'Service misrepresentation',
+    pattern: /\b(?:is|as)\s+a\s+staffing\s+agency\b/i,
+    reason: 'Forbidden: RoseJS is not a staffing agency',
+    severity: 'critical',
+  },
+]
+
+/** Outdated lead-magnet paths/titles that must not appear as current assets. */
+export const STALE_LEAD_MAGNET_SUBSTRINGS: string[] = [
+  '/downloads/modernization-checklist.pdf',
+  '/downloads/legacy-modernization-checklist.pdf',
+  'Outdated modernization guide',
+]
+
+/** Non-approved contact emails that must not appear as primary contact. */
+export const STALE_CONTACT_EMAILS: string[] = [
+  'hello@example.com',
+  'contact@rosejs.com',
+  'info@roseng.com',
+]
+
+/** Detect Calendly URLs that are not the approved booking link (TASK-091/093). */
+export function findStaleCalendlyUrls(
+  text: string,
+  approvedUrl: string = APPROVED.calendlyUrl,
+): string[] {
+  const matches = text.match(/https?:\/\/(?:www\.)?calendly\.com\/[^\s"'`)]+/gi) ?? []
+  const stale: string[] = []
+  for (const url of matches) {
+    const normalized = url.replace(/\/$/, '')
+    const approved = approvedUrl.replace(/\/$/, '')
+    if (normalized !== approved && !normalized.startsWith(`${approved}?`)) {
+      stale.push(url)
+    }
+  }
+  return stale
+}
+
+/** All pattern rules used by the TASK-093 stale/forbidden scanner. */
+export const STALE_CLAIM_PATTERN_RULES: PatternRule[] = [
+  ...FORBIDDEN_CLAIM_PATTERNS,
+  ...REMOVED_SERVICE_PATTERNS,
+]

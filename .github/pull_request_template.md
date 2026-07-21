@@ -20,7 +20,7 @@
 - [ ] `npm run test`
 - [ ] `npm run test:e2e` (if workflow-affecting or routing-sensitive)
 - [ ] `npm run build`
-- [ ] `npm run eval:phase1` (if marketing copy, brand, CTAs, or `docs/rosejs-knowledge/` changed)
+- [ ] `npm run eval:ci -- --base origin/main` (or `npm run eval:regression` for full Phase 2)
 - [ ] Updated `eval/catalog.json` when routes, SEO titles, brand constants, or core CTAs changed (`TASK-079`)
 
 ## Accessibility notes

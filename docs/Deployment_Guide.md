@@ -248,11 +248,12 @@ Optional when stable:
 npm run test:e2e
 ```
 
-Post-MVP (when implemented, `TASK-082`):
+Post-MVP (`TASK-082` Done):
 
 ```text
-npm run eval:sot
-# future: npm run eval:regression, npm run eval:stale
+npm run eval:ci -- --base origin/main
+# or force full Phase 2:
+npm run eval:regression
 ```
 
 Eval CI jobs should fail the PR check when critical evals fail (§22).
@@ -953,24 +954,25 @@ Evals ensure AI-generated and website content stays aligned with approved RoseJS
 
 **Canonical guides (do not duplicate here):**
 
-| Document                           | Role                                                       |
-| ---------------------------------- | ---------------------------------------------------------- |
-| **`docs/Testing_Strategy.md`** §15 | Eval test types, phases, CI commands, definition of done   |
-| **`docs/AI_Workflow_Guide.md`**    | Knowledge-base prompting, change workflow, assistant rules |
-| **`docs/PRD.md`** §26–§27          | Requirement IDs (`EVAL-P*`, `NFR-EVAL-*`)                  |
-| **`docs/Tasks.md`** §29            | Implementation tasks (`TASK-078`–`096`, `T-EVAL-P1-*`)     |
+| Document                              | Role                                                       |
+| ------------------------------------- | ---------------------------------------------------------- |
+| **`docs/Testing_Strategy.md`** §15    | Eval test types, phases, CI commands, definition of done   |
+| **`docs/AI_Workflow_Guide.md`**       | Knowledge-base prompting, change workflow, assistant rules |
+| **`docs/PRD.md`** §26–§27             | Requirement IDs (`EVAL-P*`, `NFR-EVAL-*`)                  |
+| **`docs/Tasks.md`** §29               | Implementation tasks (`TASK-078`–`096`, `T-EVAL-P1-*`)     |
+| **`docs/evals/ci-eval-selection.md`** | Diff-aware command selection (`TASK-082`)                  |
 
 ### 22.1 When eval gates apply
 
-| Trigger                                               | Minimum eval action                                                                      |
-| ----------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Change to `docs/rosejs-knowledge/`                    | Run Phase 1 evals (`npm run eval:sot` when available); full regression when Phase 2 live |
-| Change to marketing copy, SEO metadata, or CTAs       | Static website checklist (`docs/evals/static-website-eval.md`, `TASK-103`)               |
-| Change to Calendly URL, form endpoint, or lead magnet | Update knowledge base + change scenario evals (`TASK-091`)                               |
-| AI-generated copy in PR                               | Human review against knowledge base and forbidden claims                                 |
-| New user-facing AI assistant feature                  | Phase 3 evals before production (`TASK-094`–`096`)                                       |
+| Trigger                                               | Minimum eval action                                                                                          |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Change to `docs/rosejs-knowledge/`                    | Full regression via `npm run eval:ci` (Phase 1 + scenarios + Q&A + stale)                                    |
+| Change to marketing copy, SEO metadata, or CTAs       | Diff-aware subset (`eval:content` / `eval:sot` / `eval:scenarios` as selected) + static checklist as needed  |
+| Change to Calendly URL, form endpoint, or lead magnet | Update knowledge base + change scenario / stale evals                                                        |
+| AI-generated copy in PR                               | Human review against knowledge base; optionally `npm run eval:stale -- --text "…"` / `eval:qa -- --question` |
+| New user-facing AI assistant feature                  | Phase 3 evals before production (`TASK-094`–`096`)                                                           |
 
-MVP releases without eval infrastructure follow §6 and §15 only. Adopt §22 gates as each phase completes (`Tasks.md` §29.1).
+MVP releases without eval infrastructure follow §6 and §15 only. Phase 2 gates are **active** (`TASK-082`–`084`, `TASK-091`–`093` Done).
 
 ### 22.2 Critical vs non-critical eval failures
 
@@ -979,16 +981,26 @@ MVP releases without eval infrastructure follow §6 and §15 only. Adopt §22 ga
 | **Critical**     | Forbidden claim in copy; healthcare-only positioning; wrong Calendly/contact URL; removed service listed; Q&A regression fail on “What does RoseJS do?” | **Block** merge and production deploy until fixed or waived (§22.4) |
 | **Non-critical** | Minor tone drift; optional SEO checklist item; eval runner warning on non-user-facing route                                                             | Fix in PR when practical; may merge with documented follow-up issue |
 
+Any non-zero exit from `npm run eval:ci` in GitHub Actions is treated as **critical** for merge gating (fail the required `CI` check). Downgrade only via the exception process (§22.4).
+
 ### 22.3 CI and branch protection
 
-When `TASK-082` is complete:
-
-1. GitHub Actions runs eval subsets on `pull_request` (diff-aware per `TASK-091`).
-2. Failed **critical** evals fail the PR status check.
-3. Branch protection on `main` requires passing CI—including eval jobs when enabled (**`docs/Branch_Protection_Setup.md`**).
+1. GitHub Actions (`.github/workflows/ci.yml`) runs diff-aware evals on `pull_request` and `push` to `main` (`TASK-082`).
+2. Failed **critical** evals fail the PR status check (`CI / CI` — workflow name **CI**, job id **CI**).
+3. Branch protection on `main` must require that check (**`docs/Branch_Protection_Setup.md`**).
 4. Solo maintainers: do not self-approve PRs that bypass failed critical evals; use ruleset bypass only with documented waiver.
 
-Retain CI artifacts on failure (`TASK-084`, `EVAL-REG-006`): logs, Playwright traces, eval reports—attached to PR or linked from Actions run.
+### 22.3.1 Artifact retention (`EVAL-REG-006`)
+
+On CI **failure**, Actions uploads artifact **`ci-failure-artifacts`** (14-day retention) containing:
+
+| Artifact                       | Source                                      |
+| ------------------------------ | ------------------------------------------- |
+| `artifacts/eval-ci-report.txt` | Selected mode, commands, reasons, file list |
+| `test-results/`                | Playwright traces / dumps                   |
+| `playwright-report/`           | HTML report when produced                   |
+
+Lighthouse CI is not wired yet; when added, attach summaries to the same failure upload. Reviewers download the artifact from the failed Actions run linked on the PR.
 
 ### 22.4 Exception process
 
@@ -999,21 +1011,32 @@ If a critical eval must fail temporarily (e.g., emergency hotfix):
 3. Create a follow-up issue to fix knowledge base, content, and eval cases.
 4. Do not treat exceptions as standard practice.
 
-### 22.5 Production deploy checklist (eval-aware)
+### 22.5 Dry-run failure scenario (reviewer steps)
 
-Before promoting to production when Phase 2 is active:
+Example: PR accidentally reintroduces “RoseJS serves healthcare only.”
+
+1. Local: `npm run eval:stale -- --text "RoseJS serves healthcare only."` → FAIL with rule id.
+2. Or CI: `eval:ci` / `eval:content` / `eval:stale` fails; check **CI / CI** red.
+3. Open Actions → download **`ci-failure-artifacts`** → read `eval-ci-report.txt` and eval logs.
+4. Fix copy / knowledge base / fixtures; re-run `npm run eval:ci -- --base origin/main`.
+5. Merge only when the required check is green (or after §22.4 waiver).
+
+### 22.6 Production deploy checklist (eval-aware)
+
+Before promoting to production:
 
 1. All required CI checks green (lint, typecheck, test, build, E2E, eval jobs).
 2. Knowledge base and website content aligned for any business-fact changes.
 3. `docs/rosejs-knowledge/forbidden-claims.md` reflected in changed pages.
-4. Post-deploy: spot-check homepage, services, and contact CTAs against knowledge base.
+4. Post-deploy: spot-check homepage, services, contact CTAs, and lead magnet download against knowledge base.
 
-### 22.6 Related tasks
+### 22.7 Related tasks
 
 | Task             | Deployment role                                                             |
 | ---------------- | --------------------------------------------------------------------------- |
 | `TASK-084`       | This section — merge/deploy gate policy                                     |
 | `TASK-082`       | CI wiring for eval jobs                                                     |
+| `TASK-083`       | Critical-flow E2E + Q&A integration                                         |
 | `TASK-091`–`093` | Change scenarios, Q&A regression, stale-claim detection                     |
 | `TASK-078`       | Points to Testing Strategy §15 and AI Workflow Guide as canonical eval docs |
 

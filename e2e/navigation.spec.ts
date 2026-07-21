@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 
+/** PRD §12.3 — primary navigation (TASK-083 / EVAL-REG-005). */
 test.describe('primary navigation', () => {
   test('home loads', async ({ page }) => {
     await page.goto('/')

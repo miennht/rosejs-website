@@ -425,71 +425,87 @@ This Traceability Matrix is complete when:
 
 Maps PRD **§27** (`EVAL-P1-*`, `EVAL-P2-*`, `EVAL-P3-*`), PRD **§26** (`EVAL-SOT-*`, `EVAL-REG-*`, `EVAL-AIA-*`), and `NFR-EVAL-*` to architecture areas, validation, and `Tasks.md` §29.
 
-Architecture reference: `Architecture.md` §28. Implementation: `TASK-078`–`TASK-096`. Consolidation task: `TASK-087`.
+Architecture reference: `Architecture.md` §28. Implementation: `TASK-078`–`TASK-096`, `TASK-097`–`103`. Consolidation: **`TASK-087` Done** (this section).
+
+**Phase status (July 2026):** Phase 1 Done · Phase 2 Done · Phase 3 dev-workflow Done (`TASK-085`–`087`); user-facing `TASK-094`–`096` remain **Blocked** until chatbot/FAQ/RAG features ship.
 
 ### 13.1 Phase 1 — Source-of-Truth Evals
 
-| Req ID       | Requirement summary                                       | Priority    | Architecture Area          | Implementation Area     | Test / Validation | Task IDs           |
-| ------------ | --------------------------------------------------------- | ----------- | -------------------------- | ----------------------- | ----------------- | ------------------ |
-| EVAL-P1-001  | Maintain approved RoseJS knowledge base files             | Must Have   | AI Evaluation Architecture | Eval, Documentation     | Eval, Manual      | TASK-088           |
-| EVAL-P1-002  | Evaluate key website pages against source of truth        | Must Have   | AI Evaluation, Page Arch.  | Eval, Frontend, Content | Eval, Manual, E2E | TASK-089, 079, 081 |
-| EVAL-P1-003  | Brand voice evals (credible, not hype-driven)             | Must Have   | AI Evaluation Architecture | Eval, Content           | Eval, Manual      | TASK-090           |
-| EVAL-SOT-001 | Version-controlled eval catalog with golden references    | Must Have   | AI Evaluation Architecture | Eval, Documentation     | Eval, Manual      | TASK-078, 079      |
-| EVAL-SOT-002 | Golden cases for routes, titles, brand, CTAs, positioning | Must Have   | AI Evaluation Architecture | Eval, SEO, Frontend     | Eval, SEO         | TASK-079, 089      |
-| EVAL-SOT-003 | CMS live vs fallback content eval boundaries              | Must Have   | CMS, AI Evaluation         | CMS, Documentation      | Manual            | TASK-080           |
-| EVAL-SOT-004 | Map golden cases to PRD or architecture component IDs     | Must Have   | AI Evaluation Architecture | Eval, Documentation     | Manual            | TASK-079, 089      |
-| EVAL-SOT-005 | Local eval runner with pass/fail reporting                | Should Have | CI/CD, AI Evaluation       | Eval, Testing, DevOps   | Eval, CI          | TASK-081           |
+| Req ID       | Requirement summary                                       | Priority    | Architecture Area          | Implementation Area     | Test / Validation                       | Task IDs                |
+| ------------ | --------------------------------------------------------- | ----------- | -------------------------- | ----------------------- | --------------------------------------- | ----------------------- |
+| EVAL-P1-001  | Maintain approved RoseJS knowledge base files             | Must Have   | AI Evaluation Architecture | Eval, Documentation     | Manual; `docs/rosejs-knowledge/`        | TASK-088, 097–102       |
+| EVAL-P1-002  | Evaluate key website pages against source of truth        | Must Have   | AI Evaluation, Page Arch.  | Eval, Frontend, Content | `npm run eval:content`, `eval:sot`      | TASK-089, 079, 081, 103 |
+| EVAL-P1-003  | Brand voice evals (credible, not hype-driven)             | Must Have   | AI Evaluation Architecture | Eval, Content           | `npm run eval:voice`                    | TASK-090, 101–102       |
+| EVAL-SOT-001 | Version-controlled eval catalog with golden references    | Must Have   | AI Evaluation Architecture | Eval, Documentation     | `eval/catalog.json`; docs/evals/README  | TASK-078, 079           |
+| EVAL-SOT-002 | Golden cases for routes, titles, brand, CTAs, positioning | Must Have   | AI Evaluation Architecture | Eval, SEO, Frontend     | `npm run eval:sot`                      | TASK-079, 089           |
+| EVAL-SOT-003 | CMS live vs fallback content eval boundaries              | Must Have   | CMS, AI Evaluation         | CMS, Documentation      | `docs/evals/cms-fallback-vs-live.md`    | TASK-080                |
+| EVAL-SOT-004 | Map golden cases to PRD or architecture component IDs     | Must Have   | AI Evaluation Architecture | Eval, Documentation     | Catalog `prdIds` / knowledgeRefs        | TASK-079, 089           |
+| EVAL-SOT-005 | Local eval runner with pass/fail reporting                | Should Have | CI/CD, AI Evaluation       | Eval, Testing, DevOps   | `npm run eval:sot` / `eval:phase1` / CI | TASK-081                |
 
 ### 13.2 Phase 2 — Change-Based and Regression Evals
 
-| Req ID       | Requirement summary                               | Priority    | Architecture Area          | Implementation Area   | Test / Validation  | Task IDs           |
-| ------------ | ------------------------------------------------- | ----------- | -------------------------- | --------------------- | ------------------ | ------------------ |
-| EVAL-P2-001  | Eval scenarios when business data changes         | Must Have   | AI Evaluation, CI/CD       | Eval, Documentation   | Eval, CI           | TASK-091, 082      |
-| EVAL-P2-002  | Regression suite for recurring RoseJS questions   | Must Have   | AI Evaluation Architecture | Eval, Testing         | Eval, CI           | TASK-092, 083, 084 |
-| EVAL-P2-003  | Detect stale or forbidden claims                  | Must Have   | AI Evaluation Architecture | Eval, Documentation   | Eval, CI           | TASK-093           |
-| EVAL-REG-001 | Automated regression evals on every PR via CI     | Must Have   | CI/CD Architecture         | DevOps, Eval          | CI, Eval           | TASK-082           |
-| EVAL-REG-002 | Diff-aware eval subsets by change area            | Should Have | CI/CD, AI Evaluation       | DevOps, Eval          | CI, Eval           | TASK-082, 091      |
-| EVAL-REG-003 | Compare changes against Phase 1 golden references | Must Have   | AI Evaluation Architecture | Eval, Testing         | Eval, E2E, CI      | TASK-083, 093      |
-| EVAL-REG-004 | Document merge gate policy for failed evals       | Must Have   | CI/CD, Deployment          | DevOps, Documentation | Manual, CI         | TASK-084           |
-| EVAL-REG-005 | Extend Vitest/Playwright/SEO for PRD §12.3 flows  | Should Have | Testing Architecture       | Testing               | Unit, E2E, SEO, CI | TASK-083           |
-| EVAL-REG-006 | Retain eval artifacts on failed PR checks         | Should Have | CI/CD Architecture         | DevOps                | CI, Manual         | TASK-084           |
+| Req ID       | Requirement summary                               | Priority    | Architecture Area          | Implementation Area   | Test / Validation                                   | Task IDs           |
+| ------------ | ------------------------------------------------- | ----------- | -------------------------- | --------------------- | --------------------------------------------------- | ------------------ |
+| EVAL-P2-001  | Eval scenarios when business data changes         | Must Have   | AI Evaluation, CI/CD       | Eval, Documentation   | `npm run eval:scenarios`; `eval:ci`                 | TASK-091, 082      |
+| EVAL-P2-002  | Regression suite for recurring RoseJS questions   | Must Have   | AI Evaluation Architecture | Eval, Testing         | `npm run eval:qa`; merge gates §22                  | TASK-092, 083, 084 |
+| EVAL-P2-003  | Detect stale or forbidden claims                  | Must Have   | AI Evaluation Architecture | Eval, Documentation   | `npm run eval:stale`                                | TASK-093           |
+| EVAL-REG-001 | Automated regression evals on every PR via CI     | Must Have   | CI/CD Architecture         | DevOps, Eval          | `.github/workflows/ci.yml` → `eval:ci`              | TASK-082           |
+| EVAL-REG-002 | Diff-aware eval subsets by change area            | Should Have | CI/CD, AI Evaluation       | DevOps, Eval          | `src/evals/ciEvalSelector.ts`                       | TASK-082, 091      |
+| EVAL-REG-003 | Compare changes against Phase 1 golden references | Must Have   | AI Evaluation Architecture | Eval, Testing         | `eval:sot` / `eval:content` in CI subset            | TASK-083, 093      |
+| EVAL-REG-004 | Document merge gate policy for failed evals       | Must Have   | CI/CD, Deployment          | DevOps, Documentation | `Deployment_Guide.md` §22                           | TASK-084           |
+| EVAL-REG-005 | Extend Vitest/Playwright/SEO for PRD §12.3 flows  | Should Have | Testing Architecture       | Testing               | `e2e/critical-flows.spec.ts` + nav/contact/calendly | TASK-083           |
+| EVAL-REG-006 | Retain eval artifacts on failed PR checks         | Should Have | CI/CD Architecture         | DevOps                | `ci-failure-artifacts` upload                       | TASK-084           |
 
 ### 13.3 Phase 3 — AI Assistant Evals
 
-| Req ID       | Requirement summary                                       | Priority    | Architecture Area          | Implementation Area | Test / Validation | Task IDs      |
-| ------------ | --------------------------------------------------------- | ----------- | -------------------------- | ------------------- | ----------------- | ------------- |
-| EVAL-P3-001  | User-facing assistant behavior evals (when feature ships) | Must Have   | AI Evaluation, Future AI   | Eval, Documentation | Eval, Manual      | TASK-094      |
-| EVAL-P3-002  | RAG retrieval and answer grounding evals                  | Must Have   | AI Evaluation, Future AI   | Eval, Testing       | Eval, Manual      | TASK-095      |
-| EVAL-P3-003  | Business alignment evals (trust, CTA, no overpromising)   | Must Have   | AI Evaluation Architecture | Eval, Documentation | Eval, Manual      | TASK-096      |
-| EVAL-AIA-001 | Dev-workflow assistant eval scenarios                     | Must Have   | AI Workflow                | Documentation, Eval | Manual, Eval      | TASK-085, 094 |
-| EVAL-AIA-002 | Adherence to AI Workflow Guide and Code Review Checklist  | Must Have   | AI Workflow                | Documentation, Eval | Manual            | TASK-086, 095 |
-| EVAL-AIA-003 | MVP boundary guardrails (no backend, no PHI, no secrets)  | Must Have   | Security, AI Workflow      | Eval, Security      | Eval, Manual      | TASK-086      |
-| EVAL-AIA-004 | Healthcare insurance positioning accuracy scoring         | Should Have | AI Evaluation, Content     | Eval, Content       | Manual, Eval      | TASK-085, 096 |
-| EVAL-AIA-005 | Human-reviewed rubric and failure log                     | Should Have | AI Workflow                | Documentation       | Manual            | TASK-085      |
-| EVAL-AIA-006 | Periodic assistant evals after doc/toolchain changes      | Could Have  | AI Evaluation Architecture | Eval, Documentation | Manual            | TASK-078, 085 |
+| Req ID       | Requirement summary                                       | Priority    | Architecture Area          | Implementation Area | Test / Validation                                                   | Task IDs      | Status                            |
+| ------------ | --------------------------------------------------------- | ----------- | -------------------------- | ------------------- | ------------------------------------------------------------------- | ------------- | --------------------------------- |
+| EVAL-P3-001  | User-facing assistant behavior evals (when feature ships) | Must Have   | AI Evaluation, Future AI   | Eval, Documentation | Manual rubric before launch                                         | TASK-094      | **Blocked** (no chatbot/FAQ yet)  |
+| EVAL-P3-002  | RAG retrieval and answer grounding evals                  | Must Have   | AI Evaluation, Future AI   | Eval, Testing       | Manual / future runner                                              | TASK-095      | **Blocked** (no RAG yet)          |
+| EVAL-P3-003  | Business alignment evals (trust, CTA, no overpromising)   | Must Have   | AI Evaluation Architecture | Eval, Documentation | Manual rubric                                                       | TASK-096      | **Blocked** (depends on TASK-094) |
+| EVAL-AIA-001 | Dev-workflow assistant eval scenarios                     | Must Have   | AI Workflow                | Documentation, Eval | `npm run eval:dev-workflow`                                         | TASK-085      | **Done**                          |
+| EVAL-AIA-002 | Adherence to AI Workflow Guide and Code Review Checklist  | Must Have   | AI Workflow                | Documentation, Eval | Guardrail doc + checklist; `eval:dev-guardrails`                    | TASK-086      | **Done**                          |
+| EVAL-AIA-003 | MVP boundary guardrails (no backend, no PHI, no secrets)  | Must Have   | Security, AI Workflow      | Eval, Security      | `npm run eval:dev-guardrails`                                       | TASK-086      | **Done**                          |
+| EVAL-AIA-004 | Healthcare insurance positioning accuracy scoring         | Should Have | AI Evaluation, Content     | Eval, Content       | Rubric in `dev-workflow-assistant-eval.md`; pattern rules           | TASK-085      | **Done**                          |
+| EVAL-AIA-005 | Human-reviewed rubric and failure log                     | Should Have | AI Workflow                | Documentation       | Failure log template in `docs/evals/dev-workflow-assistant-eval.md` | TASK-085      | **Done**                          |
+| EVAL-AIA-006 | Periodic assistant evals after doc/toolchain changes      | Could Have  | AI Evaluation Architecture | Eval, Documentation | Operator cadence in TASK-085 doc; run after doc/toolchain PRs       | TASK-078, 085 | **Done** (process documented)     |
 
-### 13.4 Consolidated Task Index
+### 13.4 NFR-EVAL crosswalk
 
-| Task ID  | Primary requirements                                | Phase           |
-| -------- | --------------------------------------------------- | --------------- |
-| TASK-078 | EVAL-SOT-001, NFR-EVAL-001/002, EVAL-AIA-006        | 1 / 3           |
-| TASK-079 | EVAL-P1-002, EVAL-SOT-001/002/004                   | 1               |
-| TASK-080 | EVAL-P1-001, EVAL-SOT-003, NFR-EVAL-001             | 1               |
-| TASK-081 | EVAL-P1-002, EVAL-SOT-005, NFR-EVAL-006             | 1               |
-| TASK-088 | EVAL-P1-001, NFR-EVAL-001/002                       | 1               |
-| TASK-089 | EVAL-P1-002, EVAL-SOT-002/004, NFR-EVAL-002         | 1               |
-| TASK-090 | EVAL-P1-003, NFR-EVAL-001/002                       | 1               |
-| TASK-082 | EVAL-P2-001, EVAL-REG-001/002, NFR-EVAL-003         | 2               |
-| TASK-091 | EVAL-P2-001, EVAL-REG-002, NFR-EVAL-003             | 2               |
-| TASK-092 | EVAL-P2-002, NFR-EVAL-004/006                       | 2               |
-| TASK-083 | EVAL-P2-002, EVAL-REG-003/005, NFR-EVAL-004         | 2               |
-| TASK-093 | EVAL-P2-003, EVAL-REG-003, NFR-EVAL-002/003         | 2               |
-| TASK-084 | EVAL-P2-002, EVAL-REG-004/006, NFR-EVAL-002         | 2               |
-| TASK-085 | EVAL-AIA-001/004/005, NFR-EVAL-002, EVAL-AIA-006    | 3 (dev)         |
-| TASK-086 | EVAL-AIA-002/003, NFR-EVAL-005                      | 3 (dev)         |
-| TASK-094 | EVAL-P3-001, EVAL-AIA-001, NFR-EVAL-005             | 3 (user-facing) |
-| TASK-095 | EVAL-P3-002, EVAL-P1-001, EVAL-P2-003, NFR-EVAL-005 | 3 (user-facing) |
-| TASK-096 | EVAL-P3-003, EVAL-P3-001, NFR-EVAL-005              | 3 (user-facing) |
-| TASK-087 | All NFR-EVAL-_ and EVAL-_ IDs                       | All             |
+| Req ID       | Validation summary                                              | Task IDs                              |
+| ------------ | --------------------------------------------------------------- | ------------------------------------- |
+| NFR-EVAL-001 | Knowledge base + eval index as source of truth                  | TASK-078, 088, 090, 097–102, 087      |
+| NFR-EVAL-002 | Versioned criteria/docs (evals README, rubrics, Deployment §22) | TASK-078, 084, 085, 088–090, 093, 087 |
+| NFR-EVAL-003 | Change-based evals on PRs                                       | TASK-082, 091, 093                    |
+| NFR-EVAL-004 | Critical visitor journeys                                       | TASK-083, 092                         |
+| NFR-EVAL-005 | Assistant guardrails and on-brand responses                     | TASK-086, 094–096 (094–096 blocked)   |
+| NFR-EVAL-006 | Reproducible local + CI results                                 | TASK-081, 082, 092, 085–086           |
+
+### 13.5 Consolidated Task Index
+
+| Task ID      | Primary requirements                                | Phase           | Status  |
+| ------------ | --------------------------------------------------- | --------------- | ------- |
+| TASK-078     | EVAL-SOT-001, NFR-EVAL-001/002, EVAL-AIA-006        | 1 / 3           | Done    |
+| TASK-079     | EVAL-P1-002, EVAL-SOT-001/002/004                   | 1               | Done    |
+| TASK-080     | EVAL-P1-001, EVAL-SOT-003, NFR-EVAL-001             | 1               | Done    |
+| TASK-081     | EVAL-P1-002, EVAL-SOT-005, NFR-EVAL-006             | 1               | Done    |
+| TASK-088     | EVAL-P1-001, NFR-EVAL-001/002                       | 1               | Done    |
+| TASK-089     | EVAL-P1-002, EVAL-SOT-002/004, NFR-EVAL-002         | 1               | Done    |
+| TASK-090     | EVAL-P1-003, NFR-EVAL-001/002                       | 1               | Done    |
+| TASK-097–103 | T-EVAL-P1-001–007 / EVAL-P1-\*                      | 1               | Done    |
+| TASK-082     | EVAL-P2-001, EVAL-REG-001/002, NFR-EVAL-003         | 2               | Done    |
+| TASK-091     | EVAL-P2-001, EVAL-REG-002, NFR-EVAL-003             | 2               | Done    |
+| TASK-092     | EVAL-P2-002, NFR-EVAL-004/006                       | 2               | Done    |
+| TASK-083     | EVAL-P2-002, EVAL-REG-003/005, NFR-EVAL-004         | 2               | Done    |
+| TASK-093     | EVAL-P2-003, EVAL-REG-003, NFR-EVAL-002/003         | 2               | Done    |
+| TASK-084     | EVAL-P2-002, EVAL-REG-004/006, NFR-EVAL-002         | 2               | Done    |
+| TASK-085     | EVAL-AIA-001/004/005/006, NFR-EVAL-002              | 3 (dev)         | Done    |
+| TASK-086     | EVAL-AIA-002/003, NFR-EVAL-005                      | 3 (dev)         | Done    |
+| TASK-087     | All NFR-EVAL-\* and EVAL-\* IDs (this matrix)       | All             | Done    |
+| TASK-094     | EVAL-P3-001, EVAL-AIA-001, NFR-EVAL-005             | 3 (user-facing) | Blocked |
+| TASK-095     | EVAL-P3-002, EVAL-P1-001, EVAL-P2-003, NFR-EVAL-005 | 3 (user-facing) | Blocked |
+| TASK-096     | EVAL-P3-003, EVAL-P3-001, NFR-EVAL-005              | 3 (user-facing) | Blocked |
+
+Every eval ID in PRD §26–§27 and `NFR-EVAL-*` has at least one matrix row and task. Update this section when PRD eval IDs change.
 
 This document is ready to support implementation and maintenance of `Tasks.md` §29.

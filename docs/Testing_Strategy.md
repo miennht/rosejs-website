@@ -652,23 +652,13 @@ Checklist pages: Homepage, Services, About, Contact, Lead magnet section. Valida
 
 ### 15.4 Phase 2 — Change-based and regression evals
 
-**Change scenarios** (`EVAL-P2-001`, `TASK-091`): eval cases when target industries, services, lead magnet, CTAs, pricing/consultation policy, or Calendly/contact links change.
+**Change scenarios** (`EVAL-P2-001`, `TASK-091` Done): `eval/scenarios/change-scenarios.json` + `npm run eval:scenarios` — industries, services, lead magnet, CTAs, pricing/consultation policy, Calendly/contact.
 
-**Q&A regression suite** (`EVAL-P2-002`, `TASK-092`) — example questions:
+**Q&A regression suite** (`EVAL-P2-002`, `TASK-092` Done): `eval/qa/regression-suite.json` + `npm run eval:qa` — seven recurring questions with golden pass/fail answers and knowledge grounding (`docs/evals/qa-regression-eval.md`). Run after content, prompt, or knowledge-base changes. Pass/fail required; failures block deployment until reviewed (`EVAL-P2-002`, `TASK-084`).
 
-- What does RoseJS do?
-- Who does RoseJS help?
-- What is AI-first development?
-- Does RoseJS work with e-commerce companies?
-- Can RoseJS guarantee project success?
-- How can someone contact RoseJS?
-- What makes RoseJS different?
+**Stale answer detection** (`EVAL-P2-003`, `TASK-093` Done): `npm run eval:stale` — forbidden-claims patterns, removed-service denylist, stale Calendly/email/lead magnet (`docs/evals/stale-claim-eval.md`).
 
-Run after content, prompt, or knowledge-base changes. Pass/fail required; failures block deployment until reviewed (`EVAL-P2-002`, `TASK-084`).
-
-**Stale answer detection** (`EVAL-P2-003`, `TASK-093`): fail if content includes terms from `forbidden-claims.md` or configured stale terms (e.g., healthcare-only, old Calendly URL, removed services).
-
-**CI integration** (`TASK-082`): diff-aware eval subsets on pull requests; full regression when `docs/rosejs-knowledge/`, shared layout, or eval catalog changes.
+**CI integration** (`TASK-082` Done): `npm run eval:ci` — Phase 1 baseline on every PR; diff-aware Phase 2 subsets from `change-scenarios.json` `triggerPaths`; full regression when `docs/rosejs-knowledge/`, shared layout, eval catalog, or CI/config changes (`docs/evals/ci-eval-selection.md`).
 
 **Extends MVP regression** (`§12`): add eval commands to minimum regression set when Phase 2 is implemented:
 
@@ -678,15 +668,17 @@ npm run typecheck
 npm run test
 npm run build
 npm run test:e2e
-npm run eval:sot          # when TASK-081 complete
-# future: npm run eval:regression, npm run eval:stale
+npm run eval:ci -- --base origin/main
+# or: npm run eval:regression
 ```
 
 ### 15.5 Phase 3 — AI assistant evals
 
-**Development-workflow** (`EVAL-AIA-*`, `TASK-085`–`086`): Cursor/planning/code/PR-review scenarios; guardrails for MVP scope, PHI, secrets, `src/lib` isolation.
+**Development-workflow** (`EVAL-AIA-*`, `TASK-085`–`086` Done): `npm run eval:dev-workflow` + `npm run eval:dev-guardrails` — Cursor/planning/code/PR-review scenarios; guardrails for MVP scope, PHI, secrets, `src/lib` isolation (`docs/evals/dev-workflow-assistant-eval.md`, `dev-workflow-guardrails.md`).
 
-**User-facing** (when features ship, `EVAL-P3-*`, `TASK-094`–`096`):
+**Traceability** (`TASK-087` Done): `docs/Traceability_Matrix.md` §13 maps all eval IDs to tasks and validation commands.
+
+**User-facing** (when features ship, `EVAL-P3-*`, `TASK-094`–`096` Blocked):
 
 | Requirement                      | Validation                                                                   |
 | -------------------------------- | ---------------------------------------------------------------------------- |
@@ -705,7 +697,9 @@ docs/
 eval/                         # Golden cases, runners, Q&A fixtures (TASK-079, 081, 092)
   catalog.json                # TASK-079 Done — source-of-truth golden cases
   README.md                   # Catalog schema and update rules
-  scenarios/                  # change-based scenarios (TASK-091)
+  scenarios/                  # TASK-091 Done — change-based scenarios + runner
+  qa/                         # TASK-092 Done — Q&A regression suite + runner
+  assistant/                  # TASK-085/086 Done — dev-workflow scenarios + guardrails
 ```
 
 ### 15.7 Eval definition of done (post-MVP)

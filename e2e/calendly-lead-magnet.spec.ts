@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 
+/** PRD §12.3 — Calendly CTA (TASK-083 / EVAL-REG-005). */
 test.describe('Calendly CTA', () => {
   test('schedule page shows Calendly CTA without loading external UI', async ({ page }) => {
     await page.goto('/schedule')

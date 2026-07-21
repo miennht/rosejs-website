@@ -2735,11 +2735,11 @@ Implementation tasks for PRD **§11.8**, **§26**, and **§27** (`NFR-EVAL-*`, `
 
 ## 29.1 Phase Overview
 
-| Phase                           | Tasks                                                        | PRD IDs                                           | Status                                                      |
-| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | ----------------------------------------------------------- |
-| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | Done (`TASK-078`–`081`, `TASK-088`–`090`, `TASK-097`–`103`) |
-| 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Not Started                                                 |
-| 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Not Started                                                 |
+| Phase                           | Tasks                                                        | PRD IDs                                           | Status                                                                |
+| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | --------------------------------------------------------------------- |
+| 1 — Source-of-truth             | TASK-078–081, **TASK-097–103** (`T-EVAL-P1-*`), TASK-088–090 | `EVAL-P1-*`, `EVAL-SOT-*`, `NFR-EVAL-001/002/006` | Done (`TASK-078`–`081`, `TASK-088`–`090`, `TASK-097`–`103`)           |
+| 2 — Change-based and regression | TASK-082–084, TASK-091–093                                   | `EVAL-P2-*`, `EVAL-REG-*`, `NFR-EVAL-003/004/006` | Done (`TASK-082`–`084`, `TASK-091`–`093`)                             |
+| 3 — AI assistant                | TASK-085–087, TASK-094–096                                   | `EVAL-P3-*`, `EVAL-AIA-*`, `NFR-EVAL-005/002/006` | Done for shippable scope (`TASK-085`–`087`); `TASK-094`–`096` Blocked |
 
 **Notes:**
 
@@ -2890,7 +2890,7 @@ Provide a local (and CI-invokable) script that runs Phase 1 golden cases from `T
 ## TASK-082: Wire Change-Based Eval Triggers in CI
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P2-001, EVAL-REG-001, EVAL-REG-002, NFR-EVAL-003  
 **Implementation Area:** CI/CD, Testing
 
@@ -2910,12 +2910,16 @@ Extend GitHub Actions so pull requests run change-based and full regression eval
 - Open test PR touching SEO metadata; confirm targeted evals run.
 - Open test PR touching shared layout; confirm broader regression runs.
 
+### Completion Notes
+
+- **Done (July 2026):** Added `src/evals/ciEvalSelector.ts` + `npm run eval:ci` / `eval:regression`. CI collects PR diff and runs Phase 1 baseline always, plus scenario/area subsets or full Phase 2 (`scenarios`/`qa`/`stale`). Documented in `docs/evals/ci-eval-selection.md`. Failure artifacts uploaded (`TASK-084`).
+
 ---
 
 ## TASK-083: Expand Regression Eval Suite for Critical Flows
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P2-002, EVAL-REG-003, EVAL-REG-005, NFR-EVAL-004  
 **Implementation Area:** Testing
 
@@ -2936,12 +2940,16 @@ Extend Vitest, Playwright, and SEO checks to cover PRD §12.3 critical flows and
 - `npm run test`, `npm run test:e2e`, and eval CI job pass on baseline branch.
 - Introduce intentional regression in test branch; confirm eval failure.
 
+### Completion Notes
+
+- **Done (July 2026):** Added `e2e/critical-flows.spec.ts` (CTA nav, lead-magnet PDF download, insights article). Annotated existing e2e suites with PRD §12.3 / `EVAL-REG-005`. Restored homepage `LeadMagnetSection` for the download journey. Q&A suite runs via `eval:ci` / full regression (`TASK-082`). Golden comparison remains `eval:sot` / `eval:content` in the selected subset.
+
 ---
 
 ## TASK-084: Document Eval Merge Gates and Failure Handling
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P2-002, EVAL-REG-004, EVAL-REG-006, NFR-EVAL-002  
 **Implementation Area:** Documentation, CI/CD
 
@@ -2962,12 +2970,16 @@ Document when failed evals block merge or deployment vs when documented exceptio
 - Manual policy review.
 - Dry-run failure scenario documented with expected reviewer steps.
 
+### Completion Notes
+
+- **Done (July 2026):** Expanded `Deployment_Guide.md` §22 with live CI commands, artifact upload paths, dry-run failure walkthrough, and branch-protection check name (`CI / CI`). Aligned `Branch_Protection_Setup.md`. CI uploads `artifacts/eval-ci-report.txt` + Playwright traces on failure (`EVAL-REG-006`).
+
 ---
 
 ## TASK-085: Define Development-Workflow AI Assistant Eval Scenarios and Rubric
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-AIA-001, EVAL-AIA-004, EVAL-AIA-005, NFR-EVAL-002  
 **Implementation Area:** Documentation, AI Workflow
 
@@ -2986,12 +2998,16 @@ Define scenarios and a human-reviewed rubric for evaluating **development-workfl
 
 - Manual review against `AI_Workflow_Guide.md` and PRD positioning (§7).
 
+### Completion Notes
+
+- **Done (July 2026):** Added `eval/assistant/dev-workflow-scenarios.json` + `docs/evals/dev-workflow-assistant-eval.md` (five scenarios, positioning rubric, failure log, `EVAL-AIA-006` cadence). Runner `npm run eval:dev-workflow`.
+
 ---
 
 ## TASK-086: Implement Development-Workflow AI Assistant Guardrail Evals
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-AIA-002, EVAL-AIA-003, NFR-EVAL-005  
 **Implementation Area:** Documentation, Testing
 
@@ -3011,12 +3027,16 @@ Create checklists or automated checks that verify **development-workflow** assis
 - Run guardrail checklist against sample AI-generated PR description and diff.
 - Confirm violations are detected for documented anti-patterns.
 
+### Completion Notes
+
+- **Done (July 2026):** Added `src/evals/devWorkflowGuardrailEval.ts` + `npm run eval:dev-guardrails` and `docs/evals/dev-workflow-guardrails.md`. Detects backend/database/PHI/secrets/lib-isolation and healthcare-only copy. Baseline fixtures + Vitest. Complements human review per doc.
+
 ---
 
 ## TASK-087: Update Traceability Matrix for Eval Requirements
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** NFR-EVAL-001–006, EVAL-P1-001–003, EVAL-P2-001–003, EVAL-P3-001–003, EVAL-SOT-001–005, EVAL-REG-001–006, EVAL-AIA-001–006  
 **Implementation Area:** Documentation
 
@@ -3033,6 +3053,10 @@ Extend `Traceability_Matrix.md` to map all eval requirement IDs to tasks, tests,
 ### Validation
 
 - Manual traceability audit: every eval ID in PRD has at least one matrix row and task.
+
+### Completion Notes
+
+- **Done (July 2026):** Expanded `docs/Traceability_Matrix.md` §13 with concrete validation commands, Phase status, NFR-EVAL crosswalk, TASK-097–103, and Blocked status for `TASK-094`–`096`.
 
 ---
 
@@ -3330,7 +3354,7 @@ Execute brand-voice evals using `docs/rosejs-knowledge/brand-voice.md` (`TASK-10
 ## TASK-091: Define Change-Based Business Eval Scenarios
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P2-001, EVAL-REG-002, NFR-EVAL-003  
 **Implementation Area:** Documentation, Testing
 
@@ -3350,12 +3374,16 @@ Define eval scenarios that verify RoseJS AI-generated and website content adapts
 - Manual scenario review against `docs/rosejs-knowledge/`.
 - Dry-run one scenario (e.g., outdated Calendly link) and confirm eval detects failure.
 
+### Completion Notes
+
+- **Done (July 2026):** Added `eval/scenarios/change-scenarios.json` (six change types with trigger paths, mustPresent/mustAbsent, ciSubset) + `docs/evals/change-scenarios.md`. Runner `npm run eval:scenarios` validates baseline and dry-runs outdated Calendly detection. CI path filtering: `npm run eval:ci` (`TASK-082` Done).
+
 ---
 
 ## TASK-092: Build Recurring RoseJS Q&A Regression Eval Suite
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P2-002, NFR-EVAL-004, NFR-EVAL-006  
 **Implementation Area:** Testing, Documentation
 
@@ -3381,12 +3409,16 @@ Maintain a regression eval suite for recurring RoseJS business questions, runnab
 - Run suite after knowledge-base update; confirm pass on baseline.
 - Change approved answer in knowledge base; confirm eval detects mismatch.
 
+### Completion Notes
+
+- **Done (July 2026):** Added `eval/qa/regression-suite.json` (seven PRD questions with golden pass/fail answers) + `docs/evals/qa-regression-eval.md`. Runner `npm run eval:qa` scores baseline, rejects fail fixtures, checks knowledge grounding, and optionally scores `--question` + `--text`/`--file` drafts. Wired into CI via `eval:ci` / full regression (`TASK-082` Done); flow coverage in `TASK-083`.
+
 ---
 
 ## TASK-093: Implement Stale Answer and Forbidden Claim Detection
 
 **Priority:** P2  
-**Status:** Not Started  
+**Status:** Done  
 **Source Requirements:** EVAL-P2-003, EVAL-P1-001, NFR-EVAL-002, NFR-EVAL-003  
 **Implementation Area:** Testing, Documentation
 
@@ -3405,6 +3437,10 @@ Detect outdated or forbidden RoseJS claims in website content and AI-generated r
 
 - Inject forbidden claim in test content; confirm eval failure and clear report.
 - Verify examples from PRD `EVAL-P2-003` are covered.
+
+### Completion Notes
+
+- **Done (July 2026):** Added `src/evals/staleClaimEval.ts` + `npm run eval:stale` (`--text` / `--file`). Scans marketing sources for forbidden patterns, removed-service denylist, stale Calendly/email/lead-magnet. Reports rule, source, excerpt, suggested fix. Vitest covers all PRD `EVAL-P2-003` fixtures. Documented in `docs/evals/stale-claim-eval.md`. CI path filtering: `npm run eval:ci` (`TASK-082` Done).
 
 ---
 
