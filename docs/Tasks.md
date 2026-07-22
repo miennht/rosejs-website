@@ -1910,7 +1910,7 @@ Configure branch protection for the production branch.
 ### Validation
 
 - Manual GitHub settings review.
-- **Repo artifact:** `docs/Branch_Protection_Setup.md` — step-by-step checklist (rulesets, require PR, required check **`validate`**, reviews, block direct pushes). **Human step:** apply settings in the GitHub UI for `main`.
+- **Repo artifact:** `docs/Branch_Protection_Setup.md` — step-by-step checklist (rulesets, require PR, required check **`CI`** / **`CI / CI`**, reviews, block direct pushes). **Human step:** apply settings in the GitHub UI for `main` (ruleset `PushToMainApproval` already requires **`CI`** as of July 2026).
 
 ---
 

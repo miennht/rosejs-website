@@ -44,3 +44,16 @@ Eval gates (`TASK-082` / `TASK-084`) run inside this same job (`npm run eval:ci`
 - Confirm a direct push to `main` is blocked if you required PRs (use a harmless branch to test).
 
 This document cannot confirm your live GitHub settings; only the **Settings** UI (or GitHub API) reflects what is actually enabled.
+
+## Live settings (audited July 2026)
+
+Ruleset **`PushToMainApproval`** (targets default branch / `main`):
+
+| Rule | Setting |
+| ---- | ------- |
+| Pull request | Required (1 approving review); conversation resolution required |
+| Required status checks | **`CI`** (strict: branch must be up to date) |
+| Force push / deletion | Blocked |
+| Bypass | Repository admin role may bypass |
+
+Classic branch protection on `main` may show empty status-check lists; the **ruleset** is the source of truth for the required **`CI`** check. Do not re-add a stale **`validate`** context.
