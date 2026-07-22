@@ -206,12 +206,27 @@ Future releases may include:
 - CRM integration
 - Secure intake workflow
 - Client portal
-- AI assistant or chatbot
+- AI assistant or chatbot — **owned by sibling product [Rose Services Assistance](../../Rose-Services-Assistance/docs/PRD.md)** (suite repo beside this website; not implemented in the website MVP)
 - Payment workflow
 - Private resource library
 - Custom backend service
 - Custom database
 - AI evaluation roadmap (Phases 1–3; see **§26** and **§27**)
+
+#### 6.2.1 Rose Services Assistance (suite child product)
+
+Visitor-facing services Q&A / assist is tracked as a **separate project** so AI runtime, prompts, and evals can evolve independently of this marketing site:
+
+| | |
+|--|--|
+| **Product** | Rose Services Assistance |
+| **Repo (local)** | `../Rose-Services-Assistance/` |
+| **Child PRD** | [`Rose-Services-Assistance/docs/PRD.md`](../../Rose-Services-Assistance/docs/PRD.md) |
+| **Website role** | Thin embed / deep-link only (future); Formspree + Calendly remain here |
+| **Knowledge** | Continues to use `docs/rosejs-knowledge/` as source of truth |
+| **Eval tasks** | User-facing `TASK-094`–`096` stay **Blocked** until Assistance v1 ships |
+
+This website MVP still excludes the chatbot (**§6.3**). Suite linkage does not move AI assistant delivery into this repository’s MVP scope.
 
 ### 6.3 Out of Scope for MVP
 

@@ -4,6 +4,19 @@ Marketing site for **RoseJS** (brand) at **https://www.roseng.org** (domain **ro
 
 This project is an AI-first healthcare software architecture consulting website built with React + Vite, TypeScript, and Tailwind CSS.
 
+## Suite sibling: Rose Services Assistance
+
+Visitor-facing AI services assistance is **not** part of this website MVP. It lives in a sibling repo for independent AI lifecycle:
+
+| | |
+|--|--|
+| **Product** | Rose Services Assistance |
+| **Local path** | `../Rose-Services-Assistance/` |
+| **Child PRD** | [`../Rose-Services-Assistance/docs/PRD.md`](../Rose-Services-Assistance/docs/PRD.md) |
+| **Parent PRD pointer** | [`docs/PRD.md`](docs/PRD.md) §6.2.1 |
+
+This repo keeps marketing pages, CMS, forms, Calendly, and content evals. The assistance repo will own chat/API, prompts, and (later) user-facing assistant evals.
+
 ## Documentation
 
 Canonical project documentation lives in `docs/`:
