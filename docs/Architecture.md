@@ -1579,11 +1579,11 @@ Merge and deployment policy: `Deployment_Guide.md` or dedicated eval doc (`TASK-
 
 User-facing assistance is a **suite sibling product**, not part of this website MVP:
 
-| | |
-|--|--|
-| **Product** | Rose Services Assistance |
-| **Repo** | `../Rose-Services-Assistance/` |
-| **PRD** | [`Rose-Services-Assistance/docs/PRD.md`](../../Rose-Services-Assistance/docs/PRD.md) |
+|                       |                                                                                                        |
+| --------------------- | ------------------------------------------------------------------------------------------------------ |
+| **Product**           | Rose Services Assistance                                                                               |
+| **Repo**              | `../Rose-Services-Assistance/`                                                                         |
+| **PRD**               | [`Rose-Services-Assistance/docs/PRD.md`](../../Rose-Services-Assistance/docs/PRD.md)                   |
 | **Architecture stub** | [`Rose-Services-Assistance/docs/Architecture.md`](../../Rose-Services-Assistance/docs/Architecture.md) |
 
 Recommended shape (backend-ready, not website MVP):
