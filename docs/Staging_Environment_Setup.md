@@ -114,7 +114,7 @@ When staging looks good:
    - Summarize all changes since the last production deploy
    - Checklist: CI green, staging QA done
 
-4. Wait for **`CI / validate`** on the PR (**`docs/Branch_Protection_Setup.md`**).
+4. Wait for **`CI / CI`** on the PR (**`docs/Branch_Protection_Setup.md`**).
 
 5. **Merge** to **`main`** → Railway production redeploys.
 

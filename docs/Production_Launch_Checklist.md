@@ -39,7 +39,7 @@ Runbook: **`docs/Google_Search_Console_Setup.md`**
 
 ## 4. Branch protection (TASK-055)
 
-- [ ] `main` requires PR + **`CI / validate`** (or **`validate`**)
+- [ ] `main` requires PR + **`CI / CI`** (or **`CI`**)
 
 Runbook: **`docs/Branch_Protection_Setup.md`**
 
