@@ -2745,6 +2745,7 @@ Implementation tasks for PRD **§11.8**, **§26**, and **§27** (`NFR-EVAL-*`, `
 
 - `TASK-085`–`086` cover **development-workflow** assistants (Cursor, PR review, code generation).
 - `TASK-094`–`096` cover **user-facing** assistants (chatbot, FAQ, RAG) when those features are added.
+- **Suite child product:** visitor-facing assistance is scoped in sibling repo **Rose Services Assistance** (`../Rose-Services-Assistance/docs/PRD.md`); see website PRD §6.2.1. Do not unblock `TASK-094`–`096` until Assistance v1 ships.
 - `TASK-087` maps all eval IDs in `Traceability_Matrix.md` after Phases 1–3 tasks are defined.
 - **Phase 1 detail tasks** use `T-EVAL-P1-*` IDs (`TASK-097`–`TASK-103`). `TASK-088`–`090` are umbrella implementation tasks that build on those files.
 

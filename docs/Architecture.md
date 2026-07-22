@@ -125,7 +125,7 @@ Future backend-ready areas include:
 - Secure project intake workflow
 - CRM integration
 - Private resource library
-- AI assistant
+- AI assistant — **Rose Services Assistance** sibling project (`../Rose-Services-Assistance/`; see §28.8)
 - AI evaluation infrastructure (knowledge base, eval catalog, CI eval jobs)
 - Payment workflow
 - Admin dashboard
@@ -1577,21 +1577,30 @@ Merge and deployment policy: `Deployment_Guide.md` or dedicated eval doc (`TASK-
 
 ### 28.8 Future AI Assistant Architecture (Optional)
 
-When a user-facing assistant is added, recommended shape (backend-ready, not MVP):
+User-facing assistance is a **suite sibling product**, not part of this website MVP:
+
+|                       |                                                                                                        |
+| --------------------- | ------------------------------------------------------------------------------------------------------ |
+| **Product**           | Rose Services Assistance                                                                               |
+| **Repo**              | `../Rose-Services-Assistance/`                                                                         |
+| **PRD**               | [`Rose-Services-Assistance/docs/PRD.md`](../../Rose-Services-Assistance/docs/PRD.md)                   |
+| **Architecture stub** | [`Rose-Services-Assistance/docs/Architecture.md`](../../Rose-Services-Assistance/docs/Architecture.md) |
+
+Recommended shape (backend-ready, not website MVP):
 
 ```text
 Visitor
   ↓
-React chat UI (future)
+RoseJS Website embed or /assist shell (thin; future)
   ↓
-Serverless / API route (future) — keeps keys off the client
+Rose Services Assistance API (sibling repo) — keeps keys off the marketing client
   ↓
-RAG retrieval over docs/rosejs-knowledge/ + CMS exports (future)
+Grounding / RAG over docs/rosejs-knowledge/ + CMS exports (future)
   ↓
-LLM with eval harness (EVAL-P3-001–003)
+LLM with eval harness (sibling RSA evals → RoseJS EVAL-P3-001–003 when shipped)
 ```
 
-MVP does not implement this stack; Phase 3 eval requirements are documented upfront so implementation includes evals from day one.
+This website MVP does not implement this stack. `TASK-094`–`096` remain blocked until Assistance v1 exists.
 
 ### 28.9 Traceability and Documentation
 
