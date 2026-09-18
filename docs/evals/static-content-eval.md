@@ -29,7 +29,7 @@ Exit code `0` = pass; non-zero = fail. Console report lists each check.
 ## Automated checks
 
 - Forbidden / stale claim patterns (`forbidden-claims.md`)
-- All seven published service slugs present in fallback CMS data
+- All four published service slugs present in fallback CMS data
 - eCommerce framing on About **and** Services (not healthcare-only)
 - Approved Calendly URL, contact email, site origin, brand name
 - Approved lead magnet title, slug, and PDF path

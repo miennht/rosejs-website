@@ -148,10 +148,7 @@ export const APPROVED = {
     'software-architecture-consulting',
     'legacy-application-modernization',
     'ai-first-product-development',
-    'healthcare-insurance-rcm-consulting',
     'cloud-api-integration',
-    'technical-debt-assessment',
-    'secure-data-system-integration',
   ],
 } as const
 
@@ -208,6 +205,28 @@ export const REMOVED_SERVICE_PATTERNS: PatternRule[] = [
     category: 'Service misrepresentation',
     pattern: /\b(?:is|as)\s+a\s+staffing\s+agency\b/i,
     reason: 'Forbidden: RoseJS is not a staffing agency',
+    severity: 'critical',
+  },
+  {
+    id: 'removed-healthcare-insurance-rcm-consulting',
+    category: 'Removed services',
+    pattern: /\bhealthcare\s+insurance\s*&\s*RCM\s+platform\s+consulting\b/i,
+    reason:
+      'Stale: Healthcare insurance & RCM platform consulting is no longer a published service tile',
+    severity: 'critical',
+  },
+  {
+    id: 'removed-technical-debt-assessment',
+    category: 'Removed services',
+    pattern: /\btechnical\s+debt\s+assessment\b/i,
+    reason: 'Stale: Technical debt assessment is no longer a published service tile',
+    severity: 'critical',
+  },
+  {
+    id: 'removed-secure-data-system-integration',
+    category: 'Removed services',
+    pattern: /\bsecure\s+data\s+and\s+system\s+integration\b/i,
+    reason: 'Stale: Secure data and system integration is no longer a published service tile',
     severity: 'critical',
   },
 ]

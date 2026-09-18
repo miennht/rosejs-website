@@ -6,7 +6,6 @@ const whereRoseJSHelps = [
   'Healthcare and eCommerce platform modernization',
   'Legacy application refactoring and rebuild planning',
   'API, cloud, and integration strategy',
-  'Technical debt assessment',
   'AI-first software delivery practices',
 ]
 

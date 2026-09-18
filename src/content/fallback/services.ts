@@ -82,31 +82,6 @@ export const fallbackServices: Service[] = [
     status: 'published',
   },
   {
-    id: 'svc-rcm',
-    title: 'Healthcare insurance & RCM platform consulting',
-    slug: 'healthcare-insurance-rcm-consulting',
-    summary:
-      'Navigate claims, enrollment, billing, and partner integrations with domain-aware architecture and vendor coordination.',
-    problemSolved:
-      'RCM platforms accumulate vendor adapters, idiosyncratic payer rules, and fragile batch windows that resist change.',
-    description:
-      'We align service boundaries to how money and eligibility actually move, and design APIs and events that survive the next payer mandate.',
-    businessOutcome:
-      'Cleaner integrations, fewer manual interventions, and faster onboarding of new lines of business.',
-    deliverables: [
-      'Integration landscape map',
-      'Payer and clearinghouse touchpoint matrix',
-      'Operational playbooks for batch and real-time flows',
-    ],
-    relatedBlogPostSlugs: ['integration-debt'],
-    relatedCaseStudySlugs: ['payer-claims-modernization'],
-    seo: {
-      seoTitle: 'Healthcare insurance & RCM consulting | RoseJS',
-      seoDescription: 'Architecture consulting for payer and revenue-cycle platforms.',
-    },
-    status: 'published',
-  },
-  {
     id: 'svc-cloud',
     title: 'Cloud and API integration',
     slug: 'cloud-api-integration',
@@ -128,54 +103,6 @@ export const fallbackServices: Service[] = [
     seo: {
       seoTitle: 'Cloud & API integration consulting | RoseJS',
       seoDescription: 'Integration architecture for healthcare and payer systems.',
-    },
-    status: 'published',
-  },
-  {
-    id: 'svc-debt',
-    title: 'Technical debt assessment',
-    slug: 'technical-debt-assessment',
-    summary:
-      'Prioritize remediation where risk, customer impact, and regulatory exposure intersect—not where politics is loudest.',
-    problemSolved:
-      'Debt backlogs become political instead of evidence-led, starving the changes that actually reduce operational risk.',
-    description:
-      'We score debt across reliability, security, maintainability, and time-to-market, then tie recommendations to business outcomes.',
-    businessOutcome: 'A defensible roadmap engineering and product can fund together.',
-    deliverables: [
-      'Heat-mapped debt inventory',
-      'Cost-of-delay framing for top items',
-      '90-day execution slice with owners',
-    ],
-    relatedBlogPostSlugs: ['legacy-modernization'],
-    relatedCaseStudySlugs: [],
-    seo: {
-      seoTitle: 'Technical debt assessment | RoseJS',
-      seoDescription: 'Evidence-led technical debt prioritization for healthcare engineering orgs.',
-    },
-    status: 'published',
-  },
-  {
-    id: 'svc-secure-data',
-    title: 'Secure data and system integration',
-    slug: 'secure-data-system-integration',
-    summary:
-      'Design PHI-aware flows, least-privilege access, and integration patterns that auditors and security partners can follow.',
-    problemSolved:
-      'Data copies proliferate across vendors, warehouses, and internal tools without consistent controls or lineage.',
-    description:
-      'RoseJS aligns integration design to minimum-necessary data movement, with clear retention and access narratives.',
-    businessOutcome: 'Fewer shadow integrations and clearer answers under security review.',
-    deliverables: [
-      'Data-flow and trust-boundary diagrams',
-      'Control mapping for high-risk interfaces',
-      'Hardening checklist for new connectors',
-    ],
-    relatedBlogPostSlugs: [],
-    relatedCaseStudySlugs: ['digital-health-consolidation'],
-    seo: {
-      seoTitle: 'Secure healthcare data integration | RoseJS',
-      seoDescription: 'Architecture for PHI-aware integrations and system boundaries.',
     },
     status: 'published',
   },

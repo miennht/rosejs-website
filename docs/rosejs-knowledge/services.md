@@ -2,7 +2,7 @@
 
 **Status:** Approved source of truth (`EVAL-P1-001`, `TASK-099` / `T-EVAL-P1-003`).
 
-**Last reviewed:** 2026-07-10
+**Last reviewed:** 2026-09-18
 
 **Authoritative for:** `/services` and service detail pages, AI-generated service copy, static content evals (`EVAL-P1-002`), and stale-service detection.
 
@@ -16,7 +16,7 @@ Canonical website source for published service records: `src/content/fallback/se
 
 - Only list services marked **Current** below in website copy or AI responses.
 - Match titles, slugs, and scope to this file and live `/services` content.
-- Healthcare insurance and RCM depth is a **specialization**, not an exclusive limit on industries served.
+- Healthcare insurance and RCM depth is a **specialization** within architecture/modernization/integration work, not a separate published service tile.
 - RoseJS is consulting/architecture-led—not a staffing agency, body shop, or guaranteed-outcome vendor.
 - Do not invent packages, retainers, pricing tiers, or SLAs unless approved elsewhere.
 
@@ -24,7 +24,7 @@ Canonical website source for published service records: `src/content/fallback/se
 
 ## Current services (published on site)
 
-These seven services have published records and detail routes under `/services/{slug}`.
+These four services have published records and detail routes under `/services/{slug}`.
 
 ### 1. Software architecture consulting
 
@@ -58,35 +58,21 @@ These seven services have published records and detail routes under `/services/{
 
 ---
 
-### 3. Technical debt assessment
+### 3. AI-first product development
 
-| Field                    | Approved content                                                                                                             |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
-| **Title**                | Technical debt assessment                                                                                                    |
-| **Slug**                 | `technical-debt-assessment`                                                                                                  |
-| **Summary**              | Prioritize remediation where risk, customer impact, and regulatory exposure intersect—not where politics is loudest.         |
-| **Problem**              | Debt backlogs become political instead of evidence-led, starving the changes that actually reduce operational risk.          |
-| **Description**          | Score debt across reliability, security, maintainability, and time-to-market, then tie recommendations to business outcomes. |
-| **Business outcome**     | A defensible roadmap engineering and product can fund together.                                                              |
-| **Typical deliverables** | Heat-mapped debt inventory; cost-of-delay framing for top items; 90-day execution slice with owners                          |
-
----
-
-### 4. Healthcare insurance & RCM platform consulting
-
-| Field                    | Approved content                                                                                                                     |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| **Title**                | Healthcare insurance & RCM platform consulting                                                                                       |
-| **Slug**                 | `healthcare-insurance-rcm-consulting`                                                                                                |
-| **Summary**              | Navigate claims, enrollment, billing, and partner integrations with domain-aware architecture and vendor coordination.               |
-| **Problem**              | RCM platforms accumulate vendor adapters, idiosyncratic payer rules, and fragile batch windows that resist change.                   |
-| **Description**          | Align service boundaries to how money and eligibility actually move, and design APIs and events that survive the next payer mandate. |
-| **Business outcome**     | Cleaner integrations, fewer manual interventions, and faster onboarding of new lines of business.                                    |
-| **Typical deliverables** | Integration landscape map; payer and clearinghouse touchpoint matrix; operational playbooks for batch and real-time flows            |
+| Field                    | Approved content                                                                                                               |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| **Title**                | AI-first product development                                                                                                   |
+| **Slug**                 | `ai-first-product-development`                                                                                                 |
+| **Summary**              | Ship AI-assisted features with human review, data boundaries, and deployment discipline suited to regulated environments.      |
+| **Problem**              | Teams want velocity from AI while compliance and safety teams need traceability and human accountability.                      |
+| **Description**          | Define where models assist, where humans decide, and how logging and rollback behave when automation misfires.                 |
+| **Business outcome**     | Faster experimentation without turning models into silent single points of failure.                                            |
+| **Typical deliverables** | AI boundary and review checklist; threat-modeling workshop for new AI surfaces; CI/CD hooks for policy checks where applicable |
 
 ---
 
-### 5. Cloud and API integration (healthcare system integration)
+### 4. Cloud and API integration (healthcare system integration)
 
 | Field                    | Approved content                                                                                                                |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -102,44 +88,16 @@ These seven services have published records and detail routes under `/services/{
 
 ---
 
-### 6. Secure data and system integration
-
-| Field                    | Approved content                                                                                                         |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| **Title**                | Secure data and system integration                                                                                       |
-| **Slug**                 | `secure-data-system-integration`                                                                                         |
-| **Summary**              | Design PHI-aware flows, least-privilege access, and integration patterns that auditors and security partners can follow. |
-| **Problem**              | Data copies proliferate across vendors, warehouses, and internal tools without consistent controls or lineage.           |
-| **Description**          | Align integration design to minimum-necessary data movement, with clear retention and access narratives.                 |
-| **Business outcome**     | Fewer shadow integrations and clearer answers under security review.                                                     |
-| **Typical deliverables** | Data-flow and trust-boundary diagrams; control mapping for high-risk interfaces; hardening checklist for new connectors  |
-
----
-
-### 7. AI-first product development
-
-| Field                    | Approved content                                                                                                               |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| **Title**                | AI-first product development                                                                                                   |
-| **Slug**                 | `ai-first-product-development`                                                                                                 |
-| **Summary**              | Ship AI-assisted features with human review, data boundaries, and deployment discipline suited to regulated environments.      |
-| **Problem**              | Teams want velocity from AI while compliance and safety teams need traceability and human accountability.                      |
-| **Description**          | Define where models assist, where humans decide, and how logging and rollback behave when automation misfires.                 |
-| **Business outcome**     | Faster experimentation without turning models into silent single points of failure.                                            |
-| **Typical deliverables** | AI boundary and review checklist; threat-modeling workshop for new AI surfaces; CI/CD hooks for policy checks where applicable |
-
----
-
 ## Current cross-cutting offerings (promoted; may not have separate CMS slugs)
 
 These are **approved** and appear in About/positioning and TASK-099 acceptance criteria. They may be scoped as engagements that compose the published services above rather than separate CMS records.
 
 ### eCommerce modernization
 
-Platform modernization, integration strategy, technical debt reduction, and AI-first delivery practices for eCommerce engineering teams. Engagements align architecture and delivery discipline to catalog, checkout, fulfillment, and partner integrations.
+Platform modernization, integration strategy, and AI-first delivery practices for eCommerce engineering teams. Engagements align architecture and delivery discipline to catalog, checkout, fulfillment, and partner integrations.
 
 - **Industries:** eCommerce (see `target-industries.md`)
-- **Often composed from:** architecture consulting, legacy modernization, technical debt assessment, cloud/API integration, AI-first product development
+- **Often composed from:** architecture consulting, legacy modernization, cloud/API integration, AI-first product development
 - **Do not claim:** RoseJS is an eCommerce platform vendor or agency that runs ads/media buying
 
 ### AI workflow implementation
@@ -150,6 +108,10 @@ Practical adoption of AI-assisted engineering workflows: prompting discipline, r
 - **Related methodology:** four pillars in `company-profile.md` (Skill, Code review, Test suites, Deployment)
 - **Do not claim:** AI fully replaces human architects or ships unreviewed production changes
 
+### Healthcare insurance / RCM depth (specialization, not a tile)
+
+Payer, claims, enrollment, and revenue-cycle work is delivered through the published architecture, modernization, and integration services—not as a separate `/services` card.
+
 ---
 
 ## Quick reference (eval checklist)
@@ -158,13 +120,24 @@ Practical adoption of AI-assisted engineering workflows: prompting discipline, r
 | ---------------------------------------------- | ---------------------------------------------- |
 | AI-first legacy modernization                  | `legacy-application-modernization`             |
 | Architecture review / consulting               | `software-architecture-consulting`             |
-| Technical debt assessment                      | `technical-debt-assessment`                    |
 | Healthcare system / cloud & API integration    | `cloud-api-integration`                        |
-| Healthcare insurance & RCM consulting          | `healthcare-insurance-rcm-consulting`          |
-| Secure data and system integration             | `secure-data-system-integration`               |
 | AI-first product development                   | `ai-first-product-development`                 |
 | eCommerce modernization                        | Cross-cutting (About / industries)             |
 | AI workflow implementation                     | Cross-cutting (methodology + AI-first product) |
+
+---
+
+## Removed services (do not market as current tiles)
+
+Retired from the published `/services` catalog on **2026-09-18**. Do not list these as separate service cards or detail routes. Domain depth may still appear inside architecture/modernization/integration engagements.
+
+| Former title                                   | Former slug                           |
+| ---------------------------------------------- | ------------------------------------- |
+| Healthcare insurance & RCM platform consulting | `healthcare-insurance-rcm-consulting` |
+| Technical debt assessment                      | `technical-debt-assessment`           |
+| Secure data and system integration             | `secure-data-system-integration`      |
+
+Stale-claim scanners treat reintroduction of these **exact service titles** on marketing pages as failures.
 
 ---
 
@@ -176,7 +149,7 @@ Unless explicitly approved and added here later:
 - Managed hosting or 24/7 NOC as a productized service
 - Guaranteed ROI, guaranteed delivery dates, or “zero-risk” transformation packages
 - PHI storage or HIPAA BAA via the marketing website
-- Removed or renamed historical offerings not listed above
+- Removed or renamed historical offerings listed above
 
 See `forbidden-claims.md` for claim-level failures.
 

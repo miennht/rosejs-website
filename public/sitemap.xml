@@ -52,22 +52,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.roseng.org/services/healthcare-insurance-rcm-consulting</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.roseng.org/services/cloud-api-integration</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.roseng.org/services/technical-debt-assessment</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.roseng.org/services/secure-data-system-integration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
