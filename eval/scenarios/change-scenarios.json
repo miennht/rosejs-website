@@ -20,10 +20,7 @@
       "software-architecture-consulting",
       "legacy-application-modernization",
       "ai-first-product-development",
-      "healthcare-insurance-rcm-consulting",
-      "cloud-api-integration",
-      "technical-debt-assessment",
-      "secure-data-system-integration"
+      "cloud-api-integration"
     ]
   },
   "scenarios": [
@@ -76,17 +73,14 @@
         "software-architecture-consulting",
         "legacy-application-modernization",
         "ai-first-product-development",
-        "healthcare-insurance-rcm-consulting",
-        "cloud-api-integration",
-        "technical-debt-assessment",
-        "secure-data-system-integration"
+        "cloud-api-integration"
       ],
       "mustAbsent": [],
       "staleExamples": [
         "RoseJS offers blockchain consulting as a core service.",
         "Promoting a slug removed from services.md / fallback without updating knowledge base."
       ],
-      "passCriteria": "Published fallback slugs match services.md and APPROVED.publishedServiceSlugs; removed offerings not marketed as current.",
+      "passCriteria": "Published fallback slugs match services.md Current list and APPROVED.publishedServiceSlugs; removed offerings stay only in the Removed section, not as current tiles.",
       "evalCommands": ["eval:content", "eval:sot", "eval:scenarios"],
       "ciSubset": "services"
     },

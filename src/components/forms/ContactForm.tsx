@@ -9,10 +9,7 @@ const serviceInterestOptions = [
   { value: 'software-architecture-consulting', label: 'Software architecture consulting' },
   { value: 'legacy-application-modernization', label: 'Legacy application modernization' },
   { value: 'ai-first-product-development', label: 'AI-first product development' },
-  { value: 'healthcare-insurance-rcm-consulting', label: 'Healthcare insurance & RCM' },
   { value: 'cloud-api-integration', label: 'Cloud & API integration' },
-  { value: 'technical-debt-assessment', label: 'Technical debt assessment' },
-  { value: 'secure-data-system-integration', label: 'Secure data & integration' },
   { value: 'other', label: 'Other / not sure yet' },
 ] as const
 

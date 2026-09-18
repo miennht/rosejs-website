@@ -13,7 +13,7 @@ export function Services() {
       <SEO
         path="/services"
         title="Services | RoseJS"
-        description="RoseJS services: architecture consulting, legacy modernization, AI-first delivery, payer and RCM consulting, cloud and API integration, technical debt assessment, and secure data integration."
+        description="RoseJS services: architecture consulting, legacy modernization, AI-first delivery, and cloud and API integration for healthcare and eCommerce teams."
       />
       <h1 className="mb-3 text-3xl font-semibold tracking-tight text-foreground">Services</h1>
       <p className="mb-10 max-w-2xl text-muted">

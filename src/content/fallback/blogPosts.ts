@@ -25,7 +25,7 @@ RoseJS uses this pattern with payer and provider teams so modernization becomes 
       { id: 'tag-architecture', title: 'Architecture', slug: 'architecture' },
     ],
     category: { id: 'cat-engineering', title: 'Engineering', slug: 'engineering' },
-    relatedServiceSlugs: ['legacy-application-modernization', 'technical-debt-assessment'],
+    relatedServiceSlugs: ['legacy-application-modernization', 'software-architecture-consulting'],
     seo: {
       seoTitle: 'Modernize legacy healthcare applications | RoseJS',
       seoDescription:
@@ -75,7 +75,7 @@ Inventory connectors, publish schemas, and instrument cross-system journeys so d
     updatedDate: '2026-05-05',
     tags: [{ id: 'tag-integration', title: 'Integration', slug: 'integration' }],
     category: { id: 'cat-engineering', title: 'Engineering', slug: 'engineering' },
-    relatedServiceSlugs: ['cloud-api-integration', 'healthcare-insurance-rcm-consulting'],
+    relatedServiceSlugs: ['cloud-api-integration', 'software-architecture-consulting'],
     seo: {
       seoTitle: 'Integration debt in healthcare platforms | RoseJS',
       seoDescription: 'How to spot and tame integration debt before it blocks delivery.',
@@ -101,10 +101,7 @@ RoseJS helps teams sequence strangler migrations, add contract tests for trading
       { id: 'tag-payer', title: 'Payer', slug: 'payer' },
     ],
     category: { id: 'cat-engineering', title: 'Engineering', slug: 'engineering' },
-    relatedServiceSlugs: [
-      'healthcare-insurance-rcm-consulting',
-      'legacy-application-modernization',
-    ],
+    relatedServiceSlugs: ['legacy-application-modernization', 'cloud-api-integration'],
     seo: {
       seoTitle: 'Healthcare RCM platform modernization | RoseJS',
       seoDescription:

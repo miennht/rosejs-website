@@ -38,7 +38,7 @@ Health plans, payer operations, claims, enrollment, billing, revenue-cycle (RCM)
 
 **Specialization note:** Healthcare insurance and RCM are a **depth specialization**, not an exclusive industry limit. Prefer: “specialized depth in healthcare insurance and RCM” — never: “only healthcare insurance.”
 
-**Live-site signals:** homepage trust points, RCM service (`healthcare-insurance-rcm-consulting`), PRD §7 positioning.
+**Live-site signals:** homepage trust points, Services architecture/modernization/integration tiles, PRD §7 positioning.
 
 ---
 

@@ -22,11 +22,7 @@ export const fallbackCaseStudies: CaseStudy[] = [
       'Cut critical-path batch duration materially and restored predictable release windows for compliance-driven changes.',
     lessonsLearned:
       'Invest early in payload provenance and ownership boundaries; retries without traceability only defer outages.',
-    relatedServiceSlugs: [
-      'legacy-application-modernization',
-      'healthcare-insurance-rcm-consulting',
-      'cloud-api-integration',
-    ],
+    relatedServiceSlugs: ['legacy-application-modernization', 'cloud-api-integration'],
     seo: {
       seoTitle: 'Case study: payer claims modernization | RoseJS',
       seoDescription: 'How a payer team stabilized modernization under regulatory pressure.',
@@ -51,7 +47,7 @@ export const fallbackCaseStudies: CaseStudy[] = [
       'Shorter security questionnaires, faster enterprise onboarding, and fewer duplicate controls to maintain.',
     lessonsLearned:
       'Platform wins when it removes toil without becoming a bottleneck—govern interfaces, not team cadence.',
-    relatedServiceSlugs: ['secure-data-system-integration', 'cloud-api-integration'],
+    relatedServiceSlugs: ['cloud-api-integration', 'software-architecture-consulting'],
     seo: {
       seoTitle: 'Case study: digital health consolidation | RoseJS',
       seoDescription: 'Identity and audit consolidation after healthcare product acquisitions.',
